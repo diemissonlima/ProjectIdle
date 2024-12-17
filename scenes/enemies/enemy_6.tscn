@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://iqa7uacl52jl"]
+
+[ext_resource type="PackedScene" uid="uid://brqejvbbcws0g" path="res://scenes/base_enemy.tscn" id="1_pjg0b"]
+[ext_resource type="Texture2D" uid="uid://b150h0folwvun" path="res://assets/characters/6.png" id="2_mhp4x"]
+
+[node name="Enemy6" instance=ExtResource("1_pjg0b")]
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2(0, -42)
+texture = ExtResource("2_mhp4x")

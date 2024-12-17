@@ -1,0 +1,82 @@
+[gd_scene load_steps=14 format=3 uid="uid://dtyw4v44a8ka4"]
+
+[ext_resource type="Texture2D" uid="uid://bs4f04v00hl85" path="res://assets/backgrounds/Horizontal/1.png" id="1_m0651"]
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_mqmc1"]
+[ext_resource type="PackedScene" uid="uid://cejgs6yhr5ypv" path="res://scenes/enemies/enemy_1.tscn" id="2_mc2mg"]
+[ext_resource type="PackedScene" uid="uid://cg4cyf3dx2aig" path="res://scenes/enemies/enemy_2.tscn" id="3_wv77d"]
+[ext_resource type="PackedScene" uid="uid://cbnhj1sov3k0s" path="res://scenes/enemies/enemy_3.tscn" id="4_4lrad"]
+[ext_resource type="PackedScene" uid="uid://c0qp37x3kwm5d" path="res://scenes/enemies/enemy_4.tscn" id="5_ypc2a"]
+[ext_resource type="PackedScene" uid="uid://b6jnmsao8odb8" path="res://scenes/enemies/enemy_5.tscn" id="6_760qv"]
+[ext_resource type="PackedScene" uid="uid://iqa7uacl52jl" path="res://scenes/enemies/enemy_6.tscn" id="7_nckfb"]
+[ext_resource type="PackedScene" uid="uid://chpdkct27y53c" path="res://scenes/enemies/enemy_7.tscn" id="8_gq87j"]
+[ext_resource type="PackedScene" uid="uid://c7rksm8c4ascr" path="res://scenes/enemies/enemy_8.tscn" id="9_h1yai"]
+[ext_resource type="PackedScene" uid="uid://jyuep867p2te" path="res://scenes/enemies/enemy_9.tscn" id="10_5dmow"]
+[ext_resource type="PackedScene" uid="uid://ducqjlcf8248p" path="res://scenes/enemies/enemy_10.tscn" id="11_fk4lp"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ec5ub"]
+font_size = 40
+
+[node name="World" type="Control" groups=["world"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mqmc1")
+enemy_list = Array[PackedScene]([ExtResource("2_mc2mg"), ExtResource("3_wv77d"), ExtResource("4_4lrad"), ExtResource("5_ypc2a"), ExtResource("6_760qv"), ExtResource("7_nckfb"), ExtResource("8_gq87j"), ExtResource("9_h1yai"), ExtResource("10_5dmow"), ExtResource("11_fk4lp")])
+
+[node name="Background" type="TextureRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.392157)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -252.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_m0651")
+
+[node name="SpawnPosition" type="Marker2D" parent="Background"]
+position = Vector2(350, 345)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 448.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -51.0
+offset_top = 57.0
+offset_right = 51.0
+offset_bottom = 112.0
+grow_horizontal = 2
+text = "00:30"
+label_settings = SubResource("LabelSettings_ec5ub")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -86.5
+offset_top = 7.0
+offset_right = 86.5
+offset_bottom = 62.0
+grow_horizontal = 2
+text = "Stage: 01"
+label_settings = SubResource("LabelSettings_ec5ub")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

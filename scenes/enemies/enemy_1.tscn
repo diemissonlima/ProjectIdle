@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cejgs6yhr5ypv"]
+
+[ext_resource type="PackedScene" uid="uid://brqejvbbcws0g" path="res://scenes/base_enemy.tscn" id="1_74nim"]
+[ext_resource type="Texture2D" uid="uid://rhqn713a0yms" path="res://assets/characters/1.png" id="2_x7bgb"]
+
+[node name="Enemy1" instance=ExtResource("1_74nim")]
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2(-3.5, -34)
+texture = ExtResource("2_x7bgb")
+
+[node name="TextureProgressBar" parent="." index="2"]
+offset_left = -69.0
+offset_top = 9.5
+offset_right = 69.0
+offset_bottom = 29.5
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" parent="TextureProgressBar" index="0"]
+metadata/_edit_use_anchors_ = true
