@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://brqejvbbcws0g"]
+[gd_scene load_steps=8 format=3 uid="uid://brqejvbbcws0g"]
 
 [ext_resource type="Script" path="res://scripts/base_enemy.gd" id="1_ot44u"]
+[ext_resource type="Texture2D" uid="uid://dyib6kyghlt7" path="res://assets/prefabs/Foreground.png" id="2_qexfv"]
 [ext_resource type="Texture2D" uid="uid://bjinbcdkl5jo1" path="res://assets/prefabs/Background Static.png" id="3_4b5du"]
 [ext_resource type="Texture2D" uid="uid://doadnb8vqmwdh" path="res://assets/prefabs/Background Bar.png" id="4_7ymrm"]
 [ext_resource type="FontFile" uid="uid://c17ascng2deth" path="res://assets/font/njo_14.ttf" id="4_e6ogo"]
@@ -29,10 +30,11 @@ offset_left = -68.5
 offset_top = 10.0
 offset_right = 69.5
 offset_bottom = 30.0
-value = 100.0
+value = 50.0
 rounded = true
 nine_patch_stretch = true
 texture_under = ExtResource("3_4b5du")
+texture_over = ExtResource("2_qexfv")
 texture_progress = ExtResource("4_7ymrm")
 
 [node name="Label" type="Label" parent="TextureProgressBar"]

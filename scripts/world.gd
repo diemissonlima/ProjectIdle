@@ -2,7 +2,7 @@ extends Control
 
 @export_category("Objetos")
 @export var background: TextureRect
-@export var timer_contador: Timer
+@export var timer_batalha: Timer
 @export var timer_player_attack: Timer
 @export var spawn_position: Marker2D
 
@@ -17,16 +17,10 @@ extends Control
 
 @export_category("Buttons")
 @export var increase_attack: Button
+@export var increase_battle_time: Button
 
 @export_category("Variaveis")
 @export var enemy_list: Array[PackedScene]
-
-var contador: int
-var estagio: int = 1
-var upgrade_ataque_cost: int = 250
-var upgrade_time_cost: int = 250
-var x_upgrade_ataque: int = 1
-var x_upgrade_time: int = 1
 
 var enemy
 
@@ -37,8 +31,22 @@ func _ready() -> void:
 	start_timer() # inicia os contadores de estagio e ataque do player
 
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
+	World.gameplay_time += delta
 	set_stage_label() # atualiza constantemente o label de vida do inimigo
+
+
+func format_gameplay_time() -> String:
+	var hours = int(World.gameplay_time) / 3600
+	var minutes = (int(World.gameplay_time) % 3600) / 60
+	var seconds = int(World.gameplay_time) % 60
+	
+	return "%02d:%02d:%02d" % [hours, minutes, seconds]
+
+
+func start_timer() -> void: # inicia os contadores
+	timer_batalha.start(World.battle_time) # inicia o contador do estagio
+	timer_player_attack.start() # inicia o timer de ataque do player, padrao 1s
 
 
 func spawn_enemy() -> void: # função que realiza o spawn do inimigo
@@ -48,26 +56,30 @@ func spawn_enemy() -> void: # função que realiza o spawn do inimigo
 
 
 func set_stage_label() -> void:
-	label_stage.text = "Stage: " + str(World.estagio) # label que exibe o estagio atual
-	label_gold.text = "Gold: " + str(Player.gold)
-	label_avg_stage.text = "Maior Estagio: " + str(World.avg_estagio)
-	label_player_atk.text = "Ataque: " + str(Player.damage)
-	label_upgrade_ataque_cost.text = "Ataque: " + str(upgrade_ataque_cost) + " Gold"
-	label_upgrade_time_cost.text = "Tempo: " + str(upgrade_time_cost) + " Gold"
+	label_stage.text = "Stage: " + str(World.estagio) # exibe o estagio atual
+	label_gold.text = "Gold: " + str(Player.gold) # exibe o gold 
+	label_avg_stage.text = "Maior Estagio: " + str(World.avg_estagio) # maior estagio alcancado
+	label_player_atk.text = "Ataque: " + str(Player.damage) # exibe ataque do player
+	label_upgrade_ataque_cost.text = "Ataque: " + str(Player.x_upgrade_ataque * 250) + " Gold" # Exibe custo upgrade ataque
+	label_upgrade_time_cost.text = "Tempo: " + str(Player.x_upgrade_time * 250) + " Gold" # exibe custo upgrade tempo de batalha
+	$Labels/LabelGameTime.text = "Tempo de Jogo: \n" + format_gameplay_time()
 	
-	if World.contador > 9:
-		label_contador.text = "00:" + str(World.contador) # label do timer do estagio
-	else:
-		label_contador.text = "00:0" + str(World.contador) # label do timer do estagio
+	update_timer_display() # chama função pra atualizar a label de tempo de batalha
+
+
+func update_timer_display() ->  void: # função pra atualizar label de batalha
+	var minutes = int(timer_batalha.time_left) / 60 # converte o time_left do timer pra minutos
+	var seconds = int(timer_batalha.time_left) % 60 # converte o time_left do timer pra segundos
+
+	label_contador.text = String("%02d:%02d" % [int(minutes), int(seconds)]) # formata a string
 
 
 func killer_enemy() -> void:
 	enemy.queue_free() # deleta o inimigo da cena
 	
-	var drop_gold = randi_range(100, 100) * World.estagio
-	Player.gold += drop_gold
+	drop() # chama a função de drop
 	
-	World.contador = 5 # reseta o contador para o timer padrao
+	# World.contador = 5 # reseta o contador para o timer padrao
 	World.estagio += 1 # incrementa o estagio em + 1
 	
 	if World.estagio > World.avg_estagio:
@@ -76,15 +88,16 @@ func killer_enemy() -> void:
 	spawn_enemy() # spawna o inimigo
 	load_background() # carrega um novo background
 	
+	timer_batalha.start(World.battle_time) # reinicia o contador do estagio
 	
-	timer_contador.start() # reinicia o contador do estagio
+	save_data()
 
 
-func start_timer() -> void: # inicia os contadores
-	timer_contador.start() # inicia o contador do estagio
-	World.contador = 5
+func drop() -> void: # função de drop de recursos
+	var drop_gold = randi_range(1, 15) * World.estagio
+	Player.gold += drop_gold
 	
-	timer_player_attack.start() # inicia o timer de ataque do player, padrao 1s
+	save_data()
 
 
 func take_enemy_damage(_damage: int) -> void: # causa dano ao inimigo
@@ -103,6 +116,13 @@ func reload_battle() -> void: # função que recarrega a batalha
 	
 	spawn_enemy() # spawna o inimigo
 	start_timer() # starta os contadores de estagio e ataque do player
+	
+	save_data()
+
+
+func save_data() -> void:
+	Player.save_data()
+	World.save_data()
 
 
 func _on_timer_player_attack_timeout() -> void: # sinal que é chamado quando o timer de ataque zera
@@ -110,46 +130,52 @@ func _on_timer_player_attack_timeout() -> void: # sinal que é chamado quando o 
 	
 	if Player.critical_attack: # verifica se o ataque é crítico
 		take_enemy_damage(Player.damage * 2) # dobra o dano causado
-		Player.critical_attack = false # muda a flag para nao causa sempre dano critico
+		Player.critical_attack = false # muda a flag para nao causar sempre dano critico
 		
 	else:
-		take_enemy_damage(Player.damage) # causa dano ao inimigo
+		take_enemy_damage(Player.damage) # causa dano normal ao inimigo
 
 
 func _on_timer_timeout() -> void: # sinal que é chamado quando o timer do estagio zera
-	World.contador -= 1 # diminui o contador do estagio em - 1
-	
 	# condição atendida caso o player nao derrote o inimigo dentro do tempo limite
-	if World.contador == 0 and enemy.health > 0:
-		timer_contador.stop() # para o contador do estagio
+	if enemy.health > 0:
+		timer_batalha.stop() # para o contador do estagio
 		timer_player_attack.stop() # para o contador de ataque do player
 		enemy.queue_free() # deleta o inimigo atual
 		
 		reload_battle() # chama a função de recarregar a batalha
 		return
 	
-	timer_contador.start() # e reinicia, criando um loop até chegar a 0
+	timer_batalha.start(World.battle_time) # reinicia o tempo de batalha
 
 
 func _on_increase_ataque_pressed() -> void:
+	var upgrade_ataque_cost
+	
 	if upgrade_ataque_cost > Player.gold:
 		return
 	
-	x_upgrade_ataque += 1
+	Player.x_upgrade_ataque += 1
 	
 	Player.gold -= upgrade_ataque_cost
 	Player.damage += 1
 	
-	upgrade_ataque_cost = x_upgrade_ataque * 250
+	upgrade_ataque_cost = Player.x_upgrade_ataque * 250
+	
+	save_data()
 
 
 func _on_increase_time_pressed() -> void:
+	var upgrade_time_cost
+	
 	if upgrade_time_cost > Player.gold:
 		return
 	
-	x_upgrade_time += 1
+	Player.x_upgrade_time += 1
 	
 	Player.gold -= upgrade_time_cost
-	World.contador += 1
+	World.battle_time += 1
 	
-	upgrade_time_cost = x_upgrade_time * 250
+	upgrade_time_cost = Player.x_upgrade_time * 250
+	
+	save_data()

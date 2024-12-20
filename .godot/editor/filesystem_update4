@@ -1,4 +1,7 @@
 res://scenes/world.tscn
+res://scripts/data.gd
 res://scripts/world.gd
 res://scenes/base_enemy.tscn
 res://scripts/global_world.gd
+res://scripts/global_player.gd
+res://scripts/base_enemy.gd
