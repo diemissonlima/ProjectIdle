@@ -23,6 +23,7 @@ World="*res://scripts/global_world.gd"
 
 window/size/viewport_width=700
 window/size/viewport_height=700
+window/size/resizable=false
 window/stretch/mode="canvas_items"
 
 [rendering]

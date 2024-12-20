@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dtyw4v44a8ka4"]
+[gd_scene load_steps=25 format=3 uid="uid://dtyw4v44a8ka4"]
 
 [ext_resource type="Texture2D" uid="uid://bs4f04v00hl85" path="res://assets/backgrounds/Horizontal/1.png" id="1_m0651"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_mqmc1"]
@@ -12,11 +12,25 @@
 [ext_resource type="PackedScene" uid="uid://c7rksm8c4ascr" path="res://scenes/enemies/enemy_8.tscn" id="9_h1yai"]
 [ext_resource type="PackedScene" uid="uid://jyuep867p2te" path="res://scenes/enemies/enemy_9.tscn" id="10_5dmow"]
 [ext_resource type="PackedScene" uid="uid://ducqjlcf8248p" path="res://scenes/enemies/enemy_10.tscn" id="11_fk4lp"]
+[ext_resource type="PackedScene" uid="uid://cyv4lym5mqdpb" path="res://scenes/enemies/enemy_11.tscn" id="12_gew8y"]
+[ext_resource type="PackedScene" uid="uid://djchtawpikn4o" path="res://scenes/enemies/enemy_12.tscn" id="13_jgsd4"]
+[ext_resource type="FontFile" uid="uid://c17ascng2deth" path="res://assets/font/njo_14.ttf" id="13_lkpp6"]
+[ext_resource type="PackedScene" uid="uid://bgt5lpuqjx7si" path="res://scenes/enemies/enemy_13.tscn" id="14_l3jc0"]
+[ext_resource type="PackedScene" uid="uid://37dnyuemyq4b" path="res://scenes/enemies/enemy_14.tscn" id="15_kow05"]
+[ext_resource type="PackedScene" uid="uid://cn5o8wbklgidj" path="res://scenes/enemies/enemy_15.tscn" id="16_amtns"]
+[ext_resource type="PackedScene" uid="uid://b642qi3jmp2jp" path="res://scenes/enemies/enemy_16.tscn" id="17_cwqjs"]
+[ext_resource type="PackedScene" uid="uid://c08663ff1lbqk" path="res://scenes/enemies/enemy_17.tscn" id="18_yotpx"]
+[ext_resource type="PackedScene" uid="uid://dacs2lsj8ixgd" path="res://scenes/enemies/enemy_18.tscn" id="19_m5chr"]
+[ext_resource type="PackedScene" uid="uid://qcxs5m16k84x" path="res://scenes/enemies/enemy_19.tscn" id="20_gfeyn"]
+[ext_resource type="PackedScene" uid="uid://d4eps5whcklm1" path="res://scenes/enemies/enemy_20.tscn" id="21_2stjs"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ec5ub"]
+font = ExtResource("13_lkpp6")
 font_size = 40
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
 
-[node name="World" type="Control" groups=["world"]]
+[node name="World" type="Control" node_paths=PackedStringArray("background", "timer_contador", "timer_player_attack", "spawn_position", "label_stage", "label_contador", "label_gold", "label_avg_stage", "label_player_atk", "label_upgrade_ataque_cost", "label_upgrade_time_cost", "increase_attack") groups=["world"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,7 +38,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mqmc1")
-enemy_list = Array[PackedScene]([ExtResource("2_mc2mg"), ExtResource("3_wv77d"), ExtResource("4_4lrad"), ExtResource("5_ypc2a"), ExtResource("6_760qv"), ExtResource("7_nckfb"), ExtResource("8_gq87j"), ExtResource("9_h1yai"), ExtResource("10_5dmow"), ExtResource("11_fk4lp")])
+background = NodePath("Background")
+timer_contador = NodePath("TimerContador")
+timer_player_attack = NodePath("TimerPlayerAttack")
+spawn_position = NodePath("Background/SpawnPosition")
+label_stage = NodePath("Labels/LabelStage")
+label_contador = NodePath("Labels/LabelContador")
+label_gold = NodePath("Labels/HBoxContainer/LabelGold")
+label_avg_stage = NodePath("Labels/HBoxContainer/LabelAvgStage")
+label_player_atk = NodePath("Labels/HBoxContainer/LabelPlayerAtk")
+label_upgrade_ataque_cost = NodePath("Buttons/LabelUpgradeAtaqueCost")
+label_upgrade_time_cost = NodePath("Buttons/LabelUpgradeTimeCost")
+increase_attack = NodePath("Buttons/IncreaseAtaque")
+enemy_list = Array[PackedScene]([ExtResource("2_mc2mg"), ExtResource("3_wv77d"), ExtResource("4_4lrad"), ExtResource("5_ypc2a"), ExtResource("6_760qv"), ExtResource("7_nckfb"), ExtResource("8_gq87j"), ExtResource("9_h1yai"), ExtResource("10_5dmow"), ExtResource("11_fk4lp"), ExtResource("12_gew8y"), ExtResource("13_jgsd4"), ExtResource("14_l3jc0"), ExtResource("15_kow05"), ExtResource("16_amtns"), ExtResource("17_cwqjs"), ExtResource("18_yotpx"), ExtResource("19_m5chr"), ExtResource("20_gfeyn"), ExtResource("21_2stjs")])
 
 [node name="Background" type="TextureRect" parent="."]
 self_modulate = Color(1, 1, 1, 0.392157)
@@ -40,18 +66,9 @@ texture = ExtResource("1_m0651")
 [node name="SpawnPosition" type="Marker2D" parent="Background"]
 position = Vector2(350, 345)
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 448.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
+[node name="Labels" type="Node" parent="."]
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 1
+[node name="LabelContador" type="Label" parent="Labels"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -63,20 +80,117 @@ grow_horizontal = 2
 text = "00:30"
 label_settings = SubResource("LabelSettings_ec5ub")
 
-[node name="Label2" type="Label" parent="."]
-layout_mode = 1
+[node name="LabelStage" type="Label" parent="Labels"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -86.5
+offset_left = -81.5
 offset_top = 7.0
-offset_right = 86.5
+offset_right = 91.5
 offset_bottom = 62.0
 grow_horizontal = 2
 text = "Stage: 01"
 label_settings = SubResource("LabelSettings_ec5ub")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="Labels"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -143.0
+offset_top = 108.0
+offset_right = 143.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 200
+
+[node name="LabelPlayerAtk" type="Label" parent="Labels/HBoxContainer"]
+layout_mode = 2
+text = "Ataque: 5"
+
+[node name="LabelGold" type="Label" parent="Labels/HBoxContainer"]
+layout_mode = 2
+text = "Gold: 100"
+
+[node name="LabelAvgStage" type="Label" parent="Labels/HBoxContainer"]
+layout_mode = 2
+text = "Maior Estagio: 10"
+
+[node name="Buttons" type="Node" parent="."]
+
+[node name="IncreaseAtaque" type="Button" parent="Buttons"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -266.0
+offset_top = -167.0
+offset_right = -214.0
+offset_bottom = -136.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "+"
+
+[node name="LabelUpgradeAtaqueCost" type="Label" parent="Buttons"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 150.0
+offset_top = 187.0
+offset_right = 282.0
+offset_bottom = 210.0
+grow_vertical = 2
+text = "Ataque: 150 Gold"
+
+[node name="IncreaseTime" type="Button" parent="Buttons"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -266.0
+offset_top = -127.0
+offset_right = -214.0
+offset_bottom = -96.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "+"
+
+[node name="LabelUpgradeTimeCost" type="Label" parent="Buttons"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 150.0
+offset_top = 227.0
+offset_right = 280.0
+offset_bottom = 250.0
+grow_vertical = 2
+text = "Tempo: 150 Gold"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 448.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TimerPlayerAttack" type="Timer" parent="."]
+
+[node name="TimerContador" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="pressed" from="Buttons/IncreaseAtaque" to="." method="_on_increase_ataque_pressed"]
+[connection signal="pressed" from="Buttons/IncreaseTime" to="." method="_on_increase_time_pressed"]
+[connection signal="timeout" from="TimerPlayerAttack" to="." method="_on_timer_player_attack_timeout"]
+[connection signal="timeout" from="TimerContador" to="." method="_on_timer_timeout"]
