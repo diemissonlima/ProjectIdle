@@ -27,6 +27,7 @@ var enemy
 
 func _ready() -> void:
 	load_background() # carrega o background do estagio
+	set_label_upgrade() # seta as labels que informa o custo do upgrade
 	spawn_enemy() # spawna o inimigo
 	start_timer() # inicia os contadores de estagio e ataque do player
 
@@ -60,11 +61,14 @@ func set_stage_label() -> void:
 	label_gold.text = "Gold: " + str(Player.gold) # exibe o gold 
 	label_avg_stage.text = "Maior Estagio: " + str(World.avg_estagio) # maior estagio alcancado
 	label_player_atk.text = "Ataque: " + str(Player.damage) # exibe ataque do player
-	label_upgrade_ataque_cost.text = "Ataque: " + str(Player.x_upgrade_ataque * 250) + " Gold" # Exibe custo upgrade ataque
-	label_upgrade_time_cost.text = "Tempo: " + str(Player.x_upgrade_time * 250) + " Gold" # exibe custo upgrade tempo de batalha
 	$Labels/LabelGameTime.text = "Tempo de Jogo: \n" + format_gameplay_time()
 	
 	update_timer_display() # chama função pra atualizar a label de tempo de batalha
+
+
+func set_label_upgrade() -> void:
+	label_upgrade_ataque_cost.text = "Ataque: " + str(Player.x_upgrade_ataque * 250) + " Gold" # Exibe custo upgrade ataque
+	label_upgrade_time_cost.text = "Tempo: " + str(Player.x_upgrade_time * 250) + " Gold" # exibe custo upgrade tempo de batalha
 
 
 func update_timer_display() ->  void: # função pra atualizar label de batalha
@@ -150,32 +154,34 @@ func _on_timer_timeout() -> void: # sinal que é chamado quando o timer do estag
 
 
 func _on_increase_ataque_pressed() -> void:
-	var upgrade_ataque_cost
+	var upgrade_cost = Player.x_upgrade_ataque * 250
 	
-	if upgrade_ataque_cost > Player.gold:
+	if upgrade_cost > Player.gold:
 		return
 	
-	Player.x_upgrade_ataque += 1
+	Player.gold -= upgrade_cost
 	
-	Player.gold -= upgrade_ataque_cost
+	Player.x_upgrade_ataque += 1
 	Player.damage += 1
 	
-	upgrade_ataque_cost = Player.x_upgrade_ataque * 250
+	# Exibe custo upgrade ataque
+	label_upgrade_ataque_cost.text = "Ataque: " + str(Player.x_upgrade_ataque * 250) + " Gold"
 	
 	save_data()
 
 
 func _on_increase_time_pressed() -> void:
-	var upgrade_time_cost
+	var upgrade_cost = Player.x_upgrade_time * 250
 	
-	if upgrade_time_cost > Player.gold:
+	if upgrade_cost > Player.gold:
 		return
 	
-	Player.x_upgrade_time += 1
+	Player.gold -= upgrade_cost
 	
-	Player.gold -= upgrade_time_cost
+	Player.x_upgrade_time += 1
 	World.battle_time += 1
 	
-	upgrade_time_cost = Player.x_upgrade_time * 250
+	# exibe custo upgrade tempo de batalha
+	label_upgrade_time_cost.text = "Tempo: " + str(Player.x_upgrade_time * 250) + " Gold"
 	
 	save_data()

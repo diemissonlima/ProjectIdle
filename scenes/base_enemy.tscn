@@ -11,8 +11,10 @@
 [sub_resource type="LabelSettings" id="LabelSettings_ixu8a"]
 font = ExtResource("4_e6ogo")
 font_size = 14
-outline_size = 4
+outline_size = 3
 outline_color = Color(0, 0, 0, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 1)
 
 [node name="BaseEnemy" type="StaticBody2D" groups=["enemy"]]
 scale = Vector2(2, 2)

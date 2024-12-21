@@ -1,1 +1,1 @@
-{"player":{"ataque":13,"gold":742,"x_upgrade_ataque":12,"x_upgrade_time":12},"world":{"battle_time":16,"current_stage":52,"game_time":2276.7230959945,"highest_stage":52}}
+{"player":{"ataque":2,"gold":18,"skills":{"increase_attack":{"cooldown":10,"duration":10,"multiplier":1}},"x_upgrade_ataque":1,"x_upgrade_time":1},"world":{"battle_time":5,"current_stage":4,"game_time":16.9318633333336,"highest_stage":4}}

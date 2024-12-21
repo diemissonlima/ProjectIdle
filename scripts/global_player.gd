@@ -1,8 +1,14 @@
 extends Node
 
+# atributos
 var damage: int = 2
 var gold: int
 var critical_attack: bool = false
+
+# skills
+var increase_attack_multiplier: float = 1.0
+var increase_attack_duration: int = 10
+var increase_attack_cooldown: int = 300
 
 var x_upgrade_ataque: int = 1
 var x_upgrade_time: int = 1
@@ -20,6 +26,10 @@ func load_data() -> void:
 	gold = data["gold"]
 	x_upgrade_ataque = data["x_upgrade_ataque"]
 	x_upgrade_time = data["x_upgrade_time"]
+	
+	increase_attack_multiplier = data["skills"]["increase_attack"]["multiplier"]
+	increase_attack_duration = data["skills"]["increase_attack"]["duration"]
+	increase_attack_cooldown = data["skills"]["increase_attack"]["cooldown"]
 
 
 func save_data() -> void:
@@ -29,6 +39,10 @@ func save_data() -> void:
 	data["gold"] = gold
 	data["x_upgrade_ataque"] = x_upgrade_ataque
 	data["x_upgrade_time"] = x_upgrade_time
+	
+	data["skills"]["increase_attack"]["multiplier"] = increase_attack_multiplier
+	data["skills"]["increase_attack"]["duration"] = increase_attack_duration
+	data["skills"]["increase_attack"]["cooldown"] = increase_attack_cooldown
 	
 	Data.save_data()
 

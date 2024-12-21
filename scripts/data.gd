@@ -15,7 +15,14 @@ var data_management: Dictionary = {
 		"ataque": 2,
 		"gold": 0,
 		"x_upgrade_ataque": 1,
-		"x_upgrade_time": 1
+		"x_upgrade_time": 1,
+		"skills": {
+			"increase_attack": {
+				"multiplier": 1.0,
+				"duration": 10,
+				"cooldown": 10 # 300
+			}
+		}
 	}
 }
 
