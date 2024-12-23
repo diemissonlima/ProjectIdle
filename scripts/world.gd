@@ -60,7 +60,7 @@ func set_stage_label() -> void:
 	label_stage.text = "Stage: " + str(World.estagio) # exibe o estagio atual
 	label_gold.text = "Gold: " + str(Player.gold) # exibe o gold 
 	label_avg_stage.text = "Maior Estagio: " + str(World.avg_estagio) # maior estagio alcancado
-	label_player_atk.text = "Ataque: " + str(Player.damage) # exibe ataque do player
+	label_player_atk.text = "Ataque: " + "%0.f" % Player.damage # exibe ataque do player
 	$Labels/LabelGameTime.text = "Tempo de Jogo: \n" + format_gameplay_time()
 	
 	update_timer_display() # chama função pra atualizar a label de tempo de batalha
@@ -104,7 +104,7 @@ func drop() -> void: # função de drop de recursos
 	save_data()
 
 
-func take_enemy_damage(_damage: int) -> void: # causa dano ao inimigo
+func take_enemy_damage(_damage: float) -> void: # causa dano ao inimigo
 	enemy.health -= _damage # diminui a vida em funcao do dano do player
 	
 	if enemy.health <= 0: # se a vida chegar a zero, chama a função de matar o inimigo

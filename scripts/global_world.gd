@@ -9,7 +9,7 @@ func _ready() -> void:
 	load_data()
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	Data.data_management["world"]["game_time"] = World.gameplay_time
 
 

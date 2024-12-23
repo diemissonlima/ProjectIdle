@@ -1,55 +1,95 @@
 extends Node
 
-@export_category("Objetos")
+@export_category("Skills - Ataque")
 @export var btn_increase_attack: TextureButton
 @export var label_increase_attack: Label
-@export var timer_increase_attack: Timer
+@export var increase_attack_duration: Timer
+@export var increase_attack_cooldown: Timer
 
-var timer: int
+@export_category("Skills - Gold")
+@export var btn_increase_gold: TextureButton
+@export var label_increase_gold: Label
+@export var increase_gold_duration: Timer
+@export var increase_gold_cooldown: Timer
+
+@export_category("Skills - Critical")
+@export var btn_increase_critical: TextureButton
+@export var label_increase_critical: Label
+@export var increase_critical_duration: Timer
+@export var increase_critical_cooldown: Timer
+
+var timer: float
 
 func _process(_delta: float) -> void:
-	format_timer()
+	show_label_timer()
 
 
-func set_label(type: String) -> void:
-	match type:
-		"duration":
-			timer = Player.increase_attack_duration
+func _ready() -> void:
+	for btn in get_tree().get_nodes_in_group("btns_skill"):
+		btn.pressed.connect(on_button_pressed.bind(btn))
+		btn.get_node("Duration").timeout.connect(on_timer_duration_timeout.bind(btn))
+		btn.get_node("Cooldown").timeout.connect(on_timer_cooldown_timeout.bind(btn))
+
+
+func show_label_timer() -> void:
+	if increase_attack_duration.time_left > 0:
+		label_increase_attack.text = "%.0f" % increase_attack_duration.time_left
+	if increase_attack_cooldown.time_left > 0:
+		label_increase_attack.text = "%.0f" % increase_attack_cooldown.time_left
+	
+	if increase_gold_duration.time_left > 0:
+		label_increase_gold.text = "%.0f" % increase_gold_duration.time_left
+	if increase_gold_cooldown.time_left > 0:
+		label_increase_gold.text = "%.0f" % increase_gold_cooldown.time_left
+		
+	if increase_critical_duration.time_left > 0:
+		label_increase_critical.text = "%.0f" % increase_critical_duration.time_left
+	if increase_critical_cooldown.time_left > 0:
+		label_increase_critical.text = "%.0f" % increase_critical_cooldown.time_left
+
+
+func on_button_pressed(button: TextureButton) -> void:
+	button.disabled = true
+	button.self_modulate = Color(0.3, 0.3, 0.3)
+	
+	match button.name:
+		"IncreaseAttack":
+			Player.damage *= Player.increase_attack_multiplier
+			increase_attack_duration.start(Player.increase_attack_duration)
+			label_increase_attack.show()
 			
-		"cooldown":
-			timer = Player.increase_attack_cooldown
+		"IncreaseGold":
+			increase_gold_duration.start(Player.increase_gold_duration)
+			label_increase_gold.show()
+		
+		"IncreaseCritical":
+			increase_critical_duration.start(Player.increase_critical_duration)
+			label_increase_critical.show()
 
 
-func _on_increase_attack_pressed() -> void:
-	btn_increase_attack.disabled = true
-	btn_increase_attack.self_modulate = -200
-	
-	set_label("cooldown")
-	label_increase_attack.show()
-	
-	timer_increase_attack.start(timer)
-	format_timer()
+func on_timer_duration_timeout(button: TextureButton) -> void:
+	match button.name:
+		"IncreaseAttack":
+			Player.damage /= Player.increase_attack_multiplier
+			increase_attack_cooldown.start(Player.increase_attack_cooldown)
+		
+		"IncreaseGold":
+			increase_gold_cooldown.start(Player.increase_gold_cooldown)
+		
+		"IncreaseCritical":
+			increase_critical_cooldown.start(Player.increase_critical_cooldown)
 
 
-func format_timer() -> void:
-	var seconds = int(timer_increase_attack.time_left)
-	label_increase_attack.text = str(seconds)
+func on_timer_cooldown_timeout(button: TextureButton) -> void:
+	button.self_modulate = Color(1.0, 1.0, 1.0)
+	button.disabled = false
+	button.get_node("Label").hide()
 
 
-func _on_timer_timeout() -> void:
-	print("Tempo da habilidade acabou!!!")
-
-
-	#botao de skill
-#
-#- desabilita o botao para nao ser pressionado mais de uma vez
-#
-#- quando clicar no botao, ativa o tempo da habilidade e mostra a label contando o tempo ate acabar
-#
-#- em seguida, aumenta a habilidade referente ao botao
-#
-#- quando o timer da habilidade terminar, ativa o cooldow e mostra a label
-#
-#- em seguida volta a habilidade ao normal
-#
-#- quando cooldow da habilidade terminar, habilita o botao para que possa ser pressionado
+func _notification(what: int) -> void:
+	if what == 1006:
+		if increase_attack_duration.time_left > 0:
+			Player.damage /= Player.increase_attack_multiplier
+		
+		get_tree().quit()
+		Player.save_data()

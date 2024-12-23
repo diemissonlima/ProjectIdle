@@ -9,8 +9,7 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	$TextureProgressBar/Label.text = str(health) + " / " + str(max_health)
-	
+	$TextureProgressBar/Label.text = str(health) +  " / " + str(max_health)
 	$TextureProgressBar.value = health
 
 

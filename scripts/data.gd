@@ -12,15 +12,28 @@ var data_management: Dictionary = {
 	},
 	
 	"player": {
-		"ataque": 2,
-		"gold": 0,
+		"ataque": 2.0,
+		"gold": 5000,
 		"x_upgrade_ataque": 1,
 		"x_upgrade_time": 1,
 		"skills": {
 			"increase_attack": {
-				"multiplier": 1.0,
-				"duration": 10,
-				"cooldown": 10 # 300
+				"multiplier": 1.5,
+				"duration": 10.0,
+				"cooldown": 10.0
+			},
+			
+			"increase_gold": {
+				"multiplier": 1.5,
+				"duration": 10.0,
+				"cooldown": 300.0
+			},
+			
+			"increase_critical": {
+				"chance": 0.05,
+				"multiplier": 2.0,
+				"duration": 10.0,
+				"cooldown": 300.0
 			}
 		}
 	}

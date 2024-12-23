@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dtyw4v44a8ka4"]
+[gd_scene load_steps=36 format=3 uid="uid://dtyw4v44a8ka4"]
 
 [ext_resource type="Texture2D" uid="uid://bs4f04v00hl85" path="res://assets/backgrounds/Horizontal/1.png" id="1_m0651"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_mqmc1"]
@@ -25,6 +25,8 @@
 [ext_resource type="PackedScene" uid="uid://d4eps5whcklm1" path="res://scenes/enemies/enemy_20.tscn" id="21_2stjs"]
 [ext_resource type="Texture2D" uid="uid://coj08cwalry7w" path="res://assets/skills/03.png" id="24_clftt"]
 [ext_resource type="Script" path="res://scenes/skills_management.gd" id="24_y8pb2"]
+[ext_resource type="Texture2D" uid="uid://btxjnjlhj68f0" path="res://assets/skills/47.png" id="26_5jnhr"]
+[ext_resource type="Texture2D" uid="uid://d0nka1xu6hei2" path="res://assets/skills/07.png" id="27_34dut"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ec5ub"]
 font = ExtResource("13_lkpp6")
@@ -54,7 +56,7 @@ font = ExtResource("13_lkpp6")
 [sub_resource type="LabelSettings" id="LabelSettings_donak"]
 font = ExtResource("13_lkpp6")
 font_size = 30
-outline_size = 4
+outline_size = 6
 outline_color = Color(0, 0, 0, 1)
 
 [node name="World" type="Control" node_paths=PackedStringArray("background", "timer_batalha", "timer_player_attack", "spawn_position", "label_stage", "label_contador", "label_gold", "label_avg_stage", "label_player_atk", "label_upgrade_ataque_cost", "label_upgrade_time_cost", "increase_attack", "increase_battle_time") groups=["world"]]
@@ -213,22 +215,31 @@ grow_vertical = 2
 text = "Tempo: 150 Gold"
 label_settings = SubResource("LabelSettings_8i3yq")
 
-[node name="Skills" type="Node" parent="." node_paths=PackedStringArray("btn_increase_attack", "label_increase_attack", "timer_increase_attack")]
+[node name="Skills" type="Node" parent="." node_paths=PackedStringArray("btn_increase_attack", "label_increase_attack", "increase_attack_duration", "increase_attack_cooldown", "btn_increase_gold", "label_increase_gold", "increase_gold_duration", "increase_gold_cooldown", "btn_increase_critical", "label_increase_critical", "increase_critical_duration", "increase_critical_cooldown")]
 script = ExtResource("24_y8pb2")
 btn_increase_attack = NodePath("IncreaseAttack")
-label_increase_attack = NodePath("IncreaseAttack/LabelIncreaseAttack")
-timer_increase_attack = NodePath("IncreaseAttack/Timer")
+label_increase_attack = NodePath("IncreaseAttack/Label")
+increase_attack_duration = NodePath("IncreaseAttack/Duration")
+increase_attack_cooldown = NodePath("IncreaseAttack/Cooldown")
+btn_increase_gold = NodePath("IncreaseGold")
+label_increase_gold = NodePath("IncreaseGold/Label")
+increase_gold_duration = NodePath("IncreaseGold/Duration")
+increase_gold_cooldown = NodePath("IncreaseGold/Cooldown")
+btn_increase_critical = NodePath("IncreaseCritical")
+label_increase_critical = NodePath("IncreaseCritical/Label")
+increase_critical_duration = NodePath("IncreaseCritical/Duration")
+increase_critical_cooldown = NodePath("IncreaseCritical/Cooldown")
 
-[node name="IncreaseAttack" type="TextureButton" parent="Skills"]
+[node name="IncreaseAttack" type="TextureButton" parent="Skills" groups=["btns_skill"]]
 self_modulate = Color(1, 1, 1, 0.784314)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -25.0
+offset_left = -88.0
 offset_top = 48.0
-offset_right = 25.0
+offset_right = -38.0
 offset_bottom = 98.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -236,7 +247,7 @@ texture_normal = ExtResource("24_clftt")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="LabelIncreaseAttack" type="Label" parent="Skills/IncreaseAttack"]
+[node name="Label" type="Label" parent="Skills/IncreaseAttack"]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -252,7 +263,88 @@ grow_horizontal = 2
 grow_vertical = 2
 label_settings = SubResource("LabelSettings_donak")
 
-[node name="Timer" type="Timer" parent="Skills/IncreaseAttack"]
+[node name="Duration" type="Timer" parent="Skills/IncreaseAttack"]
+one_shot = true
+
+[node name="Cooldown" type="Timer" parent="Skills/IncreaseAttack"]
+one_shot = true
+
+[node name="IncreaseGold" type="TextureButton" parent="Skills" groups=["btns_skill"]]
+self_modulate = Color(1, 1, 1, 0.784314)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = 48.0
+offset_right = 29.0
+offset_bottom = 98.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("26_5jnhr")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Skills/IncreaseGold"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -15.5
+offset_right = 0.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_donak")
+
+[node name="Duration" type="Timer" parent="Skills/IncreaseGold"]
+one_shot = true
+
+[node name="Cooldown" type="Timer" parent="Skills/IncreaseGold"]
+one_shot = true
+
+[node name="IncreaseCritical" type="TextureButton" parent="Skills" groups=["btns_skill"]]
+self_modulate = Color(1, 1, 1, 0.784314)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 46.0
+offset_top = 48.0
+offset_right = 96.0
+offset_bottom = 98.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("27_34dut")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Skills/IncreaseCritical"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -15.5
+offset_right = 0.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_donak")
+
+[node name="Duration" type="Timer" parent="Skills/IncreaseCritical"]
+one_shot = true
+
+[node name="Cooldown" type="Timer" parent="Skills/IncreaseCritical"]
 one_shot = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -273,7 +365,5 @@ one_shot = true
 
 [connection signal="pressed" from="Buttons/IncreaseAtaque" to="." method="_on_increase_ataque_pressed"]
 [connection signal="pressed" from="Buttons/IncreaseTime" to="." method="_on_increase_time_pressed"]
-[connection signal="pressed" from="Skills/IncreaseAttack" to="Skills" method="_on_increase_attack_pressed"]
-[connection signal="timeout" from="Skills/IncreaseAttack/Timer" to="Skills" method="_on_timer_timeout"]
 [connection signal="timeout" from="TimerPlayerAttack" to="." method="_on_timer_player_attack_timeout"]
 [connection signal="timeout" from="TimerBatalha" to="." method="_on_timer_timeout"]
