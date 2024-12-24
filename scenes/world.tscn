@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dtyw4v44a8ka4"]
+[gd_scene load_steps=37 format=3 uid="uid://dtyw4v44a8ka4"]
 
 [ext_resource type="Texture2D" uid="uid://bs4f04v00hl85" path="res://assets/backgrounds/Horizontal/1.png" id="1_m0651"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_mqmc1"]
@@ -23,14 +23,15 @@
 [ext_resource type="PackedScene" uid="uid://dacs2lsj8ixgd" path="res://scenes/enemies/enemy_18.tscn" id="19_m5chr"]
 [ext_resource type="PackedScene" uid="uid://qcxs5m16k84x" path="res://scenes/enemies/enemy_19.tscn" id="20_gfeyn"]
 [ext_resource type="PackedScene" uid="uid://d4eps5whcklm1" path="res://scenes/enemies/enemy_20.tscn" id="21_2stjs"]
+[ext_resource type="FontFile" uid="uid://bbffvnjq4vip2" path="res://assets/font/Berry Rotunda.ttf" id="23_fp0v3"]
 [ext_resource type="Texture2D" uid="uid://coj08cwalry7w" path="res://assets/skills/03.png" id="24_clftt"]
 [ext_resource type="Script" path="res://scenes/skills_management.gd" id="24_y8pb2"]
 [ext_resource type="Texture2D" uid="uid://btxjnjlhj68f0" path="res://assets/skills/47.png" id="26_5jnhr"]
 [ext_resource type="Texture2D" uid="uid://d0nka1xu6hei2" path="res://assets/skills/07.png" id="27_34dut"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ec5ub"]
-font = ExtResource("13_lkpp6")
-font_size = 40
+font = ExtResource("23_fp0v3")
+font_size = 30
 outline_size = 20
 outline_color = Color(0, 0, 0, 1)
 
@@ -102,10 +103,10 @@ position = Vector2(350, 297)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -51.0
-offset_top = 57.0
-offset_right = 51.0
-offset_bottom = 112.0
+offset_left = -55.5
+offset_top = 65.0
+offset_right = 55.5
+offset_bottom = 96.0
 grow_horizontal = 2
 text = "00:30"
 label_settings = SubResource("LabelSettings_ec5ub")
@@ -115,9 +116,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -81.5
-offset_top = 7.0
-offset_right = 91.5
-offset_bottom = 62.0
+offset_top = 15.0
+offset_right = 85.5
+offset_bottom = 46.0
 grow_horizontal = 2
 text = "Stage: 01"
 label_settings = SubResource("LabelSettings_ec5ub")
@@ -358,6 +359,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="TimerPlayerAttack" type="Timer" parent="."]
+wait_time = 0.5
 
 [node name="TimerBatalha" type="Timer" parent="."]
 wait_time = 5.0

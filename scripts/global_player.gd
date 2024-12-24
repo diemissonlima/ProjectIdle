@@ -2,6 +2,8 @@ extends Node
 
 # atributos
 var damage: float = 2.0
+var default_damage: float
+var attack_speed: float = 1.0
 var gold: int
 var critical_attack: bool = false
 var critical_chance: float = 0.05
@@ -25,6 +27,7 @@ var x_upgrade_time: int = 1
 
 func _ready() -> void:
 	load_data()
+	default_damage = damage
 
 
 func load_data() -> void:
@@ -32,6 +35,7 @@ func load_data() -> void:
 	var data = Data.data_management["player"]
 	
 	damage = data["ataque"]
+	attack_speed = data["attack_speed"]
 	gold = data["gold"]
 	x_upgrade_ataque = data["x_upgrade_ataque"]
 	x_upgrade_time = data["x_upgrade_time"]
@@ -44,7 +48,7 @@ func load_data() -> void:
 	increase_gold_duration = data["skills"]["increase_gold"]["duration"]
 	increase_gold_cooldown = data["skills"]["increase_gold"]["cooldown"]
 	
-	critical_chance = data["skills"]["increase_critical"]["chance"]
+	critical_chance = data["skills"]["increase_critical"]["critical_chance"]
 	increase_critical_multiplier = data["skills"]["increase_critical"]["multiplier"]
 	increase_critical_duration = data["skills"]["increase_critical"]["duration"]
 	increase_critical_cooldown = data["skills"]["increase_critical"]["cooldown"]
@@ -54,6 +58,7 @@ func save_data() -> void:
 	var data = Data.data_management["player"]
 	
 	data["ataque"] = damage
+	data["attack_speed"] = attack_speed
 	data["gold"] = gold
 	data["x_upgrade_ataque"] = x_upgrade_ataque
 	data["x_upgrade_time"] = x_upgrade_time
@@ -66,7 +71,7 @@ func save_data() -> void:
 	data["skills"]["increase_gold"]["duration"] = increase_gold_duration
 	data["skills"]["increase_gold"]["cooldown"] = increase_gold_cooldown
 	
-	data["skills"]["increase_critical"]["chance"] = critical_chance
+	data["skills"]["increase_critical"]["critical_chance"] = critical_chance
 	data["skills"]["increase_critical"]["multiplier"] = increase_critical_multiplier
 	data["skills"]["increase_critical"]["duration"] = increase_critical_duration
 	data["skills"]["increase_critical"]["cooldown"] = increase_critical_cooldown

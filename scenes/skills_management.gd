@@ -54,15 +54,17 @@ func on_button_pressed(button: TextureButton) -> void:
 	
 	match button.name:
 		"IncreaseAttack":
-			Player.damage *= Player.increase_attack_multiplier
 			increase_attack_duration.start(Player.increase_attack_duration)
+			Player.damage *= Player.increase_attack_multiplier
 			label_increase_attack.show()
 			
 		"IncreaseGold":
+			World.gold_skill_on = true
 			increase_gold_duration.start(Player.increase_gold_duration)
 			label_increase_gold.show()
 		
 		"IncreaseCritical":
+			Player.critical_chance *= Data.data_management["player"]["skills"]["increase_critical"]["multiplier"]
 			increase_critical_duration.start(Player.increase_critical_duration)
 			label_increase_critical.show()
 
@@ -70,13 +72,15 @@ func on_button_pressed(button: TextureButton) -> void:
 func on_timer_duration_timeout(button: TextureButton) -> void:
 	match button.name:
 		"IncreaseAttack":
-			Player.damage /= Player.increase_attack_multiplier
+			Player.damage = Player.default_damage
 			increase_attack_cooldown.start(Player.increase_attack_cooldown)
 		
 		"IncreaseGold":
 			increase_gold_cooldown.start(Player.increase_gold_cooldown)
+			World.gold_skill_on = false
 		
 		"IncreaseCritical":
+			Player.critical_chance /= Data.data_management["player"]["skills"]["increase_critical"]["multiplier"]
 			increase_critical_cooldown.start(Player.increase_critical_cooldown)
 
 
@@ -90,6 +94,8 @@ func _notification(what: int) -> void:
 	if what == 1006:
 		if increase_attack_duration.time_left > 0:
 			Player.damage /= Player.increase_attack_multiplier
+		if increase_critical_duration.time_left > 0:
+			Player.critical_chance /= Data.data_management["player"]["skills"]["increase_critical"]["multiplier"]
 		
 		get_tree().quit()
 		Player.save_data()

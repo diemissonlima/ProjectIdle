@@ -47,7 +47,7 @@ func format_gameplay_time() -> String:
 
 func start_timer() -> void: # inicia os contadores
 	timer_batalha.start(World.battle_time) # inicia o contador do estagio
-	timer_player_attack.start() # inicia o timer de ataque do player, padrao 1s
+	timer_player_attack.start(Player.attack_speed) # inicia o timer de ataque do player, padrao 1s
 
 
 func spawn_enemy() -> void: # função que realiza o spawn do inimigo
@@ -68,7 +68,7 @@ func set_stage_label() -> void:
 
 func set_label_upgrade() -> void:
 	label_upgrade_ataque_cost.text = "Ataque: " + str(Player.x_upgrade_ataque * 250) + " Gold" # Exibe custo upgrade ataque
-	label_upgrade_time_cost.text = "Tempo: " + str(Player.x_upgrade_time * 250) + " Gold" # exibe custo upgrade tempo de batalha
+	label_upgrade_time_cost.text = "Tempo: " + str(Player.x_upgrade_time * 350) + " Gold" # exibe custo upgrade tempo de batalha
 
 
 func update_timer_display() ->  void: # função pra atualizar label de batalha
@@ -76,6 +76,13 @@ func update_timer_display() ->  void: # função pra atualizar label de batalha
 	var seconds = int(timer_batalha.time_left) % 60 # converte o time_left do timer pra segundos
 
 	label_contador.text = String("%02d:%02d" % [int(minutes), int(seconds)]) # formata a string
+
+
+func take_enemy_damage(_damage: float) -> void: # causa dano ao inimigo
+	enemy.health -= _damage # diminui a vida em funcao do dano do player
+	
+	if enemy.health <= 0: # se a vida chegar a zero, chama a função de matar o inimigo
+		killer_enemy()
 
 
 func killer_enemy() -> void:
@@ -99,16 +106,14 @@ func killer_enemy() -> void:
 
 func drop() -> void: # função de drop de recursos
 	var drop_gold = randi_range(1, 15) * World.estagio
-	Player.gold += drop_gold
+	var gold_data = Data.data_management["player"]["skills"]["increase_gold"]["multiplier"]
 	
+	if World.gold_skill_on:
+		Player.gold += drop_gold * gold_data
+	else:
+		Player.gold += drop_gold
+
 	save_data()
-
-
-func take_enemy_damage(_damage: float) -> void: # causa dano ao inimigo
-	enemy.health -= _damage # diminui a vida em funcao do dano do player
-	
-	if enemy.health <= 0: # se a vida chegar a zero, chama a função de matar o inimigo
-		killer_enemy()
 
 
 func load_background() -> void: # carrega o background do estagio
@@ -163,7 +168,7 @@ func _on_increase_ataque_pressed() -> void:
 	
 	Player.x_upgrade_ataque += 1
 	Player.damage += 1
-	
+	Player.default_damage += 1
 	# Exibe custo upgrade ataque
 	label_upgrade_ataque_cost.text = "Ataque: " + str(Player.x_upgrade_ataque * 250) + " Gold"
 	
@@ -171,7 +176,7 @@ func _on_increase_ataque_pressed() -> void:
 
 
 func _on_increase_time_pressed() -> void:
-	var upgrade_cost = Player.x_upgrade_time * 250
+	var upgrade_cost = Player.x_upgrade_time * 350
 	
 	if upgrade_cost > Player.gold:
 		return
@@ -182,6 +187,6 @@ func _on_increase_time_pressed() -> void:
 	World.battle_time += 1
 	
 	# exibe custo upgrade tempo de batalha
-	label_upgrade_time_cost.text = "Tempo: " + str(Player.x_upgrade_time * 250) + " Gold"
+	label_upgrade_time_cost.text = "Tempo: " + str(Player.x_upgrade_time * 350) + " Gold"
 	
 	save_data()

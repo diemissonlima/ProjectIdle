@@ -5,6 +5,9 @@ var battle_time: int = 5
 var estagio: int = 1
 var avg_estagio: int = 1
 
+var gold_skill_on: bool = false
+
+
 func _ready() -> void:
 	load_data()
 
