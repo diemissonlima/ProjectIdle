@@ -145,7 +145,7 @@ offset_right = 143.0
 offset_bottom = 148.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 200
+theme_override_constants/separation = 150
 
 [node name="LabelPlayerAtk" type="Label" parent="Labels/HBoxContainer"]
 layout_mode = 2
@@ -365,7 +365,27 @@ wait_time = 0.5
 wait_time = 5.0
 one_shot = true
 
+[node name="Reset" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -28.0
+offset_top = -47.0
+offset_right = 28.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("23_fp0v3")
+theme_override_font_sizes/font_size = 14
+text = "Reset"
+
 [connection signal="pressed" from="Buttons/IncreaseAtaque" to="." method="_on_increase_ataque_pressed"]
 [connection signal="pressed" from="Buttons/IncreaseTime" to="." method="_on_increase_time_pressed"]
 [connection signal="timeout" from="TimerPlayerAttack" to="." method="_on_timer_player_attack_timeout"]
 [connection signal="timeout" from="TimerBatalha" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="Reset" to="." method="_on_reset_pressed"]

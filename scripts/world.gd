@@ -22,6 +22,7 @@ extends Control
 @export_category("Variaveis")
 @export var enemy_list: Array[PackedScene]
 
+var reset_target: int = 25
 var enemy
 
 
@@ -35,6 +36,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	World.gameplay_time += delta
 	set_stage_label() # atualiza constantemente o label de vida do inimigo
+	set_label_upgrade()
 
 
 func format_gameplay_time() -> String:
@@ -42,7 +44,7 @@ func format_gameplay_time() -> String:
 	var minutes = (int(World.gameplay_time) % 3600) / 60
 	var seconds = int(World.gameplay_time) % 60
 	
-	return "%02d:%02d:%02d" % [hours, minutes, seconds]
+	return "%02d : %02d : %02d" % [hours, minutes, seconds]
 
 
 func start_timer() -> void: # inicia os contadores
@@ -60,8 +62,8 @@ func set_stage_label() -> void:
 	label_stage.text = "Stage: " + str(World.estagio) # exibe o estagio atual
 	label_gold.text = "Gold: " + str(Player.gold) # exibe o gold 
 	label_avg_stage.text = "Maior Estagio: " + str(World.avg_estagio) # maior estagio alcancado
-	label_player_atk.text = "Ataque: " + "%0.f" % Player.damage # exibe ataque do player
-	$Labels/LabelGameTime.text = "Tempo de Jogo: \n" + format_gameplay_time()
+	label_player_atk.text = "DPS: " + "%0.f" % Player.damage # exibe ataque do player
+	$Labels/LabelGameTime.text = "Tempo de Jogo \n" + format_gameplay_time()
 	
 	update_timer_display() # chama função pra atualizar a label de tempo de batalha
 
@@ -129,6 +131,13 @@ func reload_battle() -> void: # função que recarrega a batalha
 	save_data()
 
 
+func reset() -> void:
+	Player.gold = 0
+	World.estagio = 1
+	#Player.x_upgrade_ataque = 1
+	#Player.x_upgrade_time = 1
+
+
 func save_data() -> void:
 	Player.save_data()
 	World.save_data()
@@ -190,3 +199,23 @@ func _on_increase_time_pressed() -> void:
 	label_upgrade_time_cost.text = "Tempo: " + str(Player.x_upgrade_time * 350) + " Gold"
 	
 	save_data()
+
+
+func _on_reset_pressed() -> void:
+	if World.estagio < reset_target:
+		return
+		
+	reset()
+	
+	timer_batalha.stop() # para o contador do estagio
+	timer_player_attack.stop() # para o contador de ataque do player
+	enemy.queue_free() # deleta o inimigo atual
+	
+	#for button in get_tree().get_nodes_in_group("btns_skill"):
+		#if button.get_node("Cooldown").time_left > 0:
+			#button.get_node("Cooldown").stop()
+		#if button.get_node("Duration").time_left > 0:
+			#button.get_node("Duration").stop()
+	
+	spawn_enemy() # spawna o inimigo
+	start_timer() # starta os contadores de estagio e ataque do player

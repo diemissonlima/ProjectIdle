@@ -13,7 +13,7 @@ var data_management: Dictionary = {
 	"player": {
 		"ataque": 2.0,
 		"attack_speed": 1.0,
-		"gold": 5000,
+		"gold": 0,
 		"x_upgrade_ataque": 1,
 		"x_upgrade_time": 1,
 		"skills": {
