@@ -8,6 +8,7 @@ var data_management: Dictionary = {
 		"battle_time": 5,
 		"current_stage": 1,
 		"highest_stage": 1,
+		"reset": 0
 	},
 	
 	"player": {
@@ -20,20 +21,23 @@ var data_management: Dictionary = {
 			"increase_attack": {
 				"multiplier": 1.5,
 				"duration": 30.0,
-				"cooldown": 150.0
+				"cooldown": 150.0,
+				"aux_cooldown": 0.0
 			},
 			
 			"increase_gold": {
 				"multiplier": 1.5,
 				"duration": 30.0,
-				"cooldown": 150.0
+				"cooldown": 150.0,
+				"aux_cooldown": 0.0
 			},
 			
 			"increase_critical": {
 				"critical_chance": 0.05,
 				"multiplier": 2.0,
 				"duration": 30.0,
-				"cooldown": 150.0
+				"cooldown": 150.0,
+				"aux_cooldown": 0.0
 			}
 		}
 	}

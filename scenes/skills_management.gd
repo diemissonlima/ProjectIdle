@@ -20,6 +20,7 @@ extends Node
 
 var timer: float
 
+
 func _process(_delta: float) -> void:
 	show_label_timer()
 
@@ -29,6 +30,16 @@ func _ready() -> void:
 		btn.pressed.connect(on_button_pressed.bind(btn))
 		btn.get_node("Duration").timeout.connect(on_timer_duration_timeout.bind(btn))
 		btn.get_node("Cooldown").timeout.connect(on_timer_cooldown_timeout.bind(btn))
+		
+	var data = Data.data_management["player"]["skills"]
+	increase_attack_cooldown.start(data["increase_attack"]["aux_cooldown"])
+	increase_gold_cooldown.start(data["increase_gold"]["aux_cooldown"])
+	increase_critical_cooldown.start(data["increase_critical"]["aux_cooldown"])
+	
+	if increase_attack_cooldown.time_left > 0:
+		btn_increase_attack.disabled = true
+		btn_increase_attack.self_modulate = Color(0.3, 0.3, 0.3)
+		label_increase_attack.show()
 
 
 func show_label_timer() -> void:
@@ -92,10 +103,14 @@ func on_timer_cooldown_timeout(button: TextureButton) -> void:
 
 func _notification(what: int) -> void:
 	if what == 1006:
+		var data = Data.data_management["player"]["skills"]
+		
 		if increase_attack_duration.time_left > 0:
 			Player.damage /= Player.increase_attack_multiplier
 		if increase_critical_duration.time_left > 0:
-			Player.critical_chance /= Data.data_management["player"]["skills"]["increase_critical"]["multiplier"]
+			Player.critical_chance /= data["increase_critical"]["multiplier"]
+		if increase_attack_cooldown.time_left > 0:
+			data["increase_attack"]["aux_cooldown"] = float(increase_attack_cooldown.time_left)
 		
 		get_tree().quit()
 		Player.save_data()

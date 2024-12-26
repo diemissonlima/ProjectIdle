@@ -11,18 +11,22 @@ extends Control
 @export var label_contador: Label
 @export var label_gold: Label
 @export var label_avg_stage: Label
+@export var label_resets: Label
 @export var label_player_atk: Label
 @export var label_upgrade_ataque_cost: Label
 @export var label_upgrade_time_cost: Label
 
 @export_category("Buttons")
-@export var increase_attack: Button
-@export var increase_battle_time: Button
+@export var increase_attack: TextureButton
+@export var increase_battle_time: TextureButton
+@export var btn_next_stage: TextureButton
 
 @export_category("Variaveis")
 @export var enemy_list: Array[PackedScene]
 
-var reset_target: int = 25
+var reset_target: int = 50
+var stop_progress: bool = false
+var timer_farm: float = 0.5
 var enemy
 
 
@@ -62,6 +66,7 @@ func set_stage_label() -> void:
 	label_stage.text = "Stage: " + str(World.estagio) # exibe o estagio atual
 	label_gold.text = "Gold: " + str(Player.gold) # exibe o gold 
 	label_avg_stage.text = "Maior Estagio: " + str(World.avg_estagio) # maior estagio alcancado
+	label_resets.text = "Resets: " + str(World.reset)
 	label_player_atk.text = "DPS: " + "%0.f" % Player.damage # exibe ataque do player
 	$Labels/LabelGameTime.text = "Tempo de Jogo \n" + format_gameplay_time()
 	
@@ -69,7 +74,7 @@ func set_stage_label() -> void:
 
 
 func set_label_upgrade() -> void:
-	label_upgrade_ataque_cost.text = "Ataque: " + str(Player.x_upgrade_ataque * 250) + " Gold" # Exibe custo upgrade ataque
+	label_upgrade_ataque_cost.text = "DPS: " + str(Player.x_upgrade_ataque * 250) + " Gold" # Exibe custo upgrade ataque
 	label_upgrade_time_cost.text = "Tempo: " + str(Player.x_upgrade_time * 350) + " Gold" # exibe custo upgrade tempo de batalha
 
 
@@ -89,21 +94,20 @@ func take_enemy_damage(_damage: float) -> void: # causa dano ao inimigo
 
 func killer_enemy() -> void:
 	enemy.queue_free() # deleta o inimigo da cena
-	
 	drop() # chama a função de drop
+	load_background() # carrega um novo background
 	
-	# World.contador = 5 # reseta o contador para o timer padrao
-	World.estagio += 1 # incrementa o estagio em + 1
+	if not stop_progress:
+		World.estagio += 1 # incrementa o estagio em + 1
+		spawn_enemy() # spawna o inimigo
+	else:
+		reload_battle()
+		return
 	
 	if World.estagio > World.avg_estagio:
 		World.avg_estagio = World.estagio
 	
-	spawn_enemy() # spawna o inimigo
-	load_background() # carrega um novo background
-	
 	timer_batalha.start(World.battle_time) # reinicia o contador do estagio
-	
-	save_data()
 
 
 func drop() -> void: # função de drop de recursos
@@ -123,19 +127,23 @@ func load_background() -> void: # carrega o background do estagio
 
 
 func reload_battle() -> void: # função que recarrega a batalha
-	World.estagio -= 1 # volta ao estagio em que o player consegue derrotar o inimigo
+	btn_next_stage.show()
+	label_contador.hide()
+	if not stop_progress:
+		World.estagio -= 1
 	
+	stop_progress = true
 	spawn_enemy() # spawna o inimigo
-	start_timer() # starta os contadores de estagio e ataque do player
-	
-	save_data()
+	timer_player_attack.start(timer_farm)
 
 
 func reset() -> void:
+	btn_next_stage.hide()
+	label_contador.show()
+	stop_progress = false
 	Player.gold = 0
 	World.estagio = 1
-	#Player.x_upgrade_ataque = 1
-	#Player.x_upgrade_time = 1
+	Player.x_upgrade_ataque = 1
 
 
 func save_data() -> void:
@@ -202,20 +210,35 @@ func _on_increase_time_pressed() -> void:
 
 
 func _on_reset_pressed() -> void:
+	World.reset += 1
 	if World.estagio < reset_target:
 		return
 		
 	reset()
+	reset_cooldown_skills()
 	
 	timer_batalha.stop() # para o contador do estagio
 	timer_player_attack.stop() # para o contador de ataque do player
 	enemy.queue_free() # deleta o inimigo atual
 	
-	#for button in get_tree().get_nodes_in_group("btns_skill"):
-		#if button.get_node("Cooldown").time_left > 0:
-			#button.get_node("Cooldown").stop()
-		#if button.get_node("Duration").time_left > 0:
-			#button.get_node("Duration").stop()
-	
 	spawn_enemy() # spawna o inimigo
 	start_timer() # starta os contadores de estagio e ataque do player
+
+
+func reset_cooldown_skills() -> void:
+	for button in get_tree().get_nodes_in_group("btn_skills"):
+		print(button)
+
+
+func _on_next_stage_pressed() -> void:
+	enemy.queue_free()
+	spawn_enemy()
+	stop_progress = false
+	btn_next_stage.hide()
+	label_contador.show()
+	
+	World.estagio += 1
+	timer_batalha.stop()
+	timer_player_attack.stop()
+	
+	start_timer()

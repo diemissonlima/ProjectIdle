@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dtyw4v44a8ka4"]
+[gd_scene load_steps=45 format=3 uid="uid://dtyw4v44a8ka4"]
 
 [ext_resource type="Texture2D" uid="uid://bs4f04v00hl85" path="res://assets/backgrounds/Horizontal/1.png" id="1_m0651"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_mqmc1"]
@@ -27,12 +27,22 @@
 [ext_resource type="Texture2D" uid="uid://coj08cwalry7w" path="res://assets/skills/03.png" id="24_clftt"]
 [ext_resource type="Script" path="res://scenes/skills_management.gd" id="24_y8pb2"]
 [ext_resource type="Texture2D" uid="uid://btxjnjlhj68f0" path="res://assets/skills/47.png" id="26_5jnhr"]
+[ext_resource type="Texture2D" uid="uid://j2khku0ce0y2" path="res://assets/prefabs/buttons/ButtonActive.png" id="26_rmh1k"]
 [ext_resource type="Texture2D" uid="uid://d0nka1xu6hei2" path="res://assets/skills/07.png" id="27_34dut"]
+[ext_resource type="Texture2D" uid="uid://ds6wdvby7m13k" path="res://assets/prefabs/icons/33.png" id="27_ipvoa"]
+[ext_resource type="Texture2D" uid="uid://ctldyihhvugjg" path="res://assets/prefabs/buttons/ButtonHover.png" id="27_tjtnp"]
+[ext_resource type="Texture2D" uid="uid://bl7cx8j6dcmqd" path="res://assets/prefabs/icons/24.png" id="32_muu7r"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cavrc"]
+font = ExtResource("23_fp0v3")
+font_size = 12
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ec5ub"]
 font = ExtResource("23_fp0v3")
 font_size = 30
-outline_size = 20
+outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_mvwma"]
@@ -48,11 +58,26 @@ font = ExtResource("13_lkpp6")
 [sub_resource type="LabelSettings" id="LabelSettings_qo20n"]
 font = ExtResource("13_lkpp6")
 
+[sub_resource type="LabelSettings" id="LabelSettings_v2clp"]
+font = ExtResource("23_fp0v3")
+
 [sub_resource type="LabelSettings" id="LabelSettings_8yhnp"]
 font = ExtResource("13_lkpp6")
 
 [sub_resource type="LabelSettings" id="LabelSettings_8i3yq"]
 font = ExtResource("13_lkpp6")
+
+[sub_resource type="LabelSettings" id="LabelSettings_d8mo2"]
+font = ExtResource("23_fp0v3")
+font_size = 14
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_57f3j"]
+font = ExtResource("23_fp0v3")
+font_size = 12
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_donak"]
 font = ExtResource("13_lkpp6")
@@ -60,7 +85,7 @@ font_size = 30
 outline_size = 6
 outline_color = Color(0, 0, 0, 1)
 
-[node name="World" type="Control" node_paths=PackedStringArray("background", "timer_batalha", "timer_player_attack", "spawn_position", "label_stage", "label_contador", "label_gold", "label_avg_stage", "label_player_atk", "label_upgrade_ataque_cost", "label_upgrade_time_cost", "increase_attack", "increase_battle_time") groups=["world"]]
+[node name="World" type="Control" node_paths=PackedStringArray("background", "timer_batalha", "timer_player_attack", "spawn_position", "label_stage", "label_contador", "label_gold", "label_avg_stage", "label_resets", "label_player_atk", "label_upgrade_ataque_cost", "label_upgrade_time_cost", "increase_attack", "increase_battle_time", "btn_next_stage") groups=["world"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -76,11 +101,13 @@ label_stage = NodePath("Labels/LabelStage")
 label_contador = NodePath("Labels/LabelContador")
 label_gold = NodePath("Labels/HBoxContainer/LabelGold")
 label_avg_stage = NodePath("Labels/HBoxContainer/LabelAvgStage")
+label_resets = NodePath("Labels/HBoxContainer/LabelResets")
 label_player_atk = NodePath("Labels/HBoxContainer/LabelPlayerAtk")
-label_upgrade_ataque_cost = NodePath("Buttons/LabelUpgradeAtaqueCost")
-label_upgrade_time_cost = NodePath("Buttons/LabelUpgradeTimeCost")
+label_upgrade_ataque_cost = NodePath("Buttons/IncreaseAtaque/LabelUpgradeAtaqueCost")
+label_upgrade_time_cost = NodePath("Buttons/IncreaseTime/LabelUpgradeTimeCost")
 increase_attack = NodePath("Buttons/IncreaseAtaque")
 increase_battle_time = NodePath("Buttons/IncreaseTime")
+btn_next_stage = NodePath("Background/NextStage")
 enemy_list = Array[PackedScene]([ExtResource("2_mc2mg"), ExtResource("3_wv77d"), ExtResource("4_4lrad"), ExtResource("5_ypc2a"), ExtResource("6_760qv"), ExtResource("7_nckfb"), ExtResource("8_gq87j"), ExtResource("9_h1yai"), ExtResource("10_5dmow"), ExtResource("11_fk4lp"), ExtResource("12_gew8y"), ExtResource("13_jgsd4"), ExtResource("14_l3jc0"), ExtResource("15_kow05"), ExtResource("16_amtns"), ExtResource("17_cwqjs"), ExtResource("18_yotpx"), ExtResource("19_m5chr"), ExtResource("20_gfeyn"), ExtResource("21_2stjs")])
 
 [node name="Background" type="TextureRect" parent="."]
@@ -95,7 +122,40 @@ grow_vertical = 2
 texture = ExtResource("1_m0651")
 
 [node name="SpawnPosition" type="Marker2D" parent="Background"]
-position = Vector2(350, 297)
+position = Vector2(350, 289)
+
+[node name="NextStage" type="TextureButton" parent="Background"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 142.0
+offset_top = 23.0
+offset_right = 253.0
+offset_bottom = 81.0
+grow_horizontal = 2
+texture_normal = ExtResource("27_tjtnp")
+texture_pressed = ExtResource("27_tjtnp")
+texture_hover = ExtResource("26_rmh1k")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Background/NextStage"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.0
+offset_top = -4.5
+offset_right = 41.0
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Next Stage"
+label_settings = SubResource("LabelSettings_cavrc")
 
 [node name="Labels" type="Node" parent="."]
 
@@ -120,7 +180,7 @@ offset_top = 15.0
 offset_right = 85.5
 offset_bottom = 46.0
 grow_horizontal = 2
-text = "Stage: 01"
+text = "Stage"
 label_settings = SubResource("LabelSettings_ec5ub")
 
 [node name="LabelGameTime" type="Label" parent="Labels"]
@@ -145,7 +205,7 @@ offset_right = 143.0
 offset_bottom = 148.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 150
+theme_override_constants/separation = 75
 
 [node name="LabelPlayerAtk" type="Label" parent="Labels/HBoxContainer"]
 layout_mode = 2
@@ -162,35 +222,61 @@ layout_mode = 2
 text = "Maior Estagio: 10"
 label_settings = SubResource("LabelSettings_qo20n")
 
+[node name="LabelResets" type="Label" parent="Labels/HBoxContainer"]
+layout_mode = 2
+text = "Resets: 100"
+label_settings = SubResource("LabelSettings_qo20n")
+
 [node name="Buttons" type="Node" parent="."]
 
-[node name="IncreaseAtaque" type="Button" parent="Buttons"]
+[node name="IncreaseAtaque" type="TextureButton" parent="Buttons"]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -266.0
-offset_top = -167.0
-offset_right = -214.0
-offset_bottom = -136.0
+offset_left = -267.0
+offset_top = -171.0
+offset_right = -215.0
+offset_bottom = -140.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "+"
+texture_normal = ExtResource("27_tjtnp")
+texture_pressed = ExtResource("27_tjtnp")
+texture_hover = ExtResource("26_rmh1k")
+ignore_texture_size = true
+stretch_mode = 5
 
-[node name="LabelUpgradeAtaqueCost" type="Label" parent="Buttons"]
+[node name="Label" type="Label" parent="Buttons/IncreaseAtaque"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.5
+offset_top = -8.5
+offset_right = 4.5
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "+"
+label_settings = SubResource("LabelSettings_v2clp")
+
+[node name="LabelUpgradeAtaqueCost" type="Label" parent="Buttons/IncreaseAtaque"]
+layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 150.0
-offset_top = 187.0
-offset_right = 282.0
-offset_bottom = 210.0
+offset_left = 67.0
+offset_top = -7.5
+offset_right = 200.0
+offset_bottom = 15.5
 grow_vertical = 2
 text = "Ataque: 150 Gold"
 label_settings = SubResource("LabelSettings_8yhnp")
 
-[node name="IncreaseTime" type="Button" parent="Buttons"]
+[node name="IncreaseTime" type="TextureButton" parent="Buttons"]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -202,19 +288,96 @@ offset_right = -214.0
 offset_bottom = -96.0
 grow_horizontal = 2
 grow_vertical = 0
+texture_normal = ExtResource("27_tjtnp")
+texture_pressed = ExtResource("27_tjtnp")
+texture_hover = ExtResource("26_rmh1k")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Buttons/IncreaseTime"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -11.5
+offset_right = 5.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
 text = "+"
 
-[node name="LabelUpgradeTimeCost" type="Label" parent="Buttons"]
+[node name="LabelUpgradeTimeCost" type="Label" parent="Buttons/IncreaseTime"]
+layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 150.0
-offset_top = 227.0
-offset_right = 280.0
-offset_bottom = 250.0
+offset_left = 66.0
+offset_top = -11.5
+offset_right = 196.0
+offset_bottom = 11.5
 grow_vertical = 2
 text = "Tempo: 150 Gold"
 label_settings = SubResource("LabelSettings_8i3yq")
+
+[node name="Boss" type="TextureButton" parent="Buttons"]
+offset_left = 12.0
+offset_top = 24.0
+offset_right = 72.0
+offset_bottom = 84.0
+texture_normal = ExtResource("27_ipvoa")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Buttons/Boss"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -22.0
+offset_top = 9.0
+offset_right = 22.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Boss"
+label_settings = SubResource("LabelSettings_d8mo2")
+
+[node name="Reset" type="TextureButton" parent="Buttons"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -333.0
+offset_top = -580.0
+offset_right = -283.0
+offset_bottom = -530.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("32_muu7r")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Buttons/Reset"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.5
+offset_top = 11.0
+offset_right = 20.5
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Reset"
+label_settings = SubResource("LabelSettings_57f3j")
 
 [node name="Skills" type="Node" parent="." node_paths=PackedStringArray("btn_increase_attack", "label_increase_attack", "increase_attack_duration", "increase_attack_cooldown", "btn_increase_gold", "label_increase_gold", "increase_gold_duration", "increase_gold_cooldown", "btn_increase_critical", "label_increase_critical", "increase_critical_duration", "increase_critical_cooldown")]
 script = ExtResource("24_y8pb2")
@@ -239,9 +402,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -88.0
-offset_top = 48.0
+offset_top = 40.0
 offset_right = -38.0
-offset_bottom = 98.0
+offset_bottom = 90.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("24_clftt")
@@ -268,6 +431,7 @@ label_settings = SubResource("LabelSettings_donak")
 one_shot = true
 
 [node name="Cooldown" type="Timer" parent="Skills/IncreaseAttack"]
+wait_time = 0.05
 one_shot = true
 
 [node name="IncreaseGold" type="TextureButton" parent="Skills" groups=["btns_skill"]]
@@ -278,9 +442,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -21.0
-offset_top = 48.0
+offset_top = 40.0
 offset_right = 29.0
-offset_bottom = 98.0
+offset_bottom = 90.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("26_5jnhr")
@@ -307,6 +471,7 @@ label_settings = SubResource("LabelSettings_donak")
 one_shot = true
 
 [node name="Cooldown" type="Timer" parent="Skills/IncreaseGold"]
+wait_time = 0.05
 one_shot = true
 
 [node name="IncreaseCritical" type="TextureButton" parent="Skills" groups=["btns_skill"]]
@@ -317,9 +482,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 46.0
-offset_top = 48.0
+offset_top = 40.0
 offset_right = 96.0
-offset_bottom = 98.0
+offset_bottom = 90.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("27_34dut")
@@ -346,6 +511,7 @@ label_settings = SubResource("LabelSettings_donak")
 one_shot = true
 
 [node name="Cooldown" type="Timer" parent="Skills/IncreaseCritical"]
+wait_time = 0.05
 one_shot = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -365,27 +531,9 @@ wait_time = 0.5
 wait_time = 5.0
 one_shot = true
 
-[node name="Reset" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -28.0
-offset_top = -47.0
-offset_right = 28.0
-offset_bottom = -24.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("23_fp0v3")
-theme_override_font_sizes/font_size = 14
-text = "Reset"
-
+[connection signal="pressed" from="Background/NextStage" to="." method="_on_next_stage_pressed"]
 [connection signal="pressed" from="Buttons/IncreaseAtaque" to="." method="_on_increase_ataque_pressed"]
 [connection signal="pressed" from="Buttons/IncreaseTime" to="." method="_on_increase_time_pressed"]
+[connection signal="pressed" from="Buttons/Reset" to="." method="_on_reset_pressed"]
 [connection signal="timeout" from="TimerPlayerAttack" to="." method="_on_timer_player_attack_timeout"]
 [connection signal="timeout" from="TimerBatalha" to="." method="_on_timer_timeout"]
-[connection signal="pressed" from="Reset" to="." method="_on_reset_pressed"]
