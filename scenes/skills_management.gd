@@ -31,32 +31,35 @@ func _ready() -> void:
 		btn.get_node("Duration").timeout.connect(on_timer_duration_timeout.bind(btn))
 		btn.get_node("Cooldown").timeout.connect(on_timer_cooldown_timeout.bind(btn))
 		
+	load_skill_cooldown()
+
+
+func load_skill_cooldown() -> void:
 	var data = Data.data_management["player"]["skills"]
 	increase_attack_cooldown.start(data["increase_attack"]["aux_cooldown"])
 	increase_gold_cooldown.start(data["increase_gold"]["aux_cooldown"])
 	increase_critical_cooldown.start(data["increase_critical"]["aux_cooldown"])
 	
-	if increase_attack_cooldown.time_left > 0:
-		btn_increase_attack.disabled = true
-		btn_increase_attack.self_modulate = Color(0.3, 0.3, 0.3)
-		label_increase_attack.show()
+	for button in $".".get_children():
+		var cooldown = button.get_node("Cooldown")
+		var label = button.get_node("Label")
+		
+		if cooldown.time_left > 0:
+			button.disabled = true
+			button.self_modulate = Color(0.3, 0.3, 0.3)
+			label.show()
 
 
 func show_label_timer() -> void:
-	if increase_attack_duration.time_left > 0:
-		label_increase_attack.text = "%.0f" % increase_attack_duration.time_left
-	if increase_attack_cooldown.time_left > 0:
-		label_increase_attack.text = "%.0f" % increase_attack_cooldown.time_left
-	
-	if increase_gold_duration.time_left > 0:
-		label_increase_gold.text = "%.0f" % increase_gold_duration.time_left
-	if increase_gold_cooldown.time_left > 0:
-		label_increase_gold.text = "%.0f" % increase_gold_cooldown.time_left
+	for button in $".".get_children():
+		var duration = button.get_node("Duration")
+		var cooldown = button.get_node("Cooldown")
+		var label = button.get_node("Label")
 		
-	if increase_critical_duration.time_left > 0:
-		label_increase_critical.text = "%.0f" % increase_critical_duration.time_left
-	if increase_critical_cooldown.time_left > 0:
-		label_increase_critical.text = "%.0f" % increase_critical_cooldown.time_left
+		if duration.time_left > 0:
+			label.text = "%.0f" % duration.time_left
+		if cooldown.time_left > 0:
+			label.text = "%.0f" % cooldown.time_left
 
 
 func on_button_pressed(button: TextureButton) -> void:
@@ -109,8 +112,13 @@ func _notification(what: int) -> void:
 			Player.damage /= Player.increase_attack_multiplier
 		if increase_critical_duration.time_left > 0:
 			Player.critical_chance /= data["increase_critical"]["multiplier"]
+			
 		if increase_attack_cooldown.time_left > 0:
 			data["increase_attack"]["aux_cooldown"] = float(increase_attack_cooldown.time_left)
+		if increase_gold_cooldown.time_left > 0:
+			data["increase_gold"]["aux_cooldown"] = float(increase_gold_cooldown.time_left)
+		if increase_critical_cooldown.time_left > 0:
+			data["increase_critical"]["aux_cooldown"] = float(increase_critical_cooldown.time_left)
 		
-		get_tree().quit()
 		Player.save_data()
+		get_tree().quit()

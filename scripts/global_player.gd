@@ -56,6 +56,7 @@ func load_data() -> void:
 
 func save_data() -> void:
 	var data = Data.data_management["player"]
+	var data_skills = data["skills"]
 	
 	data["ataque"] = damage
 	data["attack_speed"] = attack_speed
@@ -63,18 +64,18 @@ func save_data() -> void:
 	data["x_upgrade_ataque"] = x_upgrade_ataque
 	data["x_upgrade_time"] = x_upgrade_time
 	
-	data["skills"]["increase_attack"]["multiplier"] = increase_attack_multiplier
-	data["skills"]["increase_attack"]["duration"] = increase_attack_duration
-	data["skills"]["increase_attack"]["cooldown"] = increase_attack_cooldown
+	data_skills["increase_attack"]["multiplier"] = increase_attack_multiplier
+	data_skills["increase_attack"]["duration"] = increase_attack_duration
+	data_skills["increase_attack"]["cooldown"] = increase_attack_cooldown
 	
-	data["skills"]["increase_gold"]["multiplier"] = increase_gold_multiplier
-	data["skills"]["increase_gold"]["duration"] = increase_gold_duration
-	data["skills"]["increase_gold"]["cooldown"] = increase_gold_cooldown
+	data_skills["increase_gold"]["multiplier"] = increase_gold_multiplier
+	data_skills["increase_gold"]["duration"] = increase_gold_duration
+	data_skills["increase_gold"]["cooldown"] = increase_gold_cooldown
 	
-	data["skills"]["increase_critical"]["critical_chance"] = critical_chance
-	data["skills"]["increase_critical"]["multiplier"] = increase_critical_multiplier
-	data["skills"]["increase_critical"]["duration"] = increase_critical_duration
-	data["skills"]["increase_critical"]["cooldown"] = increase_critical_cooldown
+	data_skills["increase_critical"]["critical_chance"] = critical_chance
+	data_skills["increase_critical"]["multiplier"] = increase_critical_multiplier
+	data_skills["increase_critical"]["duration"] = increase_critical_duration
+	data_skills["increase_critical"]["cooldown"] = increase_critical_cooldown
 	
 	Data.save_data()
 

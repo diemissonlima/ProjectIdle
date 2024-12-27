@@ -1,6 +1,4 @@
 res://scenes/world.tscn
-res://scripts/world.gd
-res://scenes/base_enemy.tscn
 res://scenes/skills_management.gd
-res://scripts/global_world.gd
-res://scripts/data.gd
+res://scenes/base_enemy.tscn
+res://scripts/global_player.gd
