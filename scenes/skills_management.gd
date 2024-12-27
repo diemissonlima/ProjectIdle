@@ -21,17 +21,20 @@ extends Node
 var timer: float
 
 
+func _ready() -> void:
+	connect_button_signal()
+	load_skill_cooldown()
+
+
 func _process(_delta: float) -> void:
 	show_label_timer()
 
 
-func _ready() -> void:
+func connect_button_signal() -> void:
 	for btn in get_tree().get_nodes_in_group("btns_skill"):
 		btn.pressed.connect(on_button_pressed.bind(btn))
 		btn.get_node("Duration").timeout.connect(on_timer_duration_timeout.bind(btn))
 		btn.get_node("Cooldown").timeout.connect(on_timer_cooldown_timeout.bind(btn))
-		
-	load_skill_cooldown()
 
 
 func load_skill_cooldown() -> void:

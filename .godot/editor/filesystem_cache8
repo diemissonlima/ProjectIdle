@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1735302511
+::res://::1735336171
 export_presets.cfg::TextFile::-1::1735214998::0::1::::<><>::
 icon.svg::CompressedTexture2D::7263226660839842740::1735214998::1735216467::1::::<><>::
 ::res://assets/::1735214998
@@ -396,11 +396,11 @@ ButtonNormal.png::CompressedTexture2D::7798107781809297781::1735217432::17352174
 07.png::CompressedTexture2D::8941428624848574755::1735214998::1735216467::1::::<><>::
 23.png::CompressedTexture2D::4563104546700498937::1735240850::1735240851::1::::<><>::
 47.png::CompressedTexture2D::3768059559449084655::1735214998::1735216467::1::::<><>::
-::res://save/::1735249598
-::res://scenes/::1735249891
-base_enemy.tscn::PackedScene::3612921114304969808::1735249891::0::1::::<><>::res://scripts/base_enemy.gd<>uid://dyib6kyghlt7::::res://assets/prefabs/Foreground.png<>uid://bjinbcdkl5jo1::::res://assets/prefabs/Background Static.png<>uid://doadnb8vqmwdh::::res://assets/prefabs/Background Bar.png<>uid://bbffvnjq4vip2::::res://assets/font/Berry Rotunda.ttf
-skills_management.gd::GDScript::-1::1735249664::0::1::::<>Node<>::
-world.tscn::PackedScene::8543783857272074285::1735249891::0::1::::<><>::uid://bs4f04v00hl85::::res://assets/backgrounds/Horizontal/1.png<>res://scripts/world.gd<>uid://cejgs6yhr5ypv::::res://scenes/enemies/enemy_1.tscn<>uid://cg4cyf3dx2aig::::res://scenes/enemies/enemy_2.tscn<>uid://cbnhj1sov3k0s::::res://scenes/enemies/enemy_3.tscn<>uid://c0qp37x3kwm5d::::res://scenes/enemies/enemy_4.tscn<>uid://b6jnmsao8odb8::::res://scenes/enemies/enemy_5.tscn<>uid://iqa7uacl52jl::::res://scenes/enemies/enemy_6.tscn<>uid://chpdkct27y53c::::res://scenes/enemies/enemy_7.tscn<>uid://c7rksm8c4ascr::::res://scenes/enemies/enemy_8.tscn<>uid://jyuep867p2te::::res://scenes/enemies/enemy_9.tscn<>uid://ducqjlcf8248p::::res://scenes/enemies/enemy_10.tscn<>uid://cyv4lym5mqdpb::::res://scenes/enemies/enemy_11.tscn<>uid://djchtawpikn4o::::res://scenes/enemies/enemy_12.tscn<>uid://c17ascng2deth::::res://assets/font/njo_14.ttf<>uid://bgt5lpuqjx7si::::res://scenes/enemies/enemy_13.tscn<>uid://37dnyuemyq4b::::res://scenes/enemies/enemy_14.tscn<>uid://cn5o8wbklgidj::::res://scenes/enemies/enemy_15.tscn<>uid://b642qi3jmp2jp::::res://scenes/enemies/enemy_16.tscn<>uid://c08663ff1lbqk::::res://scenes/enemies/enemy_17.tscn<>uid://dacs2lsj8ixgd::::res://scenes/enemies/enemy_18.tscn<>uid://qcxs5m16k84x::::res://scenes/enemies/enemy_19.tscn<>uid://d4eps5whcklm1::::res://scenes/enemies/enemy_20.tscn<>uid://bbffvnjq4vip2::::res://assets/font/Berry Rotunda.ttf<>uid://coj08cwalry7w::::res://assets/skills/03.png<>res://scenes/skills_management.gd<>uid://btxjnjlhj68f0::::res://assets/skills/47.png<>uid://j2khku0ce0y2::::res://assets/prefabs/buttons/ButtonActive.png<>uid://d0nka1xu6hei2::::res://assets/skills/07.png<>uid://ds6wdvby7m13k::::res://assets/prefabs/icons/33.png<>uid://ctldyihhvugjg::::res://assets/prefabs/buttons/ButtonHover.png<>uid://bl7cx8j6dcmqd::::res://assets/prefabs/icons/24.png
+::res://save/::1735314807
+::res://scenes/::1735323386
+base_enemy.tscn::PackedScene::3612921114304969808::1735323129::0::1::::<><>::res://scripts/base_enemy.gd<>uid://dyib6kyghlt7::::res://assets/prefabs/Foreground.png<>uid://bjinbcdkl5jo1::::res://assets/prefabs/Background Static.png<>uid://doadnb8vqmwdh::::res://assets/prefabs/Background Bar.png<>uid://bbffvnjq4vip2::::res://assets/font/Berry Rotunda.ttf
+skills_management.gd::GDScript::-1::1735307456::0::1::::<>Node<>::
+world.tscn::PackedScene::8543783857272074285::1735323386::0::1::::<><>::uid://bs4f04v00hl85::::res://assets/backgrounds/Horizontal/1.png<>res://scripts/world.gd<>uid://cejgs6yhr5ypv::::res://scenes/enemies/enemy_1.tscn<>uid://cg4cyf3dx2aig::::res://scenes/enemies/enemy_2.tscn<>uid://cbnhj1sov3k0s::::res://scenes/enemies/enemy_3.tscn<>uid://c0qp37x3kwm5d::::res://scenes/enemies/enemy_4.tscn<>uid://b6jnmsao8odb8::::res://scenes/enemies/enemy_5.tscn<>uid://iqa7uacl52jl::::res://scenes/enemies/enemy_6.tscn<>uid://chpdkct27y53c::::res://scenes/enemies/enemy_7.tscn<>uid://c7rksm8c4ascr::::res://scenes/enemies/enemy_8.tscn<>uid://jyuep867p2te::::res://scenes/enemies/enemy_9.tscn<>uid://ducqjlcf8248p::::res://scenes/enemies/enemy_10.tscn<>uid://cyv4lym5mqdpb::::res://scenes/enemies/enemy_11.tscn<>uid://djchtawpikn4o::::res://scenes/enemies/enemy_12.tscn<>uid://c17ascng2deth::::res://assets/font/njo_14.ttf<>uid://bgt5lpuqjx7si::::res://scenes/enemies/enemy_13.tscn<>uid://37dnyuemyq4b::::res://scenes/enemies/enemy_14.tscn<>uid://cn5o8wbklgidj::::res://scenes/enemies/enemy_15.tscn<>uid://b642qi3jmp2jp::::res://scenes/enemies/enemy_16.tscn<>uid://c08663ff1lbqk::::res://scenes/enemies/enemy_17.tscn<>uid://dacs2lsj8ixgd::::res://scenes/enemies/enemy_18.tscn<>uid://qcxs5m16k84x::::res://scenes/enemies/enemy_19.tscn<>uid://d4eps5whcklm1::::res://scenes/enemies/enemy_20.tscn<>uid://bbffvnjq4vip2::::res://assets/font/Berry Rotunda.ttf<>uid://coj08cwalry7w::::res://assets/skills/03.png<>res://scenes/skills_management.gd<>uid://btxjnjlhj68f0::::res://assets/skills/47.png<>uid://j2khku0ce0y2::::res://assets/prefabs/buttons/ButtonActive.png<>uid://d0nka1xu6hei2::::res://assets/skills/07.png<>uid://ds6wdvby7m13k::::res://assets/prefabs/icons/33.png<>uid://ctldyihhvugjg::::res://assets/prefabs/buttons/ButtonHover.png<>uid://bl7cx8j6dcmqd::::res://assets/prefabs/icons/24.png
 ::res://scenes/enemies/::1735214998
 enemy_1.tscn::PackedScene::5072574253612890067::1735214998::0::1::::<><>::uid://brqejvbbcws0g::::res://scenes/base_enemy.tscn<>uid://rhqn713a0yms::::res://assets/characters/1.png
 enemy_2.tscn::PackedScene::5254005983160758206::1735214998::0::1::::<><>::uid://brqejvbbcws0g::::res://scenes/base_enemy.tscn<>uid://cmmb1fwqd1k2v::::res://assets/characters/2.png
@@ -422,9 +422,9 @@ enemy_17.tscn::PackedScene::6597625989247978502::1735214998::0::1::::<><>::uid:/
 enemy_18.tscn::PackedScene::7164532534909341467::1735214998::0::1::::<><>::uid://brqejvbbcws0g::::res://scenes/base_enemy.tscn<>uid://dpr40jl4cvbbp::::res://assets/characters/18.png
 enemy_19.tscn::PackedScene::1128580484301891445::1735214998::0::1::::<><>::uid://brqejvbbcws0g::::res://scenes/base_enemy.tscn<>uid://djukbcmnydbty::::res://assets/characters/19.png
 enemy_20.tscn::PackedScene::9203940536787594798::1735214998::0::1::::<><>::uid://brqejvbbcws0g::::res://scenes/base_enemy.tscn<>uid://cnvbrvah7eau2::::res://assets/characters/20.png
-::res://scripts/::1735248371
-base_enemy.gd::GDScript::-1::1735214998::0::1::::<>StaticBody2D<>::
-data.gd::GDScript::-1::1735248371::0::1::::<>Node<>::
-global_player.gd::GDScript::-1::1735214998::0::1::::<>Node<>::
+::res://scripts/::1735323386
+base_enemy.gd::GDScript::-1::1735314395::0::1::::<>StaticBody2D<>::
+data.gd::GDScript::-1::1735308564::0::1::::<>Node<>::
+global_player.gd::GDScript::-1::1735307916::0::1::::<>Node<>::
 global_world.gd::GDScript::-1::1735244367::0::1::::<>Node<>::
-world.gd::GDScript::-1::1735247846::0::1::::<>Control<>::
+world.gd::GDScript::-1::1735323386::0::1::::<>Control<>::

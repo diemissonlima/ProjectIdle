@@ -110,15 +110,28 @@ func killer_enemy() -> void:
 	timer_batalha.start(World.battle_time) # reinicia o contador do estagio
 
 
-func drop() -> void: # função de drop de recursos
-	var drop_gold = randi_range(1, 15) * World.estagio
-	var gold_data = Data.data_management["player"]["skills"]["increase_gold"]["multiplier"]
+func drop() -> void:
+	var base_gold: int = 0
+	var gold_multiplier = Data.data_management["player"]["skills"]["increase_gold"]["multiplier"]
+	
+	match enemy.enemy_type:
+		0: # enemy WEAK
+			base_gold = 5 + (World.estagio * 2)
+		
+		1: # enemy NORMAL
+			base_gold = 10 + (World.estagio * 4)
+			
+		2: # enemy ELITE
+			base_gold = 20 + (World.estagio * 8)
+	
+	if randi() % 100 < 10:
+		base_gold *= 2
 	
 	if World.gold_skill_on:
-		Player.gold += drop_gold * gold_data
-	else:
-		Player.gold += drop_gold
-
+		base_gold *= gold_multiplier
+	
+	Player.gold += base_gold
+	
 	save_data()
 
 
@@ -215,7 +228,6 @@ func _on_reset_pressed() -> void:
 		return
 		
 	reset()
-	reset_cooldown_skills()
 	
 	timer_batalha.stop() # para o contador do estagio
 	timer_player_attack.stop() # para o contador de ataque do player
@@ -223,11 +235,6 @@ func _on_reset_pressed() -> void:
 	
 	spawn_enemy() # spawna o inimigo
 	start_timer() # starta os contadores de estagio e ataque do player
-
-
-func reset_cooldown_skills() -> void:
-	for button in get_tree().get_nodes_in_group("btn_skills"):
-		print(button)
 
 
 func _on_next_stage_pressed() -> void:

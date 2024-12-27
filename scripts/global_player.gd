@@ -1,7 +1,7 @@
 extends Node
 
 # atributos
-var damage: float = 2.0
+var damage: float = 5.0
 var default_damage: float
 var attack_speed: float = 1.0
 var gold: int
