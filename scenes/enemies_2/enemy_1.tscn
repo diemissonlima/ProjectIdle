@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cavy31n0ailot"]
+
+[ext_resource type="PackedScene" uid="uid://brqejvbbcws0g" path="res://scenes/base_enemy.tscn" id="1_kuhi8"]
+[ext_resource type="Texture2D" uid="uid://dgo6i2nuxw3ok" path="res://assets/enemies/1/idle/frame-1.png" id="2_s4ih3"]
+[ext_resource type="Texture2D" uid="uid://7vymyb25haua" path="res://assets/enemies/1/idle/frame-2.png" id="3_21vk1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g5doe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_s4ih3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_21vk1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="BaseEnemy" instance=ExtResource("1_kuhi8")]
+
+[node name="Animation" type="AnimatedSprite2D" parent="." index="3"]
+position = Vector2(0, -29.5)
+scale = Vector2(0.05, 0.05)
+sprite_frames = SubResource("SpriteFrames_g5doe")
+animation = &"idle"
+autoplay = "idle"

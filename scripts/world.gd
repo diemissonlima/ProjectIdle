@@ -23,6 +23,7 @@ extends Control
 
 @export_category("Variaveis")
 @export var enemy_list: Array[PackedScene]
+@export var enemy_list2: Array[PackedScene]
 
 var reset_target: int = 50
 var stop_progress: bool = false
@@ -57,7 +58,7 @@ func start_timer() -> void: # inicia os contadores
 
 
 func spawn_enemy() -> void: # função que realiza o spawn do inimigo
-	enemy = enemy_list.pick_random().instantiate() # seleciona um inimigo aleatorio da lista
+	enemy = enemy_list2.pick_random().instantiate() # seleciona um inimigo aleatorio da lista
 	enemy.global_position = spawn_position.global_position # seta a posicao do inimigo na tela
 	get_tree().root.call_deferred("add_child", enemy) # adiciona o inimigo à cena
 

@@ -28,28 +28,32 @@ func randomize_enemy_type() -> void:
 		enemy_type = EnemyType.NORMAL
 	else:
 		enemy_type = EnemyType.ELITE
-	
-	#match enemy_type:
-		#EnemyType.WEAK:
-			#print("Inimigo é do tipo WEAK")
-		#EnemyType.NORMAL:
-			#print("Inimigo é do tipo NORMAL")
-		#EnemyType.ELITE:
-			#print("Inimigo é do tipo ELITE")
 
 
 func increase_health() -> void:
+	var base_health = 15
+	var scaling_factor = 10 # quanto maior, escala mais rapido
+	var log_scale = log(1 + World.estagio) * scaling_factor
+	max_health = base_health + log_scale
+	
+	
+	#var base_health = 15  # Vida inicial
+	#var scaling_factor = 1.1  # Fator de crescimento exponencial
+	#max_health = base_health * pow(scaling_factor, World.estagio)
+	#health = max_health
+	
+	print(enemy_type)
 	match enemy_type:
-		EnemyType.WEAK:
-			health = max_health * (1 + (World.estagio ** 0.4) / 12)
+		#EnemyType.WEAK:
+			#health = max_health * (1 + (World.estagio ** 0.4) / 12)
 			
 		EnemyType.NORMAL:
-			health = max_health * (1 + (World.estagio ** 0.5) / 10)
+			max_health = max_health * 1.10
 			
 		EnemyType.ELITE:
-			health = max_health * (1 + (World.estagio ** 0.6) / 8)
-	
-	max_health = health
+			max_health = max_health * 1.20
+
+	health = max_health
 
 
 func set_progresbar() -> void: # atualiza a barra de progresso da vida

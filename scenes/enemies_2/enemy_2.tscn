@@ -1,0 +1,60 @@
+[gd_scene load_steps=13 format=3 uid="uid://byjw6td437eho"]
+
+[ext_resource type="PackedScene" uid="uid://brqejvbbcws0g" path="res://scenes/base_enemy.tscn" id="1_bpnle"]
+[ext_resource type="Texture2D" uid="uid://4xjruog21p2m" path="res://assets/enemies/2/Idle/frame-1.png" id="2_h7mr6"]
+[ext_resource type="Texture2D" uid="uid://vjwott4ido3d" path="res://assets/enemies/2/Idle/frame-2.png" id="3_k32fr"]
+[ext_resource type="Texture2D" uid="uid://bh8cy3bxdsv0x" path="res://assets/enemies/2/Idle/frame-3.png" id="4_vj3ea"]
+[ext_resource type="Texture2D" uid="uid://doott1u7tuyu0" path="res://assets/enemies/2/Idle/frame-4.png" id="5_ksfbn"]
+[ext_resource type="Texture2D" uid="uid://jh788gpkwp13" path="res://assets/enemies/2/Idle/frame-5.png" id="6_66vht"]
+[ext_resource type="Texture2D" uid="uid://bjgqx7c8atb4m" path="res://assets/enemies/2/Idle/frame-6.png" id="7_kb7kl"]
+[ext_resource type="Texture2D" uid="uid://s5quucrh3ucv" path="res://assets/enemies/2/Idle/frame-7.png" id="8_7xfih"]
+[ext_resource type="Texture2D" uid="uid://cuonpecxkg5ya" path="res://assets/enemies/2/Idle/frame-8.png" id="9_qgb7k"]
+[ext_resource type="Texture2D" uid="uid://njklnq80uuv7" path="res://assets/enemies/2/Idle/frame-9.png" id="10_l8rr3"]
+[ext_resource type="Texture2D" uid="uid://cm3r6elqknelg" path="res://assets/enemies/2/Idle/frame-10.png" id="11_kp1ov"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4clny"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_h7mr6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_k32fr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_vj3ea")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ksfbn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_66vht")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_kb7kl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_7xfih")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_qgb7k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_l8rr3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_kp1ov")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[node name="Enemy2" instance=ExtResource("1_bpnle")]
+
+[node name="Animation" type="AnimatedSprite2D" parent="." index="3"]
+position = Vector2(0, -18)
+scale = Vector2(0.15, 0.15)
+sprite_frames = SubResource("SpriteFrames_4clny")
+animation = &"idle"
+autoplay = "idle"
