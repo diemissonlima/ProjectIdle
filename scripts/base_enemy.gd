@@ -8,6 +8,8 @@ var enemy_type: EnemyType = EnemyType.NORMAL
 var health: int = 15 # vida
 var max_health: int = 15 # vida maxima
 
+var dropped_gold: int
+
 
 func _ready() -> void:
 	randomize_enemy_type()
@@ -22,31 +24,20 @@ func _process(_delta: float) -> void:
 
 func randomize_enemy_type() -> void:
 	var random_value: float = randf()
-	if random_value < 0.6:
+	if random_value < 0.7:
 		enemy_type = EnemyType.WEAK
-	elif random_value < 0.9:
+	elif random_value < 0.95:
 		enemy_type = EnemyType.NORMAL
 	else:
 		enemy_type = EnemyType.ELITE
 
 
 func increase_health() -> void:
-	var base_health = 15
-	var scaling_factor = 10 # quanto maior, escala mais rapido
-	var log_scale = log(1 + World.estagio) * scaling_factor
-	max_health = base_health + log_scale
+	var base_health = 10  # Vida inicial
+	var scaling_factor = 1.10  # Fator de crescimento exponencial
+	max_health = base_health * pow(scaling_factor, World.estagio)
 	
-	
-	#var base_health = 15  # Vida inicial
-	#var scaling_factor = 1.1  # Fator de crescimento exponencial
-	#max_health = base_health * pow(scaling_factor, World.estagio)
-	#health = max_health
-	
-	print(enemy_type)
 	match enemy_type:
-		#EnemyType.WEAK:
-			#health = max_health * (1 + (World.estagio ** 0.4) / 12)
-			
 		EnemyType.NORMAL:
 			max_health = max_health * 1.10
 			
@@ -54,6 +45,29 @@ func increase_health() -> void:
 			max_health = max_health * 1.20
 
 	health = max_health
+
+
+func drop() -> void:
+	var base_gold: int = 0
+	var gold_multiplier = Data.data_management["player"]["skills"]["increase_gold"]["multiplier"]
+	
+	match enemy_type:
+		0: # enemy WEAK
+			base_gold = 5 + (World.estagio * 2)
+		
+		1: # enemy NORMAL
+			base_gold = 10 + (World.estagio * 4)
+			
+		2: # enemy ELITE
+			base_gold = 20 + (World.estagio * 8)
+	
+	if randi() % 100 < 10:
+		base_gold *= 2
+	
+	if Player.gold_skill_on:
+		base_gold *= gold_multiplier
+	
+	dropped_gold = base_gold
 
 
 func set_progresbar() -> void: # atualiza a barra de progresso da vida

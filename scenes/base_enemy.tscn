@@ -4,15 +4,17 @@
 [ext_resource type="Texture2D" uid="uid://rmoe0p8u8gea" path="res://assets/prefabs/health_bar/enemy_health_bar_background_000.png" id="2_6cxys"]
 [ext_resource type="Texture2D" uid="uid://2xl2go87l817" path="res://assets/prefabs/health_bar/enemy_health_bar_foreground_000.png" id="3_p1y0r"]
 [ext_resource type="Texture2D" uid="uid://dhug02i7wcxn7" path="res://assets/prefabs/health_bar/enemy_health_bar_000.png" id="4_e1dle"]
-[ext_resource type="FontFile" uid="uid://bbffvnjq4vip2" path="res://assets/font/Berry Rotunda.ttf" id="5_en8u5"]
+[ext_resource type="FontFile" uid="uid://c17ascng2deth" path="res://assets/font/njo_14.ttf" id="5_n1rh4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_si442"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ixu8a"]
-font = ExtResource("5_en8u5")
-font_size = 12
-outline_size = 8
+font = ExtResource("5_n1rh4")
+font_size = 14
+outline_size = 5
 outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+shadow_color = Color(1, 1, 1, 1)
 
 [node name="BaseEnemy" type="StaticBody2D" groups=["enemy"]]
 scale = Vector2(2, 2)
@@ -26,10 +28,10 @@ visible = false
 shape = SubResource("RectangleShape2D_si442")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
-offset_left = -68.0
+offset_left = -88.0
 offset_top = 10.0
-offset_right = 70.0
-offset_bottom = 31.0
+offset_right = 89.0
+offset_bottom = 43.0
 value = 50.0
 rounded = true
 nine_patch_stretch = true
@@ -44,11 +46,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 8.0
-offset_top = -2.0
-offset_right = 9.0
-offset_bottom = 11.0
+offset_left = -0.5
+offset_top = -7.5
+offset_right = 0.5
+offset_bottom = 6.5
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.5, 0.5)
 label_settings = SubResource("LabelSettings_ixu8a")

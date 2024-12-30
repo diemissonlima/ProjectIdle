@@ -8,6 +8,7 @@ extends Control
 
 @export_category("Labels")
 @export var label_stage: Label
+@export var label_substage: Label
 @export var label_contador: Label
 @export var label_gold: Label
 @export var label_avg_stage: Label
@@ -26,8 +27,10 @@ extends Control
 @export var enemy_list2: Array[PackedScene]
 
 var reset_target: int = 50
-var stop_progress: bool = false
 var timer_farm: float = 0.5
+var sub_stage: int = 1
+var stop_progress: bool = false
+
 var enemy
 
 
@@ -53,8 +56,8 @@ func format_gameplay_time() -> String:
 
 
 func start_timer() -> void: # inicia os contadores
-	timer_batalha.start(World.battle_time) # inicia o contador do estagio
 	timer_player_attack.start(Player.attack_speed) # inicia o timer de ataque do player, padrao 1s
+	timer_batalha.start(World.battle_time) # inicia o contador do estagio
 
 
 func spawn_enemy() -> void: # função que realiza o spawn do inimigo
@@ -65,6 +68,7 @@ func spawn_enemy() -> void: # função que realiza o spawn do inimigo
 
 func set_stage_label() -> void:
 	label_stage.text = "Stage: " + str(World.estagio) # exibe o estagio atual
+	label_substage.text = "SubStage: " + str(sub_stage) + " / 10"
 	label_gold.text = "Gold: " + str(Player.gold) # exibe o gold 
 	label_avg_stage.text = "Maior Estagio: " + str(World.avg_estagio) # maior estagio alcancado
 	label_resets.text = "Resets: " + str(World.reset)
@@ -94,12 +98,17 @@ func take_enemy_damage(_damage: float) -> void: # causa dano ao inimigo
 
 
 func killer_enemy() -> void:
+	get_tree().call_group("enemy", "drop")
+	Player.gold += enemy.dropped_gold
+	
 	enemy.queue_free() # deleta o inimigo da cena
-	drop() # chama a função de drop
 	load_background() # carrega um novo background
 	
 	if not stop_progress:
-		World.estagio += 1 # incrementa o estagio em + 1
+		sub_stage += 1
+		if sub_stage > 10:
+			World.estagio += 1 # incrementa o estagio em + 1
+			sub_stage = 1
 		spawn_enemy() # spawna o inimigo
 	else:
 		reload_battle()
@@ -111,31 +120,6 @@ func killer_enemy() -> void:
 	timer_batalha.start(World.battle_time) # reinicia o contador do estagio
 
 
-func drop() -> void:
-	var base_gold: int = 0
-	var gold_multiplier = Data.data_management["player"]["skills"]["increase_gold"]["multiplier"]
-	
-	match enemy.enemy_type:
-		0: # enemy WEAK
-			base_gold = 5 + (World.estagio * 2)
-		
-		1: # enemy NORMAL
-			base_gold = 10 + (World.estagio * 4)
-			
-		2: # enemy ELITE
-			base_gold = 20 + (World.estagio * 8)
-	
-	if randi() % 100 < 10:
-		base_gold *= 2
-	
-	if World.gold_skill_on:
-		base_gold *= gold_multiplier
-	
-	Player.gold += base_gold
-	
-	save_data()
-
-
 func load_background() -> void: # carrega o background do estagio
 	background.texture = load("res://assets/backgrounds/Horizontal/" + str(randi_range(1, 32)) + ".png")
 
@@ -143,8 +127,11 @@ func load_background() -> void: # carrega o background do estagio
 func reload_battle() -> void: # função que recarrega a batalha
 	btn_next_stage.show()
 	label_contador.hide()
-	if not stop_progress:
-		World.estagio -= 1
+	
+	#if not stop_progress:
+		#World.estagio -= 1
+		#if World.estagio < 1:
+			#World.estagio = 1
 	
 	stop_progress = true
 	spawn_enemy() # spawna o inimigo
@@ -245,7 +232,7 @@ func _on_next_stage_pressed() -> void:
 	btn_next_stage.hide()
 	label_contador.show()
 	
-	World.estagio += 1
+	#World.estagio += 1
 	timer_batalha.stop()
 	timer_player_attack.stop()
 	

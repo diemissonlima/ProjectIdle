@@ -76,7 +76,7 @@ func on_button_pressed(button: TextureButton) -> void:
 			label_increase_attack.show()
 			
 		"IncreaseGold":
-			World.gold_skill_on = true
+			Player.gold_skill_on = true
 			increase_gold_duration.start(Player.increase_gold_duration)
 			label_increase_gold.show()
 		
@@ -94,7 +94,7 @@ func on_timer_duration_timeout(button: TextureButton) -> void:
 		
 		"IncreaseGold":
 			increase_gold_cooldown.start(Player.increase_gold_cooldown)
-			World.gold_skill_on = false
+			Player.gold_skill_on = false
 		
 		"IncreaseCritical":
 			Player.critical_chance /= Data.data_management["player"]["skills"]["increase_critical"]["multiplier"]

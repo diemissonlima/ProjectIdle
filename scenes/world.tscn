@@ -106,7 +106,7 @@ font_size = 30
 outline_size = 6
 outline_color = Color(0, 0, 0, 1)
 
-[node name="World" type="Control" node_paths=PackedStringArray("background", "timer_batalha", "timer_player_attack", "spawn_position", "label_stage", "label_contador", "label_gold", "label_avg_stage", "label_resets", "label_player_atk", "label_upgrade_ataque_cost", "label_upgrade_time_cost", "increase_attack", "increase_battle_time", "btn_next_stage") groups=["world"]]
+[node name="World" type="Control" node_paths=PackedStringArray("background", "timer_batalha", "timer_player_attack", "spawn_position", "label_stage", "label_substage", "label_contador", "label_gold", "label_avg_stage", "label_resets", "label_player_atk", "label_upgrade_ataque_cost", "label_upgrade_time_cost", "increase_attack", "increase_battle_time", "btn_next_stage") groups=["world"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -119,6 +119,7 @@ timer_batalha = NodePath("TimerBatalha")
 timer_player_attack = NodePath("TimerPlayerAttack")
 spawn_position = NodePath("Background/SpawnPosition")
 label_stage = NodePath("Labels/LabelStage")
+label_substage = NodePath("Labels/LabelSubStage")
 label_contador = NodePath("Labels/LabelContador")
 label_gold = NodePath("Labels/HBoxContainer/LabelGold")
 label_avg_stage = NodePath("Labels/HBoxContainer/LabelAvgStage")
@@ -204,6 +205,16 @@ offset_bottom = 46.0
 grow_horizontal = 2
 text = "Stage"
 label_settings = SubResource("LabelSettings_ec5ub")
+
+[node name="LabelSubStage" type="Label" parent="Labels"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -245.0
+offset_top = 32.0
+offset_right = -123.0
+offset_bottom = 55.0
+grow_horizontal = 2
 
 [node name="LabelGameTime" type="Label" parent="Labels"]
 offset_left = 418.5

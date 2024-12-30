@@ -24,6 +24,8 @@ var increase_critical_cooldown: int = 300
 var x_upgrade_ataque: int = 1
 var x_upgrade_time: int = 1
 
+var gold_skill_on: bool = false
+
 
 func _ready() -> void:
 	load_data()

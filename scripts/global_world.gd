@@ -6,7 +6,7 @@ var estagio: int = 1
 var avg_estagio: int = 1
 var reset: int = 0
 
-var gold_skill_on: bool = false
+
 
 
 func _ready() -> void:
