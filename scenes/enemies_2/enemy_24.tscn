@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://dsna324nq2udw"]
+
+[ext_resource type="PackedScene" uid="uid://brqejvbbcws0g" path="res://scenes/base_enemy.tscn" id="1_7gf0b"]
+[ext_resource type="Texture2D" uid="uid://dtot6twawd2fg" path="res://assets/enemies/24/af00.png" id="2_0bdlx"]
+[ext_resource type="Texture2D" uid="uid://dnk73fjbvs5io" path="res://assets/enemies/24/af01.png" id="3_ev3b4"]
+[ext_resource type="Texture2D" uid="uid://drbktsajmrqi" path="res://assets/enemies/24/af02.png" id="4_sxem4"]
+[ext_resource type="Texture2D" uid="uid://utu31vfmp7ke" path="res://assets/enemies/24/af03.png" id="5_6qxma"]
+[ext_resource type="Texture2D" uid="uid://blgotu3rkf4bw" path="res://assets/enemies/24/af04.png" id="6_gi0un"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wpd3u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0bdlx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ev3b4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_sxem4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6qxma")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_gi0un")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Enemy24" instance=ExtResource("1_7gf0b")]
+
+[node name="Animation" type="AnimatedSprite2D" parent="." index="3"]
+position = Vector2(0, -44)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_wpd3u")
+animation = &"idle"
+autoplay = "idle"

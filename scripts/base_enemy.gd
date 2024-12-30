@@ -44,28 +44,30 @@ func increase_health() -> void:
 		EnemyType.ELITE:
 			max_health = max_health * 1.20
 
+	if World.stage_progress == 10:
+		max_health += max_health * 10
+		
 	health = max_health
 
 
 func drop() -> void:
-	var base_gold: int = 0
-	var gold_multiplier = Data.data_management["player"]["skills"]["increase_gold"]["multiplier"]
+	var base_gold: int = randi_range(0, 5)
 	
 	match enemy_type:
 		0: # enemy WEAK
-			base_gold = 5 + (World.estagio * 2)
+			base_gold += 5 + (World.estagio * 2)
 		
 		1: # enemy NORMAL
-			base_gold = 10 + (World.estagio * 4)
+			base_gold += 10 + (World.estagio * 4)
 			
 		2: # enemy ELITE
-			base_gold = 20 + (World.estagio * 8)
+			base_gold += 20 + (World.estagio * 8)
 	
 	if randi() % 100 < 10:
 		base_gold *= 2
 	
 	if Player.gold_skill_on:
-		base_gold *= gold_multiplier
+		base_gold *= Player.increase_gold_multiplier
 	
 	dropped_gold = base_gold
 

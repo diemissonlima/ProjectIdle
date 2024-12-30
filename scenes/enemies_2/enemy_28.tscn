@@ -1,0 +1,84 @@
+[gd_scene load_steps=19 format=3 uid="uid://bsux6jsmf15hs"]
+
+[ext_resource type="PackedScene" uid="uid://brqejvbbcws0g" path="res://scenes/base_enemy.tscn" id="1_0s4ay"]
+[ext_resource type="Texture2D" uid="uid://70cdrxu0r0mi" path="res://assets/enemies/28/skeleton-idle_0.png" id="2_jndj4"]
+[ext_resource type="Texture2D" uid="uid://dgj2cq2nls6up" path="res://assets/enemies/28/skeleton-idle_1.png" id="3_ssebg"]
+[ext_resource type="Texture2D" uid="uid://yt3vmaisd81b" path="res://assets/enemies/28/skeleton-idle_2.png" id="4_ptbax"]
+[ext_resource type="Texture2D" uid="uid://5u21uivpommj" path="res://assets/enemies/28/skeleton-idle_3.png" id="5_gux31"]
+[ext_resource type="Texture2D" uid="uid://gi404icxqmwl" path="res://assets/enemies/28/skeleton-idle_4.png" id="6_alarj"]
+[ext_resource type="Texture2D" uid="uid://cvykj6glfh4q6" path="res://assets/enemies/28/skeleton-idle_5.png" id="7_53i2l"]
+[ext_resource type="Texture2D" uid="uid://dc2ksau4u7vsm" path="res://assets/enemies/28/skeleton-idle_6.png" id="8_wmoj2"]
+[ext_resource type="Texture2D" uid="uid://bd3u0w7l33hk4" path="res://assets/enemies/28/skeleton-idle_7.png" id="9_qmgbt"]
+[ext_resource type="Texture2D" uid="uid://bb2qqik4h135w" path="res://assets/enemies/28/skeleton-idle_8.png" id="10_wyccs"]
+[ext_resource type="Texture2D" uid="uid://cvsbjpmw00qfc" path="res://assets/enemies/28/skeleton-idle_9.png" id="11_t6v55"]
+[ext_resource type="Texture2D" uid="uid://c8x83oskddjws" path="res://assets/enemies/28/skeleton-idle_10.png" id="12_28fg5"]
+[ext_resource type="Texture2D" uid="uid://bdmr7lv8xwrdf" path="res://assets/enemies/28/skeleton-idle_11.png" id="13_he2at"]
+[ext_resource type="Texture2D" uid="uid://kdt6g7ah4kvi" path="res://assets/enemies/28/skeleton-idle_12.png" id="14_gx26e"]
+[ext_resource type="Texture2D" uid="uid://b7h31fqnnxk61" path="res://assets/enemies/28/skeleton-idle_13.png" id="15_d1io8"]
+[ext_resource type="Texture2D" uid="uid://6u2greplccsd" path="res://assets/enemies/28/skeleton-idle_14.png" id="16_xaoj4"]
+[ext_resource type="Texture2D" uid="uid://darenisy300g4" path="res://assets/enemies/28/skeleton-idle_15.png" id="17_tcvk1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ylq0k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jndj4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ssebg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ptbax")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_gux31")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_alarj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_53i2l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_wmoj2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_qmgbt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_wyccs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_t6v55")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_28fg5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_he2at")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_gx26e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_d1io8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_xaoj4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_tcvk1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[node name="Enemy28" instance=ExtResource("1_0s4ay")]
+
+[node name="Animation" type="AnimatedSprite2D" parent="." index="3"]
+position = Vector2(0, -51)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_ylq0k")
+animation = &"idle"
+autoplay = "idle"

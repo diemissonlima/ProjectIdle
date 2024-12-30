@@ -3,18 +3,14 @@ extends Node
 var gameplay_time: float = 0.0
 var battle_time: int = 5
 var estagio: int = 1
+var stage_progress: int = 1
 var avg_estagio: int = 1
 var reset: int = 0
 
 
-
-
 func _ready() -> void:
 	load_data()
-
-
-func _process(_delta: float) -> void:
-	Data.data_management["world"]["game_time"] = World.gameplay_time
+	gameplay_time = Data.data_management["world"]["game_time"]
 
 
 func load_data() -> void:
@@ -24,6 +20,7 @@ func load_data() -> void:
 	gameplay_time = data["game_time"]
 	battle_time = data["battle_time"]
 	estagio = data["current_stage"]
+	stage_progress = data["stage_progress"]
 	avg_estagio = data["highest_stage"]
 	reset = data["reset"]
 
@@ -34,7 +31,13 @@ func save_data() -> void:
 	data["game_time"] = gameplay_time
 	data["battle_time"] = battle_time
 	data["current_stage"] = estagio
+	data["stage_progress"] = stage_progress
 	data["highest_stage"] = avg_estagio
 	data["reset"] = reset
 	
 	Data.save_data()
+
+
+func _notification(what: int) -> void:
+	if what == 1006:
+		save_data()

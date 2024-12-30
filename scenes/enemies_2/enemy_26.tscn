@@ -1,0 +1,140 @@
+[gd_scene load_steps=33 format=3 uid="uid://ojixuxuv3g6y"]
+
+[ext_resource type="PackedScene" uid="uid://brqejvbbcws0g" path="res://scenes/base_enemy.tscn" id="1_aw1if"]
+[ext_resource type="Texture2D" uid="uid://bmnna7wt7no7w" path="res://assets/enemies/26/skeleton-animation_00.png" id="2_tovyq"]
+[ext_resource type="Texture2D" uid="uid://bun27gs7ayh5p" path="res://assets/enemies/26/skeleton-animation_01.png" id="3_xpnbe"]
+[ext_resource type="Texture2D" uid="uid://bh3tm27dnnpvx" path="res://assets/enemies/26/skeleton-animation_02.png" id="4_vrlfk"]
+[ext_resource type="Texture2D" uid="uid://b2yevbg53fvg8" path="res://assets/enemies/26/skeleton-animation_03.png" id="5_vj5hq"]
+[ext_resource type="Texture2D" uid="uid://0kvslrjp8lrf" path="res://assets/enemies/26/skeleton-animation_04.png" id="6_ap2hh"]
+[ext_resource type="Texture2D" uid="uid://rqu2uqgd1x64" path="res://assets/enemies/26/skeleton-animation_05.png" id="7_nnmsm"]
+[ext_resource type="Texture2D" uid="uid://bod2ekp3wqluk" path="res://assets/enemies/26/skeleton-animation_06.png" id="8_g4ef4"]
+[ext_resource type="Texture2D" uid="uid://dxxcqn4nro5av" path="res://assets/enemies/26/skeleton-animation_07.png" id="9_sf5kt"]
+[ext_resource type="Texture2D" uid="uid://ciu7ejwtb7sqh" path="res://assets/enemies/26/skeleton-animation_08.png" id="10_oddyd"]
+[ext_resource type="Texture2D" uid="uid://vkaheorsivw5" path="res://assets/enemies/26/skeleton-animation_09.png" id="11_52x1k"]
+[ext_resource type="Texture2D" uid="uid://csdhlprtku8k6" path="res://assets/enemies/26/skeleton-animation_10.png" id="12_j08w2"]
+[ext_resource type="Texture2D" uid="uid://bvd8uqdklsq7x" path="res://assets/enemies/26/skeleton-animation_11.png" id="13_viy7n"]
+[ext_resource type="Texture2D" uid="uid://bbtt8ambevpfu" path="res://assets/enemies/26/skeleton-animation_12.png" id="14_b3ytu"]
+[ext_resource type="Texture2D" uid="uid://djjmhfjr3hbgk" path="res://assets/enemies/26/skeleton-animation_13.png" id="15_cvekn"]
+[ext_resource type="Texture2D" uid="uid://smlo4upsxd56" path="res://assets/enemies/26/skeleton-animation_14.png" id="16_5c4as"]
+[ext_resource type="Texture2D" uid="uid://bk76hd2m1iwi4" path="res://assets/enemies/26/skeleton-animation_15.png" id="17_7ph0i"]
+[ext_resource type="Texture2D" uid="uid://x543mkk6lkjc" path="res://assets/enemies/26/skeleton-animation_16.png" id="18_ircqc"]
+[ext_resource type="Texture2D" uid="uid://b84rwh05vr85m" path="res://assets/enemies/26/skeleton-animation_17.png" id="19_b0rsc"]
+[ext_resource type="Texture2D" uid="uid://fk32u3fu0gk5" path="res://assets/enemies/26/skeleton-animation_18.png" id="20_gmd0b"]
+[ext_resource type="Texture2D" uid="uid://bt4n6345ylter" path="res://assets/enemies/26/skeleton-animation_19.png" id="21_whdfr"]
+[ext_resource type="Texture2D" uid="uid://cwkbkcqs58aqy" path="res://assets/enemies/26/skeleton-animation_20.png" id="22_1vh10"]
+[ext_resource type="Texture2D" uid="uid://bpmcqjmy383xy" path="res://assets/enemies/26/skeleton-animation_21.png" id="23_ic4yc"]
+[ext_resource type="Texture2D" uid="uid://b8d0xtrwukwj0" path="res://assets/enemies/26/skeleton-animation_22.png" id="24_66fed"]
+[ext_resource type="Texture2D" uid="uid://w0fd8eqrxrlk" path="res://assets/enemies/26/skeleton-animation_23.png" id="25_iwjli"]
+[ext_resource type="Texture2D" uid="uid://decyibv1ynwxe" path="res://assets/enemies/26/skeleton-animation_24.png" id="26_vatnj"]
+[ext_resource type="Texture2D" uid="uid://ejuu6i2gcri3" path="res://assets/enemies/26/skeleton-animation_25.png" id="27_2vfii"]
+[ext_resource type="Texture2D" uid="uid://bgsv6clmojfhe" path="res://assets/enemies/26/skeleton-animation_26.png" id="28_86c54"]
+[ext_resource type="Texture2D" uid="uid://b3710kjake1xg" path="res://assets/enemies/26/skeleton-animation_27.png" id="29_kd5eq"]
+[ext_resource type="Texture2D" uid="uid://bjykmxacrylwy" path="res://assets/enemies/26/skeleton-animation_28.png" id="30_2534p"]
+[ext_resource type="Texture2D" uid="uid://bfj6w43g227ti" path="res://assets/enemies/26/skeleton-animation_29.png" id="31_ckim5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6np0j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_tovyq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xpnbe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_vrlfk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vj5hq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ap2hh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_nnmsm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_g4ef4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_sf5kt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_oddyd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_52x1k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_j08w2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_viy7n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_b3ytu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_cvekn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_5c4as")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_7ph0i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_ircqc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_b0rsc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_gmd0b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_whdfr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_1vh10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_ic4yc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_66fed")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_iwjli")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_vatnj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_2vfii")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_86c54")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_kd5eq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_2534p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_ckim5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[node name="Enemy26" instance=ExtResource("1_aw1if")]
+
+[node name="Animation" type="AnimatedSprite2D" parent="." index="3"]
+position = Vector2(0, -58)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_6np0j")
+animation = &"idle"
+autoplay = "idle"

@@ -26,9 +26,8 @@ extends Control
 @export var enemy_list: Array[PackedScene]
 @export var enemy_list2: Array[PackedScene]
 
-var reset_target: int = 50
+var reset_target: int = 25
 var timer_farm: float = 0.5
-var sub_stage: int = 1
 var stop_progress: bool = false
 
 var enemy
@@ -38,7 +37,7 @@ func _ready() -> void:
 	load_background() # carrega o background do estagio
 	set_label_upgrade() # seta as labels que informa o custo do upgrade
 	spawn_enemy() # spawna o inimigo
-	start_timer() # inicia os contadores de estagio e ataque do player
+	timer_player_attack.start(Player.attack_speed)
 
 
 func _process(delta: float) -> void:
@@ -68,7 +67,7 @@ func spawn_enemy() -> void: # função que realiza o spawn do inimigo
 
 func set_stage_label() -> void:
 	label_stage.text = "Stage: " + str(World.estagio) # exibe o estagio atual
-	label_substage.text = "SubStage: " + str(sub_stage) + " / 10"
+	label_substage.text = str(World.stage_progress) + " / 10"
 	label_gold.text = "Gold: " + str(Player.gold) # exibe o gold 
 	label_avg_stage.text = "Maior Estagio: " + str(World.avg_estagio) # maior estagio alcancado
 	label_resets.text = "Resets: " + str(World.reset)
@@ -105,10 +104,20 @@ func killer_enemy() -> void:
 	load_background() # carrega um novo background
 	
 	if not stop_progress:
-		sub_stage += 1
-		if sub_stage > 10:
+		World.stage_progress += 1
+		if World.stage_progress > 10:
 			World.estagio += 1 # incrementa o estagio em + 1
-			sub_stage = 1
+			World.stage_progress = 1
+			
+		if World.stage_progress == 10:
+			timer_batalha.start(World.battle_time)
+			label_contador.show()
+			label_substage.hide()
+		else:
+			label_contador.hide()
+			label_substage.show()
+			timer_batalha.stop()
+			
 		spawn_enemy() # spawna o inimigo
 	else:
 		reload_battle()
@@ -116,8 +125,6 @@ func killer_enemy() -> void:
 	
 	if World.estagio > World.avg_estagio:
 		World.avg_estagio = World.estagio
-	
-	timer_batalha.start(World.battle_time) # reinicia o contador do estagio
 
 
 func load_background() -> void: # carrega o background do estagio
@@ -128,14 +135,18 @@ func reload_battle() -> void: # função que recarrega a batalha
 	btn_next_stage.show()
 	label_contador.hide()
 	
-	#if not stop_progress:
-		#World.estagio -= 1
-		#if World.estagio < 1:
-			#World.estagio = 1
+	if not stop_progress:
+		World.stage_progress -= 1
 	
 	stop_progress = true
 	spawn_enemy() # spawna o inimigo
-	timer_player_attack.start(timer_farm)
+	timer_player_attack.start(Player.attack_speed)
+
+
+func prestige_points() -> int:
+	var points: int = (World.estagio - reset_target) / 10 + 1
+	
+	return points
 
 
 func reset() -> void:
@@ -143,6 +154,7 @@ func reset() -> void:
 	label_contador.show()
 	stop_progress = false
 	Player.gold = 0
+	Player.prestige_points += prestige_points()
 	World.estagio = 1
 	Player.x_upgrade_ataque = 1
 
@@ -211,10 +223,10 @@ func _on_increase_time_pressed() -> void:
 
 
 func _on_reset_pressed() -> void:
-	World.reset += 1
-	if World.estagio < reset_target:
+	if World.estagio <= reset_target:
 		return
-		
+	
+	World.reset += 1
 	reset()
 	
 	timer_batalha.stop() # para o contador do estagio
@@ -222,7 +234,6 @@ func _on_reset_pressed() -> void:
 	enemy.queue_free() # deleta o inimigo atual
 	
 	spawn_enemy() # spawna o inimigo
-	start_timer() # starta os contadores de estagio e ataque do player
 
 
 func _on_next_stage_pressed() -> void:
@@ -232,8 +243,7 @@ func _on_next_stage_pressed() -> void:
 	btn_next_stage.hide()
 	label_contador.show()
 	
-	#World.estagio += 1
-	timer_batalha.stop()
-	timer_player_attack.stop()
-	
-	start_timer()
+	World.stage_progress += 1
+	if World.stage_progress == 10:
+		timer_batalha.start(World.battle_time)
+		timer_player_attack.start(Player.attack_speed)

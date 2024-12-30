@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://dtyw4v44a8ka4"]
+[gd_scene load_steps=75 format=3 uid="uid://dtyw4v44a8ka4"]
 
 [ext_resource type="Texture2D" uid="uid://bs4f04v00hl85" path="res://assets/backgrounds/Horizontal/1.png" id="1_m0651"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_mqmc1"]
@@ -53,6 +53,14 @@
 [ext_resource type="PackedScene" uid="uid://b3cfxgyilctru" path="res://scenes/enemies_2/enemy_19.tscn" id="40_rbgvi"]
 [ext_resource type="PackedScene" uid="uid://dq2ull87dli2l" path="res://scenes/enemies_2/enemy_20.tscn" id="41_k35sk"]
 [ext_resource type="PackedScene" uid="uid://bxpepcv783v0h" path="res://scenes/enemies_2/enemy_21.tscn" id="42_50nva"]
+[ext_resource type="PackedScene" uid="uid://dqryipcwn36uq" path="res://scenes/enemies_2/enemy_22.tscn" id="43_vrkv6"]
+[ext_resource type="PackedScene" uid="uid://xtsue427kn75" path="res://scenes/enemies_2/enemy_23.tscn" id="44_wonp5"]
+[ext_resource type="PackedScene" uid="uid://dsna324nq2udw" path="res://scenes/enemies_2/enemy_24.tscn" id="45_r12ph"]
+[ext_resource type="PackedScene" uid="uid://bs8fghjcmqmqd" path="res://scenes/enemies_2/enemy_25.tscn" id="46_pxwds"]
+[ext_resource type="PackedScene" uid="uid://ojixuxuv3g6y" path="res://scenes/enemies_2/enemy_26.tscn" id="47_xgrj4"]
+[ext_resource type="PackedScene" uid="uid://cawamj5b7wely" path="res://scenes/enemies_2/enemy_27.tscn" id="48_utny8"]
+[ext_resource type="PackedScene" uid="uid://bsux6jsmf15hs" path="res://scenes/enemies_2/enemy_28.tscn" id="49_w88iv"]
+[ext_resource type="PackedScene" uid="uid://b5j4ddakarwfi" path="res://scenes/enemies_2/enemy_29.tscn" id="50_vcssp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_cavrc"]
 font = ExtResource("23_fp0v3")
@@ -64,6 +72,12 @@ outline_color = Color(0, 0, 0, 1)
 font = ExtResource("23_fp0v3")
 font_size = 30
 outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qp1ac"]
+font = ExtResource("13_lkpp6")
+font_size = 35
+outline_size = 8
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_mvwma"]
@@ -131,7 +145,7 @@ increase_attack = NodePath("Buttons/IncreaseAtaque")
 increase_battle_time = NodePath("Buttons/IncreaseTime")
 btn_next_stage = NodePath("Background/NextStage")
 enemy_list = Array[PackedScene]([ExtResource("2_mc2mg"), ExtResource("3_wv77d"), ExtResource("4_4lrad"), ExtResource("5_ypc2a"), ExtResource("6_760qv"), ExtResource("7_nckfb"), ExtResource("8_gq87j"), ExtResource("9_h1yai"), ExtResource("10_5dmow"), ExtResource("11_fk4lp"), ExtResource("12_gew8y"), ExtResource("13_jgsd4"), ExtResource("14_l3jc0"), ExtResource("15_kow05"), ExtResource("16_amtns"), ExtResource("17_cwqjs"), ExtResource("18_yotpx"), ExtResource("19_m5chr"), ExtResource("20_gfeyn"), ExtResource("21_2stjs")])
-enemy_list2 = Array[PackedScene]([ExtResource("2_0hpjr"), ExtResource("3_jhtr8"), ExtResource("4_ujmjt"), ExtResource("5_hhb6s"), ExtResource("6_6sjm6"), ExtResource("27_i5xaf"), ExtResource("28_xqfgk"), ExtResource("29_7osm5"), ExtResource("30_j1xi3"), ExtResource("31_oc0en"), ExtResource("32_r8dy6"), ExtResource("33_mwqfe"), ExtResource("34_csskn"), ExtResource("35_s7jr6"), ExtResource("36_75au4"), ExtResource("37_fkoch"), ExtResource("38_ps132"), ExtResource("39_535it"), ExtResource("40_rbgvi"), ExtResource("41_k35sk"), ExtResource("42_50nva")])
+enemy_list2 = Array[PackedScene]([ExtResource("2_0hpjr"), ExtResource("3_jhtr8"), ExtResource("4_ujmjt"), ExtResource("5_hhb6s"), ExtResource("6_6sjm6"), ExtResource("27_i5xaf"), ExtResource("28_xqfgk"), ExtResource("29_7osm5"), ExtResource("30_j1xi3"), ExtResource("31_oc0en"), ExtResource("32_r8dy6"), ExtResource("33_mwqfe"), ExtResource("34_csskn"), ExtResource("35_s7jr6"), ExtResource("36_75au4"), ExtResource("37_fkoch"), ExtResource("38_ps132"), ExtResource("39_535it"), ExtResource("40_rbgvi"), ExtResource("41_k35sk"), ExtResource("42_50nva"), ExtResource("43_vrkv6"), ExtResource("44_wonp5"), ExtResource("45_r12ph"), ExtResource("46_pxwds"), ExtResource("47_xgrj4"), ExtResource("48_utny8"), ExtResource("49_w88iv"), ExtResource("50_vcssp")])
 
 [node name="Background" type="TextureRect" parent="."]
 self_modulate = Color(1, 1, 1, 0.392157)
@@ -183,6 +197,7 @@ label_settings = SubResource("LabelSettings_cavrc")
 [node name="Labels" type="Node" parent="."]
 
 [node name="LabelContador" type="Label" parent="Labels"]
+visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -210,11 +225,13 @@ label_settings = SubResource("LabelSettings_ec5ub")
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -245.0
-offset_top = 32.0
-offset_right = -123.0
-offset_bottom = 55.0
+offset_left = -57.0
+offset_top = 56.0
+offset_right = 43.0
+offset_bottom = 92.0
 grow_horizontal = 2
+text = "10 / 10"
+label_settings = SubResource("LabelSettings_qp1ac")
 
 [node name="LabelGameTime" type="Label" parent="Labels"]
 offset_left = 418.5
@@ -558,7 +575,6 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="TimerPlayerAttack" type="Timer" parent="."]
-wait_time = 0.5
 
 [node name="TimerBatalha" type="Timer" parent="."]
 wait_time = 5.0

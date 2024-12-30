@@ -4,9 +4,13 @@ extends Node
 var damage: float = 5.0
 var default_damage: float
 var attack_speed: float = 1.0
-var gold: int
 var critical_attack: bool = false
 var critical_chance: float = 0.05
+
+# recursos
+var gold: int
+var prestige_points: int
+
 
 # skills
 var increase_attack_multiplier: float = 1.0
@@ -39,6 +43,7 @@ func load_data() -> void:
 	damage = data["ataque"]
 	attack_speed = data["attack_speed"]
 	gold = data["gold"]
+	prestige_points = data["prestige_points"]
 	x_upgrade_ataque = data["x_upgrade_ataque"]
 	x_upgrade_time = data["x_upgrade_time"]
 	
@@ -63,6 +68,7 @@ func save_data() -> void:
 	data["ataque"] = damage
 	data["attack_speed"] = attack_speed
 	data["gold"] = gold
+	data["prestige_points"] = prestige_points
 	data["x_upgrade_ataque"] = x_upgrade_ataque
 	data["x_upgrade_time"] = x_upgrade_time
 	

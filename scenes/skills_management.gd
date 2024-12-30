@@ -18,8 +18,6 @@ extends Node
 @export var increase_critical_duration: Timer
 @export var increase_critical_cooldown: Timer
 
-var timer: float
-
 
 func _ready() -> void:
 	connect_button_signal()
