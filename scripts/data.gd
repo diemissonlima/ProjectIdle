@@ -9,11 +9,12 @@ var data_management: Dictionary = {
 		"current_stage": 1,
 		"stage_progress": 1,
 		"highest_stage": 1,
-		"reset": 0
+		"reset": 0,
+		"exit_time": {} # tempo que o jogo foi fechado (em segundos)
 	},
 	
 	"player": {
-		"ataque": 5.0,
+		"ataque": 50.0,
 		"attack_speed": 1.0,
 		"gold": 0,
 		"prestige_points": 0,

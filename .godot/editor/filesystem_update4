@@ -1,15 +1,4 @@
 res://scenes/world.tscn
-res://scenes/base_enemy.tscn
 res://scripts/data.gd
 res://scripts/world.gd
-res://scripts/base_enemy.gd
-res://scripts/global_world.gd
-res://scenes/enemies_2/enemy_22.tscn
-res://scenes/enemies_2/enemy_23.tscn
-res://scenes/enemies_2/enemy_24.tscn
-res://scenes/enemies_2/enemy_25.tscn
-res://scenes/enemies_2/enemy_26.tscn
-res://scenes/enemies_2/enemy_27.tscn
-res://scenes/enemies_2/enemy_28.tscn
-res://scenes/enemies_2/enemy_29.tscn
-res://scripts/global_player.gd
+res://scenes/base_enemy.tscn
