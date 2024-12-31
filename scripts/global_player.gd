@@ -93,3 +93,8 @@ func alter_attack() -> void:
 	
 	if random_number <= critical_chance:
 		critical_attack = true
+
+
+func _notification(what: int) -> void:
+	if what == 1006:
+		save_data()

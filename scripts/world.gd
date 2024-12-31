@@ -37,9 +37,8 @@ func _ready() -> void:
 	load_background() # carrega o background do estagio
 	set_label_upgrade() # seta as labels que informa o custo do upgrade
 	spawn_enemy() # spawna o inimigo
-	timer_player_attack.start(Player.attack_speed)
-	#print(Data.data_management["world"]["exit_time"])
 	calculate_offline_gold()
+	timer_player_attack.start(Player.attack_speed)
 
 
 func _process(delta: float) -> void:
@@ -197,9 +196,9 @@ func get_datetime() -> void:
 	Data.data_management["world"]["exit_time"] = current_time
 
 
-func save_data() -> void:
-	Player.save_data()
-	World.save_data()
+#func save_data() -> void:
+	#Player.save_data()
+	#World.save_data()
 
 
 func _on_timer_player_attack_timeout() -> void: # sinal que é chamado quando o timer de ataque zera
@@ -239,8 +238,6 @@ func _on_increase_ataque_pressed() -> void:
 	Player.default_damage += 1
 	# Exibe custo upgrade ataque
 	label_upgrade_ataque_cost.text = "Ataque: " + str(Player.x_upgrade_ataque * 250) + " Gold"
-	
-	save_data()
 
 
 func _on_increase_time_pressed() -> void:
@@ -256,8 +253,6 @@ func _on_increase_time_pressed() -> void:
 	
 	# exibe custo upgrade tempo de batalha
 	label_upgrade_time_cost.text = "Tempo: " + str(Player.x_upgrade_time * 350) + " Gold"
-	
-	save_data()
 
 
 func _on_reset_pressed() -> void:

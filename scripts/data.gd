@@ -5,7 +5,7 @@ var file_path: String = "res://save/save.dat"
 var data_management: Dictionary = {
 	"world": {
 		"game_time": 0.0,
-		"battle_time": 30,
+		"battle_time": 15,
 		"current_stage": 1,
 		"stage_progress": 1,
 		"highest_stage": 1,
@@ -14,15 +14,15 @@ var data_management: Dictionary = {
 	},
 	
 	"player": {
-		"ataque": 50.0,
-		"attack_speed": 1.0,
+		"ataque": 5.0,
+		"attack_speed": 0.5,
 		"gold": 0,
 		"prestige_points": 0,
 		"x_upgrade_ataque": 1,
 		"x_upgrade_time": 1,
 		"skills": {
 			"increase_attack": {
-				"multiplier": 1.5,
+				"multiplier": 1.25,
 				"duration": 30.0,
 				"cooldown": 150.0,
 				"aux_cooldown": 0.0
