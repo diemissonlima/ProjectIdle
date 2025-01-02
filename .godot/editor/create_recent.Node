@@ -1,12 +1,12 @@
-Button
-CanvasLayer
-VBoxContainer
 Label
+Button
+VBoxContainer
+HBoxContainer
 ColorRect
+CanvasLayer
 AnimatedSprite2D
 TextureButton
 Timer
-HBoxContainer
 Node
 TextureProgressBar
 TextureRect

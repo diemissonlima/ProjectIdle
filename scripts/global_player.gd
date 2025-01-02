@@ -33,7 +33,6 @@ var gold_skill_on: bool = false
 
 func _ready() -> void:
 	load_data()
-	default_damage = damage
 
 
 func load_data() -> void:
@@ -41,6 +40,7 @@ func load_data() -> void:
 	var data = Data.data_management["player"]
 	
 	damage = data["ataque"]
+	default_damage = data["default_damage"]
 	attack_speed = data["attack_speed"]
 	gold = data["gold"]
 	prestige_points = data["prestige_points"]
@@ -66,6 +66,7 @@ func save_data() -> void:
 	var data_skills = data["skills"]
 	
 	data["ataque"] = damage
+	data["default_damage"] = default_damage
 	data["attack_speed"] = attack_speed
 	data["gold"] = gold
 	data["prestige_points"] = prestige_points

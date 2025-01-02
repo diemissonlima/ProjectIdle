@@ -70,15 +70,15 @@ outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ec5ub"]
-font = ExtResource("23_fp0v3")
-font_size = 30
+font = ExtResource("13_lkpp6")
+font_size = 35
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_qp1ac"]
 font = ExtResource("13_lkpp6")
 font_size = 35
-outline_size = 8
+outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_mvwma"]
@@ -206,10 +206,10 @@ visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -55.5
-offset_top = 65.0
-offset_right = 55.5
-offset_bottom = 96.0
+offset_left = -54.0
+offset_top = 63.0
+offset_right = 57.0
+offset_bottom = 99.0
 grow_horizontal = 2
 text = "00:30"
 label_settings = SubResource("LabelSettings_ec5ub")
@@ -230,9 +230,9 @@ label_settings = SubResource("LabelSettings_ec5ub")
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -57.0
+offset_left = -47.0
 offset_top = 56.0
-offset_right = 43.0
+offset_right = 53.0
 offset_bottom = 92.0
 grow_horizontal = 2
 text = "10 / 10"

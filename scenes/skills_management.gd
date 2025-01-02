@@ -114,12 +114,11 @@ func _notification(what: int) -> void:
 		if increase_critical_duration.time_left > 0:
 			Player.critical_chance /= data["increase_critical"]["multiplier"]
 			
-		if increase_attack_cooldown.time_left > 0:
+		if increase_attack_cooldown.time_left >= 0:
 			data["increase_attack"]["aux_cooldown"] = float(increase_attack_cooldown.time_left)
-		if increase_gold_cooldown.time_left > 0:
+		if increase_gold_cooldown.time_left >= 0:
 			data["increase_gold"]["aux_cooldown"] = float(increase_gold_cooldown.time_left)
-		if increase_critical_cooldown.time_left > 0:
+		if increase_critical_cooldown.time_left >= 0:
 			data["increase_critical"]["aux_cooldown"] = float(increase_critical_cooldown.time_left)
-		
-		Player.save_data()
+			
 		get_tree().quit()

@@ -133,8 +133,8 @@ animations = [{
 [node name="Enemy26" instance=ExtResource("1_aw1if")]
 
 [node name="Animation" type="AnimatedSprite2D" parent="." index="3"]
-position = Vector2(0, -58)
-scale = Vector2(0.2, 0.2)
+position = Vector2(0, -46)
+scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_6np0j")
 animation = &"idle"
 autoplay = "idle"

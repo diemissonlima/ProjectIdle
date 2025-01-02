@@ -15,6 +15,7 @@ var data_management: Dictionary = {
 	
 	"player": {
 		"ataque": 5.0,
+		"default_damage": 5.0,
 		"attack_speed": 0.5,
 		"gold": 0,
 		"prestige_points": 0,
@@ -49,7 +50,6 @@ var data_management: Dictionary = {
 
 func save_data() -> void:
 	var file = FileAccess.open(file_path, FileAccess.WRITE)
-	
 	file.store_string(JSON.stringify(data_management))
 	file.close()
 
@@ -61,6 +61,66 @@ func load_data() -> void:
 		data_management = save
 		
 		file.close()
+
+
+func delete_savegame() -> void:
+	if FileAccess.file_exists(file_path):
+		var dir = DirAccess.open("res://")
+		if dir:
+			dir.remove_absolute(file_path)
+			reset_savegame()
+			Player.load_data()
+			World.load_data()
+	else:
+		return
+
+
+func reset_savegame() -> void:
+	data_management = {
+	"world": {
+		"game_time": 0.0,
+		"battle_time": 15,
+		"current_stage": 1,
+		"stage_progress": 1,
+		"highest_stage": 1,
+		"reset": 0,
+		"exit_time": {} # tempo que o jogo foi fechado (em segundos)
+	},
+	
+	"player": {
+		"ataque": 5.0,
+		"default_damage": 5.0,
+		"attack_speed": 0.5,
+		"gold": 0,
+		"prestige_points": 0,
+		"x_upgrade_ataque": 1,
+		"x_upgrade_time": 1,
+		"skills": {
+			"increase_attack": {
+				"multiplier": 1.25,
+				"duration": 30.0,
+				"cooldown": 150.0,
+				"aux_cooldown": 0.0
+			},
+			
+			"increase_gold": {
+				"multiplier": 1.5,
+				"duration": 30.0,
+				"cooldown": 150.0,
+				"aux_cooldown": 0.0
+			},
+			
+			"increase_critical": {
+				"critical_chance": 0.05,
+				"multiplier": 2.0,
+				"duration": 30.0,
+				"cooldown": 150.0,
+				"aux_cooldown": 0.0
+			}
+		}
+	}
+}
+
 
 func _notification(what: int) -> void:
 	if what == 1006:

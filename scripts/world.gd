@@ -87,7 +87,7 @@ func update_timer_display() ->  void: # função pra atualizar label de batalha
 	var minutes = int(timer_batalha.time_left) / 60 # converte o time_left do timer pra minutos
 	var seconds = int(timer_batalha.time_left) % 60 # converte o time_left do timer pra segundos
 
-	label_contador.text = String("%02d:%02d" % [int(minutes), int(seconds)]) # formata a string
+	label_contador.text = String("%02d : %02d" % [int(minutes), int(seconds)]) # formata a string
 
 
 func take_enemy_damage(_damage: float) -> void: # causa dano ao inimigo
@@ -282,3 +282,4 @@ func _on_next_stage_pressed() -> void:
 func _notification(what: int) -> void:
 	if what == 1006:
 		get_datetime()
+		Data.save_data()
