@@ -63,9 +63,13 @@ func drop() -> void:
 		2: # enemy ELITE
 			base_gold += 20 + (World.estagio * 8)
 	
-	if randi() % 100 < 10:
-		base_gold *= 2
+	if World.stage_progress == 10:
+		base_gold *= 5
 	
+	if World.reset > 0:
+		var percent: float = World.reset * 0.5
+		base_gold += base_gold * percent
+		
 	if Player.gold_skill_on:
 		base_gold *= Player.increase_gold_multiplier
 	

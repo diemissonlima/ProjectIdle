@@ -154,10 +154,10 @@ func reset() -> void:
 	btn_next_stage.hide()
 	label_contador.show()
 	stop_progress = false
-	Player.gold = 0
 	Player.prestige_points += prestige_points()
 	World.estagio = 1
-	Player.x_upgrade_ataque = 1
+	#Player.gold = 0
+	#Player.x_upgrade_ataque = 1
 
 
 func calculate_offline_gold() -> void:
@@ -176,8 +176,10 @@ func calculate_offline_gold() -> void:
 	if time_offline > 0:
 		var gold_per_second = Player.damage * 0.1
 		var gold_earned = int(time_offline * gold_per_second)
+		var info: Array
 		
-		print("Enquanto esteve fora voce farmou " + str(gold_earned) + " golds")
+		info.append([time_offline, gold_per_second, gold_earned])
+		get_tree().call_group("rewards_info", "show_label_info", info)
 		Player.gold += gold_earned
 
 
@@ -194,11 +196,6 @@ func convert_time(time: Dictionary) -> int:
 func get_datetime() -> void:
 	var current_time = Time.get_time_dict_from_system()
 	Data.data_management["world"]["exit_time"] = current_time
-
-
-#func save_data() -> void:
-	#Player.save_data()
-	#World.save_data()
 
 
 func _on_timer_player_attack_timeout() -> void: # sinal que é chamado quando o timer de ataque zera

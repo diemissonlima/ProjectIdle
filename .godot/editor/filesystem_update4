@@ -1,5 +1,8 @@
 res://scenes/world.tscn
-res://scripts/data.gd
-res://scripts/world.gd
 res://scenes/base_enemy.tscn
-res://scripts/global_player.gd
+res://scenes/rewards_offline.tscn
+res://scripts/rewards_offline.gd
+res://scripts/world.gd
+res://scripts/base_enemy.gd
+res://scripts/global_world.gd
+res://scripts/data.gd
