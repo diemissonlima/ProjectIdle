@@ -6,6 +6,7 @@ var estagio: int = 1
 var stage_progress: int = 1
 var avg_estagio: int = 1
 var reset: int = 0
+var kills: int = 0
 
 
 func _ready() -> void:
@@ -23,6 +24,8 @@ func load_data() -> void:
 	stage_progress = data["stage_progress"]
 	avg_estagio = data["highest_stage"]
 	reset = data["reset"]
+	
+	kills = Data.data_management["statistics"]["kills"]
 
 
 func save_data() -> void:
@@ -34,6 +37,8 @@ func save_data() -> void:
 	data["stage_progress"] = stage_progress
 	data["highest_stage"] = avg_estagio
 	data["reset"] = reset
+	
+	Data.data_management["statistics"]["kills"] = kills
 	
 	Data.save_data()
 

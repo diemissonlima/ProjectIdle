@@ -10,7 +10,7 @@ var data_management: Dictionary = {
 		"stage_progress": 1,
 		"highest_stage": 1,
 		"reset": 0,
-		"exit_time": {} # tempo que o jogo foi fechado (em segundos)
+		"exit_time": 0 # tempo que o jogo foi fechado (em segundos)
 	},
 	
 	"player": {
@@ -44,6 +44,10 @@ var data_management: Dictionary = {
 				"aux_cooldown": 0.0
 			}
 		}
+	},
+	
+	"statistics": {
+		"kills": 0
 	}
 }
 
@@ -84,7 +88,7 @@ func reset_savegame() -> void:
 		"stage_progress": 1,
 		"highest_stage": 1,
 		"reset": 0,
-		"exit_time": {} # tempo que o jogo foi fechado (em segundos)
+		"exit_time": 0 # tempo que o jogo foi fechado (em segundos)
 	},
 	
 	"player": {
@@ -118,6 +122,10 @@ func reset_savegame() -> void:
 				"aux_cooldown": 0.0
 			}
 		}
+	},
+	
+	"statistics": {
+		"kills": 0
 	}
 }
 

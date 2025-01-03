@@ -37,7 +37,6 @@ func _ready() -> void:
 	load_background() # carrega o background do estagio
 	set_label_upgrade() # seta as labels que informa o custo do upgrade
 	spawn_enemy() # spawna o inimigo
-	calculate_offline_gold()
 	timer_player_attack.start(Player.attack_speed)
 
 
@@ -101,6 +100,8 @@ func killer_enemy() -> void:
 	get_tree().call_group("enemy", "drop")
 	Player.gold += enemy.dropped_gold
 	
+	World.kills += 1
+	
 	enemy.queue_free() # deleta o inimigo da cena
 	load_background() # carrega um novo background
 	
@@ -160,42 +161,11 @@ func reset() -> void:
 	#Player.x_upgrade_ataque = 1
 
 
-func calculate_offline_gold() -> void:
-	if Data.data_management["world"]["exit_time"].is_empty():
-		return
-		
-	var max_offline_gold: int = 28800 # 8 horas
-	var last_time_exit: Dictionary = Data.data_management["world"]["exit_time"]
-	var current_time = Time.get_time_dict_from_system()
-	
-	var time_offline: int = convert_time(current_time) - convert_time(last_time_exit)
-	
-	if time_offline >= max_offline_gold:
-		time_offline = max_offline_gold
-	
-	if time_offline > 0:
-		var gold_per_second = Player.damage * 0.1
-		var gold_earned = int(time_offline * gold_per_second)
-		var info: Array
-		
-		info.append([time_offline, gold_per_second, gold_earned])
-		get_tree().call_group("rewards_info", "show_label_info", info)
-		Player.gold += gold_earned
-
-
-func convert_time(time: Dictionary) -> int:
-	var hour_to_seconds: int = time["hour"] * 3600
-	var minutes_to_seconds: int = time["minute"] * 60
-	var seconds: int = time["second"]
-	
-	var time_converted: int = hour_to_seconds + minutes_to_seconds + seconds
-	
-	return time_converted
-
-
 func get_datetime() -> void:
-	var current_time = Time.get_time_dict_from_system()
-	Data.data_management["world"]["exit_time"] = current_time
+	var current_time = Time.get_datetime_dict_from_system()
+	var time = Time.get_unix_time_from_datetime_dict(current_time)
+	
+	Data.data_management["world"]["exit_time"] = time
 
 
 func _on_timer_player_attack_timeout() -> void: # sinal que é chamado quando o timer de ataque zera
@@ -260,10 +230,12 @@ func _on_reset_pressed() -> void:
 	reset()
 	
 	timer_batalha.stop() # para o contador do estagio
-	timer_player_attack.stop() # para o contador de ataque do player
+	label_contador.hide()
+	World.stage_progress = 1
 	enemy.queue_free() # deleta o inimigo atual
 	
 	spawn_enemy() # spawna o inimigo
+	timer_player_attack.start() # para o contador de ataque do player
 
 
 func _on_next_stage_pressed() -> void:
