@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://dtyw4v44a8ka4"]
+[gd_scene load_steps=77 format=3 uid="uid://dtyw4v44a8ka4"]
 
 [ext_resource type="Texture2D" uid="uid://bs4f04v00hl85" path="res://assets/backgrounds/Horizontal/1.png" id="1_m0651"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_mqmc1"]
@@ -85,6 +85,10 @@ outline_color = Color(0, 0, 0, 1)
 font = ExtResource("13_lkpp6")
 font_size = 24
 
+[sub_resource type="LabelSettings" id="LabelSettings_p44eg"]
+font = ExtResource("13_lkpp6")
+font_size = 14
+
 [sub_resource type="LabelSettings" id="LabelSettings_8875g"]
 font = ExtResource("13_lkpp6")
 
@@ -121,7 +125,7 @@ font_size = 30
 outline_size = 6
 outline_color = Color(0, 0, 0, 1)
 
-[node name="World" type="Control" node_paths=PackedStringArray("background", "timer_batalha", "timer_player_attack", "spawn_position", "label_stage", "label_substage", "label_contador", "label_gold", "label_avg_stage", "label_resets", "label_player_atk", "label_upgrade_ataque_cost", "label_upgrade_time_cost", "increase_attack", "increase_battle_time", "btn_next_stage") groups=["world"]]
+[node name="World" type="Control" node_paths=PackedStringArray("background", "timer_batalha", "timer_player_attack", "spawn_position", "label_stage", "label_substage", "label_contador", "label_gold", "label_avg_stage", "label_resets", "label_player_atk", "label_gameplay_time", "label_popup_gold", "label_upgrade_ataque_cost", "label_upgrade_time_cost", "increase_attack", "increase_battle_time", "btn_next_stage") groups=["world"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -140,6 +144,8 @@ label_gold = NodePath("Labels/HBoxContainer/LabelGold")
 label_avg_stage = NodePath("Labels/HBoxContainer/LabelAvgStage")
 label_resets = NodePath("Labels/HBoxContainer/LabelResets")
 label_player_atk = NodePath("Labels/HBoxContainer/LabelPlayerAtk")
+label_gameplay_time = NodePath("Labels/LabelGameTime")
+label_popup_gold = NodePath("Labels/LabelPopupGold")
 label_upgrade_ataque_cost = NodePath("Buttons/IncreaseAtaque/LabelUpgradeAtaqueCost")
 label_upgrade_time_cost = NodePath("Buttons/IncreaseTime/LabelUpgradeTimeCost")
 increase_attack = NodePath("Buttons/IncreaseAtaque")
@@ -246,6 +252,16 @@ offset_bottom = 595.0
 text = "Tempo de Jogo: 
 00:00:00"
 label_settings = SubResource("LabelSettings_mvwma")
+horizontal_alignment = 1
+
+[node name="LabelPopupGold" type="Label" parent="Labels"]
+visible = false
+offset_left = 219.0
+offset_top = 453.0
+offset_right = 248.0
+offset_bottom = 467.0
+text = "+ 125"
+label_settings = SubResource("LabelSettings_p44eg")
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Labels"]

@@ -14,6 +14,8 @@ extends Control
 @export var label_avg_stage: Label
 @export var label_resets: Label
 @export var label_player_atk: Label
+@export var label_gameplay_time: Label
+@export var label_popup_gold: Label
 @export var label_upgrade_ataque_cost: Label
 @export var label_upgrade_time_cost: Label
 
@@ -72,7 +74,7 @@ func set_stage_label() -> void:
 	label_avg_stage.text = "Maior Estagio: " + str(World.avg_estagio) # maior estagio alcancado
 	label_resets.text = "Resets: " + str(World.reset)
 	label_player_atk.text = "DPS: " + "%0.f" % Player.damage # exibe ataque do player
-	$Labels/LabelGameTime.text = "Tempo de Jogo \n" + format_gameplay_time()
+	label_gameplay_time.text = "Tempo de Jogo \n" + format_gameplay_time()
 	
 	update_timer_display() # chama função pra atualizar a label de tempo de batalha
 
@@ -99,6 +101,7 @@ func take_enemy_damage(_damage: float) -> void: # causa dano ao inimigo
 func killer_enemy() -> void:
 	get_tree().call_group("enemy", "drop")
 	Player.gold += enemy.dropped_gold
+	show_popup_gold(enemy.dropped_gold)
 	
 	World.kills += 1
 	
@@ -127,6 +130,13 @@ func killer_enemy() -> void:
 	
 	if World.estagio > World.avg_estagio:
 		World.avg_estagio = World.estagio
+
+
+func show_popup_gold(value: int) -> void:
+	label_popup_gold.show()
+	label_popup_gold.text = "+ " + str(value)
+	await get_tree().create_timer(0.4).timeout
+	label_popup_gold.hide()
 
 
 func load_background() -> void: # carrega o background do estagio

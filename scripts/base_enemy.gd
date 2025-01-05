@@ -9,9 +9,11 @@ var health: int = 15 # vida
 var max_health: int = 15 # vida maxima
 
 var dropped_gold: int
+var drop_items_list: Dictionary = {}
 
 
 func _ready() -> void:
+	drop_items_list = get_drop_items()
 	randomize_enemy_type()
 	increase_health()
 	set_progresbar()
@@ -63,17 +65,65 @@ func drop() -> void:
 		2: # enemy ELITE
 			base_gold += 20 + (World.estagio * 8)
 	
-	if World.stage_progress == 10:
-		base_gold *= 5
-	
 	if World.reset > 0:
 		var percent: float = World.reset * 0.5
 		base_gold += base_gold * percent
 		
 	if Player.gold_skill_on:
 		base_gold *= Player.increase_gold_multiplier
+		
+	if World.stage_progress == 10:
+		base_gold *= 5
+		
+		for item in drop_items_list:
+			var spawn_probability: float = drop_items_list[item]["drop_chance"]
+			var rng: float = randf()
+			
+			print("Spawn Probability; ", spawn_probability)
+			print("RNG: ", rng)
+			
+			if rng < spawn_probability:
+				drop_item(item, drop_items_list[item])
+		
+		print("-=-=-=-=-=-=-=-")
 	
 	dropped_gold = base_gold
+
+
+func get_drop_items() -> Dictionary:
+	return {
+		"arma": {
+			"path": "caminho da imagem",
+			"type": "equipment",
+			"drop_chance": 0.15,
+			"attributes": {
+				"damage": 15,
+				"critical_chance": 0.10,
+				"critical_damage": 0.50
+			}
+		},
+		
+		"armor": {
+			"path": "caminho da imagem",
+			"type": "equipment",
+			"drop_chance": 0.20,
+			"attributes": {
+				"gold_multiplier": 2.0,
+				"attack_speed": 0.1 
+			}
+		},
+		
+		"gem": {
+			"path": "caminho da imagem",
+			"type": "resource",
+			"drop_chance": 0.40
+		}
+	}
+
+
+func drop_item(item_name: String, item_data: Dictionary) -> void:
+	print("Nome do item: ", item_name)
+	print("Dados do item: ", item_data)
 
 
 func set_progresbar() -> void: # atualiza a barra de progresso da vida
