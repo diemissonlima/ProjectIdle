@@ -82,10 +82,10 @@ func drop() -> void:
 			print("Spawn Probability; ", spawn_probability)
 			print("RNG: ", rng)
 			
-			if rng < spawn_probability:
+			if rng <= spawn_probability:
 				drop_item(item, drop_items_list[item])
 		
-		print("-=-=-=-=-=-=-=-")
+		print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
 	
 	dropped_gold = base_gold
 

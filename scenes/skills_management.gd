@@ -120,5 +120,6 @@ func _notification(what: int) -> void:
 			data["increase_gold"]["aux_cooldown"] = float(increase_gold_cooldown.time_left)
 		if increase_critical_cooldown.time_left >= 0:
 			data["increase_critical"]["aux_cooldown"] = float(increase_critical_cooldown.time_left)
-			
+		
+		Data.save_data()
 		get_tree().quit()

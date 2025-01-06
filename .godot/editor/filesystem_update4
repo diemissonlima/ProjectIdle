@@ -1,6 +1,6 @@
 res://scenes/world.tscn
 res://scripts/base_enemy.gd
-res://scripts/world.gd
 res://scenes/base_enemy.tscn
 res://scenes/rewards_offline.tscn
 res://scenes/main_menu.tscn
+res://scenes/skills_management.gd
