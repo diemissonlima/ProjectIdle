@@ -10,20 +10,21 @@ var critical_chance: float = 0.05
 # recursos
 var gold: int
 var prestige_points: int
+var skill_points: int
 
 
 # skills
-var increase_attack_multiplier: float = 1.0
-var increase_attack_duration: int = 10
-var increase_attack_cooldown: int = 300
+var increase_attack_multiplier: float = 1.25
+var increase_attack_duration: int = 30
+var increase_attack_cooldown: int = 150
 
-var increase_gold_multiplier: float = 1.0
-var increase_gold_duration: int = 10
-var increase_gold_cooldown: int = 300
+var increase_gold_multiplier: float = 1.5
+var increase_gold_duration: int = 30
+var increase_gold_cooldown: int = 150
 
-var increase_critical_multiplier: float = 1.0
-var increase_critical_duration: int = 10
-var increase_critical_cooldown: int = 300
+var increase_critical_multiplier: float = 2.0
+var increase_critical_duration: int = 30
+var increase_critical_cooldown: int = 150
 
 var x_upgrade_ataque: int = 1
 var x_upgrade_time: int = 1
@@ -43,6 +44,7 @@ func load_data() -> void:
 	default_damage = data["default_damage"]
 	attack_speed = data["attack_speed"]
 	gold = data["gold"]
+	skill_points = data["skill_points"]
 	prestige_points = data["prestige_points"]
 	x_upgrade_ataque = data["x_upgrade_ataque"]
 	x_upgrade_time = data["x_upgrade_time"]
@@ -69,6 +71,7 @@ func save_data() -> void:
 	data["default_damage"] = default_damage
 	data["attack_speed"] = attack_speed
 	data["gold"] = gold
+	data["skill_points"] = skill_points
 	data["prestige_points"] = prestige_points
 	data["x_upgrade_ataque"] = x_upgrade_ataque
 	data["x_upgrade_time"] = x_upgrade_time

@@ -18,6 +18,8 @@ extends Node
 @export var increase_critical_duration: Timer
 @export var increase_critical_cooldown: Timer
 
+@export var box_info: Control
+
 
 func _ready() -> void:
 	connect_button_signal()
@@ -31,6 +33,7 @@ func _process(_delta: float) -> void:
 func connect_button_signal() -> void:
 	for btn in get_tree().get_nodes_in_group("btns_skill"):
 		btn.pressed.connect(on_button_pressed.bind(btn))
+		btn.get_node("Button").pressed.connect(on_skill_info_button_pressed.bind(btn))
 		btn.get_node("Duration").timeout.connect(on_timer_duration_timeout.bind(btn))
 		btn.get_node("Cooldown").timeout.connect(on_timer_cooldown_timeout.bind(btn))
 
@@ -41,7 +44,7 @@ func load_skill_cooldown() -> void:
 	increase_gold_cooldown.start(data["increase_gold"]["aux_cooldown"])
 	increase_critical_cooldown.start(data["increase_critical"]["aux_cooldown"])
 	
-	for button in $".".get_children():
+	for button in get_tree().get_nodes_in_group("btns_skill"):
 		var cooldown = button.get_node("Cooldown")
 		var label = button.get_node("Label")
 		
@@ -52,7 +55,7 @@ func load_skill_cooldown() -> void:
 
 
 func show_label_timer() -> void:
-	for button in $".".get_children():
+	for button in get_tree().get_nodes_in_group("btns_skill"):
 		var duration = button.get_node("Duration")
 		var cooldown = button.get_node("Cooldown")
 		var label = button.get_node("Label")
@@ -61,6 +64,11 @@ func show_label_timer() -> void:
 			label.text = "%.0f" % duration.time_left
 		if cooldown.time_left > 0:
 			label.text = "%.0f" % cooldown.time_left
+
+
+func on_skill_info_button_pressed(button: TextureButton) -> void:
+	box_info.show()
+	get_tree().call_group("box_skill_info", "get_skill_info", button)
 
 
 func on_button_pressed(button: TextureButton) -> void:
@@ -79,7 +87,7 @@ func on_button_pressed(button: TextureButton) -> void:
 			label_increase_gold.show()
 		
 		"IncreaseCritical":
-			Player.critical_chance *= Data.data_management["player"]["skills"]["increase_critical"]["multiplier"]
+			Player.critical_chance *= Player.increase_critical_multiplier
 			increase_critical_duration.start(Player.increase_critical_duration)
 			label_increase_critical.show()
 
@@ -95,7 +103,7 @@ func on_timer_duration_timeout(button: TextureButton) -> void:
 			Player.gold_skill_on = false
 		
 		"IncreaseCritical":
-			Player.critical_chance /= Data.data_management["player"]["skills"]["increase_critical"]["multiplier"]
+			Player.critical_chance /= Player.increase_critical_multiplier
 			increase_critical_cooldown.start(Player.increase_critical_cooldown)
 
 

@@ -75,17 +75,17 @@ func drop() -> void:
 	if World.stage_progress == 10:
 		base_gold *= 5
 		
-		for item in drop_items_list:
-			var spawn_probability: float = drop_items_list[item]["drop_chance"]
-			var rng: float = randf()
-			
-			print("Spawn Probability; ", spawn_probability)
-			print("RNG: ", rng)
-			
-			if rng <= spawn_probability:
-				drop_item(item, drop_items_list[item])
-		
-		print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
+		#for item in drop_items_list:
+			#var spawn_probability: float = drop_items_list[item]["drop_chance"]
+			#var rng: float = randf()
+			#
+			#print("Spawn Probability; ", spawn_probability)
+			#print("RNG: ", rng)
+			#
+			#if rng <= spawn_probability:
+				#drop_item(item, drop_items_list[item])
+		#
+		#print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
 	
 	dropped_gold = base_gold
 
