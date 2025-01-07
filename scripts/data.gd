@@ -18,13 +18,13 @@ var data_management: Dictionary = {
 		"default_damage": 5.0,
 		"attack_speed": 0.5,
 		"gold": 0,
-		"skill_points": 10,
+		"skill_points": 0,
 		"prestige_points": 0,
 		"x_upgrade_ataque": 1,
 		"x_upgrade_time": 1,
 		"skills": {
 			"increase_attack": {
-				"level": 3,
+				"level": 1,
 				"multiplier": 1.25,
 				"duration": 30.0,
 				"cooldown": 150.0,
@@ -32,7 +32,7 @@ var data_management: Dictionary = {
 			},
 			
 			"increase_gold": {
-				"level": 5,
+				"level": 1,
 				"multiplier": 1.5,
 				"duration": 30.0,
 				"cooldown": 150.0,
@@ -40,7 +40,7 @@ var data_management: Dictionary = {
 			},
 			
 			"increase_critical": {
-				"level": 2,
+				"level": 1,
 				"critical_chance": 0.05,
 				"multiplier": 2.0,
 				"duration": 30.0,
