@@ -40,6 +40,11 @@ func _ready() -> void:
 	set_label_upgrade() # seta as labels que informa o custo do upgrade
 	spawn_enemy() # spawna o inimigo
 	timer_player_attack.start(Player.attack_speed)
+	
+	if World.stage_progress == 10:
+		timer_batalha.start(World.battle_time)
+		label_contador.show()
+		label_substage.hide()
 
 
 func _process(delta: float) -> void:
@@ -99,7 +104,6 @@ func take_enemy_damage(_damage: float) -> void: # causa dano ao inimigo
 
 
 func killer_enemy() -> void:
-	get_tree().call_group("enemy", "drop")
 	Player.gold += enemy.dropped_gold
 	show_popup_gold(enemy.dropped_gold)
 	

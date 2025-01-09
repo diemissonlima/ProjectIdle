@@ -46,6 +46,14 @@ var data_management: Dictionary = {
 				"duration": 30.0,
 				"cooldown": 150.0,
 				"aux_cooldown": 0.0
+			},
+			
+			"increase_attackspeed": {
+				"level": 1,
+				"multiplier": 0.1,
+				"duration": 30.0,
+				"cooldown": 150.0,
+				"aux_cooldown": 0.0
 			}
 		}
 	},
@@ -125,6 +133,14 @@ func reset_savegame() -> void:
 				"level": 1,
 				"critical_chance": 0.05,
 				"multiplier": 2.0,
+				"duration": 30.0,
+				"cooldown": 150.0,
+				"aux_cooldown": 0.0
+			},
+			
+			"increase_attackspeed": {
+				"level": 1,
+				"multiplier": 0.1,
 				"duration": 30.0,
 				"cooldown": 150.0,
 				"aux_cooldown": 0.0

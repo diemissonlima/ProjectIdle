@@ -29,6 +29,11 @@ var increase_critical_multiplier: float = 2.0
 var increase_critical_duration: int = 30
 var increase_critical_cooldown: int = 150
 
+var attackspeed_skill_level: int = 1
+var increase_attackspeed_multiplier: float = 1.25
+var increase_attackspeed_duration: int = 30
+var increase_attackspeed_cooldown: int = 150
+
 var x_upgrade_ataque: int = 1
 var x_upgrade_time: int = 1
 
@@ -57,6 +62,11 @@ func load_data() -> void:
 	increase_attack_multiplier = data_skills["increase_attack"]["multiplier"]
 	increase_attack_duration = data_skills["increase_attack"]["duration"]
 	increase_attack_cooldown = data_skills["increase_attack"]["cooldown"]
+	
+	attackspeed_skill_level = data_skills["increase_attackspeed"]["level"]
+	increase_attackspeed_multiplier = data_skills["increase_attackspeed"]["multiplier"]
+	increase_attackspeed_duration = data_skills["increase_attackspeed"]["duration"]
+	increase_attackspeed_cooldown = data_skills["increase_attackspeed"]["cooldown"]
 	
 	gold_skill_level = data_skills["increase_gold"]["level"]
 	increase_gold_multiplier = data_skills["increase_gold"]["multiplier"]
@@ -87,6 +97,11 @@ func save_data() -> void:
 	data_skills["increase_attack"]["multiplier"] = increase_attack_multiplier
 	data_skills["increase_attack"]["duration"] = increase_attack_duration
 	data_skills["increase_attack"]["cooldown"] = increase_attack_cooldown
+	
+	data_skills["increase_attackspeed"]["level"] = attackspeed_skill_level
+	data_skills["increase_attackspeed"]["multiplier"] = increase_attackspeed_multiplier
+	data_skills["increase_attackspeed"]["duration"] = increase_attackspeed_duration
+	data_skills["increase_attackspeed"]["cooldown"] = increase_attackspeed_cooldown
 	
 	data_skills["increase_gold"]["level"] = gold_skill_level
 	data_skills["increase_gold"]["multiplier"] = increase_gold_multiplier

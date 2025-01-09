@@ -18,6 +18,12 @@ extends Node
 @export var increase_critical_duration: Timer
 @export var increase_critical_cooldown: Timer
 
+@export_category("Skills - AttackSpeed")
+@export var btn_increase_attackspeed: TextureButton
+@export var label_increase_attackSpeed: Label
+@export var increase_attackspeed_duration: Timer
+@export var increase_attackspeed_cooldown: Timer
+
 @export var box_info: Control
 
 
@@ -43,6 +49,7 @@ func load_skill_cooldown() -> void:
 	increase_attack_cooldown.start(data["increase_attack"]["aux_cooldown"])
 	increase_gold_cooldown.start(data["increase_gold"]["aux_cooldown"])
 	increase_critical_cooldown.start(data["increase_critical"]["aux_cooldown"])
+	increase_attackspeed_cooldown.start(data["increase_attackspeed"]["aux_cooldown"])
 	
 	for button in get_tree().get_nodes_in_group("btns_skill"):
 		var cooldown = button.get_node("Cooldown")
@@ -66,6 +73,7 @@ func show_label_timer() -> void:
 			label.text = "%.0f" % cooldown.time_left
 
 
+# envia o botao selecionado para a funcao get_skill_info() no script box_skill_info
 func on_skill_info_button_pressed(button: TextureButton) -> void:
 	box_info.show()
 	get_tree().call_group("box_skill_info", "get_skill_info", button)
@@ -90,6 +98,10 @@ func on_button_pressed(button: TextureButton) -> void:
 			Player.critical_chance *= Player.increase_critical_multiplier
 			increase_critical_duration.start(Player.increase_critical_duration)
 			label_increase_critical.show()
+			
+		"IncreaseAttackSpeed":
+			increase_attackspeed_duration.start(Player.increase_attackspeed_duration)
+			label_increase_attackSpeed.show()
 
 
 func on_timer_duration_timeout(button: TextureButton) -> void:
@@ -105,6 +117,9 @@ func on_timer_duration_timeout(button: TextureButton) -> void:
 		"IncreaseCritical":
 			Player.critical_chance /= Player.increase_critical_multiplier
 			increase_critical_cooldown.start(Player.increase_critical_cooldown)
+			
+		"IncreaseAttackSpeed":
+			increase_attackspeed_cooldown.start(Player.increase_attackspeed_cooldown)
 
 
 func on_timer_cooldown_timeout(button: TextureButton) -> void:
@@ -128,6 +143,8 @@ func _notification(what: int) -> void:
 			data["increase_gold"]["aux_cooldown"] = float(increase_gold_cooldown.time_left)
 		if increase_critical_cooldown.time_left >= 0:
 			data["increase_critical"]["aux_cooldown"] = float(increase_critical_cooldown.time_left)
+		if increase_attackspeed_cooldown.time_left >= 0:
+			data["increase_attackspeed"]["aux_cooldown"] = float(increase_attackspeed_cooldown.time_left)
 		
 		Data.save_data()
 		get_tree().quit()

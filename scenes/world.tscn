@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://dtyw4v44a8ka4"]
+[gd_scene load_steps=81 format=3 uid="uid://dtyw4v44a8ka4"]
 
 [ext_resource type="Texture2D" uid="uid://bs4f04v00hl85" path="res://assets/backgrounds/Horizontal/1.png" id="1_m0651"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_mqmc1"]
@@ -64,6 +64,8 @@
 [ext_resource type="PackedScene" uid="uid://81y6vvel1y5x" path="res://scenes/box_skill_info.tscn" id="51_5f82i"]
 [ext_resource type="PackedScene" uid="uid://c6lhyr4se57yr" path="res://scenes/rewards_offline.tscn" id="51_y8onn"]
 [ext_resource type="Texture2D" uid="uid://c5onxi1s6n3ci" path="res://assets/prefabs/icons/interrogation-point.png" id="61_v3wpb"]
+[ext_resource type="Texture2D" uid="uid://cycc5sf6td3w5" path="res://assets/skills/08.png" id="65_asbbg"]
+[ext_resource type="Texture2D" uid="uid://7fknnavhqyfo" path="res://assets/prefabs/box/MessageBox01.png" id="65_waswf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_cavrc"]
 font = ExtResource("23_fp0v3")
@@ -249,20 +251,21 @@ text = "10 / 10"
 label_settings = SubResource("LabelSettings_qp1ac")
 
 [node name="LabelGameTime" type="Label" parent="Labels"]
-offset_left = 418.5
-offset_top = 558.0
-offset_right = 614.5
-offset_bottom = 611.0
+offset_left = 413.0
+offset_top = 580.0
+offset_right = 609.0
+offset_bottom = 633.0
 text = "Tempo de Jogo: 
 00:00:00"
 label_settings = SubResource("LabelSettings_mvwma")
 horizontal_alignment = 1
 
 [node name="LabelPopupGold" type="Label" parent="Labels"]
-offset_left = 221.0
-offset_top = 499.0
-offset_right = 250.0
-offset_bottom = 513.0
+visible = false
+offset_left = 174.0
+offset_top = 505.0
+offset_right = 281.0
+offset_bottom = 519.0
 text = "+ 125"
 label_settings = SubResource("LabelSettings_p44eg")
 horizontal_alignment = 1
@@ -274,9 +277,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -294.0
-offset_top = 156.0
+offset_top = 160.0
 offset_right = 294.0
-offset_bottom = 196.0
+offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 75
@@ -309,10 +312,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -267.0
-offset_top = -147.0
-offset_right = -215.0
-offset_bottom = -116.0
+offset_left = -275.0
+offset_top = -131.0
+offset_right = -223.0
+offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 0
 texture_normal = ExtResource("27_tjtnp")
@@ -356,10 +359,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -266.0
-offset_top = -103.0
-offset_right = -214.0
-offset_bottom = -72.0
+offset_left = -274.0
+offset_top = -87.0
+offset_right = -222.0
+offset_bottom = -56.0
 grow_horizontal = 2
 grow_vertical = 0
 texture_normal = ExtResource("27_tjtnp")
@@ -453,7 +456,7 @@ grow_vertical = 0
 text = "Reset"
 label_settings = SubResource("LabelSettings_57f3j")
 
-[node name="Skills" type="Node" parent="." node_paths=PackedStringArray("btn_increase_attack", "label_increase_attack", "increase_attack_duration", "increase_attack_cooldown", "btn_increase_gold", "label_increase_gold", "increase_gold_duration", "increase_gold_cooldown", "btn_increase_critical", "label_increase_critical", "increase_critical_duration", "increase_critical_cooldown", "box_info")]
+[node name="Skills" type="Node" parent="." node_paths=PackedStringArray("btn_increase_attack", "label_increase_attack", "increase_attack_duration", "increase_attack_cooldown", "btn_increase_gold", "label_increase_gold", "increase_gold_duration", "increase_gold_cooldown", "btn_increase_critical", "label_increase_critical", "increase_critical_duration", "increase_critical_cooldown", "btn_increase_attackspeed", "label_increase_attackSpeed", "increase_attackspeed_duration", "increase_attackspeed_cooldown", "box_info")]
 script = ExtResource("24_y8pb2")
 btn_increase_attack = NodePath("IncreaseAttack")
 label_increase_attack = NodePath("IncreaseAttack/Label")
@@ -467,6 +470,10 @@ btn_increase_critical = NodePath("IncreaseCritical")
 label_increase_critical = NodePath("IncreaseCritical/Label")
 increase_critical_duration = NodePath("IncreaseCritical/Duration")
 increase_critical_cooldown = NodePath("IncreaseCritical/Cooldown")
+btn_increase_attackspeed = NodePath("IncreaseAttackSpeed/Button")
+label_increase_attackSpeed = NodePath("IncreaseAttackSpeed/Label")
+increase_attackspeed_duration = NodePath("IncreaseAttackSpeed/Duration")
+increase_attackspeed_cooldown = NodePath("IncreaseAttackSpeed/Cooldown")
 box_info = NodePath("../Interface/BoxSkillInfo")
 
 [node name="IncreaseAttack" type="TextureButton" parent="Skills" groups=["btns_skill"]]
@@ -476,9 +483,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -88.0
+offset_left = -136.0
 offset_top = 80.0
-offset_right = -38.0
+offset_right = -86.0
 offset_bottom = 130.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -525,9 +532,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -21.0
+offset_left = -69.0
 offset_top = 80.0
-offset_right = 29.0
+offset_right = -19.0
 offset_bottom = 130.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -574,9 +581,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 46.0
+offset_left = -2.0
 offset_top = 80.0
-offset_right = 96.0
+offset_right = 48.0
 offset_bottom = 130.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -616,6 +623,55 @@ one_shot = true
 wait_time = 0.05
 one_shot = true
 
+[node name="IncreaseAttackSpeed" type="TextureButton" parent="Skills" groups=["btns_skill"]]
+self_modulate = Color(1, 1, 1, 0.784314)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 62.0
+offset_top = 80.0
+offset_right = 112.0
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("65_asbbg")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Button" type="TextureButton" parent="Skills/IncreaseAttackSpeed"]
+custom_minimum_size = Vector2(17, 20)
+layout_mode = 0
+offset_left = 16.0
+offset_top = -11.0
+offset_right = 33.0
+offset_bottom = 9.0
+texture_normal = ExtResource("61_v3wpb")
+
+[node name="Label" type="Label" parent="Skills/IncreaseAttackSpeed"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -15.5
+offset_right = 0.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_donak")
+
+[node name="Duration" type="Timer" parent="Skills/IncreaseAttackSpeed"]
+one_shot = true
+
+[node name="Cooldown" type="Timer" parent="Skills/IncreaseAttackSpeed"]
+wait_time = 0.05
+one_shot = true
+
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -625,6 +681,17 @@ offset_top = 494.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="Background" type="TextureRect" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.5
+offset_bottom = 1.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("65_waswf")
 
 [node name="TimerPlayerAttack" type="Timer" parent="."]
 

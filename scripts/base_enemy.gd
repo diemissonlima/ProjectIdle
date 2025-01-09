@@ -1,12 +1,12 @@
 extends StaticBody2D
 
 enum EnemyType {
-	WEAK, NORMAL, ELITE
+	NORMAL, BOSS
 }
 
 var enemy_type: EnemyType = EnemyType.NORMAL
-var health: int = 15 # vida
-var max_health: int = 15 # vida maxima
+var health: float = 0.0 # vida
+var max_health: float = 0.0
 
 var dropped_gold: int
 var drop_items_list: Dictionary = {}
@@ -14,40 +14,35 @@ var drop_items_list: Dictionary = {}
 
 func _ready() -> void:
 	drop_items_list = get_drop_items()
-	randomize_enemy_type()
+	set_enemy_type()
 	increase_health()
 	set_progresbar()
+	drop()
 
 
 func _process(_delta: float) -> void:
-	$TextureProgressBar/Label.text = str(health) +  " / " + str(max_health)
+	$TextureProgressBar/Label.text = str(round(health)) +  " / " + str(round(max_health))
 	$TextureProgressBar.value = health
 
 
-func randomize_enemy_type() -> void:
-	var random_value: float = randf()
-	if random_value < 0.7:
-		enemy_type = EnemyType.WEAK
-	elif random_value < 0.95:
+func set_enemy_type() -> void:
+	if World.stage_progress < 10:
 		enemy_type = EnemyType.NORMAL
 	else:
-		enemy_type = EnemyType.ELITE
+		enemy_type = EnemyType.BOSS
 
 
 func increase_health() -> void:
-	var base_health = 10  # Vida inicial
-	var scaling_factor = 1.10  # Fator de crescimento exponencial
+	var base_health: float = 10.0  # Vida inicial
+	var scaling_factor: float = 1.10  # Fator de crescimento exponencial
 	max_health = base_health * pow(scaling_factor, World.estagio)
 	
 	match enemy_type:
 		EnemyType.NORMAL:
 			max_health = max_health * 1.10
-			
-		EnemyType.ELITE:
-			max_health = max_health * 1.20
-
-	if World.stage_progress == 10:
-		max_health += max_health * 10
+		
+		EnemyType.BOSS:
+			max_health += max_health * 10
 		
 	health = max_health
 
@@ -56,14 +51,11 @@ func drop() -> void:
 	var base_gold: int = randi_range(0, 5)
 	
 	match enemy_type:
-		0: # enemy WEAK
+		0: # enemy NORMAL
 			base_gold += 5 + (World.estagio * 2)
-		
-		1: # enemy NORMAL
-			base_gold += 10 + (World.estagio * 4)
-			
-		2: # enemy ELITE
-			base_gold += 20 + (World.estagio * 8)
+
+		1: # enemy BOSS
+			base_gold += (20 + World.estagio * 8) * 2
 	
 	if World.reset > 0:
 		var percent: float = World.reset * 0.5
@@ -72,9 +64,8 @@ func drop() -> void:
 	if Player.gold_skill_on:
 		base_gold *= Player.increase_gold_multiplier
 		
-	if World.stage_progress == 10:
-		base_gold *= 5
-		
+	dropped_gold = round(base_gold)
+	
 		#for item in drop_items_list:
 			#var spawn_probability: float = drop_items_list[item]["drop_chance"]
 			#var rng: float = randf()
@@ -86,8 +77,6 @@ func drop() -> void:
 				#drop_item(item, drop_items_list[item])
 		#
 		#print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
-	
-	dropped_gold = base_gold
 
 
 func get_drop_items() -> Dictionary:

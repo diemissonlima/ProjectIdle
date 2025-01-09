@@ -49,6 +49,15 @@ func get_skill_info(button: TextureButton) -> void:
 			label_skill_description.text = "Aumenta a Chance de Crítico em " + str(Player.increase_critical_multiplier) + "x por " + str(Player.increase_critical_duration) + " segundos"
 			upgrade_cost = skill_level[str(Player.critical_skill_level + 1)]
 			label_upgrade_cost.text = "Custo " + str(upgrade_cost) + " Skill Point(s)"
+		
+		"IncreaseAttackSpeed":
+			skill_name = "Attack Speed"
+			skill_icon = "res://assets/skills/08.png"
+			label_skill_level.text = "Lvl " + str(Player.attackspeed_skill_level)
+			label_skill_name.text = "Increase Attack Speed"
+			label_skill_description.text = "Aumenta a Velocidade de Ataque em " + str(Player.attack_speed) + "s por " + str(Player.increase_attackspeed_duration) + " segundos"
+			upgrade_cost = skill_level[str(Player.attackspeed_skill_level + 1)]
+			label_upgrade_cost.text = "Custo " + str(upgrade_cost) + " Skill Point(s)"
 			
 	$SkillIcon.texture = load(skill_icon)
 
@@ -56,9 +65,11 @@ func get_skill_info(button: TextureButton) -> void:
 func increase_skill() -> void:
 	label_skill_points.text = "Skill Points: " + str(Player.skill_points)
 	
+	if Player.skill_points < upgrade_cost:
+		return
+	
 	match skill_name:
 		"Attack":
-			if Player.skill_points >= upgrade_cost:
 				Player.skill_points -= upgrade_cost
 				Player.attack_skill_level += 1
 				Player.increase_attack_multiplier += 0.05
@@ -71,7 +82,6 @@ func increase_skill() -> void:
 				label_upgrade_cost.text = "Custo " + str(upgrade_cost) + " Skill Point(s)"
 			
 		"Gold":
-			if Player.skill_points >= upgrade_cost:
 				Player.skill_points -= upgrade_cost
 				Player.gold_skill_level += 1
 				Player.increase_gold_multiplier += 0.05
@@ -84,7 +94,6 @@ func increase_skill() -> void:
 				label_upgrade_cost.text = "Custo " + str(upgrade_cost) + " Skill Point(s)"
 			
 		"Critical Chance":
-			if Player.skill_points >= upgrade_cost:
 				Player.skill_points -= upgrade_cost
 				Player.critical_skill_level += 1
 				Player.increase_critical_multiplier += 0.05
@@ -94,6 +103,16 @@ func increase_skill() -> void:
 				label_skill_name.text = "Increase Critical Chance"
 				label_skill_description.text = "Aumenta a Chance de Crítico em " + str(Player.increase_critical_multiplier) + "x por " + str(Player.increase_attack_duration) + " segundos"
 				upgrade_cost = skill_level[str(Player.critical_skill_level + 1)]
+				label_upgrade_cost.text = "Custo " + str(upgrade_cost) + " Skill Point(s)"
+		
+		"Attack Speed":
+				Player.skill_points -= upgrade_cost
+				Player.increase_attackspeed_duration += 1
+				
+				label_skill_level.text = "Lvl " + str(Player.attackspeed_skill_level)
+				label_skill_name.text = "Increase Attack Speed"
+				label_skill_description.text = "Aumenta a Velocidade de Ataque em " + str(Player.attack_speed) + "s por " + str(Player.increase_attackspeed_duration) + " segundos"
+				upgrade_cost = skill_level[str(Player.attackspeed_skill_level + 1)]
 				label_upgrade_cost.text = "Custo " + str(upgrade_cost) + " Skill Point(s)"
 		
 	label_skill_points.text = "Skill Points: " + str(Player.skill_points)
