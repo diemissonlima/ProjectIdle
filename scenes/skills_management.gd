@@ -100,6 +100,9 @@ func on_button_pressed(button: TextureButton) -> void:
 			label_increase_critical.show()
 			
 		"IncreaseAttackSpeed":
+			Player.attack_speed -= Player.increase_attackspeed_multiplier
+			Player.attackspeed_skill_on = true
+			
 			increase_attackspeed_duration.start(Player.increase_attackspeed_duration)
 			label_increase_attackSpeed.show()
 
@@ -119,6 +122,8 @@ func on_timer_duration_timeout(button: TextureButton) -> void:
 			increase_critical_cooldown.start(Player.increase_critical_cooldown)
 			
 		"IncreaseAttackSpeed":
+			Player.attack_speed = 0.5
+			Player.attackspeed_skill_on = false
 			increase_attackspeed_cooldown.start(Player.increase_attackspeed_cooldown)
 
 

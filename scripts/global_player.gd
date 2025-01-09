@@ -38,6 +38,7 @@ var x_upgrade_ataque: int = 1
 var x_upgrade_time: int = 1
 
 var gold_skill_on: bool = false
+var attackspeed_skill_on: bool = false
 
 
 func _ready() -> void:

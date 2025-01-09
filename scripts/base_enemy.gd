@@ -57,9 +57,9 @@ func drop() -> void:
 		1: # enemy BOSS
 			base_gold += (20 + World.estagio * 8) * 2
 	
-	if World.reset > 0:
-		var percent: float = World.reset * 0.5
-		base_gold += base_gold * percent
+	#if World.reset > 0:
+		#var percent: float = World.reset * 0.5
+		#base_gold += base_gold * percent
 		
 	if Player.gold_skill_on:
 		base_gold *= Player.increase_gold_multiplier

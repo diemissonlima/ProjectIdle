@@ -195,6 +195,11 @@ func _on_timer_player_attack_timeout() -> void: # sinal que é chamado quando o 
 		
 	else:
 		take_enemy_damage(Player.damage) # causa dano normal ao inimigo
+	
+	if Player.attackspeed_skill_on:
+		timer_player_attack.start(Player.attack_speed)
+	else:
+		timer_player_attack.start(Player.attack_speed)
 
 
 func _on_timer_timeout() -> void: # sinal que é chamado quando o timer do estagio zera

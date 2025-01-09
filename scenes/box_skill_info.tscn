@@ -78,9 +78,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -41.0
-offset_top = 8.0
+offset_top = 15.0
 offset_right = -16.0
-offset_bottom = 26.0
+offset_bottom = 33.0
 grow_horizontal = 0
 texture_normal = ExtResource("3_wjx5i")
 

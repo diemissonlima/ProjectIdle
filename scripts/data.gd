@@ -50,7 +50,7 @@ var data_management: Dictionary = {
 			
 			"increase_attackspeed": {
 				"level": 1,
-				"multiplier": 0.1,
+				"multiplier": 0.25,
 				"duration": 30.0,
 				"cooldown": 150.0,
 				"aux_cooldown": 0.0
@@ -140,7 +140,7 @@ func reset_savegame() -> void:
 			
 			"increase_attackspeed": {
 				"level": 1,
-				"multiplier": 0.1,
+				"multiplier": 0.25,
 				"duration": 30.0,
 				"cooldown": 150.0,
 				"aux_cooldown": 0.0
