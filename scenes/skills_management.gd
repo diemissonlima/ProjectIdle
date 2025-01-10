@@ -46,14 +46,34 @@ func connect_button_signal() -> void:
 
 func load_skill_cooldown() -> void:
 	var data = Data.data_management["player"]["skills"]
-	increase_attack_cooldown.start(data["increase_attack"]["aux_cooldown"])
-	increase_gold_cooldown.start(data["increase_gold"]["aux_cooldown"])
-	increase_critical_cooldown.start(data["increase_critical"]["aux_cooldown"])
-	increase_attackspeed_cooldown.start(data["increase_attackspeed"]["aux_cooldown"])
+	
+	if data["increase_attack"]["aux_cooldown"] > 0:
+		increase_attack_cooldown.start(data["increase_attack"]["aux_cooldown"])
+	if data["increase_gold"]["aux_cooldown"] > 0:
+		increase_gold_cooldown.start(data["increase_gold"]["aux_cooldown"])
+	if data["increase_critical"]["aux_cooldown"] > 0:
+		increase_critical_cooldown.start(data["increase_critical"]["aux_cooldown"])
+	if data["increase_attackspeed"]["aux_cooldown"] > 0:
+		increase_attackspeed_cooldown.start(data["increase_attackspeed"]["aux_cooldown"])
+	
+	if data["increase_attack"]["aux_duration"] > 0:
+		increase_attack_duration.start(data["increase_attack"]["aux_duration"])
+	if data["increase_gold"]["aux_duration"] > 0:
+		increase_gold_duration.start(data["increase_gold"]["aux_duration"])
+	if data["increase_critical"]["aux_duration"] > 0:
+		increase_critical_duration.start(data["increase_critical"]["aux_duration"])
+	if data["increase_attackspeed"]["aux_duration"] > 0:
+		increase_attackspeed_duration.start(data["increase_attackspeed"]["aux_duration"])
 	
 	for button in get_tree().get_nodes_in_group("btns_skill"):
+		var duration = button.get_node("Duration")
 		var cooldown = button.get_node("Cooldown")
 		var label = button.get_node("Label")
+		
+		if duration.time_left > 0:
+			button.disabled = true
+			button.self_modulate = Color(0.3, 0.3, 0.3)
+			label.show()
 		
 		if cooldown.time_left > 0:
 			button.disabled = true
@@ -69,8 +89,31 @@ func show_label_timer() -> void:
 		
 		if duration.time_left > 0:
 			label.text = "%.0f" % duration.time_left
+			
 		if cooldown.time_left > 0:
 			label.text = "%.0f" % cooldown.time_left
+
+
+func save_timers_left() -> void:
+	var data = Data.data_management["player"]["skills"]
+	
+	if increase_attack_duration.time_left >= 0:
+		data["increase_attack"]["aux_duration"] = float(increase_attack_duration.time_left)
+	if increase_gold_duration.time_left >= 0:
+		data["increase_gold"]["aux_duration"] = float(increase_gold_duration.time_left)
+	if increase_critical_duration.time_left >= 0:
+		data["increase_critical"]["aux_duration"] = float(increase_critical_duration.time_left)
+	if increase_attackspeed_duration.time_left >= 0:
+		data["increase_attackspeed"]["aux_duration"] = float(increase_attackspeed_duration.time_left)
+		
+	if increase_attack_cooldown.time_left >= 0:
+		data["increase_attack"]["aux_cooldown"] = float(increase_attack_cooldown.time_left)
+	if increase_gold_cooldown.time_left >= 0:
+		data["increase_gold"]["aux_cooldown"] = float(increase_gold_cooldown.time_left)
+	if increase_critical_cooldown.time_left >= 0:
+		data["increase_critical"]["aux_cooldown"] = float(increase_critical_cooldown.time_left)
+	if increase_attackspeed_cooldown.time_left >= 0:
+		data["increase_attackspeed"]["aux_cooldown"] = float(increase_attackspeed_cooldown.time_left)
 
 
 # envia o botao selecionado para a funcao get_skill_info() no script box_skill_info
@@ -135,21 +178,7 @@ func on_timer_cooldown_timeout(button: TextureButton) -> void:
 
 func _notification(what: int) -> void:
 	if what == 1006:
-		var data = Data.data_management["player"]["skills"]
-		
-		if increase_attack_duration.time_left > 0:
-			Player.damage /= Player.increase_attack_multiplier
-		if increase_critical_duration.time_left > 0:
-			Player.critical_chance /= data["increase_critical"]["multiplier"]
-			
-		if increase_attack_cooldown.time_left >= 0:
-			data["increase_attack"]["aux_cooldown"] = float(increase_attack_cooldown.time_left)
-		if increase_gold_cooldown.time_left >= 0:
-			data["increase_gold"]["aux_cooldown"] = float(increase_gold_cooldown.time_left)
-		if increase_critical_cooldown.time_left >= 0:
-			data["increase_critical"]["aux_cooldown"] = float(increase_critical_cooldown.time_left)
-		if increase_attackspeed_cooldown.time_left >= 0:
-			data["increase_attackspeed"]["aux_cooldown"] = float(increase_attackspeed_cooldown.time_left)
+		save_timers_left()
 		
 		Data.save_data()
 		get_tree().quit()

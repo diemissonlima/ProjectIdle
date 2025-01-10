@@ -115,8 +115,8 @@ func killer_enemy() -> void:
 	if not stop_progress:
 		World.stage_progress += 1
 		if World.stage_progress > 10:
-			Player.skill_points += 1
-			#if World.estagio % 5 == 0:
+			if World.estagio % 5 == 0:
+				Player.skill_points += 1
 				
 			World.estagio += 1 # incrementa o estagio em + 1
 			World.stage_progress = 1
