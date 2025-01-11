@@ -1,14 +1,14 @@
+Timer
 TextureButton
 TextureRect
+VBoxContainer
 Label
+ColorRect
 Button
 Control
-VBoxContainer
 HBoxContainer
-ColorRect
 CanvasLayer
 AnimatedSprite2D
-Timer
 Node
 TextureProgressBar
 Marker2D

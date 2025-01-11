@@ -53,3 +53,4 @@ offset_bottom = 6.5
 grow_horizontal = 2
 grow_vertical = 2
 label_settings = SubResource("LabelSettings_ixu8a")
+vertical_alignment = 1

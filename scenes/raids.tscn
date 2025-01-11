@@ -1,0 +1,679 @@
+[gd_scene load_steps=16 format=3 uid="uid://dt5qe7guofq8w"]
+
+[ext_resource type="Texture2D" uid="uid://7fknnavhqyfo" path="res://assets/prefabs/box/MessageBox01.png" id="1_gwr62"]
+[ext_resource type="Script" path="res://scripts/raids.gd" id="1_iq11o"]
+[ext_resource type="Texture2D" uid="uid://rhqn713a0yms" path="res://assets/characters/1.png" id="2_aixqq"]
+[ext_resource type="FontFile" uid="uid://c17ascng2deth" path="res://assets/font/njo_14.ttf" id="3_0fdb3"]
+[ext_resource type="Texture2D" uid="uid://ctldyihhvugjg" path="res://assets/prefabs/buttons/ButtonHover.png" id="4_jj6vw"]
+[ext_resource type="Texture2D" uid="uid://j2khku0ce0y2" path="res://assets/prefabs/buttons/ButtonActive.png" id="5_qomfh"]
+[ext_resource type="Texture2D" uid="uid://dj4vlnlagw7qc" path="res://assets/characters/4.png" id="6_6uqtv"]
+[ext_resource type="Texture2D" uid="uid://c0db4mkmjjpcq" path="res://assets/characters/13.png" id="7_mg8bc"]
+[ext_resource type="Texture2D" uid="uid://dvsioohm5fxr4" path="res://assets/prefabs/icons/X.png" id="8_xrlkn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7s6ow"]
+font = ExtResource("3_0fdb3")
+
+[sub_resource type="LabelSettings" id="LabelSettings_atnjo"]
+font = ExtResource("3_0fdb3")
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_e4y32"]
+font = ExtResource("3_0fdb3")
+font_size = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_2fn60"]
+font = ExtResource("3_0fdb3")
+
+[sub_resource type="LabelSettings" id="LabelSettings_1vbat"]
+font = ExtResource("3_0fdb3")
+font_size = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_m4qf0"]
+font = ExtResource("3_0fdb3")
+font_size = 12
+
+[node name="Raids" type="Control" node_paths=PackedStringArray("raid_damage_name", "raid_damage_gain", "raid_damage_hp", "raid_damage_time_left", "raid_damage_cooldown", "raid_gold_name", "raid_gold_gain", "raid_gold_hp", "raid_gold_time_left", "raid_gold_cooldown", "raid_critical_name", "raid_critical_gain", "raid_critical_hp", "raid_critical_time_left", "raid_critical_cooldown")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iq11o")
+raid_damage_name = NodePath("BackgroundDano/Name")
+raid_damage_gain = NodePath("BackgroundDano/BackgroundInfo/Gain")
+raid_damage_hp = NodePath("BackgroundDano/BackgroundFight/BossHP")
+raid_damage_time_left = NodePath("BackgroundDano/BackgroundFight/TimeLeftNextRaid")
+raid_damage_cooldown = NodePath("BackgroundDano/Cooldown")
+raid_gold_name = NodePath("BackgroundGold/Name")
+raid_gold_gain = NodePath("BackgroundGold/BackgroundInfo/Gain")
+raid_gold_hp = NodePath("BackgroundGold/BackgroundFight/BossHP")
+raid_gold_time_left = NodePath("BackgroundGold/BackgroundFight/TimeLeftNextRaid")
+raid_gold_cooldown = NodePath("BackgroundGold/Cooldown")
+raid_critical_name = NodePath("BackgroundCritical/Name")
+raid_critical_gain = NodePath("BackgroundCritical/BackgroundInfo/Gain")
+raid_critical_hp = NodePath("BackgroundCritical/BackgroundFight/BossHP")
+raid_critical_time_left = NodePath("BackgroundCritical/BackgroundFight/TimeLeftNextRaid")
+raid_critical_cooldown = NodePath("BackgroundCritical/Cooldown")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BackgroundDano" type="TextureRect" parent="." groups=["raids"]]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -340.0
+offset_top = 12.0
+offset_right = 340.0
+offset_bottom = 222.0
+grow_horizontal = 2
+texture = ExtResource("1_gwr62")
+expand_mode = 1
+
+[node name="Sprite" type="TextureRect" parent="BackgroundDano"]
+custom_minimum_size = Vector2(160, 142)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 40.0
+offset_top = -55.0
+offset_right = 200.0
+offset_bottom = 87.0
+grow_vertical = 2
+texture = ExtResource("2_aixqq")
+expand_mode = 1
+
+[node name="Name" type="Label" parent="BackgroundDano"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -58.0
+offset_top = 16.0
+offset_right = 58.0
+offset_bottom = 39.0
+grow_horizontal = 2
+text = "Dragon Lvl 1"
+label_settings = SubResource("LabelSettings_7s6ow")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackgroundInfo" type="TextureRect" parent="BackgroundDano"]
+custom_minimum_size = Vector2(272, 138)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -47.0
+offset_right = 136.0
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="Gain" type="Label" parent="BackgroundDano/BackgroundInfo"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 8.0
+offset_right = 20.0
+offset_bottom = 31.0
+grow_horizontal = 2
+text = "Dano Herói: 0%"
+label_settings = SubResource("LabelSettings_atnjo")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="BackgroundDano/BackgroundInfo"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -91.0
+offset_top = 47.0
+offset_right = 103.0
+offset_bottom = 76.0
+grow_horizontal = 2
+text = "Para cada 5 níveis o dano aumenta em 50%"
+label_settings = SubResource("LabelSettings_e4y32")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="AdditionalRewards" type="Label" parent="BackgroundDano/BackgroundInfo"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -91.0
+offset_top = 89.0
+offset_right = 103.0
+offset_bottom = 118.0
+grow_horizontal = 2
+text = "Recompensas Adicionais:
++ 5 Skill Points"
+label_settings = SubResource("LabelSettings_e4y32")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="BackgroundFight" type="TextureRect" parent="BackgroundDano"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -197.0
+offset_top = -47.0
+offset_right = -25.0
+offset_bottom = 91.0
+grow_horizontal = 0
+grow_vertical = 2
+expand_mode = 1
+
+[node name="BossHP" type="Label" parent="BackgroundDano/BackgroundFight"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -49.5
+offset_right = 31.0
+offset_bottom = -26.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "HP: 3500"
+label_settings = SubResource("LabelSettings_2fn60")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimeLeftNextRaid" type="Label" parent="BackgroundDano/BackgroundFight"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -47.0
+offset_top = -20.5
+offset_right = 47.0
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Próxima Raide:
+34 m : 55 s"
+label_settings = SubResource("LabelSettings_1vbat")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Fight" type="TextureButton" parent="BackgroundDano/BackgroundFight"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -23.0
+offset_top = -45.0
+offset_right = 22.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("4_jj6vw")
+texture_pressed = ExtResource("4_jj6vw")
+texture_hover = ExtResource("5_qomfh")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="BackgroundDano/BackgroundFight/Fight"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -17.5
+offset_top = -6.5
+offset_right = 17.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Lutar"
+label_settings = SubResource("LabelSettings_m4qf0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cooldown" type="Timer" parent="BackgroundDano"]
+wait_time = 900.0
+one_shot = true
+
+[node name="BackgroundGold" type="TextureRect" parent="." groups=["raids"]]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -340.0
+offset_top = 244.0
+offset_right = 340.0
+offset_bottom = 454.0
+grow_horizontal = 2
+texture = ExtResource("1_gwr62")
+expand_mode = 1
+
+[node name="Sprite" type="TextureRect" parent="BackgroundGold"]
+custom_minimum_size = Vector2(160, 142)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 40.0
+offset_top = -55.0
+offset_right = 200.0
+offset_bottom = 87.0
+grow_vertical = 2
+texture = ExtResource("6_6uqtv")
+expand_mode = 1
+
+[node name="Name" type="Label" parent="BackgroundGold"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -58.0
+offset_top = 16.0
+offset_right = 58.0
+offset_bottom = 39.0
+grow_horizontal = 2
+text = "Dragon Lvl 1"
+label_settings = SubResource("LabelSettings_7s6ow")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackgroundInfo" type="TextureRect" parent="BackgroundGold"]
+custom_minimum_size = Vector2(272, 138)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -46.0
+offset_right = 136.0
+offset_bottom = 92.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="Gain" type="Label" parent="BackgroundGold/BackgroundInfo"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 8.0
+offset_right = 20.0
+offset_bottom = 31.0
+grow_horizontal = 2
+text = "Gold Drop: 0%"
+label_settings = SubResource("LabelSettings_atnjo")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="BackgroundGold/BackgroundInfo"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -91.0
+offset_top = 47.0
+offset_right = 103.0
+offset_bottom = 76.0
+grow_horizontal = 2
+text = "Para cada nível o aumenta o drop de gold em 10%"
+label_settings = SubResource("LabelSettings_e4y32")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="AdditionalRewards" type="Label" parent="BackgroundGold/BackgroundInfo"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -91.0
+offset_top = 89.0
+offset_right = 103.0
+offset_bottom = 118.0
+grow_horizontal = 2
+text = "Recompensas Adicionais:
++ 1 Skill Point"
+label_settings = SubResource("LabelSettings_e4y32")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="BackgroundFight" type="TextureRect" parent="BackgroundGold"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -197.0
+offset_top = -47.0
+offset_right = -25.0
+offset_bottom = 91.0
+grow_horizontal = 0
+grow_vertical = 2
+expand_mode = 1
+
+[node name="BossHP" type="Label" parent="BackgroundGold/BackgroundFight"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -49.5
+offset_right = 31.0
+offset_bottom = -26.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "HP: 3500"
+label_settings = SubResource("LabelSettings_2fn60")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimeLeftNextRaid" type="Label" parent="BackgroundGold/BackgroundFight"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -47.0
+offset_top = -20.5
+offset_right = 47.0
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Próxima Raide:
+34 m : 55 s"
+label_settings = SubResource("LabelSettings_1vbat")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Fight" type="TextureButton" parent="BackgroundGold/BackgroundFight"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -23.0
+offset_top = -45.0
+offset_right = 22.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("4_jj6vw")
+texture_pressed = ExtResource("4_jj6vw")
+texture_hover = ExtResource("5_qomfh")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="BackgroundGold/BackgroundFight/Fight"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -17.5
+offset_top = -6.5
+offset_right = 17.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Lutar"
+label_settings = SubResource("LabelSettings_m4qf0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cooldown" type="Timer" parent="BackgroundGold"]
+wait_time = 900.0
+one_shot = true
+
+[node name="BackgroundCritical" type="TextureRect" parent="." groups=["raids"]]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -340.0
+offset_top = 476.0
+offset_right = 340.0
+offset_bottom = 686.0
+grow_horizontal = 2
+texture = ExtResource("1_gwr62")
+expand_mode = 1
+
+[node name="Sprite" type="TextureRect" parent="BackgroundCritical"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 40.0
+offset_top = -55.0
+offset_right = 200.0
+offset_bottom = 87.0
+grow_vertical = 2
+texture = ExtResource("7_mg8bc")
+expand_mode = 1
+
+[node name="Name" type="Label" parent="BackgroundCritical"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -58.0
+offset_top = 16.0
+offset_right = 58.0
+offset_bottom = 39.0
+grow_horizontal = 2
+text = "Dragon Lvl 1"
+label_settings = SubResource("LabelSettings_7s6ow")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackgroundInfo" type="TextureRect" parent="BackgroundCritical"]
+custom_minimum_size = Vector2(272, 138)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -47.0
+offset_right = 136.0
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="Gain" type="Label" parent="BackgroundCritical/BackgroundInfo"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 8.0
+offset_right = 20.0
+offset_bottom = 31.0
+grow_horizontal = 2
+text = "Chance Crítica: 0%"
+label_settings = SubResource("LabelSettings_atnjo")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="BackgroundCritical/BackgroundInfo"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -91.0
+offset_top = 47.0
+offset_right = 103.0
+offset_bottom = 76.0
+grow_horizontal = 2
+text = "Para cada nível aumenta a chance de crítico em 1%"
+label_settings = SubResource("LabelSettings_e4y32")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="AdditionalRewards" type="Label" parent="BackgroundCritical/BackgroundInfo"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -91.0
+offset_top = 89.0
+offset_right = 103.0
+offset_bottom = 118.0
+grow_horizontal = 2
+text = "Recompensas Adicionais:
++ 1 Skill Point"
+label_settings = SubResource("LabelSettings_e4y32")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="BackgroundFight" type="TextureRect" parent="BackgroundCritical"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -197.0
+offset_top = -47.0
+offset_right = -25.0
+offset_bottom = 91.0
+grow_horizontal = 0
+grow_vertical = 2
+expand_mode = 1
+
+[node name="BossHP" type="Label" parent="BackgroundCritical/BackgroundFight"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -49.5
+offset_right = 31.0
+offset_bottom = -26.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "HP: 3500"
+label_settings = SubResource("LabelSettings_2fn60")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimeLeftNextRaid" type="Label" parent="BackgroundCritical/BackgroundFight"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -47.0
+offset_top = -20.5
+offset_right = 47.0
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Próxima Raide:
+34 m : 55 s"
+label_settings = SubResource("LabelSettings_1vbat")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Fight" type="TextureButton" parent="BackgroundCritical/BackgroundFight"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -23.0
+offset_top = -45.0
+offset_right = 22.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("4_jj6vw")
+texture_pressed = ExtResource("4_jj6vw")
+texture_hover = ExtResource("5_qomfh")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="BackgroundCritical/BackgroundFight/Fight"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -17.5
+offset_top = -6.5
+offset_right = 17.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Lutar"
+label_settings = SubResource("LabelSettings_m4qf0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cooldown" type="Timer" parent="BackgroundCritical"]
+wait_time = 900.0
+one_shot = true
+
+[node name="TextureButton" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -48.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 48.0
+grow_horizontal = 0
+texture_normal = ExtResource("8_xrlkn")
+ignore_texture_size = true
+stretch_mode = 5
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

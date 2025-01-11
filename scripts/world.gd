@@ -274,6 +274,10 @@ func _on_next_stage_pressed() -> void:
 		timer_player_attack.start(Player.attack_speed)
 
 
+func _on_raides_pressed() -> void:
+	$Interface/Raids.show()
+
+
 func _notification(what: int) -> void:
 	if what == 1006:
 		get_datetime()

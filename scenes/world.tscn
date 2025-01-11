@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://dtyw4v44a8ka4"]
+[gd_scene load_steps=82 format=3 uid="uid://dtyw4v44a8ka4"]
 
 [ext_resource type="Texture2D" uid="uid://bs4f04v00hl85" path="res://assets/backgrounds/Horizontal/1.png" id="1_m0651"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_mqmc1"]
@@ -63,6 +63,7 @@
 [ext_resource type="PackedScene" uid="uid://b5j4ddakarwfi" path="res://scenes/enemies_2/enemy_29.tscn" id="50_vcssp"]
 [ext_resource type="PackedScene" uid="uid://81y6vvel1y5x" path="res://scenes/box_skill_info.tscn" id="51_5f82i"]
 [ext_resource type="PackedScene" uid="uid://c6lhyr4se57yr" path="res://scenes/rewards_offline.tscn" id="51_y8onn"]
+[ext_resource type="PackedScene" uid="uid://dt5qe7guofq8w" path="res://scenes/raids.tscn" id="53_tkji6"]
 [ext_resource type="Texture2D" uid="uid://c5onxi1s6n3ci" path="res://assets/prefabs/icons/interrogation-point.png" id="61_v3wpb"]
 [ext_resource type="Texture2D" uid="uid://cycc5sf6td3w5" path="res://assets/skills/08.png" id="65_asbbg"]
 [ext_resource type="Texture2D" uid="uid://7fknnavhqyfo" path="res://assets/prefabs/box/MessageBox01.png" id="65_waswf"]
@@ -112,15 +113,13 @@ font = ExtResource("13_lkpp6")
 font = ExtResource("13_lkpp6")
 
 [sub_resource type="LabelSettings" id="LabelSettings_d8mo2"]
-font = ExtResource("23_fp0v3")
-font_size = 14
-outline_size = 3
+font = ExtResource("13_lkpp6")
+outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_57f3j"]
-font = ExtResource("23_fp0v3")
-font_size = 12
-outline_size = 3
+font = ExtResource("13_lkpp6")
+outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_donak"]
@@ -163,6 +162,8 @@ enemy_list2 = Array[PackedScene]([ExtResource("2_0hpjr"), ExtResource("3_jhtr8")
 [node name="BoxSkillInfo" parent="Interface" instance=ExtResource("51_5f82i")]
 
 [node name="RewardsOffline" parent="Interface" instance=ExtResource("51_y8onn")]
+
+[node name="Raids" parent="Interface" instance=ExtResource("53_tkji6")]
 
 [node name="Background" type="TextureRect" parent="."]
 self_modulate = Color(1, 1, 1, 0.392157)
@@ -399,7 +400,7 @@ grow_vertical = 2
 text = "Tempo: 150 Gold"
 label_settings = SubResource("LabelSettings_8i3yq")
 
-[node name="Boss" type="TextureButton" parent="Buttons"]
+[node name="Raides" type="TextureButton" parent="Buttons"]
 offset_left = 12.0
 offset_top = 24.0
 offset_right = 72.0
@@ -408,21 +409,23 @@ texture_normal = ExtResource("27_ipvoa")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="Buttons/Boss"]
+[node name="Label" type="Label" parent="Buttons/Raides"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -22.0
-offset_top = 9.0
-offset_right = 22.0
-offset_bottom = 24.0
+offset_left = -26.0
+offset_top = -1.0
+offset_right = 28.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Boss"
+text = "Raides"
 label_settings = SubResource("LabelSettings_d8mo2")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Reset" type="TextureButton" parent="Buttons"]
 anchors_preset = 7
@@ -447,10 +450,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -20.5
-offset_top = 11.0
-offset_right = 20.5
-offset_bottom = 24.0
+offset_left = -19.5
+offset_top = 12.0
+offset_right = 21.5
+offset_bottom = 29.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Reset"
@@ -702,6 +705,7 @@ one_shot = true
 [connection signal="pressed" from="Background/NextStage" to="." method="_on_next_stage_pressed"]
 [connection signal="pressed" from="Buttons/IncreaseAtaque" to="." method="_on_increase_ataque_pressed"]
 [connection signal="pressed" from="Buttons/IncreaseTime" to="." method="_on_increase_time_pressed"]
+[connection signal="pressed" from="Buttons/Raides" to="." method="_on_raides_pressed"]
 [connection signal="pressed" from="Buttons/Reset" to="." method="_on_reset_pressed"]
 [connection signal="timeout" from="TimerPlayerAttack" to="." method="_on_timer_player_attack_timeout"]
 [connection signal="timeout" from="TimerBatalha" to="." method="_on_timer_timeout"]

@@ -1,7 +1,9 @@
 res://scenes/world.tscn
-res://scenes/skills_management.gd
 res://scenes/base_enemy.tscn
 res://scenes/rewards_offline.tscn
 res://scenes/main_menu.tscn
 res://scenes/box_skill_info.tscn
-res://scripts/box_skill_info.gd
+res://scenes/raids.tscn
+res://scripts/world.gd
+res://scripts/raids.gd
+res://scripts/data.gd
