@@ -1,7 +1,8 @@
 extends StaticBody2D
+class_name BaseEnemy
 
 enum EnemyType {
-	NORMAL, BOSS
+	NORMAL, BOSS, BOSS_RAID_DAMAGE, BOSS_RAID_GOLD, BOSS_RAID_CRITICAL
 }
 
 var enemy_type: EnemyType = EnemyType.NORMAL

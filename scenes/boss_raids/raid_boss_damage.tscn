@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdbhowxa3illi"]
+
+[ext_resource type="PackedScene" uid="uid://brqejvbbcws0g" path="res://scenes/base_enemy.tscn" id="1_5d7nc"]
+[ext_resource type="Script" path="res://scripts/raid_boss_damage.gd" id="2_piem6"]
+[ext_resource type="Texture2D" uid="uid://dpr40jl4cvbbp" path="res://assets/characters/18.png" id="3_wxl5p"]
+
+[node name="RaidBossDamage" instance=ExtResource("1_5d7nc")]
+script = ExtResource("2_piem6")
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2(0, -46.5)
+texture = ExtResource("3_wxl5p")

@@ -32,7 +32,7 @@ font_size = 12
 font = ExtResource("3_0fdb3")
 font_size = 12
 
-[node name="Raids" type="Control" node_paths=PackedStringArray("raid_damage_name", "raid_damage_gain", "raid_damage_hp", "raid_damage_time_left", "raid_damage_cooldown", "raid_gold_name", "raid_gold_gain", "raid_gold_hp", "raid_gold_time_left", "raid_gold_cooldown", "raid_critical_name", "raid_critical_gain", "raid_critical_hp", "raid_critical_time_left", "raid_critical_cooldown")]
+[node name="Raids" type="Control" node_paths=PackedStringArray("raid_damage_name", "raid_damage_gain", "raid_damage_hp", "raid_damage_time_left", "raid_damage_cooldown", "raid_gold_name", "raid_gold_gain", "raid_gold_hp", "raid_gold_time_left", "raid_gold_cooldown", "raid_critical_name", "raid_critical_gain", "raid_critical_hp", "raid_critical_time_left", "raid_critical_cooldown") groups=["raids_management"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -676,4 +676,7 @@ texture_normal = ExtResource("8_xrlkn")
 ignore_texture_size = true
 stretch_mode = 5
 
+[connection signal="pressed" from="BackgroundDano/BackgroundFight/Fight" to="." method="_on_raid_damage_fight_pressed"]
+[connection signal="pressed" from="BackgroundGold/BackgroundFight/Fight" to="." method="_on_raid_gold_fight_pressed"]
+[connection signal="pressed" from="BackgroundCritical/BackgroundFight/Fight" to="." method="_on_raid_critical_fight_pressed"]
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

@@ -69,8 +69,8 @@ var data_management: Dictionary = {
 	"raids": {
 		"raid_damage": {
 			"level": 5,
-			"hp": 1500,
-			"multiplier": 2.5,
+			"hp": 100,
+			"multiplier": 0.0,
 			"time_left": 455.0
 		},
 		

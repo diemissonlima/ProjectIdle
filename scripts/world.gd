@@ -72,6 +72,12 @@ func spawn_enemy() -> void: # função que realiza o spawn do inimigo
 	get_tree().root.call_deferred("add_child", enemy) # adiciona o inimigo à cena
 
 
+func spawn_boss_raid(enemy_path: String) -> void:
+	enemy = load(enemy_path).instantiate()
+	enemy.global_position = spawn_position.global_position # seta a posicao do inimigo na tela
+	get_tree().root.call_deferred("add_child", enemy) # adiciona o inimigo à cena
+
+
 func set_stage_label() -> void:
 	label_stage.text = "Stage: " + str(World.estagio) # exibe o estagio atual
 	label_substage.text = str(World.stage_progress) + " / 10"
@@ -100,20 +106,42 @@ func take_enemy_damage(_damage: float) -> void: # causa dano ao inimigo
 	enemy.health -= _damage # diminui a vida em funcao do dano do player
 	
 	if enemy.health <= 0: # se a vida chegar a zero, chama a função de matar o inimigo
-		killer_enemy()
+		killer_enemy(enemy.enemy_type)
 
 
-func killer_enemy() -> void:
+func killer_enemy(enemy_type) -> void:
+	if enemy_type == 2: # boss raid damage
+		if Data.data_management["raids"]["raid_damage"]["level"] % 5 == 0:
+			Player.skill_points += 5
+			Data.data_management["raids"]["raid_damage"]["multiplier"] += 0.5
+		
+		Data.data_management["raids"]["raid_damage"]["level"] += 1
+	
+	if enemy_type == 3: # boss raid gold
+		Player.skill_points += 1
+		Data.data_management["raids"]["raid_gold"]["multiplier"] += 0.1
+		
+		Data.data_management["raids"]["raid_gold"]["level"] += 1
+	
+	if enemy_type == 4: # boss raid citical
+		Player.skill_points += 1
+		Data.data_management["raids"]["raid_critical"]["multiplier"] += 0.01
+		
+		Data.data_management["raids"]["raid_critical"]["level"] += 1
+	
+	
 	Player.gold += enemy.dropped_gold
 	show_popup_gold(enemy.dropped_gold)
-	
-	World.kills += 1
 	
 	enemy.queue_free() # deleta o inimigo da cena
 	load_background() # carrega um novo background
 	
+	World.kills += 1
+	
+	#if enemy.enemy_type == 0 or enemy.enemy_type == 1:
 	if not stop_progress:
-		World.stage_progress += 1
+		if enemy.enemy_type == 0 or enemy.enemy_type == 1:
+			World.stage_progress += 1
 		if World.stage_progress > 10:
 			if World.estagio % 5 == 0:
 				Player.skill_points += 1
@@ -123,7 +151,7 @@ func killer_enemy() -> void:
 			
 		if World.stage_progress == 10:
 			timer_batalha.start(World.battle_time)
-
+			
 			label_contador.show()
 			label_substage.hide()
 		else:
@@ -151,16 +179,30 @@ func load_background() -> void: # carrega o background do estagio
 	background.texture = load("res://assets/backgrounds/Horizontal/" + str(randi_range(1, 32)) + ".png")
 
 
-func reload_battle() -> void: # função que recarrega a batalha
+# entra aqui quando nao mata o inimigo no tempo e quando o stop progress é true
+func reload_battle() -> void:
+	enemy.queue_free() # deleta o inimigo atual
 	btn_next_stage.show()
 	label_contador.hide()
 	
 	if not stop_progress:
-		World.stage_progress -= 1
+		if World.estagio == 10:
+			World.stage_progress -= 1
 	
 	stop_progress = true
 	spawn_enemy() # spawna o inimigo
 	timer_player_attack.start(Player.attack_speed)
+
+#func reload_battle() -> void:
+	#btn_next_stage.show()
+	#label_contador.hide()
+	#
+	#if not stop_progress:
+		#World.stage_progress -= 1
+	#
+	#stop_progress = true
+	#spawn_enemy() # spawna o inimigo
+	#timer_player_attack.start(Player.attack_speed)
 
 
 func prestige_points() -> int:
@@ -186,6 +228,35 @@ func get_datetime() -> void:
 	Data.data_management["world"]["exit_time"] = time
 
 
+func stop_battle(raid_type: String) -> void:
+	timer_batalha.stop()
+	timer_player_attack.stop()
+	enemy.queue_free()
+	
+	var enemy_path: String = ""
+	
+	match raid_type:
+		"raid_damage":
+			enemy_path = "res://scenes/boss_raids/raid_boss_damage.tscn"
+			
+		"raid_gold":
+			enemy_path = "res://scenes/boss_raids/raid_boss_gold.tscn"
+			
+		"raid_critical":
+			enemy_path = "res://scenes/boss_raids/raid_boss_critical.tscn"
+	
+	spawn_boss_raid(enemy_path)
+	start_raid_battle()
+
+
+func start_raid_battle() -> void:
+	timer_batalha.start(10.0)
+	timer_player_attack.start(Player.attack_speed)
+	
+	label_substage.hide()
+	label_contador.show()
+
+
 func _on_timer_player_attack_timeout() -> void: # sinal que é chamado quando o timer de ataque zera
 	Player.alter_attack() # modifica os valores de ataque
 	
@@ -207,7 +278,7 @@ func _on_timer_timeout() -> void: # sinal que é chamado quando o timer do estag
 	if enemy.health > 0:
 		timer_batalha.stop() # para o contador do estagio
 		timer_player_attack.stop() # para o contador de ataque do player
-		enemy.queue_free() # deleta o inimigo atual
+		#enemy.queue_free() # deleta o inimigo atual
 		
 		reload_battle() # chama a função de recarregar a batalha
 		return
@@ -266,15 +337,20 @@ func _on_next_stage_pressed() -> void:
 	spawn_enemy()
 	stop_progress = false
 	btn_next_stage.hide()
-	label_contador.show()
 	
-	World.stage_progress += 1
-	if World.stage_progress == 10:
+	if World.stage_progress <= 9:
+		label_substage.show()
+		label_contador.hide()
+		
+	elif World.stage_progress == 10:
 		timer_batalha.start(World.battle_time)
 		timer_player_attack.start(Player.attack_speed)
+		label_contador.show()
+		label_substage.hide()
 
 
 func _on_raides_pressed() -> void:
+	get_tree().call_group("raids_management", "update_label")
 	$Interface/Raids.show()
 
 
