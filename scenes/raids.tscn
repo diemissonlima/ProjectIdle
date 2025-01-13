@@ -2,12 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://7fknnavhqyfo" path="res://assets/prefabs/box/MessageBox01.png" id="1_gwr62"]
 [ext_resource type="Script" path="res://scripts/raids.gd" id="1_iq11o"]
-[ext_resource type="Texture2D" uid="uid://rhqn713a0yms" path="res://assets/characters/1.png" id="2_aixqq"]
 [ext_resource type="FontFile" uid="uid://c17ascng2deth" path="res://assets/font/njo_14.ttf" id="3_0fdb3"]
+[ext_resource type="Texture2D" uid="uid://dpr40jl4cvbbp" path="res://assets/characters/18.png" id="3_0qqfr"]
 [ext_resource type="Texture2D" uid="uid://ctldyihhvugjg" path="res://assets/prefabs/buttons/ButtonHover.png" id="4_jj6vw"]
 [ext_resource type="Texture2D" uid="uid://j2khku0ce0y2" path="res://assets/prefabs/buttons/ButtonActive.png" id="5_qomfh"]
-[ext_resource type="Texture2D" uid="uid://dj4vlnlagw7qc" path="res://assets/characters/4.png" id="6_6uqtv"]
-[ext_resource type="Texture2D" uid="uid://c0db4mkmjjpcq" path="res://assets/characters/13.png" id="7_mg8bc"]
+[ext_resource type="Texture2D" uid="uid://dilxelrb6fla5" path="res://assets/characters/187.png" id="7_xp435"]
+[ext_resource type="Texture2D" uid="uid://ehexccwrumfu" path="res://assets/characters/98.png" id="8_jw0q5"]
 [ext_resource type="Texture2D" uid="uid://dvsioohm5fxr4" path="res://assets/prefabs/icons/X.png" id="8_xrlkn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7s6ow"]
@@ -32,7 +32,8 @@ font_size = 12
 font = ExtResource("3_0fdb3")
 font_size = 12
 
-[node name="Raids" type="Control" node_paths=PackedStringArray("raid_damage_name", "raid_damage_gain", "raid_damage_hp", "raid_damage_time_left", "raid_damage_cooldown", "raid_gold_name", "raid_gold_gain", "raid_gold_hp", "raid_gold_time_left", "raid_gold_cooldown", "raid_critical_name", "raid_critical_gain", "raid_critical_hp", "raid_critical_time_left", "raid_critical_cooldown") groups=["raids_management"]]
+[node name="Raids" type="Control" node_paths=PackedStringArray("raid_damage_name", "raid_damage_gain", "raid_damage_hp", "raid_damage_time_left", "raid_damage_cooldown", "button_raid_damage", "raid_gold_name", "raid_gold_gain", "raid_gold_hp", "raid_gold_time_left", "raid_gold_cooldown", "button_raid_gold", "raid_critical_name", "raid_critical_gain", "raid_critical_hp", "raid_critical_time_left", "raid_critical_cooldown", "button_raid_critical") groups=["raids_management"]]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -45,16 +46,19 @@ raid_damage_gain = NodePath("BackgroundDano/BackgroundInfo/Gain")
 raid_damage_hp = NodePath("BackgroundDano/BackgroundFight/BossHP")
 raid_damage_time_left = NodePath("BackgroundDano/BackgroundFight/TimeLeftNextRaid")
 raid_damage_cooldown = NodePath("BackgroundDano/Cooldown")
+button_raid_damage = NodePath("BackgroundDano/BackgroundFight/Fight")
 raid_gold_name = NodePath("BackgroundGold/Name")
 raid_gold_gain = NodePath("BackgroundGold/BackgroundInfo/Gain")
 raid_gold_hp = NodePath("BackgroundGold/BackgroundFight/BossHP")
 raid_gold_time_left = NodePath("BackgroundGold/BackgroundFight/TimeLeftNextRaid")
 raid_gold_cooldown = NodePath("BackgroundGold/Cooldown")
+button_raid_gold = NodePath("BackgroundGold/BackgroundFight/Fight")
 raid_critical_name = NodePath("BackgroundCritical/Name")
 raid_critical_gain = NodePath("BackgroundCritical/BackgroundInfo/Gain")
 raid_critical_hp = NodePath("BackgroundCritical/BackgroundFight/BossHP")
 raid_critical_time_left = NodePath("BackgroundCritical/BackgroundFight/TimeLeftNextRaid")
 raid_critical_cooldown = NodePath("BackgroundCritical/Cooldown")
+button_raid_critical = NodePath("BackgroundCritical/BackgroundFight/Fight")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -89,7 +93,7 @@ offset_top = -55.0
 offset_right = 200.0
 offset_bottom = 87.0
 grow_vertical = 2
-texture = ExtResource("2_aixqq")
+texture = ExtResource("3_0qqfr")
 expand_mode = 1
 
 [node name="Name" type="Label" parent="BackgroundDano"]
@@ -224,6 +228,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Fight" type="TextureButton" parent="BackgroundDano/BackgroundFight"]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -288,7 +293,7 @@ offset_top = -55.0
 offset_right = 200.0
 offset_bottom = 87.0
 grow_vertical = 2
-texture = ExtResource("6_6uqtv")
+texture = ExtResource("7_xp435")
 expand_mode = 1
 
 [node name="Name" type="Label" parent="BackgroundGold"]
@@ -423,6 +428,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Fight" type="TextureButton" parent="BackgroundGold/BackgroundFight"]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -486,7 +492,7 @@ offset_top = -55.0
 offset_right = 200.0
 offset_bottom = 87.0
 grow_vertical = 2
-texture = ExtResource("7_mg8bc")
+texture = ExtResource("8_jw0q5")
 expand_mode = 1
 
 [node name="Name" type="Label" parent="BackgroundCritical"]
@@ -621,6 +627,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Fight" type="TextureButton" parent="BackgroundCritical/BackgroundFight"]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5

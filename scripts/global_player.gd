@@ -3,9 +3,11 @@ extends Node
 # atributos
 var damage: float = 5.0
 var default_damage: float
+var bonus_damage: float
 var attack_speed: float = 1.0
 var critical_attack: bool = false
 var critical_chance: float = 0.05
+var bonus_critical_chance: float
 
 # recursos
 var gold: int
@@ -119,9 +121,16 @@ func save_data() -> void:
 
 
 func alter_attack() -> void:
-	var random_number: float = randf()
+	var rng: float = randf()
+	var raid_damage_multiplier: float = Data.data_management["raids"]["raid_damage"]["multiplier"]
+	var raid_critical_multiplier: float = Data.data_management["raids"]["raid_critical"]["multiplier"]
 	
-	if random_number <= critical_chance:
+	bonus_critical_chance = critical_chance * raid_critical_multiplier
+	bonus_damage = damage * raid_damage_multiplier
+	
+	var new_chance_critical = bonus_critical_chance + critical_chance
+	
+	if rng <= new_chance_critical:
 		critical_attack = true
 
 

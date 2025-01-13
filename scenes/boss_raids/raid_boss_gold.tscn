@@ -1,12 +1,12 @@
 [gd_scene load_steps=4 format=3 uid="uid://dei3bfqpqnmyn"]
 
 [ext_resource type="PackedScene" uid="uid://brqejvbbcws0g" path="res://scenes/base_enemy.tscn" id="1_37v8a"]
-[ext_resource type="Texture2D" uid="uid://b5ae8uaiik415" path="res://assets/characters/15.png" id="2_7bpdg"]
 [ext_resource type="Script" path="res://scripts/raid_boss_gold.gd" id="2_h6c3l"]
+[ext_resource type="Texture2D" uid="uid://dilxelrb6fla5" path="res://assets/characters/187.png" id="3_72gys"]
 
 [node name="RaidBossGold" instance=ExtResource("1_37v8a")]
 script = ExtResource("2_h6c3l")
 
 [node name="Sprite" parent="." index="0"]
 position = Vector2(0, -42.5)
-texture = ExtResource("2_7bpdg")
+texture = ExtResource("3_72gys")

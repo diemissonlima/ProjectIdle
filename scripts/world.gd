@@ -31,6 +31,7 @@ extends Control
 var reset_target: int = 25
 var timer_farm: float = 0.5
 var stop_progress: bool = false
+var raid_fight: bool = false
 
 var enemy
 
@@ -115,20 +116,25 @@ func killer_enemy(enemy_type) -> void:
 			Player.skill_points += 5
 			Data.data_management["raids"]["raid_damage"]["multiplier"] += 0.5
 		
-		Data.data_management["raids"]["raid_damage"]["level"] += 1
+		raid_fight = false
+		get_tree().call_group("enemy", "next_health")
+		get_tree().call_group("raids_management", "update_cooldown_raid", "raid_damage")
 	
 	if enemy_type == 3: # boss raid gold
 		Player.skill_points += 1
 		Data.data_management["raids"]["raid_gold"]["multiplier"] += 0.1
 		
-		Data.data_management["raids"]["raid_gold"]["level"] += 1
+		raid_fight = false
+		get_tree().call_group("enemy", "next_health")
+		get_tree().call_group("raids_management", "update_cooldown_raid", "raid_gold")
 	
 	if enemy_type == 4: # boss raid citical
 		Player.skill_points += 1
 		Data.data_management["raids"]["raid_critical"]["multiplier"] += 0.01
 		
-		Data.data_management["raids"]["raid_critical"]["level"] += 1
-	
+		raid_fight = false
+		get_tree().call_group("enemy", "next_health")
+		get_tree().call_group("raids_management", "update_cooldown_raid", "raid_critical")
 	
 	Player.gold += enemy.dropped_gold
 	show_popup_gold(enemy.dropped_gold)
@@ -179,30 +185,30 @@ func load_background() -> void: # carrega o background do estagio
 	background.texture = load("res://assets/backgrounds/Horizontal/" + str(randi_range(1, 32)) + ".png")
 
 
-# entra aqui quando nao mata o inimigo no tempo e quando o stop progress é true
 func reload_battle() -> void:
-	enemy.queue_free() # deleta o inimigo atual
 	btn_next_stage.show()
 	label_contador.hide()
 	
-	if not stop_progress:
-		if World.estagio == 10:
+	if not raid_fight:
+		stop_progress = true
+	else:
+		if World.stage_progress == 10:
+			timer_batalha.start(World.battle_time)
+			btn_next_stage.hide()
+			label_contador.show()
+		else:
+			btn_next_stage.hide()
+			label_contador.hide()
+			label_substage.show()
+	
+	if stop_progress:
+		if World.stage_progress == 10:
 			World.stage_progress -= 1
 	
-	stop_progress = true
+	raid_fight = false
+	
 	spawn_enemy() # spawna o inimigo
 	timer_player_attack.start(Player.attack_speed)
-
-#func reload_battle() -> void:
-	#btn_next_stage.show()
-	#label_contador.hide()
-	#
-	#if not stop_progress:
-		#World.stage_progress -= 1
-	#
-	#stop_progress = true
-	#spawn_enemy() # spawna o inimigo
-	#timer_player_attack.start(Player.attack_speed)
 
 
 func prestige_points() -> int:
@@ -250,6 +256,7 @@ func stop_battle(raid_type: String) -> void:
 
 
 func start_raid_battle() -> void:
+	raid_fight = true
 	timer_batalha.start(10.0)
 	timer_player_attack.start(Player.attack_speed)
 	
@@ -261,11 +268,11 @@ func _on_timer_player_attack_timeout() -> void: # sinal que é chamado quando o 
 	Player.alter_attack() # modifica os valores de ataque
 	
 	if Player.critical_attack: # verifica se o ataque é crítico
-		take_enemy_damage(Player.damage * 2) # dobra o dano causado
+		take_enemy_damage((Player.damage * 2) + Player.bonus_damage) # dobra o dano causado
 		Player.critical_attack = false # muda a flag para nao causar sempre dano critico
 		
 	else:
-		take_enemy_damage(Player.damage) # causa dano normal ao inimigo
+		take_enemy_damage(Player.damage + Player.bonus_damage) # causa dano normal ao inimigo
 	
 	if Player.attackspeed_skill_on:
 		timer_player_attack.start(Player.attack_speed)
@@ -278,7 +285,7 @@ func _on_timer_timeout() -> void: # sinal que é chamado quando o timer do estag
 	if enemy.health > 0:
 		timer_batalha.stop() # para o contador do estagio
 		timer_player_attack.stop() # para o contador de ataque do player
-		#enemy.queue_free() # deleta o inimigo atual
+		enemy.queue_free() # deleta o inimigo atual
 		
 		reload_battle() # chama a função de recarregar a batalha
 		return
@@ -338,15 +345,20 @@ func _on_next_stage_pressed() -> void:
 	stop_progress = false
 	btn_next_stage.hide()
 	
-	if World.stage_progress <= 9:
-		label_substage.show()
-		label_contador.hide()
-		
-	elif World.stage_progress == 10:
+	if World.stage_progress == 9:
+		#label_substage.show()
+		#label_contador.hide()
+		World.stage_progress += 1
 		timer_batalha.start(World.battle_time)
 		timer_player_attack.start(Player.attack_speed)
 		label_contador.show()
 		label_substage.hide()
+		
+	#elif World.stage_progress == 10:
+		#timer_batalha.start(World.battle_time)
+		#timer_player_attack.start(Player.attack_speed)
+		#label_contador.show()
+		#label_substage.hide()
 
 
 func _on_raides_pressed() -> void:

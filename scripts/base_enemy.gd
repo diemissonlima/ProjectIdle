@@ -67,6 +67,10 @@ func drop() -> void:
 		
 	dropped_gold = round(base_gold)
 	
+	if Data.data_management["raids"]["raid_gold"]["multiplier"] > 0:
+		var bonus_gold: float = Data.data_management["raids"]["raid_gold"]["multiplier"]
+		dropped_gold = dropped_gold + (dropped_gold * bonus_gold)
+	
 		#for item in drop_items_list:
 			#var spawn_probability: float = drop_items_list[item]["drop_chance"]
 			#var rng: float = randf()

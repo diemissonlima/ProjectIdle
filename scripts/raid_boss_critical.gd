@@ -1,6 +1,7 @@
 extends BaseEnemy
 class_name RaidBossCritical
 
+
 func _ready() -> void:
 	set_enemy_type()
 	increase_health()
@@ -16,3 +17,15 @@ func increase_health():
 	
 	$TextureProgressBar.max_value = max_health
 	$TextureProgressBar.value = health
+
+
+func next_health() -> void:
+	var base_health = Data.data_management["raids"]["raid_critical"]["hp"]
+	var scaling_factor: float = 1.03  # Fator de crescimento exponencial
+	
+	var next_health = base_health * pow(
+		scaling_factor, Data.data_management["raids"]["raid_critical"]["level"]
+		)
+	
+	Data.data_management["raids"]["raid_critical"]["level"] += 1
+	Data.data_management["raids"]["raid_critical"]["hp"] = next_health
