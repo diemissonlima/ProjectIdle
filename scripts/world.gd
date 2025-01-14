@@ -11,6 +11,7 @@ extends Control
 @export var label_substage: Label
 @export var label_contador: Label
 @export var label_gold: Label
+@export var label_skill_points: Label
 @export var label_avg_stage: Label
 @export var label_resets: Label
 @export var label_player_atk: Label
@@ -82,10 +83,11 @@ func spawn_boss_raid(enemy_path: String) -> void:
 func set_stage_label() -> void:
 	label_stage.text = "Stage: " + str(World.estagio) # exibe o estagio atual
 	label_substage.text = str(World.stage_progress) + " / 10"
-	label_gold.text = "Gold: " + str(Player.gold) # exibe o gold 
+	label_gold.text = "Gold: " + str(Player.gold) # exibe o gold
+	label_skill_points.text = "S.Points: " + str(Player.skill_points)
 	label_avg_stage.text = "Maior Estagio: " + str(World.avg_estagio) # maior estagio alcancado
 	label_resets.text = "Resets: " + str(World.reset)
-	label_player_atk.text = "DPS: " + "%0.f" % Player.damage # exibe ataque do player
+	label_player_atk.text = "DPS: " + "%0.f" % Player.damage_total # exibe ataque do player
 	label_gameplay_time.text = "Tempo de Jogo \n" + format_gameplay_time()
 	
 	update_timer_display() # chama função pra atualizar a label de tempo de batalha
@@ -113,9 +115,9 @@ func take_enemy_damage(_damage: float) -> void: # causa dano ao inimigo
 func killer_enemy(enemy_type) -> void:
 	if enemy_type == 2: # boss raid damage
 		var raid_level: int = Data.data_management["raids"]["raid_damage"]["level"]
+		Player.skill_points += 5
 		
 		if raid_level % 5 == 0:
-			Player.skill_points += 5
 			Data.data_management["raids"]["raid_damage"]["multiplier"] += 0.5
 		
 		Data.data_management["raids"]["raid_damage"]["level"] += 1
@@ -140,10 +142,12 @@ func killer_enemy(enemy_type) -> void:
 	Player.gold += enemy.dropped_gold
 	show_popup_gold(enemy.dropped_gold)
 	
+	World.kills += 1
+	World.gold_gain += enemy.dropped_gold
+	
 	enemy.queue_free() # deleta o inimigo da cena
 	load_background() # carrega um novo background
 	
-	World.kills += 1
 	
 	#if enemy.enemy_type == 0 or enemy.enemy_type == 1:
 	if not stop_progress:
@@ -215,6 +219,8 @@ func reload_battle() -> void:
 func prestige_points() -> int:
 	var points: int = (World.estagio - reset_target) / 10 + 1
 	
+	print("PRESTIGE POINTS: ", points)
+	
 	return points
 
 
@@ -269,11 +275,11 @@ func _on_timer_player_attack_timeout() -> void: # sinal que é chamado quando o 
 	Player.alter_attack() # modifica os valores de ataque
 	
 	if Player.critical_attack: # verifica se o ataque é crítico
-		take_enemy_damage((Player.damage * 2) + Player.bonus_damage) # dobra o dano causado
+		take_enemy_damage(Player.damage_total * 2) # dobra o dano causado
 		Player.critical_attack = false # muda a flag para nao causar sempre dano critico
 		
 	else:
-		take_enemy_damage(Player.damage + Player.bonus_damage) # causa dano normal ao inimigo
+		take_enemy_damage(Player.damage_total) # causa dano normal ao inimigo
 	
 	if Player.attackspeed_skill_on:
 		timer_player_attack.start(Player.attack_speed)

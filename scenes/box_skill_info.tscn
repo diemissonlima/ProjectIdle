@@ -85,7 +85,7 @@ offset_top = 14.0
 offset_right = 28.0
 offset_bottom = 35.0
 grow_horizontal = 2
-text = "Skills"
+text = "Skill Info"
 label_settings = SubResource("LabelSettings_ceham")
 
 [node name="BtnClose" type="TextureButton" parent="."]
@@ -106,10 +106,10 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 26.0
-offset_top = -44.0
-offset_right = 76.0
-offset_bottom = 6.0
+offset_left = 40.0
+offset_top = -38.0
+offset_right = 90.0
+offset_bottom = 12.0
 grow_vertical = 2
 texture = ExtResource("5_rox0s")
 expand_mode = 1
@@ -128,10 +128,10 @@ horizontal_alignment = 1
 
 [node name="SkillLevel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 26.0
-offset_top = 133.0
-offset_right = 82.0
-offset_bottom = 152.0
+offset_left = 38.0
+offset_top = 139.0
+offset_right = 94.0
+offset_bottom = 158.0
 text = "Lvl 1"
 label_settings = SubResource("LabelSettings_t7slo")
 horizontal_alignment = 1
@@ -181,6 +181,7 @@ texture = ExtResource("6_uiaay")
 expand_mode = 1
 
 [node name="SkillPoints" type="Label" parent="."]
+visible = false
 layout_mode = 1
 offset_left = 52.0
 offset_top = 14.0

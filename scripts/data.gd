@@ -14,7 +14,7 @@ var data_management: Dictionary = {
 	},
 	
 	"player": {
-		"ataque": 50.0,
+		"ataque": 5.0,
 		"default_damage": 5.0,
 		"attack_speed": 0.5,
 		"gold": 0,
@@ -63,7 +63,8 @@ var data_management: Dictionary = {
 	},
 	
 	"statistics": {
-		"kills": 0
+		"kills": 0,
+		"gold_gain": 0
 	},
 	
 	"raids": {
@@ -180,27 +181,28 @@ func reset_savegame() -> void:
 	},
 	
 	"statistics": {
-		"kills": 0
+		"kills": 0,
+		"gold_gain": 0
 	},
 	
 	"raids": {
 		"raid_damage": {
 			"level": 1,
-			"hp": 1000,
+			"hp": 750,
 			"multiplier": 0.0,
 			"time_left": 0.0
 		},
 		
 		"raid_gold": {
 			"level": 1,
-			"hp": 500,
+			"hp": 750,
 			"multiplier": 0.0,
 			"time_left": 0.0
 		},
 		
 		"raid_critical": {
 			"level": 1,
-			"hp": 500,
+			"hp": 750,
 			"multiplier": 0.0,
 			"time_left": 0.0
 		}

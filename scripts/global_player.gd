@@ -2,6 +2,7 @@ extends Node
 
 # atributos
 var damage: float = 5.0
+var damage_total: float
 var default_damage: float
 var bonus_damage: float
 var attack_speed: float = 1.0
@@ -45,6 +46,7 @@ var attackspeed_skill_on: bool = false
 
 func _ready() -> void:
 	load_data()
+	damage_total = damage + bonus_damage
 
 
 func load_data() -> void:
@@ -129,6 +131,8 @@ func alter_attack() -> void:
 	bonus_damage = damage * raid_damage_multiplier
 	
 	var new_chance_critical = bonus_critical_chance + critical_chance
+	
+	damage_total = damage + bonus_damage
 	
 	if rng <= new_chance_critical:
 		critical_attack = true

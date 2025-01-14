@@ -7,6 +7,7 @@ var stage_progress: int = 1
 var avg_estagio: int = 1
 var reset: int = 0
 var kills: int = 0
+var gold_gain: float = 0.0
 
 
 func _ready() -> void:
@@ -26,6 +27,7 @@ func load_data() -> void:
 	reset = data["reset"]
 	
 	kills = Data.data_management["statistics"]["kills"]
+	gold_gain = Data.data_management["statistics"]["gold_gain"]
 
 
 func save_data() -> void:
@@ -39,6 +41,7 @@ func save_data() -> void:
 	data["reset"] = reset
 	
 	Data.data_management["statistics"]["kills"] = kills
+	Data.data_management["statistics"]["gold_gain"] = gold_gain
 	
 	Data.save_data()
 
