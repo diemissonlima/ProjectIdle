@@ -26,6 +26,7 @@ extends Control
 
 
 func _ready() -> void:
+	load_cooldown_raid()
 	update_label()
 
 
@@ -60,24 +61,29 @@ func convert_time_cooldown(time_left: float) -> String:
 	return "%02dm : %02ds" % [minutes, seconds]
 
 
+func load_cooldown_raid() -> void:
+	if Data.data_management["raids"]["raid_damage"]["time_left"] > 0:
+		raid_damage_cooldown.start(Data.data_management["raids"]["raid_damage"]["time_left"])
+	
+	if Data.data_management["raids"]["raid_gold"]["time_left"] > 0:
+		raid_gold_cooldown.start(Data.data_management["raids"]["raid_gold"]["time_left"])
+	
+	if Data.data_management["raids"]["raid_critical"]["time_left"] > 0:
+		raid_critical_cooldown.start(Data.data_management["raids"]["raid_critical"]["time_left"])
+
+
 func update_label() -> void:
 	raid_damage_name.text = "Dragon Lvl " + str(Data.data_management["raids"]["raid_damage"]["level"])
 	raid_damage_gain.text = "Dano Herói + " + str(Data.data_management["raids"]["raid_damage"]["multiplier"] * 100) + "%"
 	raid_damage_hp.text = "HP: " + str(round(Data.data_management["raids"]["raid_damage"]["hp"]))
-	if Data.data_management["raids"]["raid_damage"]["time_left"] > 0:
-		raid_damage_cooldown.start(Data.data_management["raids"]["raid_damage"]["time_left"])
-		
+	
 	raid_gold_name.text = "Quimera Lvl " + str(Data.data_management["raids"]["raid_gold"]["level"])
 	raid_gold_gain.text = "Gold drop + " + str(Data.data_management["raids"]["raid_gold"]["multiplier"] * 100) + "%"
 	raid_gold_hp.text = "HP: " + str(round(Data.data_management["raids"]["raid_gold"]["hp"]))
-	if Data.data_management["raids"]["raid_gold"]["time_left"] > 0:
-		raid_gold_cooldown.start(Data.data_management["raids"]["raid_gold"]["time_left"])
-		
+	
 	raid_critical_name.text = "Leviatã Lvl " + str(Data.data_management["raids"]["raid_critical"]["level"])
 	raid_critical_gain.text = "Chance Crítico + " + str(Data.data_management["raids"]["raid_critical"]["multiplier"] * 100) + "%"
 	raid_critical_hp.text = "HP: " + str(round(Data.data_management["raids"]["raid_critical"]["hp"]))
-	if Data.data_management["raids"]["raid_critical"]["time_left"] > 0:
-		raid_critical_cooldown.start(Data.data_management["raids"]["raid_critical"]["time_left"])
 
 
 func update_cooldown_raid(raid_type: String) -> void:

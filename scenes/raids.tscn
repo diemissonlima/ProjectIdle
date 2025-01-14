@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://dt5qe7guofq8w"]
+[gd_scene load_steps=18 format=3 uid="uid://dt5qe7guofq8w"]
 
 [ext_resource type="Texture2D" uid="uid://7fknnavhqyfo" path="res://assets/prefabs/box/MessageBox01.png" id="1_gwr62"]
 [ext_resource type="Script" path="res://scripts/raids.gd" id="1_iq11o"]
 [ext_resource type="FontFile" uid="uid://c17ascng2deth" path="res://assets/font/njo_14.ttf" id="3_0fdb3"]
 [ext_resource type="Texture2D" uid="uid://dpr40jl4cvbbp" path="res://assets/characters/18.png" id="3_0qqfr"]
 [ext_resource type="Texture2D" uid="uid://ctldyihhvugjg" path="res://assets/prefabs/buttons/ButtonHover.png" id="4_jj6vw"]
+[ext_resource type="Texture2D" uid="uid://c26eco8t6djvs" path="res://assets/prefabs/icons/book_04f.png" id="5_l7s1v"]
 [ext_resource type="Texture2D" uid="uid://j2khku0ce0y2" path="res://assets/prefabs/buttons/ButtonActive.png" id="5_qomfh"]
 [ext_resource type="Texture2D" uid="uid://dilxelrb6fla5" path="res://assets/characters/187.png" id="7_xp435"]
 [ext_resource type="Texture2D" uid="uid://ehexccwrumfu" path="res://assets/characters/98.png" id="8_jw0q5"]
@@ -20,6 +21,10 @@ font_size = 20
 [sub_resource type="LabelSettings" id="LabelSettings_e4y32"]
 font = ExtResource("3_0fdb3")
 font_size = 14
+
+[sub_resource type="LabelSettings" id="LabelSettings_i3ba8"]
+font = ExtResource("3_0fdb3")
+font_size = 20
 
 [sub_resource type="LabelSettings" id="LabelSettings_2fn60"]
 font = ExtResource("3_0fdb3")
@@ -169,12 +174,46 @@ offset_top = 89.0
 offset_right = 103.0
 offset_bottom = 118.0
 grow_horizontal = 2
-text = "Recompensas Adicionais:
-+ 5 Skill Points"
+text = "Recompensas Adicionais"
 label_settings = SubResource("LabelSettings_e4y32")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="Icon" type="TextureRect" parent="BackgroundDano/BackgroundInfo/AdditionalRewards"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -5.0
+offset_right = -4.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("5_l7s1v")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="BackgroundDano/BackgroundInfo/AdditionalRewards"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 1.5
+offset_top = -7.0
+offset_right = 10.5
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "5"
+label_settings = SubResource("LabelSettings_i3ba8")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BackgroundFight" type="TextureRect" parent="BackgroundDano"]
 layout_mode = 1
@@ -267,7 +306,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Cooldown" type="Timer" parent="BackgroundDano"]
-wait_time = 900.0
+wait_time = 600.0
 one_shot = true
 
 [node name="BackgroundGold" type="TextureRect" parent="." groups=["raids"]]
@@ -349,9 +388,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -91.0
-offset_top = 47.0
+offset_top = 43.0
 offset_right = 103.0
-offset_bottom = 76.0
+offset_bottom = 91.0
 grow_horizontal = 2
 text = "Para cada nível o aumenta o drop de gold em 10%"
 label_settings = SubResource("LabelSettings_e4y32")
@@ -365,16 +404,50 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -91.0
-offset_top = 99.0
+offset_top = 93.0
 offset_right = 103.0
-offset_bottom = 130.0
+offset_bottom = 124.0
 grow_horizontal = 2
-text = "Recompensas Adicionais:
-+ 1 Skill Point"
+text = "Recompensas Adicionais"
 label_settings = SubResource("LabelSettings_e4y32")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="Icon" type="TextureRect" parent="BackgroundGold/BackgroundInfo/AdditionalRewards"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -18.0
+offset_top = -6.0
+offset_right = 2.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("5_l7s1v")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="BackgroundGold/BackgroundInfo/AdditionalRewards"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 6.5
+offset_top = -8.0
+offset_right = 15.5
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1"
+label_settings = SubResource("LabelSettings_i3ba8")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BackgroundFight" type="TextureRect" parent="BackgroundGold"]
 layout_mode = 1
@@ -467,7 +540,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Cooldown" type="Timer" parent="BackgroundGold"]
-wait_time = 900.0
+wait_time = 600.0
 one_shot = true
 
 [node name="BackgroundCritical" type="TextureRect" parent="." groups=["raids"]]
@@ -568,12 +641,46 @@ offset_top = 89.0
 offset_right = 103.0
 offset_bottom = 118.0
 grow_horizontal = 2
-text = "Recompensas Adicionais:
-+ 1 Skill Point"
+text = "Recompensas Adicionais"
 label_settings = SubResource("LabelSettings_e4y32")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="Icon" type="TextureRect" parent="BackgroundCritical/BackgroundInfo/AdditionalRewards"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -3.0
+offset_right = 4.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("5_l7s1v")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="BackgroundCritical/BackgroundInfo/AdditionalRewards"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 8.5
+offset_top = -5.0
+offset_right = 17.5
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1"
+label_settings = SubResource("LabelSettings_i3ba8")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BackgroundFight" type="TextureRect" parent="BackgroundCritical"]
 layout_mode = 1
@@ -666,7 +773,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Cooldown" type="Timer" parent="BackgroundCritical"]
-wait_time = 900.0
+wait_time = 600.0
 one_shot = true
 
 [node name="TextureButton" type="TextureButton" parent="."]

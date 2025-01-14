@@ -6,7 +6,5 @@ res://scenes/box_skill_info.tscn
 res://scenes/raids.tscn
 res://scripts/world.gd
 res://scripts/data.gd
+res://scripts/box_skill_info.gd
 res://scripts/raids.gd
-res://scripts/raid_boss_damage.gd
-res://scripts/raid_boss_critical.gd
-res://scripts/raid_boss_gold.gd

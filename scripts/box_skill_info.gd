@@ -37,7 +37,7 @@ var skill_level: Dictionary = {
 # função chamada no script skills_management pela função "on_skill_info_button_pressed"
 func get_skill_info(button: TextureButton) -> void:
 	var skill_icon: String
-	label_skill_points.text = "Skill Points: " + str(Player.skill_points)
+	label_skill_points.text = str(Player.skill_points)
 	
 	match button.name:
 		"IncreaseAttack":
@@ -52,7 +52,7 @@ func get_skill_info(button: TextureButton) -> void:
 			Cooldown de " + str(Player.increase_attack_cooldown) + " segundos"
 			
 			upgrade_cost = skill_level[str(Player.attack_skill_level + 1)]
-			label_upgrade_cost.text = "Custo\n" + str(upgrade_cost) + " Skill Points"
+			label_upgrade_cost.text = str(upgrade_cost)
 			
 		"IncreaseGold":
 			skill_name = "Gold"
@@ -66,7 +66,7 @@ func get_skill_info(button: TextureButton) -> void:
 			Cooldow de " + str(Player.increase_gold_cooldown) + " segundos."
 			
 			upgrade_cost = skill_level[str(Player.gold_skill_level + 1)]
-			label_upgrade_cost.text = "Custo\n" + str(upgrade_cost) + " Skill Points"
+			label_upgrade_cost.text = str(upgrade_cost)
 			
 		"IncreaseCritical":
 			skill_name = "Critical Chance"
@@ -80,7 +80,7 @@ func get_skill_info(button: TextureButton) -> void:
 			Cooldown de " + str(Player.increase_critical_cooldown) + " segundos."
 			
 			upgrade_cost = skill_level[str(Player.critical_skill_level + 1)]
-			label_upgrade_cost.text = "Custo\n" + str(upgrade_cost) + " Skill Points"
+			label_upgrade_cost.text = str(upgrade_cost)
 		
 		"IncreaseAttackSpeed":
 			skill_name = "Attack Speed"
@@ -94,13 +94,13 @@ func get_skill_info(button: TextureButton) -> void:
 			Cooldown de " + str(Player.increase_attackspeed_cooldown) + " segundos."
 			
 			upgrade_cost = skill_level[str(Player.attackspeed_skill_level + 1)]
-			label_upgrade_cost.text = "Custo\n" + str(upgrade_cost) + " Skill Points"
+			label_upgrade_cost.text = str(upgrade_cost)
 			
 	$SkillIcon.texture = load(skill_icon)
 
 
 func increase_skill() -> void:
-	label_skill_points.text = "Skill Points: " + str(Player.skill_points)
+	label_skill_points.text = str(Player.skill_points)
 	
 	if Player.skill_points < upgrade_cost:
 		return
@@ -122,7 +122,7 @@ func increase_skill() -> void:
 				Cooldown de " + str(Player.increase_attack_cooldown) + " segundos."
 				
 				upgrade_cost = skill_level[str(Player.attack_skill_level + 1)]
-				label_upgrade_cost.text = "Custo\n" + str(upgrade_cost) + " Skill Points"
+				label_upgrade_cost.text = str(upgrade_cost)
 			
 		"Gold":
 				Player.skill_points -= upgrade_cost
@@ -140,7 +140,7 @@ func increase_skill() -> void:
 				Cooldow de " + str(Player.increase_gold_cooldown) + " segundos."
 				
 				upgrade_cost = skill_level[str(Player.gold_skill_level + 1)]
-				label_upgrade_cost.text = "Custo\n" + str(upgrade_cost) + " Skill Points"
+				label_upgrade_cost.text = str(upgrade_cost)
 			
 		"Critical Chance":
 				Player.skill_points -= upgrade_cost
@@ -158,7 +158,7 @@ func increase_skill() -> void:
 				Cooldown de " + str(Player.increase_critical_cooldown) + " segundos."
 				
 				upgrade_cost = skill_level[str(Player.critical_skill_level + 1)]
-				label_upgrade_cost.text = "Custo\n" + str(upgrade_cost) + " Skill Points"
+				label_upgrade_cost.text = str(upgrade_cost)
 		
 		"Attack Speed":
 				Player.skill_points -= upgrade_cost
@@ -175,9 +175,9 @@ func increase_skill() -> void:
 				Cooldown de " + str(Player.increase_attackspeed_cooldown) + " segundos."
 				
 				upgrade_cost = skill_level[str(Player.attackspeed_skill_level + 1)]
-				label_upgrade_cost.text = "Custo\n" + str(upgrade_cost) + " Skill Points"
+				label_upgrade_cost.text = str(upgrade_cost)
 		
-	label_skill_points.text = "Skill Points: " + str(Player.skill_points)
+	label_skill_points.text = str(Player.skill_points)
 
 
 func _on_btn_close_pressed() -> void:
