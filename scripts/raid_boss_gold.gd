@@ -27,5 +27,4 @@ func next_health() -> void:
 		scaling_factor, Data.data_management["raids"]["raid_gold"]["level"]
 		)
 	
-	Data.data_management["raids"]["raid_gold"]["level"] += 1
 	Data.data_management["raids"]["raid_gold"]["hp"] = next_health

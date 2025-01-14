@@ -112,30 +112,31 @@ func take_enemy_damage(_damage: float) -> void: # causa dano ao inimigo
 
 func killer_enemy(enemy_type) -> void:
 	if enemy_type == 2: # boss raid damage
-		if Data.data_management["raids"]["raid_damage"]["level"] % 5 == 0:
+		var raid_level: int = Data.data_management["raids"]["raid_damage"]["level"]
+		
+		if raid_level % 5 == 0:
 			Player.skill_points += 5
 			Data.data_management["raids"]["raid_damage"]["multiplier"] += 0.5
 		
-		raid_fight = false
-		get_tree().call_group("enemy", "next_health")
+		Data.data_management["raids"]["raid_damage"]["level"] += 1
 		get_tree().call_group("raids_management", "update_cooldown_raid", "raid_damage")
 	
 	if enemy_type == 3: # boss raid gold
 		Player.skill_points += 1
 		Data.data_management["raids"]["raid_gold"]["multiplier"] += 0.1
 		
-		raid_fight = false
-		get_tree().call_group("enemy", "next_health")
+		Data.data_management["raids"]["raid_gold"]["level"] += 1
 		get_tree().call_group("raids_management", "update_cooldown_raid", "raid_gold")
 	
 	if enemy_type == 4: # boss raid citical
 		Player.skill_points += 1
 		Data.data_management["raids"]["raid_critical"]["multiplier"] += 0.01
 		
-		raid_fight = false
-		get_tree().call_group("enemy", "next_health")
+		Data.data_management["raids"]["raid_critical"]["level"] += 1
 		get_tree().call_group("raids_management", "update_cooldown_raid", "raid_critical")
 	
+	get_tree().call_group("enemy", "next_health")
+	raid_fight = false
 	Player.gold += enemy.dropped_gold
 	show_popup_gold(enemy.dropped_gold)
 	

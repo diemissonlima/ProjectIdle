@@ -19,14 +19,15 @@ font_size = 20
 
 [sub_resource type="LabelSettings" id="LabelSettings_e4y32"]
 font = ExtResource("3_0fdb3")
-font_size = 12
+font_size = 14
 
 [sub_resource type="LabelSettings" id="LabelSettings_2fn60"]
 font = ExtResource("3_0fdb3")
+font_size = 20
 
 [sub_resource type="LabelSettings" id="LabelSettings_1vbat"]
 font = ExtResource("3_0fdb3")
-font_size = 12
+font_size = 14
 
 [sub_resource type="LabelSettings" id="LabelSettings_m4qf0"]
 font = ExtResource("3_0fdb3")
@@ -364,9 +365,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -91.0
-offset_top = 89.0
+offset_top = 99.0
 offset_right = 103.0
-offset_bottom = 118.0
+offset_bottom = 130.0
 grow_horizontal = 2
 text = "Recompensas Adicionais:
 + 1 Skill Point"

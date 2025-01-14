@@ -26,6 +26,5 @@ func next_health() -> void:
 	var new_health = new_base_health * pow(
 		new_scaling_factor, Data.data_management["raids"]["raid_damage"]["level"]
 		)
-		
-	Data.data_management["raids"]["raid_damage"]["level"] += 1
+	
 	Data.data_management["raids"]["raid_damage"]["hp"] = new_health

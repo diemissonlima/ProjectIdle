@@ -4,12 +4,9 @@ res://scenes/rewards_offline.tscn
 res://scenes/main_menu.tscn
 res://scenes/box_skill_info.tscn
 res://scenes/raids.tscn
+res://scripts/world.gd
 res://scripts/data.gd
 res://scripts/raids.gd
-res://scripts/raid_boss_critical.gd
 res://scripts/raid_boss_damage.gd
+res://scripts/raid_boss_critical.gd
 res://scripts/raid_boss_gold.gd
-res://scripts/world.gd
-res://scripts/box_skill_info.gd
-res://scripts/base_enemy.gd
-res://scripts/global_player.gd
