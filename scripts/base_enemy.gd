@@ -22,7 +22,9 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	$TextureProgressBar/Label.text = str(round(health)) +  " / " + str(round(max_health))
+	$TextureProgressBar/Label.text = str(
+		format_number(round(health)) + " / " + str(format_number(round(max_health)))
+	)
 	$TextureProgressBar.value = health
 
 
@@ -35,13 +37,10 @@ func set_enemy_type() -> void:
 
 func increase_health() -> void:
 	var base_health: float = 10.0  # Vida inicial
-	var scaling_factor: float = 1.10  # Fator de crescimento exponencial
+	var scaling_factor: float = 1.05  # Fator de crescimento exponencial
 	max_health = base_health * pow(scaling_factor, World.estagio)
 	
 	match enemy_type:
-		EnemyType.NORMAL:
-			max_health = max_health * 1.10
-		
 		EnemyType.BOSS:
 			max_health += max_health * 10
 		
@@ -57,10 +56,6 @@ func drop() -> void:
 
 		1: # enemy BOSS
 			base_gold += (20 + World.estagio * 8) * 2
-	
-	#if World.reset > 0:
-		#var percent: float = World.reset * 0.5
-		#base_gold += base_gold * percent
 		
 	if Player.gold_skill_on:
 		base_gold *= Player.increase_gold_multiplier
@@ -118,6 +113,28 @@ func get_drop_items() -> Dictionary:
 func drop_item(item_name: String, item_data: Dictionary) -> void:
 	print("Nome do item: ", item_name)
 	print("Dados do item: ", item_data)
+
+
+func format_number(value: float) -> String:
+	var suffixes = [
+		"", "K", "M", "B", "T", "a", "b", "c", "d", "e", "f", "g", "h", 
+		"i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", 
+		"x", "y", "z", "aa", "ab", "ac", "ad", "ae", "af", "ag", "ah", "ai", "aj", 
+		"ak", "al", "am", "an", "ao", "ap", "aq", "ar", "as", "at", "au", "av", 
+		"aw", "ax", "ay", "az", "ba", "bb", "bc", "bd", "be", "bf", "bg", "bh",
+		"bi", "bj", "bk", "bl", "bm", "bn", "bo", "bp", "bq", "br", "bs", "bt",
+		"bu", "bv", "bw", "bx", "by", "bz"
+	]
+	var index = 0
+	
+	while value >= 1000 and index < suffixes.size() - 1:
+		value /= 1000
+		index += 1
+	
+	value = int(value * 10 + 0.5) / 10.0
+	var formatted_value = str(value if fmod(value, 1) != 0 else int(value))
+	
+	return formatted_value + suffixes[index]
 
 
 func set_progresbar() -> void: # atualiza a barra de progresso da vida

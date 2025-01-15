@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://dtyw4v44a8ka4"]
+[gd_scene load_steps=87 format=3 uid="uid://dtyw4v44a8ka4"]
 
 [ext_resource type="Texture2D" uid="uid://bs4f04v00hl85" path="res://assets/backgrounds/Horizontal/1.png" id="1_m0651"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_mqmc1"]
@@ -64,6 +64,7 @@
 [ext_resource type="PackedScene" uid="uid://81y6vvel1y5x" path="res://scenes/box_skill_info.tscn" id="51_5f82i"]
 [ext_resource type="PackedScene" uid="uid://c6lhyr4se57yr" path="res://scenes/rewards_offline.tscn" id="51_y8onn"]
 [ext_resource type="PackedScene" uid="uid://dt5qe7guofq8w" path="res://scenes/raids.tscn" id="53_tkji6"]
+[ext_resource type="PackedScene" uid="uid://blbyblciesemb" path="res://scenes/reset_info.tscn" id="54_y5ges"]
 [ext_resource type="Texture2D" uid="uid://do22bmxeusi4a" path="res://assets/prefabs/icons/sword_03e.png" id="59_4eh2u"]
 [ext_resource type="Texture2D" uid="uid://c1rlf8hnaxpq2" path="res://assets/prefabs/icons/Icon_Small_Coin.png" id="60_5y4ps"]
 [ext_resource type="Texture2D" uid="uid://ds7s6bj0x8u20" path="res://assets/prefabs/icons/Icon_Small_Star.png" id="61_6bl3d"]
@@ -96,7 +97,7 @@ font_size = 24
 
 [sub_resource type="LabelSettings" id="LabelSettings_p44eg"]
 font = ExtResource("13_lkpp6")
-font_size = 14
+font_color = Color(0, 1, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_8875g"]
 font = ExtResource("13_lkpp6")
@@ -172,6 +173,8 @@ enemy_list2 = Array[PackedScene]([ExtResource("2_0hpjr"), ExtResource("3_jhtr8")
 [node name="RewardsOffline" parent="Interface" instance=ExtResource("51_y8onn")]
 
 [node name="Raids" parent="Interface" instance=ExtResource("53_tkji6")]
+
+[node name="ResetInfo" parent="Interface" instance=ExtResource("54_y5ges")]
 
 [node name="Background" type="TextureRect" parent="."]
 self_modulate = Color(1, 1, 1, 0.392157)
@@ -271,11 +274,10 @@ horizontal_alignment = 1
 
 [node name="LabelPopupGold" type="Label" parent="Labels"]
 visible = false
-offset_left = 174.0
-offset_top = 505.0
-offset_right = 281.0
-offset_bottom = 519.0
-text = "+ 125"
+offset_left = 240.0
+offset_top = 539.0
+offset_right = 241.0
+offset_bottom = 553.0
 label_settings = SubResource("LabelSettings_p44eg")
 horizontal_alignment = 1
 

@@ -1,11 +1,11 @@
-Label
-TextureRect
-Timer
 TextureButton
+TextureRect
+Label
+Control
+Timer
 VBoxContainer
 ColorRect
 Button
-Control
 HBoxContainer
 CanvasLayer
 AnimatedSprite2D

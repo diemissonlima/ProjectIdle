@@ -29,7 +29,7 @@ extends Control
 @export var enemy_list: Array[PackedScene]
 @export var enemy_list2: Array[PackedScene]
 
-var reset_target: int = 25
+var reset_target: int = 50
 var timer_farm: float = 0.5
 var stop_progress: bool = false
 var raid_fight: bool = false
@@ -120,6 +120,7 @@ func killer_enemy(enemy_type) -> void:
 		if raid_level % 5 == 0:
 			Data.data_management["raids"]["raid_damage"]["multiplier"] += 0.5
 		
+		get_tree().call_group("enemy", "next_health")
 		Data.data_management["raids"]["raid_damage"]["level"] += 1
 		get_tree().call_group("raids_management", "update_cooldown_raid", "raid_damage")
 	
@@ -217,11 +218,15 @@ func reload_battle() -> void:
 
 
 func prestige_points() -> int:
-	var points: int = (World.estagio - reset_target) / 10 + 1
-	
-	print("PRESTIGE POINTS: ", points)
+	var base_points: int = (World.estagio - reset_target) / 10 + 1
+	var scaling_factor: float = 1.10
+	var points: float = base_points * pow(scaling_factor, base_points)
 	
 	return points
+	
+	#var base_health: float = 10.0  # Vida inicial
+	#var scaling_factor: float = 1.10  # Fator de crescimento exponencial
+	#max_health = base_health * pow(scaling_factor, World.estagio)
 
 
 func reset() -> void:
@@ -230,8 +235,15 @@ func reset() -> void:
 	stop_progress = false
 	Player.prestige_points += prestige_points()
 	World.estagio = 1
-	#Player.gold = 0
-	#Player.x_upgrade_ataque = 1
+	
+	World.reset += 1
+	timer_batalha.stop() # para o contador do estagio
+	label_contador.hide()
+	World.stage_progress = 1
+	enemy.queue_free() # deleta o inimigo atual
+	
+	spawn_enemy() # spawna o inimigo
+	timer_player_attack.start() # para o contador de ataque do player
 
 
 func get_datetime() -> void:
@@ -334,16 +346,8 @@ func _on_reset_pressed() -> void:
 	if World.estagio <= reset_target:
 		return
 	
-	World.reset += 1
-	reset()
-	
-	timer_batalha.stop() # para o contador do estagio
-	label_contador.hide()
-	World.stage_progress = 1
-	enemy.queue_free() # deleta o inimigo atual
-	
-	spawn_enemy() # spawna o inimigo
-	timer_player_attack.start() # para o contador de ataque do player
+	get_tree().call_group("reset_info", "update_label_rewards", prestige_points())
+	$Interface/ResetInfo.show()
 
 
 func _on_next_stage_pressed() -> void:
@@ -353,19 +357,11 @@ func _on_next_stage_pressed() -> void:
 	btn_next_stage.hide()
 	
 	if World.stage_progress == 9:
-		#label_substage.show()
-		#label_contador.hide()
 		World.stage_progress += 1
 		timer_batalha.start(World.battle_time)
 		timer_player_attack.start(Player.attack_speed)
 		label_contador.show()
 		label_substage.hide()
-		
-	#elif World.stage_progress == 10:
-		#timer_batalha.start(World.battle_time)
-		#timer_player_attack.start(Player.attack_speed)
-		#label_contador.show()
-		#label_substage.hide()
 
 
 func _on_raides_pressed() -> void:
