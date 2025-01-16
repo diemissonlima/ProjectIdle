@@ -1,16 +1,10 @@
 res://scenes/world.tscn
+res://scripts/main_menu.gd
 res://scenes/base_enemy.tscn
 res://scenes/rewards_offline.tscn
 res://scenes/main_menu.tscn
 res://scenes/box_skill_info.tscn
 res://scenes/raids.tscn
-res://scripts/world.gd
 res://scenes/reset_info.tscn
-res://scripts/reset_info.gd
-res://scripts/base_enemy.gd
-res://scripts/data.gd
-res://scripts/raids.gd
-res://scripts/raid_boss_damage.gd
-res://scripts/main_menu.gd
 res://scripts/raid_boss_critical.gd
 res://scripts/raid_boss_gold.gd

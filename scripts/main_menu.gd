@@ -49,7 +49,6 @@ func _on_new_game_pressed() -> void:
 func _on_load_game_pressed() -> void:
 	set_label_info()
 	$Background/Background.show()
-	#$Background/VBoxContainer2.show()
 
 
 func _on_load_pressed() -> void:
