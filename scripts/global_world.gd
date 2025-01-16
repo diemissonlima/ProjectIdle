@@ -46,6 +46,28 @@ func save_data() -> void:
 	Data.save_data()
 
 
+func format_number(value: float) -> String:
+	var suffixes = [
+		"", "K", "M", "B", "T", "a", "b", "c", "d", "e", "f", "g", "h", 
+		"i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", 
+		"x", "y", "z", "aa", "ab", "ac", "ad", "ae", "af", "ag", "ah", "ai", "aj", 
+		"ak", "al", "am", "an", "ao", "ap", "aq", "ar", "as", "at", "au", "av", 
+		"aw", "ax", "ay", "az", "ba", "bb", "bc", "bd", "be", "bf", "bg", "bh",
+		"bi", "bj", "bk", "bl", "bm", "bn", "bo", "bp", "bq", "br", "bs", "bt",
+		"bu", "bv", "bw", "bx", "by", "bz"
+	]
+	var index = 0
+	
+	while value >= 1000 and index < suffixes.size() - 1:
+		value /= 1000
+		index += 1
+	
+	value = int(value * 10 + 0.5) / 10.0
+	var formatted_value = str(value if fmod(value, 1) != 0 else int(value))
+	
+	return formatted_value + suffixes[index]
+
+
 func _notification(what: int) -> void:
 	if what == 1006:
 		save_data()

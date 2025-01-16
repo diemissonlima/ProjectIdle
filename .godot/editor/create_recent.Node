@@ -1,9 +1,9 @@
-TextureButton
-TextureRect
-Label
-Control
-Timer
 VBoxContainer
+Label
+TextureRect
+Control
+TextureButton
+Timer
 ColorRect
 Button
 HBoxContainer

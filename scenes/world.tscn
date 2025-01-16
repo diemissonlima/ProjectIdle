@@ -67,11 +67,22 @@
 [ext_resource type="PackedScene" uid="uid://blbyblciesemb" path="res://scenes/reset_info.tscn" id="54_y5ges"]
 [ext_resource type="Texture2D" uid="uid://do22bmxeusi4a" path="res://assets/prefabs/icons/sword_03e.png" id="59_4eh2u"]
 [ext_resource type="Texture2D" uid="uid://c1rlf8hnaxpq2" path="res://assets/prefabs/icons/Icon_Small_Coin.png" id="60_5y4ps"]
-[ext_resource type="Texture2D" uid="uid://ds7s6bj0x8u20" path="res://assets/prefabs/icons/Icon_Small_Star.png" id="61_6bl3d"]
 [ext_resource type="Texture2D" uid="uid://c26eco8t6djvs" path="res://assets/prefabs/icons/book_04f.png" id="61_pdtar"]
 [ext_resource type="Texture2D" uid="uid://c5onxi1s6n3ci" path="res://assets/prefabs/icons/interrogation-point.png" id="61_v3wpb"]
 [ext_resource type="Texture2D" uid="uid://cycc5sf6td3w5" path="res://assets/skills/08.png" id="65_asbbg"]
 [ext_resource type="Texture2D" uid="uid://7fknnavhqyfo" path="res://assets/prefabs/box/MessageBox01.png" id="65_waswf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ow2ig"]
+font = ExtResource("13_lkpp6")
+font_size = 28
+
+[sub_resource type="LabelSettings" id="LabelSettings_mvwma"]
+font = ExtResource("13_lkpp6")
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_qo20n"]
+font = ExtResource("13_lkpp6")
+font_size = 20
 
 [sub_resource type="LabelSettings" id="LabelSettings_cavrc"]
 font = ExtResource("23_fp0v3")
@@ -91,10 +102,6 @@ font_size = 35
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_mvwma"]
-font = ExtResource("13_lkpp6")
-font_size = 24
-
 [sub_resource type="LabelSettings" id="LabelSettings_p44eg"]
 font = ExtResource("13_lkpp6")
 font_color = Color(0, 1, 0, 1)
@@ -104,10 +111,6 @@ font = ExtResource("13_lkpp6")
 font_size = 20
 
 [sub_resource type="LabelSettings" id="LabelSettings_4et66"]
-font = ExtResource("13_lkpp6")
-font_size = 20
-
-[sub_resource type="LabelSettings" id="LabelSettings_qo20n"]
 font = ExtResource("13_lkpp6")
 font_size = 20
 
@@ -153,10 +156,10 @@ label_substage = NodePath("Labels/LabelSubStage")
 label_contador = NodePath("Labels/LabelContador")
 label_gold = NodePath("Labels/HBoxContainer/LabelGold")
 label_skill_points = NodePath("Labels/HBoxContainer/LabelSkillPoints")
-label_avg_stage = NodePath("Labels/HBoxContainer/LabelAvgStage")
-label_resets = NodePath("Labels/HBoxContainer/LabelResets")
+label_avg_stage = NodePath("Interface/StatsInfo/Background/VBoxContainer/LabelAvgStage")
+label_resets = NodePath("Interface/StatsInfo/Background/VBoxContainer/LabelResets")
 label_player_atk = NodePath("Labels/HBoxContainer/LabelPlayerAtk")
-label_gameplay_time = NodePath("Labels/LabelGameTime")
+label_gameplay_time = NodePath("Interface/StatsInfo/Background/VBoxContainer/LabelGameTime")
 label_popup_gold = NodePath("Labels/LabelPopupGold")
 label_upgrade_ataque_cost = NodePath("Buttons/IncreaseAtaque/LabelUpgradeAtaqueCost")
 label_upgrade_time_cost = NodePath("Buttons/IncreaseTime/LabelUpgradeTimeCost")
@@ -175,6 +178,69 @@ enemy_list2 = Array[PackedScene]([ExtResource("2_0hpjr"), ExtResource("3_jhtr8")
 [node name="Raids" parent="Interface" instance=ExtResource("53_tkji6")]
 
 [node name="ResetInfo" parent="Interface" instance=ExtResource("54_y5ges")]
+
+[node name="StatsInfo" type="Control" parent="Interface"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -204.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="Interface/StatsInfo"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -330.0
+offset_top = -104.0
+offset_right = 330.0
+offset_bottom = 245.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("65_waswf")
+
+[node name="Title" type="Label" parent="Interface/StatsInfo/Background"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -44.0
+offset_top = 30.0
+offset_right = 44.0
+offset_bottom = 59.0
+grow_horizontal = 2
+text = "Status"
+label_settings = SubResource("LabelSettings_ow2ig")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Interface/StatsInfo/Background"]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 104.0
+offset_right = 319.0
+offset_bottom = 160.0
+theme_override_constants/separation = 15
+
+[node name="LabelGameTime" type="Label" parent="Interface/StatsInfo/Background/VBoxContainer"]
+layout_mode = 2
+text = "Tempo de Jogo: 00:00:00"
+label_settings = SubResource("LabelSettings_mvwma")
+horizontal_alignment = 1
+
+[node name="LabelAvgStage" type="Label" parent="Interface/StatsInfo/Background/VBoxContainer"]
+layout_mode = 2
+text = "Estágio mais alto: 10"
+label_settings = SubResource("LabelSettings_qo20n")
+
+[node name="LabelResets" type="Label" parent="Interface/StatsInfo/Background/VBoxContainer"]
+layout_mode = 2
+text = "Total Resets: 0"
+label_settings = SubResource("LabelSettings_qo20n")
+vertical_alignment = 1
 
 [node name="Background" type="TextureRect" parent="."]
 self_modulate = Color(1, 1, 1, 0.392157)
@@ -262,16 +328,6 @@ grow_horizontal = 2
 text = "10 / 10"
 label_settings = SubResource("LabelSettings_qp1ac")
 
-[node name="LabelGameTime" type="Label" parent="Labels"]
-offset_left = 413.0
-offset_top = 580.0
-offset_right = 609.0
-offset_bottom = 633.0
-text = "Tempo de Jogo: 
-00:00:00"
-label_settings = SubResource("LabelSettings_mvwma")
-horizontal_alignment = 1
-
 [node name="LabelPopupGold" type="Label" parent="Labels"]
 visible = false
 offset_left = 240.0
@@ -353,33 +409,6 @@ offset_bottom = 8.0
 grow_vertical = 2
 texture = ExtResource("61_pdtar")
 expand_mode = 1
-
-[node name="LabelResets" type="Label" parent="Labels/HBoxContainer"]
-layout_mode = 2
-text = "Resets: 0"
-label_settings = SubResource("LabelSettings_qo20n")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Icon" type="TextureRect" parent="Labels/HBoxContainer/LabelResets"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = -27.0
-offset_top = -12.0
-offset_right = -7.0
-offset_bottom = 8.0
-grow_vertical = 2
-texture = ExtResource("61_6bl3d")
-expand_mode = 1
-
-[node name="LabelAvgStage" type="Label" parent="Labels/HBoxContainer"]
-visible = false
-layout_mode = 2
-text = "Maior Estagio: 10"
-label_settings = SubResource("LabelSettings_qo20n")
-horizontal_alignment = 1
 
 [node name="Buttons" type="Node" parent="."]
 

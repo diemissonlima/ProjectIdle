@@ -11,6 +11,30 @@ extends Control
 @export var btn_loadgame: Button
 
 
+func _ready() -> void:
+	pass
+	#calculate_progress()
+
+
+func calculate_progress() -> void:
+	var base_health: float = 1500.0
+	var scaling_factor: float = 1.20
+	
+	var level: int = 0
+	
+	for j in range(200):
+		var total_health: float = base_health * pow(scaling_factor, level)
+		
+		level += 1
+		
+		if level % 1 == 0:
+			print("LEVEL: ", level)
+			print("SCALING FACTOR: ", pow(scaling_factor, level))
+			print("BASE HEALTH:", World.format_number(round(base_health)))
+			print("TOTAL HEALTH: ", World.format_number(round(total_health)))
+			print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
+
+
 func _process(_delta: float) -> void:
 	if FileAccess.file_exists("res://save/save.dat"):
 		btn_loadgame.disabled = false

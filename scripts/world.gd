@@ -86,9 +86,9 @@ func set_stage_label() -> void:
 	label_gold.text = "Gold: " + str(Player.gold) # exibe o gold
 	label_skill_points.text = "S.Points: " + str(Player.skill_points)
 	label_avg_stage.text = "Maior Estagio: " + str(World.avg_estagio) # maior estagio alcancado
-	label_resets.text = "Resets: " + str(World.reset)
-	label_player_atk.text = "DPS: " + "%0.f" % Player.damage_total # exibe ataque do player
-	label_gameplay_time.text = "Tempo de Jogo \n" + format_gameplay_time()
+	label_resets.text = "Total Resets: " + str(World.reset)
+	label_player_atk.text = "DPS: " + World.format_number(round(Player.damage_total)) # exibe ataque do player
+	label_gameplay_time.text = "Tempo de Jogo: " + format_gameplay_time()
 	
 	update_timer_display() # chama função pra atualizar a label de tempo de batalha
 
@@ -120,7 +120,6 @@ func killer_enemy(enemy_type) -> void:
 		if raid_level % 5 == 0:
 			Data.data_management["raids"]["raid_damage"]["multiplier"] += 0.5
 		
-		get_tree().call_group("enemy", "next_health")
 		Data.data_management["raids"]["raid_damage"]["level"] += 1
 		get_tree().call_group("raids_management", "update_cooldown_raid", "raid_damage")
 	

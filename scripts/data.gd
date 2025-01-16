@@ -70,21 +70,21 @@ var data_management: Dictionary = {
 	"raids": {
 		"raid_damage": {
 			"level": 1,
-			"hp": 1000,
+			"hp": 1500,
 			"multiplier": 0.0,
 			"time_left": 0.0
 		},
 		
 		"raid_gold": {
 			"level": 1,
-			"hp": 500,
+			"hp": 1500,
 			"multiplier": 0.0,
 			"time_left": 0.0
 		},
 		
 		"raid_critical": {
 			"level": 1,
-			"hp": 750,
+			"hp": 1500,
 			"multiplier": 0.0,
 			"time_left": 0.0
 		}
@@ -123,7 +123,7 @@ func reset_savegame() -> void:
 	data_management = {
 	"world": {
 		"game_time": 0.0,
-		"battle_time": 10,
+		"battle_time": 15,
 		"current_stage": 1,
 		"stage_progress": 1,
 		"highest_stage": 1,
@@ -188,21 +188,21 @@ func reset_savegame() -> void:
 	"raids": {
 		"raid_damage": {
 			"level": 1,
-			"hp": 1000,
+			"hp": 1500,
 			"multiplier": 0.0,
 			"time_left": 0.0
 		},
 		
 		"raid_gold": {
 			"level": 1,
-			"hp": 500,
+			"hp": 1500,
 			"multiplier": 0.0,
 			"time_left": 0.0
 		},
 		
 		"raid_critical": {
 			"level": 1,
-			"hp": 750,
+			"hp": 1500,
 			"multiplier": 0.0,
 			"time_left": 0.0
 		}

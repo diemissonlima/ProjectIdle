@@ -75,15 +75,21 @@ func load_cooldown_raid() -> void:
 func update_label() -> void:
 	raid_damage_name.text = "Dragon Lvl " + str(Data.data_management["raids"]["raid_damage"]["level"])
 	raid_damage_gain.text = "Dano Herói + " + str(Data.data_management["raids"]["raid_damage"]["multiplier"] * 100) + "%"
-	raid_damage_hp.text = "HP: " + str(round(Data.data_management["raids"]["raid_damage"]["hp"]))
+	raid_damage_hp.text = "HP: " + str(
+		World.format_number(round(Data.data_management["raids"]["raid_damage"]["hp"]))
+	)
 	
 	raid_gold_name.text = "Quimera Lvl " + str(Data.data_management["raids"]["raid_gold"]["level"])
 	raid_gold_gain.text = "Gold drop + " + str(Data.data_management["raids"]["raid_gold"]["multiplier"] * 100) + "%"
-	raid_gold_hp.text = "HP: " + str(round(Data.data_management["raids"]["raid_gold"]["hp"]))
+	raid_gold_hp.text = "HP: " + str(
+		World.format_number(round(Data.data_management["raids"]["raid_gold"]["hp"]))
+	)
 	
 	raid_critical_name.text = "Leviatã Lvl " + str(Data.data_management["raids"]["raid_critical"]["level"])
 	raid_critical_gain.text = "Chance Crítico + " + str(Data.data_management["raids"]["raid_critical"]["multiplier"] * 100) + "%"
-	raid_critical_hp.text = "HP: " + str(round(Data.data_management["raids"]["raid_critical"]["hp"]))
+	raid_critical_hp.text = "HP: " + str(
+		World.format_number(round(Data.data_management["raids"]["raid_critical"]["hp"]))
+	)
 
 
 func update_cooldown_raid(raid_type: String) -> void:
