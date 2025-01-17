@@ -12,13 +12,21 @@ extends Control
 @export var label_contador: Label
 @export var label_gold: Label
 @export var label_skill_points: Label
-@export var label_avg_stage: Label
-@export var label_resets: Label
+@export var label_prestige_points: Label
 @export var label_player_atk: Label
-@export var label_gameplay_time: Label
 @export var label_popup_gold: Label
 @export var label_upgrade_ataque_cost: Label
 @export var label_upgrade_time_cost: Label
+
+@export_category("Labels - Status")
+@export var label_gameplay_time: Label
+@export var label_avg_stage: Label
+@export var label_total_gold: Label
+@export var label_resets: Label
+@export var label_monster_kill: Label
+@export var label_gold_boost: Label
+@export var label_dps_boost: Label
+@export var label_critical_chance: Label
 
 @export_category("Buttons")
 @export var increase_attack: TextureButton
@@ -55,14 +63,6 @@ func _process(delta: float) -> void:
 	set_label_upgrade()
 
 
-func format_gameplay_time() -> String:
-	var hours = int(World.gameplay_time) / 3600
-	var minutes = (int(World.gameplay_time) % 3600) / 60
-	var seconds = int(World.gameplay_time) % 60
-	
-	return "%02d : %02d : %02d" % [hours, minutes, seconds]
-
-
 func start_timer() -> void: # inicia os contadores
 	timer_player_attack.start(Player.attack_speed) # inicia o timer de ataque do player, padrao 1s
 	timer_batalha.start(World.battle_time) # inicia o contador do estagio
@@ -83,19 +83,17 @@ func spawn_boss_raid(enemy_path: String) -> void:
 func set_stage_label() -> void:
 	label_stage.text = "Stage: " + str(World.estagio) # exibe o estagio atual
 	label_substage.text = str(World.stage_progress) + " / 10"
-	label_gold.text = "Gold: " + str(Player.gold) # exibe o gold
+	label_gold.text = "Gold: " + World.format_number(Player.gold) # exibe o gold
 	label_skill_points.text = "S.Points: " + str(Player.skill_points)
-	label_avg_stage.text = "Maior Estagio: " + str(World.avg_estagio) # maior estagio alcancado
-	label_resets.text = "Total Resets: " + str(World.reset)
+	label_prestige_points.text = "P.Points: " + World.format_number(round(Player.prestige_points))
 	label_player_atk.text = "DPS: " + World.format_number(round(Player.damage_total)) # exibe ataque do player
-	label_gameplay_time.text = "Tempo de Jogo: " + format_gameplay_time()
 	
 	update_timer_display() # chama função pra atualizar a label de tempo de batalha
 
 
 func set_label_upgrade() -> void:
-	label_upgrade_ataque_cost.text = "DPS: " + str(Player.x_upgrade_ataque * 250) + " Gold" # Exibe custo upgrade ataque
-	label_upgrade_time_cost.text = "Tempo: " + str(Player.x_upgrade_time * 350) + " Gold" # exibe custo upgrade tempo de batalha
+	label_upgrade_ataque_cost.text = "DPS: " + World.format_number(Player.x_upgrade_ataque * 250) # Exibe custo upgrade ataque
+	label_upgrade_time_cost.text = "Tempo: " + World.format_number(Player.x_upgrade_time * 350) # exibe custo upgrade tempo de batalha
 
 
 func update_timer_display() ->  void: # função pra atualizar label de batalha
@@ -323,7 +321,7 @@ func _on_increase_ataque_pressed() -> void:
 	Player.damage += 1
 	Player.default_damage += 1
 	# Exibe custo upgrade ataque
-	label_upgrade_ataque_cost.text = "Ataque: " + str(Player.x_upgrade_ataque * 250) + " Gold"
+	label_upgrade_ataque_cost.text = "Ataque: " + World.format_number(Player.x_upgrade_ataque * 250)
 
 
 func _on_increase_time_pressed() -> void:
@@ -338,7 +336,7 @@ func _on_increase_time_pressed() -> void:
 	World.battle_time += 1
 	
 	# exibe custo upgrade tempo de batalha
-	label_upgrade_time_cost.text = "Tempo: " + str(Player.x_upgrade_time * 350) + " Gold"
+	label_upgrade_time_cost.text = "Tempo: " + World.format_number(Player.x_upgrade_time * 350)
 
 
 func _on_reset_pressed() -> void:
@@ -366,6 +364,11 @@ func _on_next_stage_pressed() -> void:
 func _on_raides_pressed() -> void:
 	get_tree().call_group("raids_management", "update_label")
 	$Interface/Raids.show()
+
+
+func _on_stats_pressed() -> void:
+	get_tree().call_group("stats_info", "update_label")
+	$Interface/StatsInfo.show()
 
 
 func _notification(what: int) -> void:

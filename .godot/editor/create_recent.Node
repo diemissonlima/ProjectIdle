@@ -1,8 +1,9 @@
-VBoxContainer
 Label
-TextureRect
-Control
+RichTextLabel
 TextureButton
+TextureRect
+VBoxContainer
+Control
 Timer
 ColorRect
 Button
@@ -11,4 +12,3 @@ CanvasLayer
 AnimatedSprite2D
 Node
 TextureProgressBar
-Marker2D

@@ -18,7 +18,7 @@ func _ready() -> void:
 
 func calculate_progress() -> void:
 	var base_health: float = 1500.0
-	var scaling_factor: float = 1.20
+	var scaling_factor: float = 1.25
 	
 	var level: int = 0
 	

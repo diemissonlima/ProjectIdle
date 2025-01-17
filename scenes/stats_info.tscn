@@ -1,0 +1,153 @@
+[gd_scene load_steps=9 format=3 uid="uid://rb53rxo4e4vs"]
+
+[ext_resource type="Texture2D" uid="uid://7fknnavhqyfo" path="res://assets/prefabs/box/MessageBox01.png" id="1_4dsp8"]
+[ext_resource type="Script" path="res://scripts/stats_info.gd" id="1_i0mef"]
+[ext_resource type="FontFile" uid="uid://c17ascng2deth" path="res://assets/font/njo_14.ttf" id="2_3wqe3"]
+[ext_resource type="Texture2D" uid="uid://dvsioohm5fxr4" path="res://assets/prefabs/icons/X.png" id="4_kpxoo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ow2ig"]
+font = ExtResource("2_3wqe3")
+font_size = 28
+
+[sub_resource type="LabelSettings" id="LabelSettings_mvwma"]
+font = ExtResource("2_3wqe3")
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_ndoey"]
+font = ExtResource("2_3wqe3")
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_yt8sq"]
+font = ExtResource("2_3wqe3")
+font_size = 20
+
+[node name="StatsInfo" type="Control" node_paths=PackedStringArray("game_time", "average_stage", "total_gold", "total_resets", "monster_kill", "dps_boost", "gold_boost", "critical_chance") groups=["stats_info"]]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -204.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i0mef")
+game_time = NodePath("Background/VBoxContainer/LabelGameTime")
+average_stage = NodePath("Background/VBoxContainer/LabelAvgStage")
+total_gold = NodePath("Background/VBoxContainer/LabelTotalGold")
+total_resets = NodePath("Background/VBoxContainer/LabelResets")
+monster_kill = NodePath("Background/VBoxContainer2/LabelMonsterKill")
+dps_boost = NodePath("Background/VBoxContainer2/LabelDpsBoost")
+gold_boost = NodePath("Background/VBoxContainer2/LabelGoldBoost")
+critical_chance = NodePath("Background/VBoxContainer2/LabelCriticalChance")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -330.0
+offset_top = -112.0
+offset_right = 330.0
+offset_bottom = 237.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4dsp8")
+
+[node name="Title" type="Label" parent="Background"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -44.0
+offset_top = 30.0
+offset_right = 44.0
+offset_bottom = 59.0
+grow_horizontal = 2
+text = "Status"
+label_settings = SubResource("LabelSettings_ow2ig")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 136.0
+offset_right = 322.0
+offset_bottom = 265.0
+theme_override_constants/separation = 15
+
+[node name="LabelGameTime" type="Label" parent="Background/VBoxContainer"]
+layout_mode = 2
+text = "Tempo de Jogo: 00:00:00"
+label_settings = SubResource("LabelSettings_mvwma")
+horizontal_alignment = 1
+
+[node name="LabelAvgStage" type="Label" parent="Background/VBoxContainer"]
+layout_mode = 2
+text = "Estágio mais alto: 10"
+label_settings = SubResource("LabelSettings_ndoey")
+horizontal_alignment = 1
+
+[node name="LabelTotalGold" type="Label" parent="Background/VBoxContainer"]
+layout_mode = 2
+text = "Total Gold: 0"
+label_settings = SubResource("LabelSettings_yt8sq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelResets" type="Label" parent="Background/VBoxContainer"]
+layout_mode = 2
+text = "Total Resets: 0"
+label_settings = SubResource("LabelSettings_yt8sq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Background"]
+layout_mode = 0
+offset_left = 340.0
+offset_top = 136.0
+offset_right = 639.0
+offset_bottom = 265.0
+theme_override_constants/separation = 15
+
+[node name="LabelMonsterKill" type="Label" parent="Background/VBoxContainer2"]
+layout_mode = 2
+text = "Monstros Derrotados: 50000"
+label_settings = SubResource("LabelSettings_yt8sq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelDpsBoost" type="Label" parent="Background/VBoxContainer2"]
+layout_mode = 2
+text = "DPS Boost: 100%"
+label_settings = SubResource("LabelSettings_yt8sq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelGoldBoost" type="Label" parent="Background/VBoxContainer2"]
+layout_mode = 2
+text = "Gold Boost: 150%"
+label_settings = SubResource("LabelSettings_mvwma")
+horizontal_alignment = 1
+
+[node name="LabelCriticalChance" type="Label" parent="Background/VBoxContainer2"]
+layout_mode = 2
+text = "Chance de Crítico: 16%"
+label_settings = SubResource("LabelSettings_ndoey")
+horizontal_alignment = 1
+
+[node name="Close" type="TextureButton" parent="Background"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = 64.0
+grow_horizontal = 0
+texture_normal = ExtResource("4_kpxoo")
+ignore_texture_size = true
+stretch_mode = 5
+
+[connection signal="pressed" from="Background/Close" to="." method="_on_close_pressed"]
