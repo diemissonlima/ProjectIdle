@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=3 uid="uid://dtyw4v44a8ka4"]
+[gd_scene load_steps=90 format=3 uid="uid://dtyw4v44a8ka4"]
 
 [ext_resource type="Texture2D" uid="uid://bs4f04v00hl85" path="res://assets/backgrounds/Horizontal/1.png" id="1_m0651"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_mqmc1"]
@@ -66,6 +66,7 @@
 [ext_resource type="PackedScene" uid="uid://dt5qe7guofq8w" path="res://scenes/raids.tscn" id="53_tkji6"]
 [ext_resource type="PackedScene" uid="uid://blbyblciesemb" path="res://scenes/reset_info.tscn" id="54_y5ges"]
 [ext_resource type="PackedScene" uid="uid://rb53rxo4e4vs" path="res://scenes/stats_info.tscn" id="55_l267x"]
+[ext_resource type="Texture2D" uid="uid://e4o6nongfgvb" path="res://assets/prefabs/box/Menu02.png" id="56_kkyfb"]
 [ext_resource type="Texture2D" uid="uid://do22bmxeusi4a" path="res://assets/prefabs/icons/sword_03e.png" id="59_4eh2u"]
 [ext_resource type="Texture2D" uid="uid://c1rlf8hnaxpq2" path="res://assets/prefabs/icons/Icon_Small_Coin.png" id="60_5y4ps"]
 [ext_resource type="Texture2D" uid="uid://c26eco8t6djvs" path="res://assets/prefabs/icons/book_04f.png" id="61_pdtar"]
@@ -74,6 +75,7 @@
 [ext_resource type="Texture2D" uid="uid://cycc5sf6td3w5" path="res://assets/skills/08.png" id="65_asbbg"]
 [ext_resource type="Texture2D" uid="uid://7fknnavhqyfo" path="res://assets/prefabs/box/MessageBox01.png" id="65_waswf"]
 [ext_resource type="Texture2D" uid="uid://73d4eskglr32" path="res://assets/prefabs/icons/29.png" id="67_evpem"]
+[ext_resource type="Texture2D" uid="uid://c46pptcjh5hyp" path="res://assets/prefabs/icons/Wenrexa Shield.png" id="69_ngy2m"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_cavrc"]
 font = ExtResource("23_fp0v3")
@@ -173,7 +175,33 @@ enemy_list2 = Array[PackedScene]([ExtResource("2_0hpjr"), ExtResource("3_jhtr8")
 [node name="ResetInfo" parent="Interface" instance=ExtResource("54_y5ges")]
 
 [node name="StatsInfo" parent="Interface" instance=ExtResource("55_l267x")]
+
+[node name="Control" type="Control" parent="Interface"]
 visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 32.0
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureButton" parent="Interface/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -330.5
+offset_top = -274.5
+offset_right = 330.5
+offset_bottom = 274.5
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("56_kkyfb")
+stretch_mode = 5
 
 [node name="Background" type="TextureRect" parent="."]
 self_modulate = Color(1, 1, 1, 0.392157)
@@ -187,6 +215,7 @@ grow_vertical = 2
 texture = ExtResource("1_m0651")
 
 [node name="SpawnPosition" type="Marker2D" parent="Background"]
+visible = false
 position = Vector2(350, 321)
 
 [node name="NextStage" type="TextureButton" parent="Background"]
@@ -495,9 +524,9 @@ texture = ExtResource("60_5y4ps")
 expand_mode = 1
 
 [node name="Raides" type="TextureButton" parent="Buttons"]
-offset_left = 12.0
+offset_left = 20.0
 offset_top = 32.0
-offset_right = 72.0
+offset_right = 80.0
 offset_bottom = 92.0
 texture_normal = ExtResource("27_ipvoa")
 ignore_texture_size = true
@@ -527,10 +556,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -333.0
-offset_top = -572.0
-offset_right = -283.0
-offset_bottom = -522.0
+offset_left = -325.0
+offset_top = -570.0
+offset_right = -275.0
+offset_bottom = -520.0
 grow_horizontal = 2
 grow_vertical = 0
 texture_normal = ExtResource("32_muu7r")
@@ -554,11 +583,17 @@ text = "Reset"
 label_settings = SubResource("LabelSettings_57f3j")
 
 [node name="Stats" type="TextureButton" parent="Buttons"]
-offset_left = 10.0
-offset_top = 218.0
-offset_right = 74.0
-offset_bottom = 282.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -83.0
+offset_top = 33.0
+offset_right = -18.0
+offset_bottom = 88.0
+grow_horizontal = 0
 texture_normal = ExtResource("67_evpem")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="Label" type="Label" parent="Buttons/Stats"]
 layout_mode = 1
@@ -568,12 +603,41 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -24.5
-offset_top = 12.0
+offset_top = 7.0
 offset_right = 26.5
-offset_bottom = 29.0
+offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Status"
+label_settings = SubResource("LabelSettings_57f3j")
+
+[node name="Equips" type="TextureButton" parent="Buttons"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -78.0
+offset_top = 126.0
+offset_right = -18.0
+offset_bottom = 186.0
+grow_horizontal = 0
+texture_normal = ExtResource("69_ngy2m")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Buttons/Equips"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -24.5
+offset_top = 7.0
+offset_right = 26.5
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Equips"
 label_settings = SubResource("LabelSettings_57f3j")
 
 [node name="Skills" type="Node" parent="." node_paths=PackedStringArray("btn_increase_attack", "label_increase_attack", "increase_attack_duration", "increase_attack_cooldown", "btn_increase_gold", "label_increase_gold", "increase_gold_duration", "increase_gold_cooldown", "btn_increase_critical", "label_increase_critical", "increase_critical_duration", "increase_critical_cooldown", "btn_increase_attackspeed", "label_increase_attackSpeed", "increase_attackspeed_duration", "increase_attackspeed_cooldown", "box_info")]

@@ -19,7 +19,7 @@ func update_label() -> void:
 	monster_kill.text = "Monstros Derrotados: " + str(World.kills)
 	dps_boost.text = "DPS Boost: +" + str(Data.data_management["raids"]["raid_damage"]["multiplier"] * 100) + "%"
 	gold_boost.text = "Gold Boost: +" + str(Data.data_management["raids"]["raid_gold"]["multiplier"] * 100) + "%"
-	critical_chance.text = "Chance Crítico: " + str(Player.critical_chance * 100) + "%"
+	critical_chance.text = "Chance Crítico: " + str(round(Player.critical_chance * 100)) + "%"
 
 
 func format_gameplay_time() -> String:

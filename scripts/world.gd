@@ -179,7 +179,7 @@ func killer_enemy(enemy_type) -> void:
 
 func show_popup_gold(value: int) -> void:
 	label_popup_gold.show()
-	label_popup_gold.text = "+ " + str(value)
+	label_popup_gold.text = "+ " + World.format_number(value)
 	await get_tree().create_timer(0.4).timeout
 	label_popup_gold.hide()
 

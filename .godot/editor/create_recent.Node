@@ -1,9 +1,10 @@
-Label
-RichTextLabel
-TextureButton
 TextureRect
-VBoxContainer
+GridContainer
+Label
+TextureButton
 Control
+RichTextLabel
+VBoxContainer
 Timer
 ColorRect
 Button
@@ -11,4 +12,3 @@ HBoxContainer
 CanvasLayer
 AnimatedSprite2D
 Node
-TextureProgressBar
