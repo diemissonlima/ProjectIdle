@@ -56,8 +56,8 @@ func format_number(value: float) -> String:
 		"bi", "bj", "bk", "bl", "bm", "bn", "bo", "bp", "bq", "br", "bs", "bt",
 		"bu", "bv", "bw", "bx", "by", "bz"
 	]
-	var index = 0
 	
+	var index = 0
 	while value >= 1000 and index < suffixes.size() - 1:
 		value /= 1000
 		index += 1

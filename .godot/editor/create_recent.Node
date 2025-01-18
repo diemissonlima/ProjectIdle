@@ -1,6 +1,7 @@
 TextureRect
 GridContainer
 Label
+HBoxContainer
 TextureButton
 Control
 RichTextLabel
@@ -8,7 +9,6 @@ VBoxContainer
 Timer
 ColorRect
 Button
-HBoxContainer
 CanvasLayer
 AnimatedSprite2D
 Node

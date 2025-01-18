@@ -18,16 +18,6 @@ extends Control
 @export var label_upgrade_ataque_cost: Label
 @export var label_upgrade_time_cost: Label
 
-@export_category("Labels - Status")
-@export var label_gameplay_time: Label
-@export var label_avg_stage: Label
-@export var label_total_gold: Label
-@export var label_resets: Label
-@export var label_monster_kill: Label
-@export var label_gold_boost: Label
-@export var label_dps_boost: Label
-@export var label_critical_chance: Label
-
 @export_category("Buttons")
 @export var increase_attack: TextureButton
 @export var increase_battle_time: TextureButton
@@ -92,15 +82,22 @@ func set_stage_label() -> void:
 
 
 func set_label_upgrade() -> void:
-	label_upgrade_ataque_cost.text = "DPS: " + World.format_number(Player.x_upgrade_ataque * 250) # Exibe custo upgrade ataque
-	label_upgrade_time_cost.text = "Tempo: " + World.format_number(Player.x_upgrade_time * 350) # exibe custo upgrade tempo de batalha
+	label_upgrade_ataque_cost.text = "DPS: " + World.format_number(Player.x_upgrade_ataque * 250) + " Gold" # Exibe custo upgrade ataque
+	label_upgrade_time_cost.text = "Tempo: " + World.format_number(Player.x_upgrade_time * 350) + " Gold" # exibe custo upgrade tempo de batalha
 
 
 func update_timer_display() ->  void: # função pra atualizar label de batalha
 	var minutes = int(timer_batalha.time_left) / 60 # converte o time_left do timer pra minutos
 	var seconds = int(timer_batalha.time_left) % 60 # converte o time_left do timer pra segundos
-
-	label_contador.text = String("%02d : %02d" % [int(minutes), int(seconds)]) # formata a string
+	
+	if enemy.enemy_type == 0 or enemy.enemy_type == 1:
+		label_contador.text = String(
+			"Boss\n" + "%02d : %02d" % [int(minutes), int(seconds)]
+			) # formata a string
+	else:
+		label_contador.text = String(
+			"Raide Boss\n" + "%02d : %02d" % [int(minutes), int(seconds)]
+			)
 
 
 func take_enemy_damage(_damage: float) -> void: # causa dano ao inimigo
@@ -144,16 +141,14 @@ func killer_enemy(enemy_type) -> void:
 	World.gold_gain += enemy.dropped_gold
 	
 	enemy.queue_free() # deleta o inimigo da cena
-	load_background() # carrega um novo background
 	
-	
-	#if enemy.enemy_type == 0 or enemy.enemy_type == 1:
 	if not stop_progress:
 		if enemy.enemy_type == 0 or enemy.enemy_type == 1:
 			World.stage_progress += 1
 		if World.stage_progress > 10:
 			if World.estagio % 5 == 0:
 				Player.skill_points += 1
+				load_background() # carrega um novo background
 				
 			World.estagio += 1 # incrementa o estagio em + 1
 			World.stage_progress = 1
@@ -321,7 +316,7 @@ func _on_increase_ataque_pressed() -> void:
 	Player.damage += 1
 	Player.default_damage += 1
 	# Exibe custo upgrade ataque
-	label_upgrade_ataque_cost.text = "Ataque: " + World.format_number(Player.x_upgrade_ataque * 250)
+	label_upgrade_ataque_cost.text = "Ataque: " + World.format_number(Player.x_upgrade_ataque * 250) + " Gold"
 
 
 func _on_increase_time_pressed() -> void:
@@ -336,7 +331,7 @@ func _on_increase_time_pressed() -> void:
 	World.battle_time += 1
 	
 	# exibe custo upgrade tempo de batalha
-	label_upgrade_time_cost.text = "Tempo: " + World.format_number(Player.x_upgrade_time * 350)
+	label_upgrade_time_cost.text = "Tempo: " + World.format_number(Player.x_upgrade_time * 350) + " Gold"
 
 
 func _on_reset_pressed() -> void:

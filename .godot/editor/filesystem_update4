@@ -1,10 +1,11 @@
-res://scenes/stats_info.tscn
-res://scripts/stats_info.gd
 res://scenes/world.tscn
+res://scripts/global_world.gd
+res://scripts/world.gd
 res://scenes/base_enemy.tscn
 res://scenes/rewards_offline.tscn
 res://scenes/main_menu.tscn
 res://scenes/box_skill_info.tscn
 res://scenes/raids.tscn
 res://scenes/reset_info.tscn
-res://scripts/world.gd
+res://scenes/stats_info.tscn
+res://scenes/equipments.tscn

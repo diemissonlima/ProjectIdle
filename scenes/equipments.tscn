@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhwtso3ysibcm"]
+
+[ext_resource type="Texture2D" uid="uid://e4o6nongfgvb" path="res://assets/prefabs/box/Menu02.png" id="1_8hbwa"]
+[ext_resource type="FontFile" uid="uid://c17ascng2deth" path="res://assets/font/njo_14.ttf" id="2_4ds7v"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_p6cx1"]
+font = ExtResource("2_4ds7v")
+font_size = 30
+shadow_size = 0
+shadow_color = Color(0.976471, 0.976471, 0.976471, 0)
+
+[node name="Equipments" type="Control"]
+custom_minimum_size = Vector2(661, 549)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -330.5
+offset_top = -274.5
+offset_right = 330.5
+offset_bottom = 274.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_8hbwa")
+
+[node name="Title" type="Label" parent="Background"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -112.0
+offset_top = 57.0
+offset_right = 112.0
+offset_bottom = 88.0
+grow_horizontal = 2
+text = "Equipamentos"
+label_settings = SubResource("LabelSettings_p6cx1")
+
+[node name="GridContainer" type="GridContainer" parent="Background"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 5
+
+[node name="Slot1" type="TextureRect" parent="Background/GridContainer"]
+layout_mode = 2
