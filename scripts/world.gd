@@ -276,10 +276,26 @@ func start_raid_battle() -> void:
 
 
 func _on_timer_player_attack_timeout() -> void: # sinal que é chamado quando o timer de ataque zera
+	var damage = Player.damage_total
+	var base_critical_damage: float = damage / 2
+	
 	Player.alter_attack() # modifica os valores de ataque
 	
 	if Player.critical_attack: # verifica se o ataque é crítico
-		take_enemy_damage(Player.damage_total * 2) # dobra o dano causado
+		if Player.critical_damage_skill_on:
+			var bonus_damage_multiplier: float = Player.increase_criticaldamage_multiplier * 100
+			var bonus_critical_damage: float = (bonus_damage_multiplier * damage) / 100
+			
+			take_enemy_damage(damage + base_critical_damage + bonus_critical_damage)
+			#print("DANO BASE: ", damage)
+			#print("MULTIPLICADOR DE CRITICO: " + str(bonus_damage_multiplier) + "%")
+			#print("DANO CRITICO BASE: ", base_critical_damage)
+			#print("BONUS DE DANO CRITICO: ", bonus_critical_damage)
+			#print("DANO CRITICO FINAL: ", damage + base_critical_damage + bonus_critical_damage)
+			#print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
+		else:
+			take_enemy_damage(damage + base_critical_damage) # dobra o dano causado
+		
 		Player.critical_attack = false # muda a flag para nao causar sempre dano critico
 		
 	else:

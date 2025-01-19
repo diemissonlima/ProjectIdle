@@ -778,7 +778,7 @@ grow_vertical = 0
 text = "Upgrades"
 label_settings = SubResource("LabelSettings_57f3j")
 
-[node name="Skills" type="Node" parent="." node_paths=PackedStringArray("btn_increase_attack", "label_increase_attack", "increase_attack_duration", "increase_attack_cooldown", "btn_increase_gold", "label_increase_gold", "increase_gold_duration", "increase_gold_cooldown", "btn_increase_critical", "label_increase_critical", "increase_critical_duration", "increase_critical_cooldown", "btn_increase_attackspeed", "label_increase_attackSpeed", "increase_attackspeed_duration", "increase_attackspeed_cooldown", "box_info")]
+[node name="Skills" type="Node" parent="." node_paths=PackedStringArray("btn_increase_attack", "label_increase_attack", "increase_attack_duration", "increase_attack_cooldown", "btn_increase_gold", "label_increase_gold", "increase_gold_duration", "increase_gold_cooldown", "btn_increase_criticaldamage", "label_increase_criticaldamage", "increase_criticaldamage_duration", "increase_criticaldamage_cooldown", "btn_increase_attackspeed", "label_increase_attackSpeed", "increase_attackspeed_duration", "increase_attackspeed_cooldown", "box_info")]
 script = ExtResource("24_y8pb2")
 btn_increase_attack = NodePath("IncreaseAttack")
 label_increase_attack = NodePath("IncreaseAttack/Label")
@@ -788,10 +788,10 @@ btn_increase_gold = NodePath("IncreaseGold")
 label_increase_gold = NodePath("IncreaseGold/Label")
 increase_gold_duration = NodePath("IncreaseGold/Duration")
 increase_gold_cooldown = NodePath("IncreaseGold/Cooldown")
-btn_increase_critical = NodePath("IncreaseCritical")
-label_increase_critical = NodePath("IncreaseCritical/Label")
-increase_critical_duration = NodePath("IncreaseCritical/Duration")
-increase_critical_cooldown = NodePath("IncreaseCritical/Cooldown")
+btn_increase_criticaldamage = NodePath("IncreaseCriticalDamage")
+label_increase_criticaldamage = NodePath("IncreaseCriticalDamage/Label")
+increase_criticaldamage_duration = NodePath("IncreaseCriticalDamage/Duration")
+increase_criticaldamage_cooldown = NodePath("IncreaseCriticalDamage/Cooldown")
 btn_increase_attackspeed = NodePath("IncreaseAttackSpeed/Button")
 label_increase_attackSpeed = NodePath("IncreaseAttackSpeed/Label")
 increase_attackspeed_duration = NodePath("IncreaseAttackSpeed/Duration")
@@ -896,7 +896,7 @@ one_shot = true
 wait_time = 0.05
 one_shot = true
 
-[node name="IncreaseCritical" type="TextureButton" parent="Skills" groups=["btns_skill"]]
+[node name="IncreaseCriticalDamage" type="TextureButton" parent="Skills" groups=["btns_skill"]]
 self_modulate = Color(1, 1, 1, 0.784314)
 anchors_preset = 8
 anchor_left = 0.5
@@ -913,7 +913,7 @@ texture_normal = ExtResource("27_34dut")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Button" type="TextureButton" parent="Skills/IncreaseCritical"]
+[node name="Button" type="TextureButton" parent="Skills/IncreaseCriticalDamage"]
 custom_minimum_size = Vector2(17, 20)
 layout_mode = 0
 offset_left = 16.0
@@ -922,7 +922,7 @@ offset_right = 33.0
 offset_bottom = 9.0
 texture_normal = ExtResource("61_v3wpb")
 
-[node name="Label" type="Label" parent="Skills/IncreaseCritical"]
+[node name="Label" type="Label" parent="Skills/IncreaseCriticalDamage"]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -938,10 +938,10 @@ grow_horizontal = 2
 grow_vertical = 2
 label_settings = SubResource("LabelSettings_donak")
 
-[node name="Duration" type="Timer" parent="Skills/IncreaseCritical"]
+[node name="Duration" type="Timer" parent="Skills/IncreaseCriticalDamage"]
 one_shot = true
 
-[node name="Cooldown" type="Timer" parent="Skills/IncreaseCritical"]
+[node name="Cooldown" type="Timer" parent="Skills/IncreaseCriticalDamage"]
 wait_time = 0.05
 one_shot = true
 

@@ -12,11 +12,11 @@ extends Node
 @export var increase_gold_duration: Timer
 @export var increase_gold_cooldown: Timer
 
-@export_category("Skills - Critical")
-@export var btn_increase_critical: TextureButton
-@export var label_increase_critical: Label
-@export var increase_critical_duration: Timer
-@export var increase_critical_cooldown: Timer
+@export_category("Skills - CriticalDamage")
+@export var btn_increase_criticaldamage: TextureButton
+@export var label_increase_criticaldamage: Label
+@export var increase_criticaldamage_duration: Timer
+@export var increase_criticaldamage_cooldown: Timer
 
 @export_category("Skills - AttackSpeed")
 @export var btn_increase_attackspeed: TextureButton
@@ -51,8 +51,8 @@ func load_skill_cooldown() -> void:
 		increase_attack_cooldown.start(data["increase_attack"]["aux_cooldown"])
 	if data["increase_gold"]["aux_cooldown"] > 0:
 		increase_gold_cooldown.start(data["increase_gold"]["aux_cooldown"])
-	if data["increase_critical"]["aux_cooldown"] > 0:
-		increase_critical_cooldown.start(data["increase_critical"]["aux_cooldown"])
+	if data["increase_critical_damage"]["aux_cooldown"] > 0:
+		increase_criticaldamage_cooldown.start(data["increase_critical_damage"]["aux_cooldown"])
 	if data["increase_attackspeed"]["aux_cooldown"] > 0:
 		increase_attackspeed_cooldown.start(data["increase_attackspeed"]["aux_cooldown"])
 	
@@ -60,8 +60,8 @@ func load_skill_cooldown() -> void:
 		increase_attack_duration.start(data["increase_attack"]["aux_duration"])
 	if data["increase_gold"]["aux_duration"] > 0:
 		increase_gold_duration.start(data["increase_gold"]["aux_duration"])
-	if data["increase_critical"]["aux_duration"] > 0:
-		increase_critical_duration.start(data["increase_critical"]["aux_duration"])
+	if data["increase_critical_damage"]["aux_duration"] > 0:
+		increase_criticaldamage_duration.start(data["increase_critical_damage"]["aux_duration"])
 	if data["increase_attackspeed"]["aux_duration"] > 0:
 		increase_attackspeed_duration.start(data["increase_attackspeed"]["aux_duration"])
 	
@@ -101,8 +101,8 @@ func save_timers_left() -> void:
 		data["increase_attack"]["aux_duration"] = float(increase_attack_duration.time_left)
 	if increase_gold_duration.time_left >= 0:
 		data["increase_gold"]["aux_duration"] = float(increase_gold_duration.time_left)
-	if increase_critical_duration.time_left >= 0:
-		data["increase_critical"]["aux_duration"] = float(increase_critical_duration.time_left)
+	if increase_criticaldamage_duration.time_left >= 0:
+		data["increase_critical_damage"]["aux_duration"] = float(increase_criticaldamage_duration.time_left)
 	if increase_attackspeed_duration.time_left >= 0:
 		data["increase_attackspeed"]["aux_duration"] = float(increase_attackspeed_duration.time_left)
 		
@@ -110,8 +110,8 @@ func save_timers_left() -> void:
 		data["increase_attack"]["aux_cooldown"] = float(increase_attack_cooldown.time_left)
 	if increase_gold_cooldown.time_left >= 0:
 		data["increase_gold"]["aux_cooldown"] = float(increase_gold_cooldown.time_left)
-	if increase_critical_cooldown.time_left >= 0:
-		data["increase_critical"]["aux_cooldown"] = float(increase_critical_cooldown.time_left)
+	if increase_criticaldamage_cooldown.time_left >= 0:
+		data["increase_critical_damage"]["aux_cooldown"] = float(increase_criticaldamage_cooldown.time_left)
 	if increase_attackspeed_cooldown.time_left >= 0:
 		data["increase_attackspeed"]["aux_cooldown"] = float(increase_attackspeed_cooldown.time_left)
 
@@ -137,10 +137,10 @@ func on_button_pressed(button: TextureButton) -> void:
 			increase_gold_duration.start(Player.increase_gold_duration)
 			label_increase_gold.show()
 		
-		"IncreaseCritical":
-			Player.critical_chance *= Player.increase_critical_multiplier
-			increase_critical_duration.start(Player.increase_critical_duration)
-			label_increase_critical.show()
+		"IncreaseCriticalDamage":
+			Player.critical_damage_skill_on = true
+			increase_criticaldamage_duration.start(Player.increase_criticaldamage_duration)
+			label_increase_criticaldamage.show()
 			
 		"IncreaseAttackSpeed":
 			Player.attack_speed -= Player.increase_attackspeed_multiplier
@@ -160,9 +160,9 @@ func on_timer_duration_timeout(button: TextureButton) -> void:
 			increase_gold_cooldown.start(Player.increase_gold_cooldown)
 			Player.gold_skill_on = false
 		
-		"IncreaseCritical":
-			Player.critical_chance /= Player.increase_critical_multiplier
-			increase_critical_cooldown.start(Player.increase_critical_cooldown)
+		"IncreaseCriticalDamage":
+			increase_criticaldamage_cooldown.start(Player.increase_criticaldamage_cooldown)
+			Player.critical_damage_skill_on = false
 			
 		"IncreaseAttackSpeed":
 			Player.attack_speed = 0.5

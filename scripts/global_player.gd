@@ -27,10 +27,10 @@ var increase_gold_multiplier: float = 1.5
 var increase_gold_duration: int = 30
 var increase_gold_cooldown: int = 150
 
-var critical_skill_level: int = 1
-var increase_critical_multiplier: float = 2.0
-var increase_critical_duration: int = 30
-var increase_critical_cooldown: int = 150
+var criticaldamage_skill_level: int = 1
+var increase_criticaldamage_multiplier: float = 2.0
+var increase_criticaldamage_duration: int = 30
+var increase_criticaldamage_cooldown: int = 150
 
 var attackspeed_skill_level: int = 1
 var increase_attackspeed_multiplier: float = 1.25
@@ -42,6 +42,7 @@ var x_upgrade_time: int = 1
 
 var gold_skill_on: bool = false
 var attackspeed_skill_on: bool = false
+var critical_damage_skill_on: bool = false
 
 
 func _ready() -> void:
@@ -78,11 +79,10 @@ func load_data() -> void:
 	increase_gold_duration = data_skills["increase_gold"]["duration"]
 	increase_gold_cooldown = data_skills["increase_gold"]["cooldown"]
 	
-	critical_skill_level = data_skills["increase_critical"]["level"]
-	critical_chance = data_skills["increase_critical"]["critical_chance"]
-	increase_critical_multiplier = data_skills["increase_critical"]["multiplier"]
-	increase_critical_duration = data_skills["increase_critical"]["duration"]
-	increase_critical_cooldown = data_skills["increase_critical"]["cooldown"]
+	criticaldamage_skill_level = data_skills["increase_critical_damage"]["level"]
+	increase_criticaldamage_multiplier = data_skills["increase_critical_damage"]["multiplier"]
+	increase_criticaldamage_duration = data_skills["increase_critical_damage"]["duration"]
+	increase_criticaldamage_cooldown = data_skills["increase_critical_damage"]["cooldown"]
 
 
 func save_data() -> void:
@@ -113,11 +113,10 @@ func save_data() -> void:
 	data_skills["increase_gold"]["duration"] = increase_gold_duration
 	data_skills["increase_gold"]["cooldown"] = increase_gold_cooldown
 	
-	data_skills["increase_critical"]["level"] = critical_skill_level
-	data_skills["increase_critical"]["critical_chance"] = critical_chance
-	data_skills["increase_critical"]["multiplier"] = increase_critical_multiplier
-	data_skills["increase_critical"]["duration"] = increase_critical_duration
-	data_skills["increase_critical"]["cooldown"] = increase_critical_cooldown
+	data_skills["increase_critical_damage"]["level"] = criticaldamage_skill_level
+	data_skills["increase_critical_damage"]["multiplier"] = increase_criticaldamage_multiplier
+	data_skills["increase_critical_damage"]["duration"] = increase_criticaldamage_duration
+	data_skills["increase_critical_damage"]["cooldown"] = increase_criticaldamage_cooldown
 	
 	Data.save_data()
 
@@ -127,10 +126,12 @@ func alter_attack() -> void:
 	var raid_damage_multiplier: float = Data.data_management["raids"]["raid_damage"]["multiplier"]
 	var raid_critical_multiplier: float = Data.data_management["raids"]["raid_critical"]["multiplier"]
 	
-	bonus_critical_chance = critical_chance * raid_critical_multiplier
+	bonus_critical_chance = critical_chance + raid_critical_multiplier
 	bonus_damage = damage * raid_damage_multiplier
 	
-	var new_chance_critical = bonus_critical_chance + critical_chance
+	var new_chance_critical = bonus_critical_chance * critical_chance
+	
+	print(new_chance_critical)
 	
 	damage_total = damage + bonus_damage
 	

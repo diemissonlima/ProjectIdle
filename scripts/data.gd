@@ -41,6 +41,15 @@ var data_management: Dictionary = {
 				"aux_duration": 0.0
 			},
 			
+			"increase_critical_damage": {
+				"level": 1,
+				"multiplier": 0.5,
+				"duration": 30.0,
+				"cooldown": 150.0,
+				"aux_cooldown": 0.0,
+				"aux_duration": 0.0
+			},
+			
 			"increase_critical": {
 				"level": 1,
 				"critical_chance": 0.05,
@@ -153,6 +162,15 @@ func reset_savegame() -> void:
 			"increase_gold": {
 				"level": 1,
 				"multiplier": 1.5,
+				"duration": 30.0,
+				"cooldown": 150.0,
+				"aux_cooldown": 0.0,
+				"aux_duration": 0.0
+			},
+			
+			"increase_critical_damage": {
+				"level": 1,
+				"multiplier": 2.0,
 				"duration": 30.0,
 				"cooldown": 150.0,
 				"aux_cooldown": 0.0,
