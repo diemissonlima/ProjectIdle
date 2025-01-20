@@ -170,7 +170,7 @@ func reset_savegame() -> void:
 			
 			"increase_critical_damage": {
 				"level": 1,
-				"multiplier": 2.0,
+				"multiplier": 0.5,
 				"duration": 30.0,
 				"cooldown": 150.0,
 				"aux_cooldown": 0.0,

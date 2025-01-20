@@ -70,9 +70,9 @@ label_settings = SubResource("LabelSettings_ow2ig")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background"]
 layout_mode = 0
-offset_left = 23.0
+offset_left = 18.0
 offset_top = 136.0
-offset_right = 322.0
+offset_right = 328.0
 offset_bottom = 265.0
 theme_override_constants/separation = 15
 
@@ -104,9 +104,9 @@ vertical_alignment = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Background"]
 layout_mode = 0
-offset_left = 340.0
+offset_left = 334.0
 offset_top = 136.0
-offset_right = 639.0
+offset_right = 643.0
 offset_bottom = 265.0
 theme_override_constants/separation = 15
 

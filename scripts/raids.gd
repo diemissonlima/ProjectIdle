@@ -86,7 +86,7 @@ func update_label() -> void:
 	)
 	
 	raid_critical_name.text = "Leviatã Lvl " + str(Data.data_management["raids"]["raid_critical"]["level"])
-	raid_critical_gain.text = "Chance Crítico + " + str(Data.data_management["raids"]["raid_critical"]["multiplier"] * 100) + "%"
+	raid_critical_gain.text = "Dano Crítico + " + str(Data.data_management["raids"]["raid_critical"]["multiplier"] * 100) + "%"
 	raid_critical_hp.text = "HP: " + str(
 		World.format_number(round(Data.data_management["raids"]["raid_critical"]["hp"]))
 	)

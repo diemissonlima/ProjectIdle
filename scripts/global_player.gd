@@ -131,8 +131,6 @@ func alter_attack() -> void:
 	
 	var new_chance_critical = bonus_critical_chance * critical_chance
 	
-	print(new_chance_critical)
-	
 	damage_total = damage + bonus_damage
 	
 	if rng <= new_chance_critical:

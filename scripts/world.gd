@@ -4,6 +4,7 @@ extends Control
 @export var background: TextureRect
 @export var timer_batalha: Timer
 @export var timer_player_attack: Timer
+@export var timer_save_game: Timer
 @export var spawn_position: Marker2D
 
 @export_category("Labels")
@@ -40,6 +41,7 @@ func _ready() -> void:
 	set_label_upgrade() # seta as labels que informa o custo do upgrade
 	spawn_enemy() # spawna o inimigo
 	timer_player_attack.start(Player.attack_speed)
+	timer_save_game.start()
 	
 	if World.stage_progress == 10:
 		timer_batalha.start(World.battle_time)
@@ -283,16 +285,19 @@ func _on_timer_player_attack_timeout() -> void: # sinal que é chamado quando o 
 	
 	if Player.critical_attack: # verifica se o ataque é crítico
 		if Player.critical_damage_skill_on:
-			var bonus_damage_multiplier: float = Player.increase_criticaldamage_multiplier * 100
+			var bonus_damage_multiplier: float = (Player.increase_criticaldamage_multiplier +
+			Data.data_management["raids"]["raid_critical"]["multiplier"]) * 100
 			var bonus_critical_damage: float = (bonus_damage_multiplier * damage) / 100
 			
 			take_enemy_damage(damage + base_critical_damage + bonus_critical_damage)
-			#print("DANO BASE: ", damage)
-			#print("MULTIPLICADOR DE CRITICO: " + str(bonus_damage_multiplier) + "%")
-			#print("DANO CRITICO BASE: ", base_critical_damage)
-			#print("BONUS DE DANO CRITICO: ", bonus_critical_damage)
-			#print("DANO CRITICO FINAL: ", damage + base_critical_damage + bonus_critical_damage)
-			#print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
+			print("DANO BASE: ", damage)
+			print("MULTIPLICADOR DE CRITICO SKILL: ", Player.increase_criticaldamage_multiplier)
+			print("MULTIPLICADOR DE CRITICO RAIDE: ", Data.data_management["raids"]["raid_critical"]["multiplier"])
+			print("TOTAL MULTIPLICADOR DE CRITICO: " + str(bonus_damage_multiplier) + "%")
+			print("DANO CRITICO BASE: ", base_critical_damage)
+			print("BONUS DE DANO CRITICO: ", bonus_critical_damage)
+			print("DANO CRITICO FINAL: ", damage + base_critical_damage + bonus_critical_damage)
+			print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
 		else:
 			take_enemy_damage(damage + base_critical_damage) # dobra o dano causado
 		
@@ -318,6 +323,11 @@ func _on_timer_timeout() -> void: # sinal que é chamado quando o timer do estag
 		return
 	
 	timer_batalha.start(World.battle_time) # reinicia o tempo de batalha
+
+
+func _on_timer_save_game_timeout() -> void:
+	Player.save_data()
+	World.save_data()
 
 
 func _on_increase_ataque_pressed() -> void:

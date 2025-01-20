@@ -47,7 +47,7 @@ func get_skill_info(button: TextureButton) -> void:
 			label_skill_name.text = "Increase Attack Damage"
 			
 			label_skill_description.text = "Aumenta o Dano causado em " \
-			+ str(Player.increase_attack_multiplier) + "x por " \
+			+ str(Player.increase_attack_multiplier * 100) + "% por " \
 			+ str(Player.increase_attack_duration) + " segundos.
 			Cooldown de " + str(Player.increase_attack_cooldown) + " segundos"
 			
@@ -61,7 +61,7 @@ func get_skill_info(button: TextureButton) -> void:
 			label_skill_name.text = "Increase Drop Gold"
 			
 			label_skill_description.text = "Aumenta o drop de Gold em " \
-			+ str(Player.increase_gold_multiplier) + "x por " \
+			+ str(Player.increase_gold_multiplier * 100) + "% por " \
 			+ str(Player.increase_gold_duration) + " segundos 
 			Cooldow de " + str(Player.increase_gold_cooldown) + " segundos."
 			
@@ -117,7 +117,7 @@ func increase_skill() -> void:
 			label_skill_name.text = "Increase Attack Damage"
 			
 			label_skill_description.text = "Aumenta o Dano causado em " \
-			+ str(Player.increase_attack_multiplier) + "x por " \
+			+ str(Player.increase_attack_multiplier * 100) + "% por " \
 			+ str(Player.increase_attack_duration) + " segundos 
 			Cooldown de " + str(Player.increase_attack_cooldown) + " segundos."
 			
@@ -135,7 +135,7 @@ func increase_skill() -> void:
 			label_skill_name.text = "Increase Drop Gold"
 			
 			label_skill_description.text = "Aumenta o drop de Gold em " \
-			+ str(Player.increase_gold_multiplier) + "x por " \
+			+ str(Player.increase_gold_multiplier * 100) + "% por " \
 			+ str(Player.increase_gold_duration) + " segundos 
 			Cooldow de " + str(Player.increase_gold_cooldown) + " segundos."
 			
