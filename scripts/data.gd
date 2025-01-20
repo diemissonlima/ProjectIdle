@@ -19,7 +19,7 @@ var data_management: Dictionary = {
 		"attack_speed": 0.5,
 		"gold": 0,
 		"skill_points": 0,
-		"prestige_points": 100,
+		"prestige_points": 0,
 		"x_upgrade_ataque": 1,
 		"x_upgrade_time": 1,
 		"skills": {

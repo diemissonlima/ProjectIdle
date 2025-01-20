@@ -48,7 +48,10 @@ func increase_health() -> void:
 
 
 func drop() -> void:
-	var base_gold: int = randi_range(0, 5)
+	var base_gold: int = 3
+	var gold_raid_multiplier: float = Data.data_management["raids"]["raid_gold"]["multiplier"]
+	var gold_upgrade_multiplier: float = Data.data_management["upgrades"]["gold"]["multiplier"]
+	var total_gold_multiplier: float = gold_raid_multiplier + gold_upgrade_multiplier
 	
 	match enemy_type:
 		0: # enemy NORMAL
@@ -59,12 +62,8 @@ func drop() -> void:
 		
 	if Player.gold_skill_on:
 		base_gold *= Player.increase_gold_multiplier
-		
-	dropped_gold = round(base_gold)
 	
-	if Data.data_management["raids"]["raid_gold"]["multiplier"] > 0:
-		var bonus_gold: float = Data.data_management["raids"]["raid_gold"]["multiplier"]
-		dropped_gold = dropped_gold + (dropped_gold * bonus_gold)
+	dropped_gold = round(base_gold + (base_gold * total_gold_multiplier))
 	
 		#for item in drop_items_list:
 			#var spawn_probability: float = drop_items_list[item]["drop_chance"]

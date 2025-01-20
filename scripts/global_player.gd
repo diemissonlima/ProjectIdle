@@ -124,16 +124,18 @@ func save_data() -> void:
 func alter_attack() -> void:
 	var rng: float = randf()
 	var raid_damage_multiplier: float = Data.data_management["raids"]["raid_damage"]["multiplier"]
-	var raid_critical_multiplier: float = Data.data_management["raids"]["raid_critical"]["multiplier"]
 	
-	bonus_critical_chance = critical_chance + raid_critical_multiplier
-	bonus_damage = damage * raid_damage_multiplier
+	var upgrade_critical_damage_multiplier: float = Data.data_management["upgrades"]["critical_damage"]["multiplier"]
+	var raid_critical_damage_multiplier: float = Data.data_management["raids"]["raid_critical"]["multiplier"]
+	var critical_damage_multiplier: float = upgrade_critical_damage_multiplier + raid_critical_damage_multiplier
 	
-	var new_chance_critical = bonus_critical_chance * critical_chance
-	
+	bonus_damage = (critical_damage_multiplier * damage_total) / 100
 	damage_total = damage + bonus_damage
 	
-	if rng <= new_chance_critical:
+	print("DANO BONUS: ", bonus_damage)
+	print("DANO TOTAL: ", damage_total)
+	
+	if rng <= critical_chance:
 		critical_attack = true
 
 
