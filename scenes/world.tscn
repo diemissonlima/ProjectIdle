@@ -66,6 +66,7 @@
 [ext_resource type="PackedScene" uid="uid://dt5qe7guofq8w" path="res://scenes/raids.tscn" id="53_tkji6"]
 [ext_resource type="PackedScene" uid="uid://blbyblciesemb" path="res://scenes/reset_info.tscn" id="54_y5ges"]
 [ext_resource type="PackedScene" uid="uid://rb53rxo4e4vs" path="res://scenes/stats_info.tscn" id="55_l267x"]
+[ext_resource type="PackedScene" uid="uid://pyxcf5iw6v3c" path="res://scenes/upgrades.tscn" id="56_xqafe"]
 [ext_resource type="Texture2D" uid="uid://do22bmxeusi4a" path="res://assets/prefabs/icons/sword_03e.png" id="59_4eh2u"]
 [ext_resource type="Texture2D" uid="uid://c1rlf8hnaxpq2" path="res://assets/prefabs/icons/Icon_Small_Coin.png" id="60_5y4ps"]
 [ext_resource type="Texture2D" uid="uid://c26eco8t6djvs" path="res://assets/prefabs/icons/book_04f.png" id="61_pdtar"]
@@ -77,10 +78,6 @@
 [ext_resource type="Texture2D" uid="uid://c46pptcjh5hyp" path="res://assets/prefabs/icons/Wenrexa Shield.png" id="69_ngy2m"]
 [ext_resource type="Texture2D" uid="uid://cwhk8temihlnp" path="res://assets/prefabs/icons/25.png" id="85_ftqql"]
 [ext_resource type="Texture2D" uid="uid://c0pp25wfxbomi" path="res://assets/prefabs/icons/16.png" id="86_8fgdh"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_t3ucs"]
-font = ExtResource("13_lkpp6")
-font_size = 26
 
 [sub_resource type="LabelSettings" id="LabelSettings_cavrc"]
 font = ExtResource("23_fp0v3")
@@ -183,40 +180,7 @@ enemy_list2 = Array[PackedScene]([ExtResource("2_0hpjr"), ExtResource("3_jhtr8")
 
 [node name="StatsInfo" parent="Interface" instance=ExtResource("55_l267x")]
 
-[node name="Upgrades" type="Control" parent="Interface"]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 20.0
-offset_right = -20.0
-offset_bottom = -207.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Background" type="TextureRect" parent="Interface/Upgrades"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("65_waswf")
-
-[node name="Title" type="Label" parent="Interface/Upgrades/Background"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -65.5
-offset_top = 52.0
-offset_right = 65.5
-offset_bottom = 79.0
-grow_horizontal = 2
-text = "Upgrades"
-label_settings = SubResource("LabelSettings_t3ucs")
-vertical_alignment = 1
+[node name="Upgrades" parent="Interface" instance=ExtResource("56_xqafe")]
 
 [node name="Background" type="TextureRect" parent="."]
 self_modulate = Color(1, 1, 1, 0.392157)
@@ -980,6 +944,7 @@ wait_time = 30.0
 [connection signal="pressed" from="Buttons/Raides" to="." method="_on_raides_pressed"]
 [connection signal="pressed" from="Buttons/Reset" to="." method="_on_reset_pressed"]
 [connection signal="pressed" from="Buttons/Stats" to="." method="_on_stats_pressed"]
+[connection signal="pressed" from="Buttons/Upgrades" to="." method="_on_upgrades_pressed"]
 [connection signal="timeout" from="TimerPlayerAttack" to="." method="_on_timer_player_attack_timeout"]
 [connection signal="timeout" from="TimerBatalha" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="TimerSaveGame" to="." method="_on_timer_save_game_timeout"]

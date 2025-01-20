@@ -392,6 +392,11 @@ func _on_stats_pressed() -> void:
 	$Interface/StatsInfo.show()
 
 
+func _on_upgrades_pressed() -> void:
+	get_tree().call_group("upgrade_screen", "update_label")
+	$Interface/Upgrades.show()
+
+
 func _notification(what: int) -> void:
 	if what == 1006:
 		get_datetime()

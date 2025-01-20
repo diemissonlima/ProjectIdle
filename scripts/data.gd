@@ -19,7 +19,7 @@ var data_management: Dictionary = {
 		"attack_speed": 0.5,
 		"gold": 0,
 		"skill_points": 0,
-		"prestige_points": 0,
+		"prestige_points": 100,
 		"x_upgrade_ataque": 1,
 		"x_upgrade_time": 1,
 		"skills": {
@@ -96,6 +96,28 @@ var data_management: Dictionary = {
 			"hp": 1500,
 			"multiplier": 0.0,
 			"time_left": 0.0
+		}
+	},
+	
+	"upgrades": {
+		"damage": {
+			"level": 1,
+			"multiplier": 0.0
+		},
+		
+		"gold": {
+			"level": 1,
+			"multiplier": 0.0
+		},
+		
+		"critical_damage": {
+			"level": 1,
+			"multiplier": 0.0
+		},
+		
+		"raid_time": {
+			"level": 1,
+			"multiplier": 0
 		}
 	}
 }
@@ -223,6 +245,28 @@ func reset_savegame() -> void:
 			"hp": 1500,
 			"multiplier": 0.0,
 			"time_left": 0.0
+		}
+	},
+	
+	"upgrades": {
+		"damage": {
+			"level": 1,
+			"multiplier": 0.0
+		},
+		
+		"gold": {
+			"level": 1,
+			"multiplier": 0.0
+		},
+		
+		"critical_damage": {
+			"level": 1,
+			"multiplier": 0.0
+		},
+		
+		"raid_time": {
+			"level": 1,
+			"multiplier": 0.0
 		}
 	}
 }

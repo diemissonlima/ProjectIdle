@@ -17,14 +17,14 @@ func _ready() -> void:
 func show_label_info(info: Array) -> void:
 	label_time_offline.text = "Tempo Offline: " + convert_time_offline(info[0][0])
 	label_gold_per_second.text = "Gold por segundo: " + str(info[0][1])
-	label_total_goldfarm.text = "Farm de Gold Offline: " + str(info[0][2])
+	label_total_goldfarm.text = "Farm de Gold Offline: " + World.format_number(info[0][2])
 
 
 func calculate_offline_gold() -> void:
 	if Data.data_management["world"]["exit_time"] == 0:
 		return
 		
-	var max_offline_gold: int = 28800 # 8 horas
+	var max_offline_gold: int = 43200 # 12 horas
 	var last_time_exit: int = Data.data_management["world"]["exit_time"]
 	
 	var current_time = Time.get_datetime_dict_from_system()

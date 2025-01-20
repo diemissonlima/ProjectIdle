@@ -1,12 +1,12 @@
+TextureButton
 TextureRect
+VBoxContainer
 Label
 Control
 Timer
 GridContainer
 HBoxContainer
-TextureButton
 RichTextLabel
-VBoxContainer
 ColorRect
 Button
 CanvasLayer
