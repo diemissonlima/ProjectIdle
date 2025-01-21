@@ -217,10 +217,6 @@ func prestige_points() -> int:
 	var points: float = base_points * pow(scaling_factor, base_points)
 	
 	return points
-	
-	#var base_health: float = 10.0  # Vida inicial
-	#var scaling_factor: float = 1.10  # Fator de crescimento exponencial
-	#max_health = base_health * pow(scaling_factor, World.estagio)
 
 
 func reset() -> void:
@@ -278,33 +274,24 @@ func start_raid_battle() -> void:
 
 
 func _on_timer_player_attack_timeout() -> void: # sinal que é chamado quando o timer de ataque zera
-	var damage = Player.damage_total
-	var base_critical_damage: float = damage / 2
-	
 	Player.alter_attack() # modifica os valores de ataque
 	
-	if Player.critical_attack: # verifica se o ataque é crítico
-		if Player.critical_damage_skill_on:
-			var bonus_damage_multiplier: float = (Player.increase_criticaldamage_multiplier +
-			Data.data_management["raids"]["raid_critical"]["multiplier"]) * 100
-			var bonus_critical_damage: float = (bonus_damage_multiplier * damage) / 100
-			
-			take_enemy_damage(damage + base_critical_damage + bonus_critical_damage)
-			print("DANO BASE: ", damage)
-			print("MULTIPLICADOR DE CRITICO SKILL: ", Player.increase_criticaldamage_multiplier)
-			print("MULTIPLICADOR DE CRITICO RAIDE: ", Data.data_management["raids"]["raid_critical"]["multiplier"])
-			print("TOTAL MULTIPLICADOR DE CRITICO: " + str(bonus_damage_multiplier) + "%")
-			print("DANO CRITICO BASE: ", base_critical_damage)
-			print("BONUS DE DANO CRITICO: ", bonus_critical_damage)
-			print("DANO CRITICO FINAL: ", damage + base_critical_damage + bonus_critical_damage)
-			print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
-		else:
-			take_enemy_damage(damage + base_critical_damage) # dobra o dano causado
-		
+	# verifica se o ataque é crítico e a skill de dano critico esta ativa
+	if Player.critical_attack and Player.critical_damage_skill_on == true: 
+		var bonus_skill_multiplier = Data.data_management["player"]["skills"]["increase_critical_damage"]["multiplier"] * 100
+		var bonus_skill_damage = bonus_skill_multiplier * ((Player.damage_total + Player.bonus_damage) / 100)
+		var total_damage = Player.damage_total + Player.bonus_damage + bonus_skill_damage
+		take_enemy_damage(total_damage)
 		Player.critical_attack = false # muda a flag para nao causar sempre dano critico
-		
+	
+	# verifica se o ataque é crítico e a skill de dano critico NAO esta ativa
+	elif Player.critical_attack and Player.critical_damage_skill_on == false:
+		take_enemy_damage(Player.damage_total + Player.bonus_damage) # dobra o dano causado
+		Player.critical_attack = false # muda a flag para nao causar sempre dano critico
+	
 	else:
-		take_enemy_damage(Player.damage_total) # causa dano normal ao inimigo
+		take_enemy_damage(Player.damage_total)
+	
 	
 	if Player.attackspeed_skill_on:
 		timer_player_attack.start(Player.attack_speed)
