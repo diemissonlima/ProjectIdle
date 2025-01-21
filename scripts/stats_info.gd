@@ -12,15 +12,21 @@ extends Control
 
 
 func update_label() -> void:
-	game_time.text = "Tempo Jogado: " + format_gameplay_time()
-	average_stage.text = "Maior Estagio: " + str(World.avg_estagio)
+	var raids: Dictionary = Data.data_management["raids"]
+	var upgrade: Dictionary = Data.data_management["upgrades"]
+	
+	var total_gold_boost = (raids["raid_gold"]["multiplier"] + upgrade["gold"]["multiplier"]) * 100
+	var total_dps_boost = (raids["raid_damage"]["multiplier"] + upgrade["damage"]["multiplier"]) * 100
+	var total_c_damage_boost = (raids["raid_critical"]["multiplier"] + upgrade["critical_damage"]["multiplier"]) * 100
+	
+	game_time.text = "Gametime: " + format_gameplay_time()
+	average_stage.text = "Highest Stage: " + str(World.avg_estagio)
 	total_gold.text = "Total Gold: " + World.format_number(World.gold_gain)
 	total_resets.text = "Total Resets: " + str(World.reset)
-	monster_kill.text = "Mobs Mortos: " + str(World.kills)
-	dps_boost.text = "DPS Boost: +" + str(Data.data_management["raids"]["raid_damage"]["multiplier"] * 100) + "%"
-	gold_boost.text = "Gold Boost: +" + str(Data.data_management["raids"]["raid_gold"]["multiplier"] * 100) + "%"
-	critical_chance.text = "Dano Crítico: +" + str(
-		(Player.increase_criticaldamage_multiplier + Data.data_management["raids"]["raid_critical"]["multiplier"]) * 100) + "%"
+	monster_kill.text = "Monster Kill: " + str(World.kills)
+	dps_boost.text = "DPS Boost: +" + str(total_dps_boost) + "%"
+	gold_boost.text = "Gold Boost: +" + str(total_gold_boost) + "%"
+	critical_chance.text = "Critical Damage: +" + str(total_c_damage_boost) + "%"
 
 
 func format_gameplay_time() -> String:

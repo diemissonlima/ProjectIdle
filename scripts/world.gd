@@ -212,7 +212,7 @@ func reload_battle() -> void:
 
 
 func prestige_points() -> int:
-	var base_points: int = (World.estagio - reset_target) / 10 + 1
+	var base_points: int = (World.estagio - reset_target) / 5 + 1
 	var scaling_factor: float = 1.10
 	var points: float = base_points * pow(scaling_factor, base_points)
 	
@@ -266,7 +266,9 @@ func stop_battle(raid_type: String) -> void:
 
 func start_raid_battle() -> void:
 	raid_fight = true
-	timer_batalha.start(10.0)
+	var bonus_time = Data.data_management["upgrades"]["raid_time"]["multiplier"]
+	
+	timer_batalha.start(World.battle_time_raid + bonus_time)
 	timer_player_attack.start(Player.attack_speed)
 	
 	label_substage.hide()

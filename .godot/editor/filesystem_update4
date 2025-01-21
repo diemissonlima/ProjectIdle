@@ -8,5 +8,8 @@ res://scenes/reset_info.tscn
 res://scenes/stats_info.tscn
 res://scenes/equipments.tscn
 res://scenes/upgrades.tscn
-res://scripts/global_player.gd
+res://scripts/data.gd
+res://scripts/upgrades.gd
+res://scripts/main_menu.gd
 res://scripts/world.gd
+res://scripts/stats_info.gd

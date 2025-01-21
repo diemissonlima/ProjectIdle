@@ -44,6 +44,7 @@ func calculate_offline_gold() -> void:
 		show_label_info(info)
 		
 		Player.gold += gold_earned
+		World.gold_gain += gold_earned
 
 
 func convert_time_offline(time: int) -> String:

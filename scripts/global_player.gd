@@ -122,19 +122,21 @@ func save_data() -> void:
 
 
 func alter_attack() -> void:
+	var raid_damage_multiplier: float = Data.data_management["raids"]["raid_damage"]["multiplier"]
+	var upgrade_damage_multiplier: float = Data.data_management["upgrades"]["damage"]["multiplier"]
+	var damage_multiplier: float = (raid_damage_multiplier + upgrade_damage_multiplier) * 100
+	
+	damage_total = damage + ((damage_multiplier * damage) / 100)
+	
 	var rng: float = randf()
-	var raid_damage_multiplier: float = Data.data_management["raids"]["raid_damage"]["multiplier"] * 100
-	
-	var upgrade_critical_damage_multiplier: float = Data.data_management["upgrades"]["critical_damage"]["multiplier"]
-	var raid_critical_damage_multiplier: float = Data.data_management["raids"]["raid_critical"]["multiplier"]
-	var critical_damage_multiplier: float = (upgrade_critical_damage_multiplier + raid_critical_damage_multiplier) * 100
-	
-	damage_total = damage + ((raid_damage_multiplier * damage) / 100)
-	bonus_damage = (critical_damage_multiplier * damage_total) / 100
-	
 	if rng <= critical_chance:
+		var upgrade_critical_damage_multiplier: float = Data.data_management["upgrades"]["critical_damage"]["multiplier"]
+		var raid_critical_damage_multiplier: float = Data.data_management["raids"]["raid_critical"]["multiplier"]
+		var critical_damage_multiplier: float = (upgrade_critical_damage_multiplier + raid_critical_damage_multiplier) * 100
+		
+		bonus_damage = (critical_damage_multiplier * damage_total) / 100
 		critical_attack = true
-	
+
 
 func _notification(what: int) -> void:
 	if what == 1006:

@@ -2,6 +2,7 @@ extends Node
 
 var gameplay_time: float = 0.0
 var battle_time: int = 5
+var battle_time_raid: int = 10
 var estagio: int = 1
 var stage_progress: int = 1
 var avg_estagio: int = 1

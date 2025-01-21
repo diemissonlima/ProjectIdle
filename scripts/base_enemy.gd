@@ -60,12 +60,13 @@ func drop() -> void:
 		1: # enemy BOSS
 			base_gold += (20 + World.estagio * 8) * 2
 		
-	if Player.gold_skill_on:
-		base_gold *= Player.increase_gold_multiplier
-	
 	dropped_gold = round(base_gold + (base_gold * total_gold_multiplier))
 	
-		#for item in drop_items_list:
+	if Player.gold_skill_on:
+		dropped_gold *= Player.increase_gold_multiplier
+		
+		
+	#for item in drop_items_list:
 			#var spawn_probability: float = drop_items_list[item]["drop_chance"]
 			#var rng: float = randf()
 			#

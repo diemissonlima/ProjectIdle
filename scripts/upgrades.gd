@@ -59,24 +59,24 @@ func update_label() -> void:
 	box_damage.get_node("BGIcon/Level").text = "Lv " + str(data["damage"]["level"])
 	box_damage.get_node("BGDescription/VBoxContainer/Current").text = "- Current: " + str(data["damage"]["multiplier"] * 100) + "%"
 	box_damage.get_node("IncreaseDamage/Cost").text = str(round(
-		calculate_upgrade_cost(15, 1.30, data["damage"]["level"])))
+		calculate_upgrade_cost(7, 1.25, data["damage"]["level"])))
 	
 	box_gold.get_node("BGIcon/Level").text = "Lv " + str(data["gold"]["level"])
 	box_gold.get_node("BGDescription/VBoxContainer/Current").text = "- Current: " + str(data["gold"]["multiplier"] * 100) + "%"
 	box_gold.get_node("IncreaseGold/Cost").text = str(round(
-		calculate_upgrade_cost(10, 1.20, data["gold"]["level"])
+		calculate_upgrade_cost(5, 1.20, data["gold"]["level"])
 	))
 	
 	box_critical_damage.get_node("BGIcon/Level").text = "Lv " + str(data["critical_damage"]["level"])
 	box_critical_damage.get_node("BGDescription/VBoxContainer/Current").text = "- Current: " + str(data["critical_damage"]["multiplier"] * 100) + "%"
 	box_critical_damage.get_node("IncreaseCriticalDamage/Cost").text = str(round(
-		calculate_upgrade_cost(15, 1.20, data["critical_damage"]["level"])
+		calculate_upgrade_cost(10, 1.20, data["critical_damage"]["level"])
 	))
 	
 	box_raid_time.get_node("BGIcon/Level").text = "Lv " + str(data["raid_time"]["level"])
 	box_raid_time.get_node("BGDescription/VBoxContainer/Current").text = "- Current: " + str(data["raid_time"]["multiplier"]) + "s"
 	box_raid_time.get_node("IncreaseRaidTime/Cost").text = str(round(
-		calculate_upgrade_cost(20, 1.30, data["raid_time"]["level"])
+		calculate_upgrade_cost(15, 1.30, data["raid_time"]["level"])
 	))
 
 
