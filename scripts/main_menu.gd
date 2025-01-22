@@ -8,7 +8,7 @@ extends Control
 @export var label_resets: Label
 
 @export_category("Buttons")
-@export var btn_loadgame: Button
+@export var btn_loadgame: TextureButton
 
 
 func _ready() -> void:

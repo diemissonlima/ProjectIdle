@@ -1,11 +1,11 @@
+HBoxContainer
+Label
 TextureButton
 TextureRect
 VBoxContainer
-Label
 Control
 Timer
 GridContainer
-HBoxContainer
 RichTextLabel
 ColorRect
 Button

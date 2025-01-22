@@ -63,7 +63,10 @@ func drop() -> void:
 	dropped_gold = round(base_gold + (base_gold * total_gold_multiplier))
 	
 	if Player.gold_skill_on:
-		dropped_gold *= Player.increase_gold_multiplier
+		var skill_multiplier: float = Data.data_management["player"]["skills"]["increase_gold"]["multiplier"] * 100
+		var bonus_gold: float = skill_multiplier * dropped_gold / 100
+		
+		dropped_gold += bonus_gold
 		
 		
 	#for item in drop_items_list:

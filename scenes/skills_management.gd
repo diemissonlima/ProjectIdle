@@ -57,6 +57,7 @@ func load_skill_cooldown() -> void:
 		increase_attackspeed_cooldown.start(data["increase_attackspeed"]["aux_cooldown"])
 	
 	if data["increase_attack"]["aux_duration"] > 0:
+		Player.damage_skill_on = true
 		increase_attack_duration.start(data["increase_attack"]["aux_duration"])
 	if data["increase_gold"]["aux_duration"] > 0:
 		Player.gold_skill_on = true
@@ -132,7 +133,7 @@ func on_button_pressed(button: TextureButton) -> void:
 	match button.name:
 		"IncreaseAttack":
 			increase_attack_duration.start(Player.increase_attack_duration)
-			Player.damage *= Player.increase_attack_multiplier
+			Player.damage_skill_on = true
 			label_increase_attack.show()
 			
 		"IncreaseGold":
@@ -157,6 +158,7 @@ func on_timer_duration_timeout(button: TextureButton) -> void:
 	match button.name:
 		"IncreaseAttack":
 			Player.damage = Player.default_damage
+			Player.damage_skill_on = false
 			increase_attack_cooldown.start(Player.increase_attack_cooldown)
 		
 		"IncreaseGold":

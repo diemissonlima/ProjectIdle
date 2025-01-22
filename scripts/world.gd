@@ -103,9 +103,10 @@ func update_timer_display() ->  void: # função pra atualizar label de batalha
 
 
 func take_enemy_damage(_damage: float) -> void: # causa dano ao inimigo
-	enemy.health -= _damage # diminui a vida em funcao do dano do player
+	enemy.health -= round(_damage) # diminui a vida em funcao do dano do player
 	
 	if enemy.health <= 0: # se a vida chegar a zero, chama a função de matar o inimigo
+		enemy.queue_free() # deleta o inimigo da cena
 		killer_enemy(enemy.enemy_type)
 
 
@@ -129,7 +130,7 @@ func killer_enemy(enemy_type) -> void:
 	
 	if enemy_type == 4: # boss raid citical
 		Player.skill_points += 1
-		Data.data_management["raids"]["raid_critical"]["multiplier"] += 0.01
+		Data.data_management["raids"]["raid_critical"]["multiplier"] += 0.05
 		
 		Data.data_management["raids"]["raid_critical"]["level"] += 1
 		get_tree().call_group("raids_management", "update_cooldown_raid", "raid_critical")
@@ -137,12 +138,10 @@ func killer_enemy(enemy_type) -> void:
 	get_tree().call_group("enemy", "next_health")
 	raid_fight = false
 	Player.gold += enemy.dropped_gold
+	World.gold_gain += enemy.dropped_gold
 	show_popup_gold(enemy.dropped_gold)
 	
 	World.kills += 1
-	World.gold_gain += enemy.dropped_gold
-	
-	enemy.queue_free() # deleta o inimigo da cena
 	
 	if not stop_progress:
 		if enemy.enemy_type == 0 or enemy.enemy_type == 1:
@@ -212,21 +211,25 @@ func reload_battle() -> void:
 
 
 func prestige_points() -> int:
-	var base_points: int = (World.estagio - reset_target) / 5 + 1
+	var base_points: int = (World.estagio - reset_target) / 2.5 + 1
 	var scaling_factor: float = 1.10
-	var points: float = base_points * pow(scaling_factor, base_points)
+	var multiplier: float = Data.data_management["upgrades"]["prestige_points"]["multiplier"] * 100
+	var points: float = base_points * pow(scaling_factor, World.reset)
 	
-	return points
+	var bonus_points: float = (multiplier * points) / 100
+	
+	return points + bonus_points
 
 
 func reset() -> void:
 	btn_next_stage.hide()
 	label_contador.show()
 	stop_progress = false
-	Player.prestige_points += prestige_points()
 	World.estagio = 1
-	
 	World.reset += 1
+	
+	Player.prestige_points += prestige_points()
+	
 	timer_batalha.stop() # para o contador do estagio
 	label_contador.hide()
 	World.stage_progress = 1

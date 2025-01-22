@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://pyxcf5iw6v3c"]
+[gd_scene load_steps=24 format=3 uid="uid://pyxcf5iw6v3c"]
 
 [ext_resource type="Texture2D" uid="uid://7fknnavhqyfo" path="res://assets/prefabs/box/MessageBox01.png" id="1_q5dbk"]
 [ext_resource type="Script" path="res://scripts/upgrades.gd" id="1_qfhl6"]
@@ -62,7 +62,10 @@ font_color = Color(0, 1, 0, 1)
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
-[node name="Upgrades" type="Control" node_paths=PackedStringArray("box_damage", "box_gold", "box_critical_damage", "box_raid_time") groups=["upgrade_screen"]]
+[sub_resource type="LabelSettings" id="LabelSettings_wm7cj"]
+font = ExtResource("2_b1ljn")
+
+[node name="Upgrades" type="Control" node_paths=PackedStringArray("box_damage", "box_gold", "box_critical_damage", "box_raid_time", "box_prestige_points", "box_skill_duration", "box_skill_cooldown", "tab_1", "tab_2") groups=["upgrade_screen"]]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -78,13 +81,18 @@ box_damage = NodePath("Background/VBoxContainer/Box1")
 box_gold = NodePath("Background/VBoxContainer/Box2")
 box_critical_damage = NodePath("Background/VBoxContainer/Box3")
 box_raid_time = NodePath("Background/VBoxContainer/Box4")
+box_prestige_points = NodePath("Background/VBoxContainer2/Box5")
+box_skill_duration = NodePath("Background/VBoxContainer2/Box6")
+box_skill_cooldown = NodePath("Background/VBoxContainer2/Box7")
+tab_1 = NodePath("Background/Tab1")
+tab_2 = NodePath("Background/Tab2")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = -141.0
+offset_bottom = -121.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_q5dbk")
@@ -95,9 +103,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -65.5
-offset_top = 52.0
+offset_top = 44.0
 offset_right = 65.5
-offset_bottom = 79.0
+offset_bottom = 71.0
 grow_horizontal = 2
 text = "Upgrades"
 label_settings = SubResource("LabelSettings_t3ucs")
@@ -111,12 +119,12 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -280.0
-offset_top = -126.0
+offset_top = -136.0
 offset_right = 280.0
-offset_bottom = 206.0
+offset_bottom = 224.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 25
 
 [node name="Box1" type="TextureRect" parent="Background/VBoxContainer"]
 self_modulate = Color(0, 0, 1, 1)
@@ -200,7 +208,7 @@ theme_override_constants/separation = 5
 
 [node name="Description" type="Label" parent="Background/VBoxContainer/Box1/BGDescription/VBoxContainer"]
 layout_mode = 2
-text = "- Aumenta o dano em 15%"
+text = "- Bônus de +25% de dano"
 label_settings = SubResource("LabelSettings_my8hm")
 vertical_alignment = 1
 
@@ -361,7 +369,7 @@ theme_override_constants/separation = 5
 
 [node name="Description" type="Label" parent="Background/VBoxContainer/Box2/BGDescription/VBoxContainer"]
 layout_mode = 2
-text = "- Aumenta o gold em 25%"
+text = "- Bônus de drop de gold em +50%"
 label_settings = SubResource("LabelSettings_my8hm")
 vertical_alignment = 1
 
@@ -522,7 +530,7 @@ theme_override_constants/separation = 5
 
 [node name="Description" type="Label" parent="Background/VBoxContainer/Box3/BGDescription/VBoxContainer"]
 layout_mode = 2
-text = "- Aumenta o dano crítico em 5%"
+text = "- Bônus de dano crítico de +15%"
 label_settings = SubResource("LabelSettings_my8hm")
 vertical_alignment = 1
 
@@ -683,7 +691,7 @@ theme_override_constants/separation = 5
 
 [node name="Description" type="Label" parent="Background/VBoxContainer/Box4/BGDescription/VBoxContainer"]
 layout_mode = 2
-text = "- Aumenta o tempo Boss Raide em 1s"
+text = "- Bônus de Raid Time de +1s"
 label_settings = SubResource("LabelSettings_my8hm")
 vertical_alignment = 1
 
@@ -762,6 +770,505 @@ grow_vertical = 2
 texture = ExtResource("9_h36f7")
 expand_mode = 1
 
+[node name="VBoxContainer2" type="VBoxContainer" parent="Background"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -280.0
+offset_top = -136.0
+offset_right = 280.0
+offset_bottom = 224.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+
+[node name="Box5" type="TextureRect" parent="Background/VBoxContainer2"]
+self_modulate = Color(0, 0, 1, 1)
+custom_minimum_size = Vector2(560, 68)
+layout_mode = 2
+texture = ExtResource("3_rwn3u")
+expand_mode = 1
+
+[node name="BGIcon" type="TextureRect" parent="Background/VBoxContainer2/Box5"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = -25.0
+offset_right = 66.0
+offset_bottom = 25.0
+grow_vertical = 2
+texture = ExtResource("4_gbunn")
+expand_mode = 1
+
+[node name="Icon" type="TextureRect" parent="Background/VBoxContainer2/Box5/BGIcon"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -12.5
+offset_top = 5.0
+offset_right = 12.5
+offset_bottom = 30.0
+grow_horizontal = 2
+texture = ExtResource("9_h36f7")
+expand_mode = 1
+
+[node name="Level" type="Label" parent="Background/VBoxContainer2/Box5/BGIcon"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -14.0
+offset_top = -16.0
+offset_right = 14.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Lv 1"
+label_settings = SubResource("LabelSettings_tkra7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BGDescription" type="TextureRect" parent="Background/VBoxContainer2/Box5"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -190.0
+offset_top = -25.0
+offset_right = 158.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_xaigo")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/VBoxContainer2/Box5/BGDescription"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = -20.0
+offset_right = 228.0
+offset_bottom = 20.0
+grow_vertical = 2
+theme_override_constants/separation = 5
+
+[node name="Description" type="Label" parent="Background/VBoxContainer2/Box5/BGDescription/VBoxContainer"]
+layout_mode = 2
+text = "- Bônus de Pontos de Prestígio de +25%"
+label_settings = SubResource("LabelSettings_my8hm")
+vertical_alignment = 1
+
+[node name="Current" type="Label" parent="Background/VBoxContainer2/Box5/BGDescription/VBoxContainer"]
+layout_mode = 2
+text = "- Current: 0%"
+label_settings = SubResource("LabelSettings_bhbul")
+vertical_alignment = 1
+
+[node name="IncreasePrestigePoints" type="TextureButton" parent="Background/VBoxContainer2/Box5" groups=["upgrades"]]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -106.0
+offset_top = -24.5
+offset_right = -14.0
+offset_bottom = 22.5
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = ExtResource("7_l8338")
+texture_pressed = ExtResource("7_l8338")
+texture_hover = ExtResource("8_30y0h")
+stretch_mode = 5
+
+[node name="Cost" type="Label" parent="Background/VBoxContainer2/Box5/IncreasePrestigePoints"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.5
+offset_top = -8.5
+offset_right = 6.5
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "15"
+label_settings = SubResource("LabelSettings_g2rxv")
+vertical_alignment = 1
+
+[node name="Icon1" type="TextureRect" parent="Background/VBoxContainer2/Box5/IncreasePrestigePoints/Cost"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.5
+offset_top = -6.5
+offset_right = -19.5
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_h36f7")
+expand_mode = 1
+
+[node name="Icon2" type="TextureRect" parent="Background/VBoxContainer2/Box5/IncreasePrestigePoints/Cost"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 19.5
+offset_top = -6.5
+offset_right = 34.5
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_h36f7")
+expand_mode = 1
+
+[node name="Box6" type="TextureRect" parent="Background/VBoxContainer2"]
+self_modulate = Color(0, 0, 1, 1)
+custom_minimum_size = Vector2(560, 68)
+layout_mode = 2
+texture = ExtResource("3_rwn3u")
+expand_mode = 1
+
+[node name="BGIcon" type="TextureRect" parent="Background/VBoxContainer2/Box6"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = -25.0
+offset_right = 66.0
+offset_bottom = 25.0
+grow_vertical = 2
+texture = ExtResource("4_gbunn")
+expand_mode = 1
+
+[node name="Icon" type="TextureRect" parent="Background/VBoxContainer2/Box6/BGIcon"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -12.5
+offset_top = 5.0
+offset_right = 12.5
+offset_bottom = 30.0
+grow_horizontal = 2
+texture = ExtResource("9_h36f7")
+expand_mode = 1
+
+[node name="Level" type="Label" parent="Background/VBoxContainer2/Box6/BGIcon"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -14.0
+offset_top = -16.0
+offset_right = 14.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Lv 1"
+label_settings = SubResource("LabelSettings_tkra7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BGDescription" type="TextureRect" parent="Background/VBoxContainer2/Box6"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -190.0
+offset_top = -25.0
+offset_right = 158.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_xaigo")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/VBoxContainer2/Box6/BGDescription"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = -20.0
+offset_right = 228.0
+offset_bottom = 20.0
+grow_vertical = 2
+theme_override_constants/separation = 5
+
+[node name="Description" type="Label" parent="Background/VBoxContainer2/Box6/BGDescription/VBoxContainer"]
+layout_mode = 2
+text = "- Aumenta a duração das skill em +1s"
+label_settings = SubResource("LabelSettings_my8hm")
+vertical_alignment = 1
+
+[node name="Current" type="Label" parent="Background/VBoxContainer2/Box6/BGDescription/VBoxContainer"]
+layout_mode = 2
+text = "- Current: 0%"
+label_settings = SubResource("LabelSettings_bhbul")
+vertical_alignment = 1
+
+[node name="IncreaseSkillDuration" type="TextureButton" parent="Background/VBoxContainer2/Box6" groups=["upgrades"]]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -106.0
+offset_top = -24.5
+offset_right = -14.0
+offset_bottom = 22.5
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = ExtResource("7_l8338")
+texture_pressed = ExtResource("7_l8338")
+texture_hover = ExtResource("8_30y0h")
+stretch_mode = 5
+
+[node name="Cost" type="Label" parent="Background/VBoxContainer2/Box6/IncreaseSkillDuration"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.5
+offset_top = -8.5
+offset_right = 6.5
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "15"
+label_settings = SubResource("LabelSettings_g2rxv")
+vertical_alignment = 1
+
+[node name="Icon1" type="TextureRect" parent="Background/VBoxContainer2/Box6/IncreaseSkillDuration/Cost"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.5
+offset_top = -6.5
+offset_right = -19.5
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_h36f7")
+expand_mode = 1
+
+[node name="Icon2" type="TextureRect" parent="Background/VBoxContainer2/Box6/IncreaseSkillDuration/Cost"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 19.5
+offset_top = -6.5
+offset_right = 34.5
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_h36f7")
+expand_mode = 1
+
+[node name="Box7" type="TextureRect" parent="Background/VBoxContainer2"]
+self_modulate = Color(0, 0, 1, 1)
+custom_minimum_size = Vector2(560, 68)
+layout_mode = 2
+texture = ExtResource("3_rwn3u")
+expand_mode = 1
+
+[node name="BGIcon" type="TextureRect" parent="Background/VBoxContainer2/Box7"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = -25.0
+offset_right = 66.0
+offset_bottom = 25.0
+grow_vertical = 2
+texture = ExtResource("4_gbunn")
+expand_mode = 1
+
+[node name="Icon" type="TextureRect" parent="Background/VBoxContainer2/Box7/BGIcon"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -12.5
+offset_top = 5.0
+offset_right = 12.5
+offset_bottom = 30.0
+grow_horizontal = 2
+texture = ExtResource("9_h36f7")
+expand_mode = 1
+
+[node name="Level" type="Label" parent="Background/VBoxContainer2/Box7/BGIcon"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -14.0
+offset_top = -16.0
+offset_right = 14.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Lv 1"
+label_settings = SubResource("LabelSettings_tkra7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BGDescription" type="TextureRect" parent="Background/VBoxContainer2/Box7"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -190.0
+offset_top = -25.0
+offset_right = 158.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_xaigo")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/VBoxContainer2/Box7/BGDescription"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = -20.0
+offset_right = 228.0
+offset_bottom = 20.0
+grow_vertical = 2
+theme_override_constants/separation = 5
+
+[node name="Description" type="Label" parent="Background/VBoxContainer2/Box7/BGDescription/VBoxContainer"]
+layout_mode = 2
+text = "- Diminui o cooldown das skills em -1s"
+label_settings = SubResource("LabelSettings_my8hm")
+vertical_alignment = 1
+
+[node name="Current" type="Label" parent="Background/VBoxContainer2/Box7/BGDescription/VBoxContainer"]
+layout_mode = 2
+text = "- Current: 0%"
+label_settings = SubResource("LabelSettings_bhbul")
+vertical_alignment = 1
+
+[node name="DecreaseSkillCooldown" type="TextureButton" parent="Background/VBoxContainer2/Box7" groups=["upgrades"]]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -106.0
+offset_top = -24.5
+offset_right = -14.0
+offset_bottom = 22.5
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = ExtResource("7_l8338")
+texture_pressed = ExtResource("7_l8338")
+texture_hover = ExtResource("8_30y0h")
+stretch_mode = 5
+
+[node name="Cost" type="Label" parent="Background/VBoxContainer2/Box7/DecreaseSkillCooldown"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.5
+offset_top = -8.5
+offset_right = 6.5
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "15"
+label_settings = SubResource("LabelSettings_g2rxv")
+vertical_alignment = 1
+
+[node name="Icon1" type="TextureRect" parent="Background/VBoxContainer2/Box7/DecreaseSkillCooldown/Cost"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.5
+offset_top = -6.5
+offset_right = -19.5
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_h36f7")
+expand_mode = 1
+
+[node name="Icon2" type="TextureRect" parent="Background/VBoxContainer2/Box7/DecreaseSkillCooldown/Cost"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 19.5
+offset_top = -6.5
+offset_right = 34.5
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_h36f7")
+expand_mode = 1
+
 [node name="Close" type="TextureButton" parent="Background"]
 layout_mode = 1
 anchors_preset = 1
@@ -776,4 +1283,64 @@ texture_normal = ExtResource("13_4yxn4")
 ignore_texture_size = true
 stretch_mode = 5
 
+[node name="Tab1" type="TextureButton" parent="Background"]
+layout_mode = 0
+offset_left = 279.0
+offset_top = 85.0
+offset_right = 323.0
+offset_bottom = 107.0
+texture_normal = ExtResource("7_l8338")
+texture_pressed = ExtResource("7_l8338")
+texture_hover = ExtResource("8_30y0h")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Background/Tab1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.0
+offset_top = -8.5
+offset_right = 3.0
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1"
+label_settings = SubResource("LabelSettings_wm7cj")
+vertical_alignment = 1
+
+[node name="Tab2" type="TextureButton" parent="Background"]
+layout_mode = 0
+offset_left = 339.0
+offset_top = 85.0
+offset_right = 383.0
+offset_bottom = 107.0
+texture_normal = ExtResource("7_l8338")
+texture_pressed = ExtResource("7_l8338")
+texture_hover = ExtResource("8_30y0h")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Background/Tab2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.0
+offset_top = -8.5
+offset_right = 3.0
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "2"
+label_settings = SubResource("LabelSettings_wm7cj")
+vertical_alignment = 1
+
 [connection signal="pressed" from="Background/Close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="Background/Tab1" to="." method="_on_tab_1_pressed"]
+[connection signal="pressed" from="Background/Tab2" to="." method="_on_tab_2_pressed"]

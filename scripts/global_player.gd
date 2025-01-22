@@ -43,6 +43,7 @@ var x_upgrade_time: int = 1
 var gold_skill_on: bool = false
 var attackspeed_skill_on: bool = false
 var critical_damage_skill_on: bool = false
+var damage_skill_on: bool = false
 
 
 func _ready() -> void:
@@ -127,6 +128,10 @@ func alter_attack() -> void:
 	var damage_multiplier: float = (raid_damage_multiplier + upgrade_damage_multiplier) * 100
 	
 	damage_total = damage + ((damage_multiplier * damage) / 100)
+	
+	if damage_skill_on:
+		var damage_skill_multiplier: float = Data.data_management["player"]["skills"]["increase_attack"]["multiplier"] * 100
+		damage_total += (damage_skill_multiplier * damage_total / 100)
 	
 	var rng: float = randf()
 	if rng <= critical_chance:

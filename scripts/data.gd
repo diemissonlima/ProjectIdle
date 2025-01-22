@@ -19,13 +19,13 @@ var data_management: Dictionary = {
 		"attack_speed": 0.5,
 		"gold": 0,
 		"skill_points": 0,
-		"prestige_points": 0,
+		"prestige_points": 1000000,
 		"x_upgrade_ataque": 1,
 		"x_upgrade_time": 1,
 		"skills": {
 			"increase_attack": {
 				"level": 1,
-				"multiplier": 1.25,
+				"multiplier": 0.5,
 				"duration": 30.0,
 				"cooldown": 150.0,
 				"aux_cooldown": 0.0,
@@ -34,7 +34,7 @@ var data_management: Dictionary = {
 			
 			"increase_gold": {
 				"level": 1,
-				"multiplier": 1.5,
+				"multiplier": 0.5,
 				"duration": 30.0,
 				"cooldown": 150.0,
 				"aux_cooldown": 0.0,
@@ -44,16 +44,6 @@ var data_management: Dictionary = {
 			"increase_critical_damage": {
 				"level": 1,
 				"multiplier": 0.5,
-				"duration": 30.0,
-				"cooldown": 150.0,
-				"aux_cooldown": 0.0,
-				"aux_duration": 0.0
-			},
-			
-			"increase_critical": {
-				"level": 1,
-				"critical_chance": 0.05,
-				"multiplier": 2.0,
 				"duration": 30.0,
 				"cooldown": 150.0,
 				"aux_cooldown": 0.0,
@@ -101,22 +91,37 @@ var data_management: Dictionary = {
 	
 	"upgrades": {
 		"damage": {
-			"level": 1,
+			"level": 0,
 			"multiplier": 0.0
 		},
 		
 		"gold": {
-			"level": 1,
+			"level": 0,
 			"multiplier": 0.0
 		},
 		
 		"critical_damage": {
-			"level": 1,
+			"level": 0,
 			"multiplier": 0.0
 		},
 		
 		"raid_time": {
-			"level": 1,
+			"level": 0,
+			"multiplier": 0
+		},
+		
+		"prestige_points": {
+			"level": 0,
+			"multiplier": 0
+		},
+		
+		"skill_duration": {
+			"level": 0,
+			"multiplier": 0
+		},
+		
+		"skill_cooldown": {
+			"level": 0,
 			"multiplier": 0
 		}
 	}
@@ -174,7 +179,7 @@ func reset_savegame() -> void:
 		"skills": {
 			"increase_attack": {
 				"level": 1,
-				"multiplier": 1.25,
+				"multiplier": 0.5,
 				"duration": 30.0,
 				"cooldown": 150.0,
 				"aux_cooldown": 0.0,
@@ -183,7 +188,7 @@ func reset_savegame() -> void:
 			
 			"increase_gold": {
 				"level": 1,
-				"multiplier": 1.5,
+				"multiplier": 0.5,
 				"duration": 30.0,
 				"cooldown": 150.0,
 				"aux_cooldown": 0.0,
@@ -193,16 +198,6 @@ func reset_savegame() -> void:
 			"increase_critical_damage": {
 				"level": 1,
 				"multiplier": 0.5,
-				"duration": 30.0,
-				"cooldown": 150.0,
-				"aux_cooldown": 0.0,
-				"aux_duration": 0.0
-			},
-			
-			"increase_critical": {
-				"level": 1,
-				"critical_chance": 0.05,
-				"multiplier": 2.0,
 				"duration": 30.0,
 				"cooldown": 150.0,
 				"aux_cooldown": 0.0,
@@ -250,23 +245,38 @@ func reset_savegame() -> void:
 	
 	"upgrades": {
 		"damage": {
-			"level": 1,
+			"level": 0,
 			"multiplier": 0.0
 		},
 		
 		"gold": {
-			"level": 1,
+			"level": 0,
 			"multiplier": 0.0
 		},
 		
 		"critical_damage": {
-			"level": 1,
+			"level": 0,
 			"multiplier": 0.0
 		},
 		
 		"raid_time": {
-			"level": 1,
-			"multiplier": 0.0
+			"level": 0,
+			"multiplier": 0
+		},
+		
+		"prestige_points": {
+			"level": 0,
+			"multiplier": 0
+		},
+		
+		"skill_duration": {
+			"level": 0,
+			"multiplier": 0
+		},
+		
+		"skill_cooldown": {
+			"level": 0,
+			"multiplier": 0
 		}
 	}
 }
