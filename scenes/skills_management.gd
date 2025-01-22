@@ -59,11 +59,13 @@ func load_skill_cooldown() -> void:
 	if data["increase_attack"]["aux_duration"] > 0:
 		increase_attack_duration.start(data["increase_attack"]["aux_duration"])
 	if data["increase_gold"]["aux_duration"] > 0:
+		Player.gold_skill_on = true
 		increase_gold_duration.start(data["increase_gold"]["aux_duration"])
 	if data["increase_critical_damage"]["aux_duration"] > 0:
 		Player.critical_damage_skill_on = true
 		increase_criticaldamage_duration.start(data["increase_critical_damage"]["aux_duration"])
 	if data["increase_attackspeed"]["aux_duration"] > 0:
+		Player.attackspeed_skill_on = true
 		increase_attackspeed_duration.start(data["increase_attackspeed"]["aux_duration"])
 	
 	for button in get_tree().get_nodes_in_group("btns_skill"):
