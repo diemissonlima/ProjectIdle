@@ -7,9 +7,8 @@ res://scenes/reset_info.tscn
 res://scenes/stats_info.tscn
 res://scenes/equipments.tscn
 res://scenes/upgrades.tscn
-res://scripts/base_enemy.gd
-res://scripts/global_player.gd
 res://scripts/data.gd
+res://scripts/global_player.gd
+res://scenes/skills_management.gd
 res://scripts/world.gd
-res://scripts/box_skill_info.gd
 res://scripts/upgrades.gd

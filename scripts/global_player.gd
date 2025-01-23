@@ -19,24 +19,21 @@ var skill_points: int
 # skills
 var attack_skill_level: int = 1
 var increase_attack_multiplier: float = 1.25
-var increase_attack_duration: int = 30
-var increase_attack_cooldown: int = 150
 
 var gold_skill_level: int = 1
 var increase_gold_multiplier: float = 1.5
-var increase_gold_duration: int = 30
-var increase_gold_cooldown: int = 150
 
 var criticaldamage_skill_level: int = 1
 var increase_criticaldamage_multiplier: float = 2.0
-var increase_criticaldamage_duration: int = 30
-var increase_criticaldamage_cooldown: int = 150
 
 var attackspeed_skill_level: int = 1
 var increase_attackspeed_multiplier: float = 1.25
-var increase_attackspeed_duration: int = 30
-var increase_attackspeed_cooldown: int = 150
 
+
+var skill_duration: float = 0.0
+var skill_duration_level: int = 1
+var skill_cooldown: float = 0.0
+var skill_cooldown_level: int = 1
 var x_upgrade_ataque: int = 1
 var x_upgrade_time: int = 1
 
@@ -55,6 +52,7 @@ func load_data() -> void:
 	Data.load_data()
 	var data = Data.data_management["player"]
 	var data_skills = data["skills"]
+	var data_upgrade = Data.data_management["upgrades"]
 	
 	damage = data["ataque"]
 	default_damage = data["default_damage"]
@@ -64,31 +62,28 @@ func load_data() -> void:
 	prestige_points = data["prestige_points"]
 	x_upgrade_ataque = data["x_upgrade_ataque"]
 	x_upgrade_time = data["x_upgrade_time"]
+	skill_duration = data_upgrade["skill_duration"]["multiplier"]
+	skill_duration_level = data_upgrade["skill_duration"]["level"]
+	skill_cooldown = data_upgrade["skill_cooldown"]["multiplier"]
+	skill_cooldown_level = data_upgrade["skill_cooldown"]["level"]
 	
 	attack_skill_level = data_skills["increase_attack"]["level"]
 	increase_attack_multiplier = data_skills["increase_attack"]["multiplier"]
-	increase_attack_duration = data_skills["increase_attack"]["duration"]
-	increase_attack_cooldown = data_skills["increase_attack"]["cooldown"]
 	
 	attackspeed_skill_level = data_skills["increase_attackspeed"]["level"]
 	increase_attackspeed_multiplier = data_skills["increase_attackspeed"]["multiplier"]
-	increase_attackspeed_duration = data_skills["increase_attackspeed"]["duration"]
-	increase_attackspeed_cooldown = data_skills["increase_attackspeed"]["cooldown"]
 	
 	gold_skill_level = data_skills["increase_gold"]["level"]
 	increase_gold_multiplier = data_skills["increase_gold"]["multiplier"]
-	increase_gold_duration = data_skills["increase_gold"]["duration"]
-	increase_gold_cooldown = data_skills["increase_gold"]["cooldown"]
 	
 	criticaldamage_skill_level = data_skills["increase_critical_damage"]["level"]
 	increase_criticaldamage_multiplier = data_skills["increase_critical_damage"]["multiplier"]
-	increase_criticaldamage_duration = data_skills["increase_critical_damage"]["duration"]
-	increase_criticaldamage_cooldown = data_skills["increase_critical_damage"]["cooldown"]
 
 
 func save_data() -> void:
 	var data = Data.data_management["player"]
 	var data_skills = data["skills"]
+	var data_upgrade = Data.data_management["upgrades"]
 	
 	data["ataque"] = damage
 	data["default_damage"] = default_damage
@@ -98,26 +93,22 @@ func save_data() -> void:
 	data["prestige_points"] = prestige_points
 	data["x_upgrade_ataque"] = x_upgrade_ataque
 	data["x_upgrade_time"] = x_upgrade_time
+	data_upgrade["skill_duration"]["multiplier"] = skill_duration
+	data_upgrade["skill_duration"]["level"] = skill_duration_level
+	data_upgrade["skill_cooldown"]["multiplier"] = skill_cooldown
+	data_upgrade["skill_cooldown"]["level"] = skill_cooldown_level
 	
 	data_skills["increase_attack"]["level"] = attack_skill_level
 	data_skills["increase_attack"]["multiplier"] = increase_attack_multiplier
-	data_skills["increase_attack"]["duration"] = increase_attack_duration
-	data_skills["increase_attack"]["cooldown"] = increase_attack_cooldown
 	
 	data_skills["increase_attackspeed"]["level"] = attackspeed_skill_level
 	data_skills["increase_attackspeed"]["multiplier"] = increase_attackspeed_multiplier
-	data_skills["increase_attackspeed"]["duration"] = increase_attackspeed_duration
-	data_skills["increase_attackspeed"]["cooldown"] = increase_attackspeed_cooldown
 	
 	data_skills["increase_gold"]["level"] = gold_skill_level
 	data_skills["increase_gold"]["multiplier"] = increase_gold_multiplier
-	data_skills["increase_gold"]["duration"] = increase_gold_duration
-	data_skills["increase_gold"]["cooldown"] = increase_gold_cooldown
 	
 	data_skills["increase_critical_damage"]["level"] = criticaldamage_skill_level
 	data_skills["increase_critical_damage"]["multiplier"] = increase_criticaldamage_multiplier
-	data_skills["increase_critical_damage"]["duration"] = increase_criticaldamage_duration
-	data_skills["increase_critical_damage"]["cooldown"] = increase_criticaldamage_cooldown
 	
 	Data.save_data()
 

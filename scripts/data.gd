@@ -19,44 +19,36 @@ var data_management: Dictionary = {
 		"attack_speed": 0.5,
 		"gold": 0,
 		"skill_points": 0,
-		"prestige_points": 1000000,
+		"prestige_points": 0,
 		"x_upgrade_ataque": 1,
 		"x_upgrade_time": 1,
 		"skills": {
 			"increase_attack": {
 				"level": 1,
 				"multiplier": 0.5,
-				"duration": 30.0,
-				"cooldown": 150.0,
-				"aux_cooldown": 0.0,
-				"aux_duration": 0.0
+				"duration": 0.0,
+				"cooldown": 0.0,
 			},
 			
 			"increase_gold": {
 				"level": 1,
 				"multiplier": 0.5,
-				"duration": 30.0,
-				"cooldown": 150.0,
-				"aux_cooldown": 0.0,
-				"aux_duration": 0.0
+				"duration": 0.0,
+				"cooldown": 0.0,
 			},
 			
 			"increase_critical_damage": {
 				"level": 1,
 				"multiplier": 0.5,
-				"duration": 30.0,
-				"cooldown": 150.0,
-				"aux_cooldown": 0.0,
-				"aux_duration": 0.0
+				"duration": 0.0,
+				"cooldown": 0.0,
 			},
 			
 			"increase_attackspeed": {
 				"level": 1,
 				"multiplier": 0.25,
-				"duration": 30.0,
-				"cooldown": 150.0,
-				"aux_cooldown": 0.0,
-				"aux_duration": 0.0
+				"duration": 0.0,
+				"cooldown": 0.0,
 			}
 		}
 	},
@@ -117,12 +109,12 @@ var data_management: Dictionary = {
 		
 		"skill_duration": {
 			"level": 0,
-			"multiplier": 0
+			"multiplier": 45
 		},
 		
 		"skill_cooldown": {
 			"level": 0,
-			"multiplier": 0
+			"multiplier": 200
 		}
 	}
 }
@@ -180,37 +172,29 @@ func reset_savegame() -> void:
 			"increase_attack": {
 				"level": 1,
 				"multiplier": 0.5,
-				"duration": 30.0,
-				"cooldown": 150.0,
-				"aux_cooldown": 0.0,
-				"aux_duration": 0.0
+				"duration": 0.0,
+				"cooldown": 0.0,
 			},
 			
 			"increase_gold": {
 				"level": 1,
 				"multiplier": 0.5,
-				"duration": 30.0,
-				"cooldown": 150.0,
-				"aux_cooldown": 0.0,
-				"aux_duration": 0.0
+				"duration": 0.0,
+				"cooldown": 0.0,
 			},
 			
 			"increase_critical_damage": {
 				"level": 1,
 				"multiplier": 0.5,
-				"duration": 30.0,
-				"cooldown": 150.0,
-				"aux_cooldown": 0.0,
-				"aux_duration": 0.0
+				"duration": 0.0,
+				"cooldown": 0.0,
 			},
 			
 			"increase_attackspeed": {
 				"level": 1,
 				"multiplier": 0.25,
-				"duration": 30.0,
-				"cooldown": 150.0,
-				"aux_cooldown": 0.0,
-				"aux_duration": 0.0
+				"duration": 0.0,
+				"cooldown": 0.0,
 			}
 		}
 	},
@@ -271,12 +255,12 @@ func reset_savegame() -> void:
 		
 		"skill_duration": {
 			"level": 0,
-			"multiplier": 0
+			"multiplier": 45
 		},
 		
 		"skill_cooldown": {
 			"level": 0,
-			"multiplier": 0
+			"multiplier": 200
 		}
 	}
 }
