@@ -48,8 +48,8 @@ func get_skill_info(button: TextureButton) -> void:
 			
 			label_skill_description.text = "Aumenta o Dano causado em " \
 			+ str(Player.increase_attack_multiplier * 100) + "% por " \
-			+ str(Player.increase_attack_duration) + " segundos.
-			Cooldown de " + str(Player.increase_attack_cooldown) + " segundos"
+			+ str(Player.skill_duration) + " segundos.
+			Cooldown de " + str(Player.skill_cooldown) + " segundos"
 			
 			upgrade_cost = skill_level[str(Player.attack_skill_level + 1)]
 			label_upgrade_cost.text = str(upgrade_cost)
@@ -62,8 +62,8 @@ func get_skill_info(button: TextureButton) -> void:
 			
 			label_skill_description.text = "Aumenta o drop de Gold em " \
 			+ str(Player.increase_gold_multiplier * 100) + "% por " \
-			+ str(Player.increase_gold_duration) + " segundos 
-			Cooldow de " + str(Player.increase_gold_cooldown) + " segundos."
+			+ str(Player.skill_duration) + " segundos 
+			Cooldow de " + str(Player.skill_cooldown) + " segundos."
 			
 			upgrade_cost = skill_level[str(Player.gold_skill_level + 1)]
 			label_upgrade_cost.text = str(upgrade_cost)
@@ -76,8 +76,8 @@ func get_skill_info(button: TextureButton) -> void:
 			
 			label_skill_description.text = "Aumenta o dano crítico em " \
 			+ str(Player.increase_criticaldamage_multiplier * 100) + "% por " \
-			+ str(Player.increase_criticaldamage_duration) + " segundos 
-			Cooldown de " + str(Player.increase_criticaldamage_cooldown) + " segundos."
+			+ str(Player.skill_duration) + " segundos 
+			Cooldown de " + str(Player.skill_cooldown) + " segundos."
 			
 			upgrade_cost = skill_level[str(Player.criticaldamage_skill_level + 1)]
 			label_upgrade_cost.text = str(upgrade_cost)
@@ -90,8 +90,8 @@ func get_skill_info(button: TextureButton) -> void:
 			
 			label_skill_description.text = "Diminui a Velocidade de Ataque em " \
 			+ str(Player.increase_attackspeed_multiplier) + "s por " \
-			+ str(Player.increase_attackspeed_duration) + " segundos 
-			Cooldown de " + str(Player.increase_attackspeed_cooldown) + " segundos."
+			+ str(Player.skill_duration) + " segundos 
+			Cooldown de " + str(Player.skill_cooldown) + " segundos."
 			
 			upgrade_cost = skill_level[str(Player.attackspeed_skill_level + 1)]
 			label_upgrade_cost.text = str(upgrade_cost)
@@ -118,8 +118,8 @@ func increase_skill() -> void:
 			
 			label_skill_description.text = "Aumenta o Dano causado em " \
 			+ str(Player.increase_attack_multiplier * 100) + "% por " \
-			+ str(Player.increase_attack_duration) + " segundos 
-			Cooldown de " + str(Player.increase_attack_cooldown) + " segundos."
+			+ str(Player.skill_duration) + " segundos 
+			Cooldown de " + str(Player.skill_cooldown) + " segundos."
 			
 			upgrade_cost = skill_level[str(Player.attack_skill_level + 1)]
 			label_upgrade_cost.text = str(upgrade_cost)
@@ -136,8 +136,8 @@ func increase_skill() -> void:
 			
 			label_skill_description.text = "Aumenta o drop de Gold em " \
 			+ str(Player.increase_gold_multiplier * 100) + "% por " \
-			+ str(Player.increase_gold_duration) + " segundos 
-			Cooldow de " + str(Player.increase_gold_cooldown) + " segundos."
+			+ str(Player.skill_duration) + " segundos 
+			Cooldow de " + str(Player.skill_cooldown) + " segundos."
 			
 			upgrade_cost = skill_level[str(Player.gold_skill_level + 1)]
 			label_upgrade_cost.text = str(upgrade_cost)
@@ -154,8 +154,8 @@ func increase_skill() -> void:
 			
 			label_skill_description.text = "Aumenta o dano crítico em " \
 			+ str(Player.increase_criticaldamage_multiplier * 100) + "% por " \
-			+ str(Player.increase_criticaldamage_duration) + " segundos 
-			Cooldown de " + str(Player.increase_criticaldamage_cooldown) + " segundos."
+			+ str(Player.skill_duration) + " segundos 
+			Cooldown de " + str(Player.skill_cooldown) + " segundos."
 			
 			upgrade_cost = skill_level[str(Player.criticaldamage_skill_level + 1)]
 			label_upgrade_cost.text = str(upgrade_cost)
@@ -171,8 +171,8 @@ func increase_skill() -> void:
 			
 			label_skill_description.text = "Diminui a Velocidade de Ataque em " \
 			+ str(Player.increase_attackspeed_multiplier) + "s por " \
-			+ str(Player.increase_attackspeed_duration) + " segundos 
-			Cooldown de " + str(Player.increase_attackspeed_cooldown) + " segundos."
+			+ str(Player.skill_duration) + " segundos 
+			Cooldown de " + str(Player.skill_cooldown) + " segundos."
 			
 			upgrade_cost = skill_level[str(Player.attackspeed_skill_level + 1)]
 			label_upgrade_cost.text = str(upgrade_cost)

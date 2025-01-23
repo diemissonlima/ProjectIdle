@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://dtyw4v44a8ka4"]
+[gd_scene load_steps=93 format=3 uid="uid://dtyw4v44a8ka4"]
 
 [ext_resource type="Texture2D" uid="uid://bs4f04v00hl85" path="res://assets/backgrounds/Horizontal/1.png" id="1_m0651"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_mqmc1"]
@@ -67,6 +67,7 @@
 [ext_resource type="PackedScene" uid="uid://blbyblciesemb" path="res://scenes/reset_info.tscn" id="54_y5ges"]
 [ext_resource type="PackedScene" uid="uid://rb53rxo4e4vs" path="res://scenes/stats_info.tscn" id="55_l267x"]
 [ext_resource type="PackedScene" uid="uid://pyxcf5iw6v3c" path="res://scenes/upgrades.tscn" id="56_xqafe"]
+[ext_resource type="PackedScene" uid="uid://c2rd14h3lukps" path="res://scenes/loot_box.tscn" id="57_5t10c"]
 [ext_resource type="Texture2D" uid="uid://do22bmxeusi4a" path="res://assets/prefabs/icons/sword_03e.png" id="59_4eh2u"]
 [ext_resource type="Texture2D" uid="uid://c1rlf8hnaxpq2" path="res://assets/prefabs/icons/Icon_Small_Coin.png" id="60_5y4ps"]
 [ext_resource type="Texture2D" uid="uid://c26eco8t6djvs" path="res://assets/prefabs/icons/book_04f.png" id="61_pdtar"]
@@ -181,6 +182,8 @@ enemy_list2 = Array[PackedScene]([ExtResource("2_0hpjr"), ExtResource("3_jhtr8")
 [node name="StatsInfo" parent="Interface" instance=ExtResource("55_l267x")]
 
 [node name="Upgrades" parent="Interface" instance=ExtResource("56_xqafe")]
+
+[node name="LootBox" parent="Interface" instance=ExtResource("57_5t10c")]
 
 [node name="Background" type="TextureRect" parent="."]
 self_modulate = Color(1, 1, 1, 0.392157)

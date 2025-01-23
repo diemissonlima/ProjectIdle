@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2rd14h3lukps"]
+
+[ext_resource type="Script" path="res://scripts/loot_box.gd" id="1_4yikq"]
+[ext_resource type="Texture2D" uid="uid://dg4a848xmx4jn" path="res://assets/prefabs/box/WindowSettings03_Panel02.png" id="1_7bpcf"]
+[ext_resource type="FontFile" uid="uid://c17ascng2deth" path="res://assets/font/njo_14.ttf" id="2_2b21u"]
+
+[node name="LootBox" type="Control" node_paths=PackedStringArray("loot_box") groups=["loot_box"]]
+layout_mode = 3
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -14.0
+offset_right = 186.0
+offset_bottom = 128.0
+grow_vertical = 2
+script = ExtResource("1_4yikq")
+loot_box = NodePath("Background/VBoxContainer")
+font = ExtResource("2_2b21u")
+
+[node name="Background" type="TextureRect" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_7bpcf")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -81.0
+offset_top = 8.0
+offset_right = 82.0
+offset_bottom = 147.0
+grow_horizontal = 2
+alignment = 2

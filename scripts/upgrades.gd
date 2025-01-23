@@ -33,53 +33,53 @@ func on_button_pressed(button_name: String) -> void:
 			
 			Player.prestige_points -= int(box_damage.get_node("IncreaseDamage/HBoxContainer/Cost").text)
 			data["damage"]["level"] += 1
-			data["damage"]["multiplier"] += 0.15
+			data["damage"]["multiplier"] += 0.25
 			
 		"IncreaseGold":
-			if Player.prestige_points < int(box_gold.get_node("IncreaseGold/Cost").text):
+			if Player.prestige_points < int(box_gold.get_node("IncreaseGold/HBoxContainer/Cost").text):
 				return
 			
-			Player.prestige_points -= int(box_gold.get_node("IncreaseGold/Cost").text)
+			Player.prestige_points -= int(box_gold.get_node("IncreaseGold/HBoxContainer/Cost").text)
 			data["gold"]["level"] += 1
-			data["gold"]["multiplier"] += 0.25
+			data["gold"]["multiplier"] += 0.50
 			
 		"IncreaseCriticalDamage":
-			if Player.prestige_points < int(box_critical_damage.get_node("IncreaseCriticalDamage/Cost").text):
+			if Player.prestige_points < int(box_critical_damage.get_node("IncreaseCriticalDamage/HBoxContainer/Cost").text):
 				return
 			
-			Player.prestige_points -= int(box_critical_damage.get_node("IncreaseCriticalDamage/Cost").text)
+			Player.prestige_points -= int(box_critical_damage.get_node("IncreaseCriticalDamage/HBoxContainer/Cost").text)
 			data["critical_damage"]["level"] += 1
-			data["critical_damage"]["multiplier"] += 0.05
+			data["critical_damage"]["multiplier"] += 0.15
 			
 		"IncreaseRaidTime":
-			if Player.prestige_points < int(box_raid_time.get_node("IncreaseRaidTime/Cost").text):
+			if Player.prestige_points < int(box_raid_time.get_node("IncreaseRaidTime/HBoxContainer/Cost").text):
 				return
 			
-			Player.prestige_points -= int(box_raid_time.get_node("IncreaseRaidTime/Cost").text)
+			Player.prestige_points -= int(box_raid_time.get_node("IncreaseRaidTime/HBoxContainer/Cost").text)
 			data["raid_time"]["level"] += 1
 			data["raid_time"]["multiplier"] += 1
 		
 		"IncreasePrestigePoints":
-			if Player.prestige_points < int(box_prestige_points.get_node("IncreasePrestigePoints/Cost").text):
+			if Player.prestige_points < int(box_prestige_points.get_node("IncreasePrestigePoints/HBoxContainer/Cost").text):
 				return
 			
-			Player.prestige_points -= int(box_prestige_points.get_node("IncreasePrestigePoints/Cost").text)
+			Player.prestige_points -= int(box_prestige_points.get_node("IncreasePrestigePoints/HBoxContainer/Cost").text)
 			data["prestige_points"]["level"] += 1
-			data["prestige_points"]["multiplier"] += 0.10
+			data["prestige_points"]["multiplier"] += 0.25
 		
 		"IncreaseSkillDuration":
-			if Player.prestige_points < int(box_skill_duration.get_node("IncreaseSkillDuration/Cost").text):
+			if Player.prestige_points < int(box_skill_duration.get_node("IncreaseSkillDuration/HBoxContainer/Cost").text):
 				return
 			
-			Player.prestige_points -= int(box_skill_duration.get_node("IncreaseSkillDuration/Cost").text)
+			Player.prestige_points -= int(box_skill_duration.get_node("IncreaseSkillDuration/HBoxContainer/Cost").text)
 			Player.skill_duration_level += 1
 			Player.skill_duration += 1
 			
 		"DecreaseSkillCooldown":
-			if Player.prestige_points < int(box_skill_cooldown.get_node("DecreaseSkillCooldown/Cost").text):
+			if Player.prestige_points < int(box_skill_cooldown.get_node("DecreaseSkillCooldown/HBoxContainer/Cost").text):
 				return
 			
-			Player.prestige_points -= int(box_skill_cooldown.get_node("DecreaseSkillCooldown/Cost").text)
+			Player.prestige_points -= int(box_skill_cooldown.get_node("DecreaseSkillCooldown/HBoxContainer/Cost").text)
 			Player.skill_cooldown_level += 1
 			Player.skill_cooldown -= 1
 	
@@ -90,41 +90,41 @@ func update_label() -> void:
 	box_damage.get_node("BGIcon/Level").text = "Lv " + str(data["damage"]["level"])
 	box_damage.get_node("BGDescription/VBoxContainer/Current").text = "- Current: +" + str(data["damage"]["multiplier"] * 100) + "%"
 	box_damage.get_node("IncreaseDamage/HBoxContainer/Cost").text = str(round(
-		calculate_upgrade_cost(7, 1.25, data["damage"]["level"])))
+		calculate_upgrade_cost(9, 1.25, data["damage"]["level"])))
 	
 	box_gold.get_node("BGIcon/Level").text = "Lv " + str(data["gold"]["level"])
 	box_gold.get_node("BGDescription/VBoxContainer/Current").text = "- Current: +" + str(data["gold"]["multiplier"] * 100) + "%"
-	box_gold.get_node("IncreaseGold/Cost").text = str(
-		round(calculate_upgrade_cost(5, 1.20, data["gold"]["level"]))
+	box_gold.get_node("IncreaseGold/HBoxContainer/Cost").text = str(
+		round(calculate_upgrade_cost(7, 1.20, data["gold"]["level"]))
 	)
 	
 	box_critical_damage.get_node("BGIcon/Level").text = "Lv " + str(data["critical_damage"]["level"])
 	box_critical_damage.get_node("BGDescription/VBoxContainer/Current").text = "- Current: +" + str(data["critical_damage"]["multiplier"] * 100) + "%"
-	box_critical_damage.get_node("IncreaseCriticalDamage/Cost").text = str(round(
+	box_critical_damage.get_node("IncreaseCriticalDamage/HBoxContainer/Cost").text = str(round(
 		calculate_upgrade_cost(10, 1.20, data["critical_damage"]["level"])
 	))
 	
 	box_raid_time.get_node("BGIcon/Level").text = "Lv " + str(data["raid_time"]["level"])
 	box_raid_time.get_node("BGDescription/VBoxContainer/Current").text = "- Current: +" + str(data["raid_time"]["multiplier"]) + "s"
-	box_raid_time.get_node("IncreaseRaidTime/Cost").text = str(round(
+	box_raid_time.get_node("IncreaseRaidTime/HBoxContainer/Cost").text = str(round(
 		calculate_upgrade_cost(15, 1.30, data["raid_time"]["level"])
 	))
 	
 	box_prestige_points.get_node("BGIcon/Level").text = "Lv " + str(data["prestige_points"]["level"])
 	box_prestige_points.get_node("BGDescription/VBoxContainer/Current").text = "- Current: +" + str(data["prestige_points"]["multiplier"] * 100) + "%"
-	box_prestige_points.get_node("IncreasePrestigePoints/Cost").text = str(round(
+	box_prestige_points.get_node("IncreasePrestigePoints/HBoxContainer/Cost").text = str(round(
 		calculate_upgrade_cost(15, 1.25, data["prestige_points"]["level"])
 	))
 	
 	box_skill_duration.get_node("BGIcon/Level").text = "Lv " + str(Player.skill_duration_level)
 	box_skill_duration.get_node("BGDescription/VBoxContainer/Current").text = "- Current: " + str(Player.skill_duration) + "s"
-	box_skill_duration.get_node("IncreaseSkillDuration/Cost").text = str(round(
+	box_skill_duration.get_node("IncreaseSkillDuration/HBoxContainer/Cost").text = str(round(
 		calculate_upgrade_cost(20, 1.35, Player.skill_duration_level)
 	))
 	
 	box_skill_cooldown.get_node("BGIcon/Level").text = "Lv " + str(Player.skill_cooldown_level)
 	box_skill_cooldown.get_node("BGDescription/VBoxContainer/Current").text = "- Current: " + str(Player.skill_cooldown) + "s"
-	box_skill_cooldown.get_node("DecreaseSkillCooldown/Cost").text = str(round(
+	box_skill_cooldown.get_node("DecreaseSkillCooldown/HBoxContainer/Cost").text = str(round(
 		calculate_upgrade_cost(20, 1.35, Player.skill_cooldown_level)
 	))
 

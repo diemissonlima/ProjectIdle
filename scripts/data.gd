@@ -61,21 +61,21 @@ var data_management: Dictionary = {
 	"raids": {
 		"raid_damage": {
 			"level": 1,
-			"hp": 1500,
+			"hp": 5000,
 			"multiplier": 0.0,
 			"time_left": 0.0
 		},
 		
 		"raid_gold": {
 			"level": 1,
-			"hp": 1500,
+			"hp": 3500,
 			"multiplier": 0.0,
 			"time_left": 0.0
 		},
 		
 		"raid_critical": {
 			"level": 1,
-			"hp": 1500,
+			"hp": 3500,
 			"multiplier": 0.0,
 			"time_left": 0.0
 		}
@@ -114,7 +114,7 @@ var data_management: Dictionary = {
 		
 		"skill_cooldown": {
 			"level": 0,
-			"multiplier": 200
+			"multiplier": 180
 		}
 	}
 }
@@ -260,7 +260,7 @@ func reset_savegame() -> void:
 		
 		"skill_cooldown": {
 			"level": 0,
-			"multiplier": 200
+			"multiplier": 180
 		}
 	}
 }

@@ -1,12 +1,12 @@
-HBoxContainer
+RichTextLabel
 Label
-TextureButton
-TextureRect
 VBoxContainer
+TextureRect
 Control
+HBoxContainer
+TextureButton
 Timer
 GridContainer
-RichTextLabel
 ColorRect
 Button
 CanvasLayer

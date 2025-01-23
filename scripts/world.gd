@@ -28,6 +28,7 @@ extends Control
 @export var enemy_list: Array[PackedScene]
 @export var enemy_list2: Array[PackedScene]
 
+var prestige_points_awarded: int = 0
 var reset_target: int = 50
 var timer_farm: float = 0.5
 var stop_progress: bool = false
@@ -141,6 +142,8 @@ func killer_enemy(enemy_type) -> void:
 	World.gold_gain += enemy.dropped_gold
 	show_popup_gold(enemy.dropped_gold)
 	
+	get_tree().call_group("loot_box", "add_message", "You Received " + str(enemy.dropped_gold) + " gold")
+	
 	World.kills += 1
 	
 	if not stop_progress:
@@ -211,10 +214,10 @@ func reload_battle() -> void:
 
 
 func prestige_points() -> int:
-	var base_points: int = (World.estagio - reset_target) / 2.5 + 1
+	var base_points: int = (World.estagio - reset_target) * 1.05
 	var scaling_factor: float = 1.10
 	var multiplier: float = Data.data_management["upgrades"]["prestige_points"]["multiplier"] * 100
-	var points: float = base_points * pow(scaling_factor, World.reset)
+	var points: float = base_points * pow(scaling_factor, World.reset) # 1.10 ** resets
 	
 	var bonus_points: float = (multiplier * points) / 100
 	
@@ -227,8 +230,7 @@ func reset() -> void:
 	stop_progress = false
 	World.estagio = 1
 	World.reset += 1
-	
-	Player.prestige_points += prestige_points()
+	Player.prestige_points += prestige_points_awarded
 	
 	timer_batalha.stop() # para o contador do estagio
 	label_contador.hide()
@@ -356,7 +358,8 @@ func _on_reset_pressed() -> void:
 	if World.estagio <= reset_target:
 		return
 	
-	get_tree().call_group("reset_info", "update_label_rewards", prestige_points())
+	prestige_points_awarded = prestige_points()
+	get_tree().call_group("reset_info", "update_label_rewards", prestige_points_awarded)
 	$Interface/ResetInfo.show()
 
 

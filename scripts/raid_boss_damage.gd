@@ -20,7 +20,7 @@ func increase_health():
 
 
 func next_health() -> void:
-	var base_health = 1500
+	var base_health = 5000
 	var scaling_factor: float = 1.25  # Fator de crescimento exponencial
 	
 	var health = base_health * pow(

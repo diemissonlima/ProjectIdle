@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://pyxcf5iw6v3c"]
+[gd_scene load_steps=26 format=3 uid="uid://pyxcf5iw6v3c"]
 
 [ext_resource type="Texture2D" uid="uid://7fknnavhqyfo" path="res://assets/prefabs/box/MessageBox01.png" id="1_q5dbk"]
 [ext_resource type="Script" path="res://scripts/upgrades.gd" id="1_qfhl6"]
@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://pmno18fvg3i8" path="res://assets/prefabs/icons/Wenrexa Attack 1.png" id="11_cnb31"]
 [ext_resource type="Texture2D" uid="uid://ds6wdvby7m13k" path="res://assets/prefabs/icons/33.png" id="12_bcoxo"]
 [ext_resource type="Texture2D" uid="uid://dvsioohm5fxr4" path="res://assets/prefabs/icons/X.png" id="13_4yxn4"]
+[ext_resource type="Texture2D" uid="uid://dfrgd23u71d3l" path="res://assets/prefabs/icons/275.png" id="14_o6m7x"]
+[ext_resource type="Texture2D" uid="uid://ck0ci38pnkc47" path="res://assets/prefabs/icons/277.png" id="15_c0flr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_t3ucs"]
 font = ExtResource("2_b1ljn")
@@ -383,56 +385,39 @@ texture_pressed = ExtResource("7_l8338")
 texture_hover = ExtResource("8_30y0h")
 stretch_mode = 5
 
-[node name="Cost" type="Label" parent="Background/VBoxContainer/Box2/IncreaseGold"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer/Box2/IncreaseGold"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -6.5
-offset_top = -8.5
-offset_right = 6.5
-offset_bottom = 8.5
+offset_left = -26.5
+offset_top = -20.0
+offset_right = 26.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Icon1" type="TextureRect" parent="Background/VBoxContainer/Box2/IncreaseGold/HBoxContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+texture = ExtResource("9_h36f7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Cost" type="Label" parent="Background/VBoxContainer/Box2/IncreaseGold/HBoxContainer"]
+layout_mode = 2
 text = "15"
 label_settings = SubResource("LabelSettings_g2rxv")
 vertical_alignment = 1
 
-[node name="Icon1" type="TextureRect" parent="Background/VBoxContainer/Box2/IncreaseGold/Cost"]
+[node name="Icon2" type="TextureRect" parent="Background/VBoxContainer/Box2/IncreaseGold/HBoxContainer"]
 custom_minimum_size = Vector2(15, 15)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -42.5
-offset_top = -6.5
-offset_right = -27.5
-offset_bottom = 8.5
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 texture = ExtResource("9_h36f7")
 expand_mode = 1
-
-[node name="Icon2" type="TextureRect" parent="Background/VBoxContainer/Box2/IncreaseGold/Cost"]
-custom_minimum_size = Vector2(15, 15)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 27.5
-offset_top = -6.5
-offset_right = 42.5
-offset_bottom = 8.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_h36f7")
-expand_mode = 1
+stretch_mode = 5
 
 [node name="Box3" type="TextureRect" parent="Background/VBoxContainer"]
 self_modulate = Color(0, 0, 1, 1)
@@ -544,56 +529,39 @@ texture_pressed = ExtResource("7_l8338")
 texture_hover = ExtResource("8_30y0h")
 stretch_mode = 5
 
-[node name="Cost" type="Label" parent="Background/VBoxContainer/Box3/IncreaseCriticalDamage"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer/Box3/IncreaseCriticalDamage"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -6.5
-offset_top = -8.5
-offset_right = 6.5
-offset_bottom = 8.5
+offset_left = -26.5
+offset_top = -20.0
+offset_right = 26.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Icon1" type="TextureRect" parent="Background/VBoxContainer/Box3/IncreaseCriticalDamage/HBoxContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+texture = ExtResource("9_h36f7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Cost" type="Label" parent="Background/VBoxContainer/Box3/IncreaseCriticalDamage/HBoxContainer"]
+layout_mode = 2
 text = "15"
 label_settings = SubResource("LabelSettings_g2rxv")
 vertical_alignment = 1
 
-[node name="Icon1" type="TextureRect" parent="Background/VBoxContainer/Box3/IncreaseCriticalDamage/Cost"]
+[node name="Icon2" type="TextureRect" parent="Background/VBoxContainer/Box3/IncreaseCriticalDamage/HBoxContainer"]
 custom_minimum_size = Vector2(15, 15)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -42.5
-offset_top = -6.5
-offset_right = -27.5
-offset_bottom = 8.5
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 texture = ExtResource("9_h36f7")
 expand_mode = 1
-
-[node name="Icon2" type="TextureRect" parent="Background/VBoxContainer/Box3/IncreaseCriticalDamage/Cost"]
-custom_minimum_size = Vector2(15, 15)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 27.5
-offset_top = -6.5
-offset_right = 42.5
-offset_bottom = 8.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_h36f7")
-expand_mode = 1
+stretch_mode = 5
 
 [node name="Box4" type="TextureRect" parent="Background/VBoxContainer"]
 self_modulate = Color(0, 0, 1, 1)
@@ -705,56 +673,39 @@ texture_pressed = ExtResource("7_l8338")
 texture_hover = ExtResource("8_30y0h")
 stretch_mode = 5
 
-[node name="Cost" type="Label" parent="Background/VBoxContainer/Box4/IncreaseRaidTime"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer/Box4/IncreaseRaidTime"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -6.5
-offset_top = -8.5
-offset_right = 6.5
-offset_bottom = 8.5
+offset_left = -26.5
+offset_top = -20.0
+offset_right = 26.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Icon1" type="TextureRect" parent="Background/VBoxContainer/Box4/IncreaseRaidTime/HBoxContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+texture = ExtResource("9_h36f7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Cost" type="Label" parent="Background/VBoxContainer/Box4/IncreaseRaidTime/HBoxContainer"]
+layout_mode = 2
 text = "15"
 label_settings = SubResource("LabelSettings_g2rxv")
 vertical_alignment = 1
 
-[node name="Icon1" type="TextureRect" parent="Background/VBoxContainer/Box4/IncreaseRaidTime/Cost"]
+[node name="Icon2" type="TextureRect" parent="Background/VBoxContainer/Box4/IncreaseRaidTime/HBoxContainer"]
 custom_minimum_size = Vector2(15, 15)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -42.5
-offset_top = -6.5
-offset_right = -27.5
-offset_bottom = 8.5
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 texture = ExtResource("9_h36f7")
 expand_mode = 1
-
-[node name="Icon2" type="TextureRect" parent="Background/VBoxContainer/Box4/IncreaseRaidTime/Cost"]
-custom_minimum_size = Vector2(15, 15)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 27.5
-offset_top = -6.5
-offset_right = 42.5
-offset_bottom = 8.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_h36f7")
-expand_mode = 1
+stretch_mode = 5
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Background"]
 visible = false
@@ -882,56 +833,39 @@ texture_pressed = ExtResource("7_l8338")
 texture_hover = ExtResource("8_30y0h")
 stretch_mode = 5
 
-[node name="Cost" type="Label" parent="Background/VBoxContainer2/Box5/IncreasePrestigePoints"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer2/Box5/IncreasePrestigePoints"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -6.5
-offset_top = -8.5
-offset_right = 6.5
-offset_bottom = 8.5
+offset_left = -26.5
+offset_top = -20.0
+offset_right = 26.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Icon1" type="TextureRect" parent="Background/VBoxContainer2/Box5/IncreasePrestigePoints/HBoxContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+texture = ExtResource("9_h36f7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Cost" type="Label" parent="Background/VBoxContainer2/Box5/IncreasePrestigePoints/HBoxContainer"]
+layout_mode = 2
 text = "15"
 label_settings = SubResource("LabelSettings_g2rxv")
 vertical_alignment = 1
 
-[node name="Icon1" type="TextureRect" parent="Background/VBoxContainer2/Box5/IncreasePrestigePoints/Cost"]
+[node name="Icon2" type="TextureRect" parent="Background/VBoxContainer2/Box5/IncreasePrestigePoints/HBoxContainer"]
 custom_minimum_size = Vector2(15, 15)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -39.5
-offset_top = -6.5
-offset_right = -24.5
-offset_bottom = 8.5
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 texture = ExtResource("9_h36f7")
 expand_mode = 1
-
-[node name="Icon2" type="TextureRect" parent="Background/VBoxContainer2/Box5/IncreasePrestigePoints/Cost"]
-custom_minimum_size = Vector2(15, 15)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 24.5
-offset_top = -6.5
-offset_right = 39.5
-offset_bottom = 8.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_h36f7")
-expand_mode = 1
+stretch_mode = 5
 
 [node name="Box6" type="TextureRect" parent="Background/VBoxContainer2"]
 self_modulate = Color(0, 0, 1, 1)
@@ -964,7 +898,7 @@ offset_top = 5.0
 offset_right = 12.5
 offset_bottom = 30.0
 grow_horizontal = 2
-texture = ExtResource("9_h36f7")
+texture = ExtResource("14_o6m7x")
 expand_mode = 1
 
 [node name="Level" type="Label" parent="Background/VBoxContainer2/Box6/BGIcon"]
@@ -1043,56 +977,39 @@ texture_pressed = ExtResource("7_l8338")
 texture_hover = ExtResource("8_30y0h")
 stretch_mode = 5
 
-[node name="Cost" type="Label" parent="Background/VBoxContainer2/Box6/IncreaseSkillDuration"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer2/Box6/IncreaseSkillDuration"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -6.5
-offset_top = -8.5
-offset_right = 6.5
-offset_bottom = 8.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Icon1" type="TextureRect" parent="Background/VBoxContainer2/Box6/IncreaseSkillDuration/HBoxContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+texture = ExtResource("9_h36f7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Cost" type="Label" parent="Background/VBoxContainer2/Box6/IncreaseSkillDuration/HBoxContainer"]
+layout_mode = 2
 text = "15"
 label_settings = SubResource("LabelSettings_g2rxv")
 vertical_alignment = 1
 
-[node name="Icon1" type="TextureRect" parent="Background/VBoxContainer2/Box6/IncreaseSkillDuration/Cost"]
+[node name="Icon2" type="TextureRect" parent="Background/VBoxContainer2/Box6/IncreaseSkillDuration/HBoxContainer"]
 custom_minimum_size = Vector2(15, 15)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -39.5
-offset_top = -6.5
-offset_right = -24.5
-offset_bottom = 8.5
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 texture = ExtResource("9_h36f7")
 expand_mode = 1
-
-[node name="Icon2" type="TextureRect" parent="Background/VBoxContainer2/Box6/IncreaseSkillDuration/Cost"]
-custom_minimum_size = Vector2(15, 15)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 24.5
-offset_top = -6.5
-offset_right = 39.5
-offset_bottom = 8.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_h36f7")
-expand_mode = 1
+stretch_mode = 5
 
 [node name="Box7" type="TextureRect" parent="Background/VBoxContainer2"]
 self_modulate = Color(0, 0, 1, 1)
@@ -1125,7 +1042,7 @@ offset_top = 5.0
 offset_right = 12.5
 offset_bottom = 30.0
 grow_horizontal = 2
-texture = ExtResource("9_h36f7")
+texture = ExtResource("15_c0flr")
 expand_mode = 1
 
 [node name="Level" type="Label" parent="Background/VBoxContainer2/Box7/BGIcon"]
@@ -1204,56 +1121,39 @@ texture_pressed = ExtResource("7_l8338")
 texture_hover = ExtResource("8_30y0h")
 stretch_mode = 5
 
-[node name="Cost" type="Label" parent="Background/VBoxContainer2/Box7/DecreaseSkillCooldown"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer2/Box7/DecreaseSkillCooldown"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -6.5
-offset_top = -8.5
-offset_right = 6.5
-offset_bottom = 8.5
+offset_left = -26.5
+offset_top = -20.0
+offset_right = 26.5
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Icon1" type="TextureRect" parent="Background/VBoxContainer2/Box7/DecreaseSkillCooldown/HBoxContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+texture = ExtResource("9_h36f7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Cost" type="Label" parent="Background/VBoxContainer2/Box7/DecreaseSkillCooldown/HBoxContainer"]
+layout_mode = 2
 text = "15"
 label_settings = SubResource("LabelSettings_g2rxv")
 vertical_alignment = 1
 
-[node name="Icon1" type="TextureRect" parent="Background/VBoxContainer2/Box7/DecreaseSkillCooldown/Cost"]
+[node name="Icon2" type="TextureRect" parent="Background/VBoxContainer2/Box7/DecreaseSkillCooldown/HBoxContainer"]
 custom_minimum_size = Vector2(15, 15)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -39.5
-offset_top = -6.5
-offset_right = -24.5
-offset_bottom = 8.5
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 texture = ExtResource("9_h36f7")
 expand_mode = 1
-
-[node name="Icon2" type="TextureRect" parent="Background/VBoxContainer2/Box7/DecreaseSkillCooldown/Cost"]
-custom_minimum_size = Vector2(15, 15)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 24.5
-offset_top = -6.5
-offset_right = 39.5
-offset_bottom = 8.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_h36f7")
-expand_mode = 1
+stretch_mode = 5
 
 [node name="Close" type="TextureButton" parent="Background"]
 layout_mode = 1
