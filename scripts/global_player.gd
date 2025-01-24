@@ -114,6 +114,7 @@ func save_data() -> void:
 
 
 func alter_attack() -> void:
+	var critical_chance_multiplier: float = Data.data_management["upgrades"]["critical_chance"]["multiplier"]
 	var raid_damage_multiplier: float = Data.data_management["raids"]["raid_damage"]["multiplier"]
 	var upgrade_damage_multiplier: float = Data.data_management["upgrades"]["damage"]["multiplier"]
 	var damage_multiplier: float = (raid_damage_multiplier + upgrade_damage_multiplier) * 100
@@ -125,7 +126,7 @@ func alter_attack() -> void:
 		damage_total += (damage_skill_multiplier * damage_total / 100)
 	
 	var rng: float = randf()
-	if rng <= critical_chance:
+	if rng <= critical_chance + critical_chance_multiplier:
 		var upgrade_critical_damage_multiplier: float = Data.data_management["upgrades"]["critical_damage"]["multiplier"]
 		var raid_critical_damage_multiplier: float = Data.data_management["raids"]["raid_critical"]["multiplier"]
 		var critical_damage_multiplier: float = (upgrade_critical_damage_multiplier + raid_critical_damage_multiplier) * 100

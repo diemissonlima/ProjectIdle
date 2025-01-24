@@ -4,6 +4,7 @@ extends Control
 @export var box_damage: TextureRect
 @export var box_gold: TextureRect
 @export var box_critical_damage: TextureRect
+@export var box_critical_chance: TextureRect
 @export var box_raid_time: TextureRect
 @export var box_prestige_points: TextureRect
 @export var box_skill_duration: TextureRect
@@ -82,6 +83,14 @@ func on_button_pressed(button_name: String) -> void:
 			Player.prestige_points -= int(box_skill_cooldown.get_node("DecreaseSkillCooldown/HBoxContainer/Cost").text)
 			Player.skill_cooldown_level += 1
 			Player.skill_cooldown -= 1
+			
+		"IncreaseCriticalChance":
+			if Player.prestige_points < int(box_critical_chance.get_node("IncreaseCriticalChance/HBoxContainer/Cost").text):
+				return
+			
+			Player.prestige_points -= int(box_critical_chance.get_node("IncreaseCriticalChance/HBoxContainer/Cost").text)
+			data["critical_chance"]["level"] += 1
+			data["critical_chance"]["multiplier"] += 0.01
 	
 	update_label()
 
@@ -126,6 +135,12 @@ func update_label() -> void:
 	box_skill_cooldown.get_node("BGDescription/VBoxContainer/Current").text = "- Current: " + str(Player.skill_cooldown) + "s"
 	box_skill_cooldown.get_node("DecreaseSkillCooldown/HBoxContainer/Cost").text = str(round(
 		calculate_upgrade_cost(20, 1.35, Player.skill_cooldown_level)
+	))
+	
+	box_critical_chance.get_node("BGIcon/Level").text = "Lv " + str(data["critical_chance"]["level"])
+	box_critical_chance.get_node("BGDescription/VBoxContainer/Current").text = "- Current: " + str(data["critical_chance"]["multiplier"] * 100) + "%"
+	box_critical_chance.get_node("IncreaseCriticalChance/HBoxContainer/Cost").text = str(round(
+		calculate_upgrade_cost(75, 1.30, data["critical_chance"]["level"])
 	))
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=3 uid="uid://dtyw4v44a8ka4"]
+[gd_scene load_steps=92 format=3 uid="uid://dtyw4v44a8ka4"]
 
 [ext_resource type="Texture2D" uid="uid://bs4f04v00hl85" path="res://assets/backgrounds/Horizontal/1.png" id="1_m0651"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_mqmc1"]
@@ -93,10 +93,6 @@ font_size = 35
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_p44eg"]
-font = ExtResource("13_lkpp6")
-font_color = Color(0, 1, 0, 1)
-
 [sub_resource type="LabelSettings" id="LabelSettings_8875g"]
 font = ExtResource("13_lkpp6")
 font_size = 20
@@ -140,7 +136,7 @@ font_size = 30
 outline_size = 6
 outline_color = Color(0, 0, 0, 1)
 
-[node name="World" type="Control" node_paths=PackedStringArray("background", "timer_batalha", "timer_player_attack", "timer_save_game", "spawn_position", "label_stage", "label_substage", "label_contador", "label_gold", "label_skill_points", "label_prestige_points", "label_player_atk", "label_popup_gold", "label_upgrade_ataque_cost", "label_upgrade_time_cost", "increase_attack", "increase_battle_time", "btn_next_stage") groups=["world"]]
+[node name="World" type="Control" node_paths=PackedStringArray("background", "timer_batalha", "timer_player_attack", "timer_save_game", "spawn_position", "label_stage", "label_substage", "label_contador", "label_gold", "label_skill_points", "label_prestige_points", "label_player_atk", "label_upgrade_ataque_cost", "label_upgrade_time_cost", "increase_attack", "increase_battle_time", "btn_next_stage") groups=["world"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -160,7 +156,6 @@ label_gold = NodePath("Labels/HBoxContainer/LabelGold")
 label_skill_points = NodePath("Labels/HBoxContainer/LabelSkillPoints")
 label_prestige_points = NodePath("Labels/HBoxContainer/LabelPrestigePoints")
 label_player_atk = NodePath("Labels/HBoxContainer/LabelPlayerAtk")
-label_popup_gold = NodePath("Labels/LabelPopupGold")
 label_upgrade_ataque_cost = NodePath("Buttons/IncreaseAtaque/LabelUpgradeAtaqueCost")
 label_upgrade_time_cost = NodePath("Buttons/IncreaseTime/LabelUpgradeTimeCost")
 increase_attack = NodePath("Buttons/IncreaseAtaque")
@@ -170,6 +165,8 @@ enemy_list = Array[PackedScene]([ExtResource("2_mc2mg"), ExtResource("3_wv77d"),
 enemy_list2 = Array[PackedScene]([ExtResource("2_0hpjr"), ExtResource("3_jhtr8"), ExtResource("4_ujmjt"), ExtResource("5_hhb6s"), ExtResource("6_6sjm6"), ExtResource("27_i5xaf"), ExtResource("28_xqfgk"), ExtResource("29_7osm5"), ExtResource("30_j1xi3"), ExtResource("31_oc0en"), ExtResource("32_r8dy6"), ExtResource("33_mwqfe"), ExtResource("34_csskn"), ExtResource("35_s7jr6"), ExtResource("36_75au4"), ExtResource("37_fkoch"), ExtResource("38_ps132"), ExtResource("39_535it"), ExtResource("40_rbgvi"), ExtResource("41_k35sk"), ExtResource("42_50nva"), ExtResource("43_vrkv6"), ExtResource("44_wonp5"), ExtResource("45_r12ph"), ExtResource("46_pxwds"), ExtResource("47_xgrj4"), ExtResource("48_utny8"), ExtResource("49_w88iv"), ExtResource("50_vcssp")])
 
 [node name="Interface" type="CanvasLayer" parent="."]
+
+[node name="LootBox" parent="Interface" instance=ExtResource("57_5t10c")]
 
 [node name="BoxSkillInfo" parent="Interface" instance=ExtResource("51_5f82i")]
 
@@ -182,8 +179,6 @@ enemy_list2 = Array[PackedScene]([ExtResource("2_0hpjr"), ExtResource("3_jhtr8")
 [node name="StatsInfo" parent="Interface" instance=ExtResource("55_l267x")]
 
 [node name="Upgrades" parent="Interface" instance=ExtResource("56_xqafe")]
-
-[node name="LootBox" parent="Interface" instance=ExtResource("57_5t10c")]
 
 [node name="Background" type="TextureRect" parent="."]
 self_modulate = Color(1, 1, 1, 0.392157)
@@ -246,15 +241,6 @@ offset_bottom = 38.0
 grow_horizontal = 2
 text = "Stage: 100"
 label_settings = SubResource("LabelSettings_ec5ub")
-
-[node name="LabelPopupGold" type="Label" parent="Labels"]
-visible = false
-offset_left = 240.0
-offset_top = 539.0
-offset_right = 241.0
-offset_bottom = 553.0
-label_settings = SubResource("LabelSettings_p44eg")
-horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Labels"]
 anchors_preset = 8

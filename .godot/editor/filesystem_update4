@@ -1,3 +1,5 @@
+res://scenes/loot_box.tscn
+res://scripts/world.gd
 res://scenes/world.tscn
 res://scenes/rewards_offline.tscn
 res://scenes/main_menu.tscn
@@ -7,7 +9,7 @@ res://scenes/reset_info.tscn
 res://scenes/stats_info.tscn
 res://scenes/equipments.tscn
 res://scenes/upgrades.tscn
-res://scripts/world.gd
-res://scenes/loot_box.tscn
 res://scripts/loot_box.gd
-res://assets/resources/new_font_file.tres
+res://scripts/data.gd
+res://scripts/upgrades.gd
+res://scripts/global_player.gd

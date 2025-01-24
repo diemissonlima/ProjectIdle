@@ -69,8 +69,7 @@ font = ExtResource("2_b1ljn")
 font_size = 18
 font_color = Color(0, 1, 0, 1)
 
-[node name="Upgrades" type="Control" node_paths=PackedStringArray("box_damage", "box_gold", "box_critical_damage", "box_raid_time", "box_prestige_points", "box_skill_duration", "box_skill_cooldown", "tab_1", "tab_2") groups=["upgrade_screen"]]
-visible = false
+[node name="Upgrades" type="Control" node_paths=PackedStringArray("box_damage", "box_gold", "box_critical_damage", "box_critical_chance", "box_raid_time", "box_prestige_points", "box_skill_duration", "box_skill_cooldown", "tab_1", "tab_2") groups=["upgrade_screen"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -84,6 +83,7 @@ script = ExtResource("1_qfhl6")
 box_damage = NodePath("Background/VBoxContainer/Box1")
 box_gold = NodePath("Background/VBoxContainer/Box2")
 box_critical_damage = NodePath("Background/VBoxContainer/Box3")
+box_critical_chance = NodePath("Background/VBoxContainer2/Box8")
 box_raid_time = NodePath("Background/VBoxContainer/Box4")
 box_prestige_points = NodePath("Background/VBoxContainer2/Box5")
 box_skill_duration = NodePath("Background/VBoxContainer2/Box6")
@@ -116,6 +116,7 @@ label_settings = SubResource("LabelSettings_t3ucs")
 vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -708,7 +709,6 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Background"]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -861,6 +861,150 @@ label_settings = SubResource("LabelSettings_g2rxv")
 vertical_alignment = 1
 
 [node name="Icon2" type="TextureRect" parent="Background/VBoxContainer2/Box5/IncreasePrestigePoints/HBoxContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+texture = ExtResource("9_h36f7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Box8" type="TextureRect" parent="Background/VBoxContainer2"]
+self_modulate = Color(0, 0, 1, 1)
+custom_minimum_size = Vector2(560, 68)
+layout_mode = 2
+texture = ExtResource("3_rwn3u")
+expand_mode = 1
+
+[node name="BGIcon" type="TextureRect" parent="Background/VBoxContainer2/Box8"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = -25.0
+offset_right = 66.0
+offset_bottom = 25.0
+grow_vertical = 2
+texture = ExtResource("4_gbunn")
+expand_mode = 1
+
+[node name="Icon" type="TextureRect" parent="Background/VBoxContainer2/Box8/BGIcon"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -12.5
+offset_top = 5.0
+offset_right = 12.5
+offset_bottom = 30.0
+grow_horizontal = 2
+texture = ExtResource("15_c0flr")
+expand_mode = 1
+
+[node name="Level" type="Label" parent="Background/VBoxContainer2/Box8/BGIcon"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -14.0
+offset_top = -16.0
+offset_right = 14.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Lv 1"
+label_settings = SubResource("LabelSettings_tkra7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BGDescription" type="TextureRect" parent="Background/VBoxContainer2/Box8"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -190.0
+offset_top = -25.0
+offset_right = 158.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_xaigo")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/VBoxContainer2/Box8/BGDescription"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = -20.0
+offset_right = 228.0
+offset_bottom = 20.0
+grow_vertical = 2
+theme_override_constants/separation = 5
+
+[node name="Description" type="Label" parent="Background/VBoxContainer2/Box8/BGDescription/VBoxContainer"]
+layout_mode = 2
+text = "- Aumenta a chance de crítico em 1%"
+label_settings = SubResource("LabelSettings_my8hm")
+vertical_alignment = 1
+
+[node name="Current" type="Label" parent="Background/VBoxContainer2/Box8/BGDescription/VBoxContainer"]
+layout_mode = 2
+text = "- Current: 0%"
+label_settings = SubResource("LabelSettings_bhbul")
+vertical_alignment = 1
+
+[node name="IncreaseCriticalChance" type="TextureButton" parent="Background/VBoxContainer2/Box8" groups=["upgrades"]]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -106.0
+offset_top = -24.5
+offset_right = -14.0
+offset_bottom = 22.5
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = ExtResource("7_l8338")
+texture_pressed = ExtResource("7_l8338")
+texture_hover = ExtResource("8_30y0h")
+stretch_mode = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer2/Box8/IncreaseCriticalChance"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.5
+offset_top = -20.0
+offset_right = 26.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Icon1" type="TextureRect" parent="Background/VBoxContainer2/Box8/IncreaseCriticalChance/HBoxContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+texture = ExtResource("9_h36f7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Cost" type="Label" parent="Background/VBoxContainer2/Box8/IncreaseCriticalChance/HBoxContainer"]
+layout_mode = 2
+text = "15"
+label_settings = SubResource("LabelSettings_g2rxv")
+vertical_alignment = 1
+
+[node name="Icon2" type="TextureRect" parent="Background/VBoxContainer2/Box8/IncreaseCriticalChance/HBoxContainer"]
 custom_minimum_size = Vector2(15, 15)
 layout_mode = 2
 texture = ExtResource("9_h36f7")

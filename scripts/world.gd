@@ -15,7 +15,6 @@ extends Control
 @export var label_skill_points: Label
 @export var label_prestige_points: Label
 @export var label_player_atk: Label
-@export var label_popup_gold: Label
 @export var label_upgrade_ataque_cost: Label
 @export var label_upgrade_time_cost: Label
 
@@ -140,9 +139,8 @@ func killer_enemy(enemy_type) -> void:
 	raid_fight = false
 	Player.gold += enemy.dropped_gold
 	World.gold_gain += enemy.dropped_gold
-	show_popup_gold(enemy.dropped_gold)
 	
-	get_tree().call_group("loot_box", "add_message", "You Received " + str(enemy.dropped_gold) + " gold")
+	get_tree().call_group("loot_box", "add_message", "+ " + World.format_number(enemy.dropped_gold) + " gold", Color.GREEN)
 	
 	World.kills += 1
 	
@@ -174,13 +172,6 @@ func killer_enemy(enemy_type) -> void:
 	
 	if World.estagio > World.avg_estagio:
 		World.avg_estagio = World.estagio
-
-
-func show_popup_gold(value: int) -> void:
-	label_popup_gold.show()
-	label_popup_gold.text = "+ " + World.format_number(value)
-	await get_tree().create_timer(0.4).timeout
-	label_popup_gold.hide()
 
 
 func load_background() -> void: # carrega o background do estagio

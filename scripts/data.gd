@@ -97,6 +97,11 @@ var data_management: Dictionary = {
 			"multiplier": 0.0
 		},
 		
+		"critical_chance": {
+			"level": 0,
+			"multiplier": 0.0
+		},
+		
 		"raid_time": {
 			"level": 0,
 			"multiplier": 0
@@ -207,21 +212,21 @@ func reset_savegame() -> void:
 	"raids": {
 		"raid_damage": {
 			"level": 1,
-			"hp": 1500,
+			"hp": 5000,
 			"multiplier": 0.0,
 			"time_left": 0.0
 		},
 		
 		"raid_gold": {
 			"level": 1,
-			"hp": 1500,
+			"hp": 3500,
 			"multiplier": 0.0,
 			"time_left": 0.0
 		},
 		
 		"raid_critical": {
 			"level": 1,
-			"hp": 1500,
+			"hp": 3500,
 			"multiplier": 0.0,
 			"time_left": 0.0
 		}
@@ -239,6 +244,11 @@ func reset_savegame() -> void:
 		},
 		
 		"critical_damage": {
+			"level": 0,
+			"multiplier": 0.0
+		},
+		
+		"critical_chance": {
 			"level": 0,
 			"multiplier": 0.0
 		},
