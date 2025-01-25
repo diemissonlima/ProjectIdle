@@ -140,7 +140,10 @@ func killer_enemy(enemy_type) -> void:
 	Player.gold += enemy.dropped_gold
 	World.gold_gain += enemy.dropped_gold
 	
-	get_tree().call_group("loot_box", "add_message", "+ " + World.format_number(enemy.dropped_gold) + " gold", Color.GREEN)
+	get_tree().call_group(
+		"loot_box", "add_message", "+ " + World.format_number(enemy.dropped_gold) + \
+		" gold", Color.GREEN
+		)
 	
 	World.kills += 1
 	

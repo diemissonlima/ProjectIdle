@@ -180,6 +180,12 @@ enemy_list2 = Array[PackedScene]([ExtResource("2_0hpjr"), ExtResource("3_jhtr8")
 
 [node name="Upgrades" parent="Interface" instance=ExtResource("56_xqafe")]
 
+[node name="Milestones" type="Control" parent="Interface"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="Background" type="TextureRect" parent="."]
 self_modulate = Color(1, 1, 1, 0.392157)
 layout_mode = 1

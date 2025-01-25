@@ -1,0 +1,15 @@
+res://scenes/upgrades.tscn
+res://scenes/world.tscn
+res://scenes/rewards_offline.tscn
+res://scenes/main_menu.tscn
+res://scenes/box_skill_info.tscn
+res://scenes/raids.tscn
+res://scenes/reset_info.tscn
+res://scenes/stats_info.tscn
+res://scenes/equipments.tscn
+res://scenes/loot_box.tscn
+res://scripts/stats_info.gd
+res://scripts/global_player.gd
+res://scripts/reset_info.gd
+res://scripts/world.gd
+res://scripts/box_skill_info.gd

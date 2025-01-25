@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://pyxcf5iw6v3c"]
+[gd_scene load_steps=27 format=3 uid="uid://pyxcf5iw6v3c"]
 
 [ext_resource type="Texture2D" uid="uid://7fknnavhqyfo" path="res://assets/prefabs/box/MessageBox01.png" id="1_q5dbk"]
 [ext_resource type="Script" path="res://scripts/upgrades.gd" id="1_qfhl6"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://ds6wdvby7m13k" path="res://assets/prefabs/icons/33.png" id="12_bcoxo"]
 [ext_resource type="Texture2D" uid="uid://dvsioohm5fxr4" path="res://assets/prefabs/icons/X.png" id="13_4yxn4"]
 [ext_resource type="Texture2D" uid="uid://dfrgd23u71d3l" path="res://assets/prefabs/icons/275.png" id="14_o6m7x"]
+[ext_resource type="Texture2D" uid="uid://6gmrp6h6axos" path="res://assets/prefabs/icons/critical_chance.png" id="14_th25c"]
 [ext_resource type="Texture2D" uid="uid://ck0ci38pnkc47" path="res://assets/prefabs/icons/277.png" id="15_c0flr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_t3ucs"]
@@ -70,6 +71,7 @@ font_size = 18
 font_color = Color(0, 1, 0, 1)
 
 [node name="Upgrades" type="Control" node_paths=PackedStringArray("box_damage", "box_gold", "box_critical_damage", "box_critical_chance", "box_raid_time", "box_prestige_points", "box_skill_duration", "box_skill_cooldown", "tab_1", "tab_2") groups=["upgrade_screen"]]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -116,7 +118,6 @@ label_settings = SubResource("LabelSettings_t3ucs")
 vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background"]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -709,6 +710,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Background"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -898,7 +900,7 @@ offset_top = 5.0
 offset_right = 12.5
 offset_bottom = 30.0
 grow_horizontal = 2
-texture = ExtResource("15_c0flr")
+texture = ExtResource("14_th25c")
 expand_mode = 1
 
 [node name="Level" type="Label" parent="Background/VBoxContainer2/Box8/BGIcon"]

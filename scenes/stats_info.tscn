@@ -21,7 +21,7 @@ font_size = 20
 font = ExtResource("2_3wqe3")
 font_size = 20
 
-[node name="StatsInfo" type="Control" node_paths=PackedStringArray("game_time", "average_stage", "total_gold", "total_resets", "monster_kill", "dps_boost", "gold_boost", "critical_chance") groups=["stats_info"]]
+[node name="StatsInfo" type="Control" node_paths=PackedStringArray("game_time", "average_stage", "total_gold", "total_resets", "monster_kill", "dps_boost", "gold_boost", "critical_chance", "critical_damage") groups=["stats_info"]]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -39,6 +39,7 @@ monster_kill = NodePath("Background/VBoxContainer2/LabelMonsterKill")
 dps_boost = NodePath("Background/VBoxContainer2/LabelDpsBoost")
 gold_boost = NodePath("Background/VBoxContainer2/LabelGoldBoost")
 critical_chance = NodePath("Background/VBoxContainer2/LabelCriticalChance")
+critical_damage = NodePath("Background/VBoxContainer2/LabelCriticalDamage")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -71,20 +72,20 @@ label_settings = SubResource("LabelSettings_ow2ig")
 [node name="VBoxContainer" type="VBoxContainer" parent="Background"]
 layout_mode = 0
 offset_left = 18.0
-offset_top = 136.0
+offset_top = 112.0
 offset_right = 328.0
-offset_bottom = 265.0
+offset_bottom = 241.0
 theme_override_constants/separation = 15
 
 [node name="LabelGameTime" type="Label" parent="Background/VBoxContainer"]
 layout_mode = 2
-text = "Tempo de Jogo: 00:00:00"
+text = "Gametime: 00h : 00m: 00m"
 label_settings = SubResource("LabelSettings_mvwma")
 horizontal_alignment = 1
 
 [node name="LabelAvgStage" type="Label" parent="Background/VBoxContainer"]
 layout_mode = 2
-text = "Estágio mais alto: 10"
+text = "Highest Stage: 10"
 label_settings = SubResource("LabelSettings_ndoey")
 horizontal_alignment = 1
 
@@ -105,14 +106,14 @@ vertical_alignment = 1
 [node name="VBoxContainer2" type="VBoxContainer" parent="Background"]
 layout_mode = 0
 offset_left = 334.0
-offset_top = 136.0
+offset_top = 112.0
 offset_right = 643.0
-offset_bottom = 265.0
+offset_bottom = 277.0
 theme_override_constants/separation = 15
 
 [node name="LabelMonsterKill" type="Label" parent="Background/VBoxContainer2"]
 layout_mode = 2
-text = "Monstros Derrotados: 50000"
+text = "Monster Kill: 50000"
 label_settings = SubResource("LabelSettings_yt8sq")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -132,7 +133,13 @@ horizontal_alignment = 1
 
 [node name="LabelCriticalChance" type="Label" parent="Background/VBoxContainer2"]
 layout_mode = 2
-text = "Chance de Crítico: 16%"
+text = "Critical Chance: 5%"
+label_settings = SubResource("LabelSettings_mvwma")
+horizontal_alignment = 1
+
+[node name="LabelCriticalDamage" type="Label" parent="Background/VBoxContainer2"]
+layout_mode = 2
+text = "Critical Damage: 16%"
 label_settings = SubResource("LabelSettings_ndoey")
 horizontal_alignment = 1
 
