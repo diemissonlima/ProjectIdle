@@ -7,7 +7,7 @@ extends Control
 
 
 func update_label_rewards(value: int) -> void:
-	label_rewards.text = "+" + World.format_number(value) + " Pontos de Prestígio"
+	label_rewards.text = "+ " + World.format_number(value) + " Pontos de Prestígio"
 
 
 func _on_reset_pressed() -> void:

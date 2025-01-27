@@ -167,6 +167,8 @@ enemy_list2 = Array[PackedScene]([ExtResource("2_0hpjr"), ExtResource("3_jhtr8")
 [node name="Interface" type="CanvasLayer" parent="."]
 
 [node name="LootBox" parent="Interface" instance=ExtResource("57_5t10c")]
+offset_top = -30.0
+offset_bottom = 112.0
 
 [node name="BoxSkillInfo" parent="Interface" instance=ExtResource("51_5f82i")]
 

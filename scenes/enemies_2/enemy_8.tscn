@@ -43,6 +43,7 @@ animations = [{
 }]
 
 [node name="Enemy8" instance=ExtResource("1_jswo5")]
+id = 8
 
 [node name="Animation" type="AnimatedSprite2D" parent="." index="3"]
 position = Vector2(0.5, -31)

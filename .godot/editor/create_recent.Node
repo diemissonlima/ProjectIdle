@@ -1,6 +1,7 @@
+Label
+TextEdit
 Control
 RichTextLabel
-Label
 VBoxContainer
 TextureRect
 HBoxContainer
@@ -11,4 +12,3 @@ ColorRect
 Button
 CanvasLayer
 AnimatedSprite2D
-Node

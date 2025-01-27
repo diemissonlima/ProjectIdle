@@ -19,6 +19,7 @@ animations = [{
 }]
 
 [node name="Enemy12" instance=ExtResource("1_u7rw4")]
+id = 12
 
 [node name="Animation" type="AnimatedSprite2D" parent="." index="3"]
 position = Vector2(-7.5, -44.5)

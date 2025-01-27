@@ -1,6 +1,9 @@
 extends StaticBody2D
 class_name BaseEnemy
 
+
+@export var id: int
+
 enum EnemyType {
 	NORMAL, BOSS, BOSS_RAID_DAMAGE, BOSS_RAID_GOLD, BOSS_RAID_CRITICAL
 }
