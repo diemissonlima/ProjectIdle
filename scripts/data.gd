@@ -152,7 +152,22 @@ var data_management: Dictionary = {
 			"level": 0,
 			"multiplier": 180
 		}
-	}
+	},
+	
+	#"milestones": {
+		#"milestone_1": {
+			#"type": "",
+			#"description": "",
+		#},
+		#
+		#"milestone_2": {
+			#
+		#},
+		#
+		#"milestone_3": {
+			#
+		#}
+	#}
 }
 
 

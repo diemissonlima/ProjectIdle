@@ -41,7 +41,7 @@ func _ready() -> void:
 	set_label_upgrade() # seta as labels que informa o custo do upgrade
 	spawn_enemy() # spawna o inimigo
 	timer_player_attack.start(Player.attack_speed)
-	#timer_save_game.start()
+	timer_save_game.start()
 	
 	if World.stage_progress == 10:
 		timer_batalha.start(World.battle_time)
@@ -140,12 +140,13 @@ func killer_enemy(enemy_type) -> void:
 	Player.gold += enemy.dropped_gold
 	World.gold_gain += enemy.dropped_gold
 	
-	get_tree().call_group(
-		"loot_box", "add_message", "+ " + World.format_number(enemy.dropped_gold) + \
-		" gold", Color.GREEN
-		)
-	
-	Data.data_management["statistics"]["monster"]["enemy_" + str(enemy.id)] += 1
+	if enemy_type == 0 or enemy_type == 1:
+		Data.data_management["statistics"]["monster"]["enemy_" + str(enemy.id)] += 1
+		get_tree().call_group(
+			"loot_box", "add_message", "+ " + World.format_number(enemy.dropped_gold) + \
+			" gold", Color.GREEN
+			)
+		
 	World.kills += 1
 	
 	if not stop_progress:

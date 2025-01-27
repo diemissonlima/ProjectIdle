@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://pyxcf5iw6v3c"]
+[gd_scene load_steps=26 format=3 uid="uid://pyxcf5iw6v3c"]
 
 [ext_resource type="Texture2D" uid="uid://7fknnavhqyfo" path="res://assets/prefabs/box/MessageBox01.png" id="1_q5dbk"]
 [ext_resource type="Script" path="res://scripts/upgrades.gd" id="1_qfhl6"]
@@ -65,12 +65,7 @@ font_color = Color(0, 1, 0, 1)
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_wm7cj"]
-font = ExtResource("2_b1ljn")
-font_size = 18
-font_color = Color(0, 1, 0, 1)
-
-[node name="Upgrades" type="Control" node_paths=PackedStringArray("box_damage", "box_gold", "box_critical_damage", "box_critical_chance", "box_raid_time", "box_prestige_points", "box_skill_duration", "box_skill_cooldown", "tab_1", "tab_2") groups=["upgrade_screen"]]
+[node name="Upgrades" type="Control" node_paths=PackedStringArray("box_damage_level", "box_damage_current", "box_damage_cost", "box_gold_level", "box_gold_current", "box_gold_cost", "box_critical_damage_level", "box_critica_damage_current", "box_critical_damage_cost", "box_critical_chance_level", "box_critical_chance_current", "box_critical_chance_cost", "box_raid_time_level", "box_raid_time_current", "box_raid_time_cost", "box_prestige_points_level", "box_prestige_points_current", "box_prestige_points_cost", "box_skill_duration_level", "box_skill_duration_current", "box_skill_duration_cost", "box_skill_cooldown_level", "box_skill_cooldown_current", "box_skill_cooldown_cost") groups=["upgrade_screen"]]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -82,16 +77,30 @@ offset_bottom = -70.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qfhl6")
-box_damage = NodePath("Background/VBoxContainer/Box1")
-box_gold = NodePath("Background/VBoxContainer/Box2")
-box_critical_damage = NodePath("Background/VBoxContainer/Box3")
-box_critical_chance = NodePath("Background/VBoxContainer2/Box8")
-box_raid_time = NodePath("Background/VBoxContainer/Box4")
-box_prestige_points = NodePath("Background/VBoxContainer2/Box5")
-box_skill_duration = NodePath("Background/VBoxContainer2/Box6")
-box_skill_cooldown = NodePath("Background/VBoxContainer2/Box7")
-tab_1 = NodePath("Background/Tab1")
-tab_2 = NodePath("Background/Tab2")
+box_damage_level = NodePath("Background/ScrollContainer/VBoxContainer/Box1/BGIcon/Level")
+box_damage_current = NodePath("Background/ScrollContainer/VBoxContainer/Box1/BGDescription/VBoxContainer/Current")
+box_damage_cost = NodePath("Background/ScrollContainer/VBoxContainer/Box1/IncreaseDamage/HBoxContainer/Cost")
+box_gold_level = NodePath("Background/ScrollContainer/VBoxContainer/Box2/BGIcon/Level")
+box_gold_current = NodePath("Background/ScrollContainer/VBoxContainer/Box2/BGDescription/VBoxContainer/Current")
+box_gold_cost = NodePath("Background/ScrollContainer/VBoxContainer/Box2/IncreaseGold/HBoxContainer/Cost")
+box_critical_damage_level = NodePath("Background/ScrollContainer/VBoxContainer/Box3/BGIcon/Level")
+box_critica_damage_current = NodePath("Background/ScrollContainer/VBoxContainer/Box3/BGDescription/VBoxContainer/Current")
+box_critical_damage_cost = NodePath("Background/ScrollContainer/VBoxContainer/Box3/IncreaseCriticalDamage/HBoxContainer/Cost")
+box_critical_chance_level = NodePath("Background/ScrollContainer/VBoxContainer/Box8/BGIcon/Level")
+box_critical_chance_current = NodePath("Background/ScrollContainer/VBoxContainer/Box8/BGDescription/VBoxContainer/Current")
+box_critical_chance_cost = NodePath("Background/ScrollContainer/VBoxContainer/Box8/IncreaseCriticalChance/HBoxContainer/Cost")
+box_raid_time_level = NodePath("Background/ScrollContainer/VBoxContainer/Box4/BGIcon/Level")
+box_raid_time_current = NodePath("Background/ScrollContainer/VBoxContainer/Box4/BGDescription/VBoxContainer/Current")
+box_raid_time_cost = NodePath("Background/ScrollContainer/VBoxContainer/Box4/IncreaseRaidTime/HBoxContainer/Cost")
+box_prestige_points_level = NodePath("Background/ScrollContainer/VBoxContainer/Box5/BGIcon/Level")
+box_prestige_points_current = NodePath("Background/ScrollContainer/VBoxContainer/Box5/BGDescription/VBoxContainer/Current")
+box_prestige_points_cost = NodePath("Background/ScrollContainer/VBoxContainer/Box5/IncreasePrestigePoints/HBoxContainer/Cost")
+box_skill_duration_level = NodePath("Background/ScrollContainer/VBoxContainer/Box6/BGIcon/Level")
+box_skill_duration_current = NodePath("Background/ScrollContainer/VBoxContainer/Box6/BGDescription/VBoxContainer/Current")
+box_skill_duration_cost = NodePath("Background/ScrollContainer/VBoxContainer/Box6/IncreaseSkillDuration/HBoxContainer/Cost")
+box_skill_cooldown_level = NodePath("Background/ScrollContainer/VBoxContainer/Box7/BGIcon/Level")
+box_skill_cooldown_current = NodePath("Background/ScrollContainer/VBoxContainer/Box7/BGDescription/VBoxContainer/Current")
+box_skill_cooldown_cost = NodePath("Background/ScrollContainer/VBoxContainer/Box7/DecreaseSkillCooldown/HBoxContainer/Cost")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -109,37 +118,38 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -65.5
-offset_top = 44.0
+offset_top = 56.0
 offset_right = 65.5
-offset_bottom = 71.0
+offset_bottom = 83.0
 grow_horizontal = 2
 text = "Upgrades"
 label_settings = SubResource("LabelSettings_t3ucs")
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Background"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -280.0
-offset_top = -136.0
-offset_right = 280.0
-offset_bottom = 224.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 56.0
+offset_top = 124.0
+offset_right = -41.0
+offset_bottom = -33.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/ScrollContainer"]
+layout_mode = 2
 theme_override_constants/separation = 25
 
-[node name="Box1" type="TextureRect" parent="Background/VBoxContainer"]
+[node name="Box1" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer"]
 self_modulate = Color(0, 0, 1, 1)
 custom_minimum_size = Vector2(560, 68)
 layout_mode = 2
 texture = ExtResource("3_rwn3u")
 expand_mode = 1
 
-[node name="BGIcon" type="TextureRect" parent="Background/VBoxContainer/Box1"]
+[node name="BGIcon" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer/Box1"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
 anchors_preset = 4
@@ -153,7 +163,8 @@ grow_vertical = 2
 texture = ExtResource("4_gbunn")
 expand_mode = 1
 
-[node name="Icon" type="TextureRect" parent="Background/VBoxContainer/Box1/BGIcon"]
+[node name="Icon" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer/Box1/BGIcon"]
+custom_minimum_size = Vector2(25, 25)
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -166,7 +177,7 @@ grow_horizontal = 2
 texture = ExtResource("5_23xtd")
 expand_mode = 1
 
-[node name="Level" type="Label" parent="Background/VBoxContainer/Box1/BGIcon"]
+[node name="Level" type="Label" parent="Background/ScrollContainer/VBoxContainer/Box1/BGIcon"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -184,7 +195,7 @@ label_settings = SubResource("LabelSettings_tkra7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BGDescription" type="TextureRect" parent="Background/VBoxContainer/Box1"]
+[node name="BGDescription" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer/Box1"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -200,7 +211,7 @@ grow_vertical = 2
 texture = ExtResource("6_xaigo")
 expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background/VBoxContainer/Box1/BGDescription"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/ScrollContainer/VBoxContainer/Box1/BGDescription"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -212,19 +223,19 @@ offset_bottom = 20.0
 grow_vertical = 2
 theme_override_constants/separation = 5
 
-[node name="Description" type="Label" parent="Background/VBoxContainer/Box1/BGDescription/VBoxContainer"]
+[node name="Description" type="Label" parent="Background/ScrollContainer/VBoxContainer/Box1/BGDescription/VBoxContainer"]
 layout_mode = 2
 text = "- Bônus de +25% de dano"
 label_settings = SubResource("LabelSettings_my8hm")
 vertical_alignment = 1
 
-[node name="Current" type="Label" parent="Background/VBoxContainer/Box1/BGDescription/VBoxContainer"]
+[node name="Current" type="Label" parent="Background/ScrollContainer/VBoxContainer/Box1/BGDescription/VBoxContainer"]
 layout_mode = 2
 text = "- Current: 150%"
 label_settings = SubResource("LabelSettings_64rst")
 vertical_alignment = 1
 
-[node name="IncreaseDamage" type="TextureButton" parent="Background/VBoxContainer/Box1" groups=["upgrades"]]
+[node name="IncreaseDamage" type="TextureButton" parent="Background/ScrollContainer/VBoxContainer/Box1" groups=["upgrades"]]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -242,7 +253,7 @@ texture_pressed = ExtResource("7_l8338")
 texture_hover = ExtResource("8_30y0h")
 stretch_mode = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer/Box1/IncreaseDamage"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/ScrollContainer/VBoxContainer/Box1/IncreaseDamage"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -257,34 +268,34 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 5
 
-[node name="Icon1" type="TextureRect" parent="Background/VBoxContainer/Box1/IncreaseDamage/HBoxContainer"]
+[node name="Icon1" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer/Box1/IncreaseDamage/HBoxContainer"]
 custom_minimum_size = Vector2(15, 15)
 layout_mode = 2
 texture = ExtResource("9_h36f7")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Cost" type="Label" parent="Background/VBoxContainer/Box1/IncreaseDamage/HBoxContainer"]
+[node name="Cost" type="Label" parent="Background/ScrollContainer/VBoxContainer/Box1/IncreaseDamage/HBoxContainer"]
 layout_mode = 2
 text = "15"
 label_settings = SubResource("LabelSettings_g2rxv")
 vertical_alignment = 1
 
-[node name="Icon2" type="TextureRect" parent="Background/VBoxContainer/Box1/IncreaseDamage/HBoxContainer"]
+[node name="Icon2" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer/Box1/IncreaseDamage/HBoxContainer"]
 custom_minimum_size = Vector2(15, 15)
 layout_mode = 2
 texture = ExtResource("9_h36f7")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Box2" type="TextureRect" parent="Background/VBoxContainer"]
+[node name="Box2" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer"]
 self_modulate = Color(0, 0, 1, 1)
 custom_minimum_size = Vector2(560, 68)
 layout_mode = 2
 texture = ExtResource("3_rwn3u")
 expand_mode = 1
 
-[node name="BGIcon" type="TextureRect" parent="Background/VBoxContainer/Box2"]
+[node name="BGIcon" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer/Box2"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
 anchors_preset = 4
@@ -298,7 +309,7 @@ grow_vertical = 2
 texture = ExtResource("4_gbunn")
 expand_mode = 1
 
-[node name="Icon" type="TextureRect" parent="Background/VBoxContainer/Box2/BGIcon"]
+[node name="Icon" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer/Box2/BGIcon"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -311,7 +322,7 @@ grow_horizontal = 2
 texture = ExtResource("10_xkykw")
 expand_mode = 1
 
-[node name="Level" type="Label" parent="Background/VBoxContainer/Box2/BGIcon"]
+[node name="Level" type="Label" parent="Background/ScrollContainer/VBoxContainer/Box2/BGIcon"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -329,7 +340,7 @@ label_settings = SubResource("LabelSettings_tkra7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BGDescription" type="TextureRect" parent="Background/VBoxContainer/Box2"]
+[node name="BGDescription" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer/Box2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -345,7 +356,7 @@ grow_vertical = 2
 texture = ExtResource("6_xaigo")
 expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background/VBoxContainer/Box2/BGDescription"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/ScrollContainer/VBoxContainer/Box2/BGDescription"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -357,19 +368,19 @@ offset_bottom = 20.0
 grow_vertical = 2
 theme_override_constants/separation = 5
 
-[node name="Description" type="Label" parent="Background/VBoxContainer/Box2/BGDescription/VBoxContainer"]
+[node name="Description" type="Label" parent="Background/ScrollContainer/VBoxContainer/Box2/BGDescription/VBoxContainer"]
 layout_mode = 2
 text = "- Bônus de drop de gold em +50%"
 label_settings = SubResource("LabelSettings_my8hm")
 vertical_alignment = 1
 
-[node name="Current" type="Label" parent="Background/VBoxContainer/Box2/BGDescription/VBoxContainer"]
+[node name="Current" type="Label" parent="Background/ScrollContainer/VBoxContainer/Box2/BGDescription/VBoxContainer"]
 layout_mode = 2
 text = "- Current: 150%"
 label_settings = SubResource("LabelSettings_xkkkp")
 vertical_alignment = 1
 
-[node name="IncreaseGold" type="TextureButton" parent="Background/VBoxContainer/Box2" groups=["upgrades"]]
+[node name="IncreaseGold" type="TextureButton" parent="Background/ScrollContainer/VBoxContainer/Box2" groups=["upgrades"]]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -387,7 +398,7 @@ texture_pressed = ExtResource("7_l8338")
 texture_hover = ExtResource("8_30y0h")
 stretch_mode = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer/Box2/IncreaseGold"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/ScrollContainer/VBoxContainer/Box2/IncreaseGold"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -401,34 +412,34 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Icon1" type="TextureRect" parent="Background/VBoxContainer/Box2/IncreaseGold/HBoxContainer"]
+[node name="Icon1" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer/Box2/IncreaseGold/HBoxContainer"]
 custom_minimum_size = Vector2(15, 15)
 layout_mode = 2
 texture = ExtResource("9_h36f7")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Cost" type="Label" parent="Background/VBoxContainer/Box2/IncreaseGold/HBoxContainer"]
+[node name="Cost" type="Label" parent="Background/ScrollContainer/VBoxContainer/Box2/IncreaseGold/HBoxContainer"]
 layout_mode = 2
 text = "15"
 label_settings = SubResource("LabelSettings_g2rxv")
 vertical_alignment = 1
 
-[node name="Icon2" type="TextureRect" parent="Background/VBoxContainer/Box2/IncreaseGold/HBoxContainer"]
+[node name="Icon2" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer/Box2/IncreaseGold/HBoxContainer"]
 custom_minimum_size = Vector2(15, 15)
 layout_mode = 2
 texture = ExtResource("9_h36f7")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Box3" type="TextureRect" parent="Background/VBoxContainer"]
+[node name="Box3" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer"]
 self_modulate = Color(0, 0, 1, 1)
 custom_minimum_size = Vector2(560, 68)
 layout_mode = 2
 texture = ExtResource("3_rwn3u")
 expand_mode = 1
 
-[node name="BGIcon" type="TextureRect" parent="Background/VBoxContainer/Box3"]
+[node name="BGIcon" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer/Box3"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
 anchors_preset = 4
@@ -442,7 +453,7 @@ grow_vertical = 2
 texture = ExtResource("4_gbunn")
 expand_mode = 1
 
-[node name="Icon" type="TextureRect" parent="Background/VBoxContainer/Box3/BGIcon"]
+[node name="Icon" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer/Box3/BGIcon"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -455,7 +466,7 @@ grow_horizontal = 2
 texture = ExtResource("11_cnb31")
 expand_mode = 1
 
-[node name="Level" type="Label" parent="Background/VBoxContainer/Box3/BGIcon"]
+[node name="Level" type="Label" parent="Background/ScrollContainer/VBoxContainer/Box3/BGIcon"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -473,7 +484,7 @@ label_settings = SubResource("LabelSettings_tkra7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BGDescription" type="TextureRect" parent="Background/VBoxContainer/Box3"]
+[node name="BGDescription" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer/Box3"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -489,7 +500,7 @@ grow_vertical = 2
 texture = ExtResource("6_xaigo")
 expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background/VBoxContainer/Box3/BGDescription"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/ScrollContainer/VBoxContainer/Box3/BGDescription"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -501,19 +512,19 @@ offset_bottom = 20.0
 grow_vertical = 2
 theme_override_constants/separation = 5
 
-[node name="Description" type="Label" parent="Background/VBoxContainer/Box3/BGDescription/VBoxContainer"]
+[node name="Description" type="Label" parent="Background/ScrollContainer/VBoxContainer/Box3/BGDescription/VBoxContainer"]
 layout_mode = 2
 text = "- Bônus de dano crítico de +15%"
 label_settings = SubResource("LabelSettings_my8hm")
 vertical_alignment = 1
 
-[node name="Current" type="Label" parent="Background/VBoxContainer/Box3/BGDescription/VBoxContainer"]
+[node name="Current" type="Label" parent="Background/ScrollContainer/VBoxContainer/Box3/BGDescription/VBoxContainer"]
 layout_mode = 2
 text = "- Current: 150%"
 label_settings = SubResource("LabelSettings_gyrc0")
 vertical_alignment = 1
 
-[node name="IncreaseCriticalDamage" type="TextureButton" parent="Background/VBoxContainer/Box3" groups=["upgrades"]]
+[node name="IncreaseCriticalDamage" type="TextureButton" parent="Background/ScrollContainer/VBoxContainer/Box3" groups=["upgrades"]]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -531,7 +542,7 @@ texture_pressed = ExtResource("7_l8338")
 texture_hover = ExtResource("8_30y0h")
 stretch_mode = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer/Box3/IncreaseCriticalDamage"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/ScrollContainer/VBoxContainer/Box3/IncreaseCriticalDamage"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -545,34 +556,34 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Icon1" type="TextureRect" parent="Background/VBoxContainer/Box3/IncreaseCriticalDamage/HBoxContainer"]
+[node name="Icon1" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer/Box3/IncreaseCriticalDamage/HBoxContainer"]
 custom_minimum_size = Vector2(15, 15)
 layout_mode = 2
 texture = ExtResource("9_h36f7")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Cost" type="Label" parent="Background/VBoxContainer/Box3/IncreaseCriticalDamage/HBoxContainer"]
+[node name="Cost" type="Label" parent="Background/ScrollContainer/VBoxContainer/Box3/IncreaseCriticalDamage/HBoxContainer"]
 layout_mode = 2
 text = "15"
 label_settings = SubResource("LabelSettings_g2rxv")
 vertical_alignment = 1
 
-[node name="Icon2" type="TextureRect" parent="Background/VBoxContainer/Box3/IncreaseCriticalDamage/HBoxContainer"]
+[node name="Icon2" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer/Box3/IncreaseCriticalDamage/HBoxContainer"]
 custom_minimum_size = Vector2(15, 15)
 layout_mode = 2
 texture = ExtResource("9_h36f7")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Box4" type="TextureRect" parent="Background/VBoxContainer"]
+[node name="Box4" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer"]
 self_modulate = Color(0, 0, 1, 1)
 custom_minimum_size = Vector2(560, 68)
 layout_mode = 2
 texture = ExtResource("3_rwn3u")
 expand_mode = 1
 
-[node name="BGIcon" type="TextureRect" parent="Background/VBoxContainer/Box4"]
+[node name="BGIcon" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer/Box4"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
 anchors_preset = 4
@@ -586,7 +597,7 @@ grow_vertical = 2
 texture = ExtResource("4_gbunn")
 expand_mode = 1
 
-[node name="Icon" type="TextureRect" parent="Background/VBoxContainer/Box4/BGIcon"]
+[node name="Icon" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer/Box4/BGIcon"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -599,7 +610,7 @@ grow_horizontal = 2
 texture = ExtResource("12_bcoxo")
 expand_mode = 1
 
-[node name="Level" type="Label" parent="Background/VBoxContainer/Box4/BGIcon"]
+[node name="Level" type="Label" parent="Background/ScrollContainer/VBoxContainer/Box4/BGIcon"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -617,7 +628,7 @@ label_settings = SubResource("LabelSettings_tkra7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BGDescription" type="TextureRect" parent="Background/VBoxContainer/Box4"]
+[node name="BGDescription" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer/Box4"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -633,7 +644,7 @@ grow_vertical = 2
 texture = ExtResource("6_xaigo")
 expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background/VBoxContainer/Box4/BGDescription"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/ScrollContainer/VBoxContainer/Box4/BGDescription"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -645,19 +656,19 @@ offset_bottom = 20.0
 grow_vertical = 2
 theme_override_constants/separation = 5
 
-[node name="Description" type="Label" parent="Background/VBoxContainer/Box4/BGDescription/VBoxContainer"]
+[node name="Description" type="Label" parent="Background/ScrollContainer/VBoxContainer/Box4/BGDescription/VBoxContainer"]
 layout_mode = 2
 text = "- Bônus de Raid Time de +1s"
 label_settings = SubResource("LabelSettings_my8hm")
 vertical_alignment = 1
 
-[node name="Current" type="Label" parent="Background/VBoxContainer/Box4/BGDescription/VBoxContainer"]
+[node name="Current" type="Label" parent="Background/ScrollContainer/VBoxContainer/Box4/BGDescription/VBoxContainer"]
 layout_mode = 2
 text = "- Current: 5s"
 label_settings = SubResource("LabelSettings_bhbul")
 vertical_alignment = 1
 
-[node name="IncreaseRaidTime" type="TextureButton" parent="Background/VBoxContainer/Box4" groups=["upgrades"]]
+[node name="IncreaseRaidTime" type="TextureButton" parent="Background/ScrollContainer/VBoxContainer/Box4" groups=["upgrades"]]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -675,7 +686,7 @@ texture_pressed = ExtResource("7_l8338")
 texture_hover = ExtResource("8_30y0h")
 stretch_mode = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer/Box4/IncreaseRaidTime"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/ScrollContainer/VBoxContainer/Box4/IncreaseRaidTime"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -689,50 +700,34 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Icon1" type="TextureRect" parent="Background/VBoxContainer/Box4/IncreaseRaidTime/HBoxContainer"]
+[node name="Icon1" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer/Box4/IncreaseRaidTime/HBoxContainer"]
 custom_minimum_size = Vector2(15, 15)
 layout_mode = 2
 texture = ExtResource("9_h36f7")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Cost" type="Label" parent="Background/VBoxContainer/Box4/IncreaseRaidTime/HBoxContainer"]
+[node name="Cost" type="Label" parent="Background/ScrollContainer/VBoxContainer/Box4/IncreaseRaidTime/HBoxContainer"]
 layout_mode = 2
 text = "15"
 label_settings = SubResource("LabelSettings_g2rxv")
 vertical_alignment = 1
 
-[node name="Icon2" type="TextureRect" parent="Background/VBoxContainer/Box4/IncreaseRaidTime/HBoxContainer"]
+[node name="Icon2" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer/Box4/IncreaseRaidTime/HBoxContainer"]
 custom_minimum_size = Vector2(15, 15)
 layout_mode = 2
 texture = ExtResource("9_h36f7")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Background"]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -280.0
-offset_top = -136.0
-offset_right = 280.0
-offset_bottom = 224.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 25
-
-[node name="Box5" type="TextureRect" parent="Background/VBoxContainer2"]
+[node name="Box5" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer"]
 self_modulate = Color(0, 0, 1, 1)
 custom_minimum_size = Vector2(560, 68)
 layout_mode = 2
 texture = ExtResource("3_rwn3u")
 expand_mode = 1
 
-[node name="BGIcon" type="TextureRect" parent="Background/VBoxContainer2/Box5"]
+[node name="BGIcon" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer/Box5"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
 anchors_preset = 4
@@ -746,7 +741,7 @@ grow_vertical = 2
 texture = ExtResource("4_gbunn")
 expand_mode = 1
 
-[node name="Icon" type="TextureRect" parent="Background/VBoxContainer2/Box5/BGIcon"]
+[node name="Icon" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer/Box5/BGIcon"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -759,7 +754,7 @@ grow_horizontal = 2
 texture = ExtResource("9_h36f7")
 expand_mode = 1
 
-[node name="Level" type="Label" parent="Background/VBoxContainer2/Box5/BGIcon"]
+[node name="Level" type="Label" parent="Background/ScrollContainer/VBoxContainer/Box5/BGIcon"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -777,7 +772,7 @@ label_settings = SubResource("LabelSettings_tkra7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BGDescription" type="TextureRect" parent="Background/VBoxContainer2/Box5"]
+[node name="BGDescription" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer/Box5"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -793,7 +788,7 @@ grow_vertical = 2
 texture = ExtResource("6_xaigo")
 expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background/VBoxContainer2/Box5/BGDescription"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/ScrollContainer/VBoxContainer/Box5/BGDescription"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -805,19 +800,19 @@ offset_bottom = 20.0
 grow_vertical = 2
 theme_override_constants/separation = 5
 
-[node name="Description" type="Label" parent="Background/VBoxContainer2/Box5/BGDescription/VBoxContainer"]
+[node name="Description" type="Label" parent="Background/ScrollContainer/VBoxContainer/Box5/BGDescription/VBoxContainer"]
 layout_mode = 2
 text = "- Bônus de Pontos de Prestígio de +25%"
 label_settings = SubResource("LabelSettings_my8hm")
 vertical_alignment = 1
 
-[node name="Current" type="Label" parent="Background/VBoxContainer2/Box5/BGDescription/VBoxContainer"]
+[node name="Current" type="Label" parent="Background/ScrollContainer/VBoxContainer/Box5/BGDescription/VBoxContainer"]
 layout_mode = 2
 text = "- Current: 0%"
 label_settings = SubResource("LabelSettings_bhbul")
 vertical_alignment = 1
 
-[node name="IncreasePrestigePoints" type="TextureButton" parent="Background/VBoxContainer2/Box5" groups=["upgrades"]]
+[node name="IncreasePrestigePoints" type="TextureButton" parent="Background/ScrollContainer/VBoxContainer/Box5" groups=["upgrades"]]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -835,7 +830,7 @@ texture_pressed = ExtResource("7_l8338")
 texture_hover = ExtResource("8_30y0h")
 stretch_mode = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer2/Box5/IncreasePrestigePoints"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/ScrollContainer/VBoxContainer/Box5/IncreasePrestigePoints"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -849,34 +844,34 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Icon1" type="TextureRect" parent="Background/VBoxContainer2/Box5/IncreasePrestigePoints/HBoxContainer"]
+[node name="Icon1" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer/Box5/IncreasePrestigePoints/HBoxContainer"]
 custom_minimum_size = Vector2(15, 15)
 layout_mode = 2
 texture = ExtResource("9_h36f7")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Cost" type="Label" parent="Background/VBoxContainer2/Box5/IncreasePrestigePoints/HBoxContainer"]
+[node name="Cost" type="Label" parent="Background/ScrollContainer/VBoxContainer/Box5/IncreasePrestigePoints/HBoxContainer"]
 layout_mode = 2
 text = "15"
 label_settings = SubResource("LabelSettings_g2rxv")
 vertical_alignment = 1
 
-[node name="Icon2" type="TextureRect" parent="Background/VBoxContainer2/Box5/IncreasePrestigePoints/HBoxContainer"]
+[node name="Icon2" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer/Box5/IncreasePrestigePoints/HBoxContainer"]
 custom_minimum_size = Vector2(15, 15)
 layout_mode = 2
 texture = ExtResource("9_h36f7")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Box8" type="TextureRect" parent="Background/VBoxContainer2"]
+[node name="Box8" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer"]
 self_modulate = Color(0, 0, 1, 1)
 custom_minimum_size = Vector2(560, 68)
 layout_mode = 2
 texture = ExtResource("3_rwn3u")
 expand_mode = 1
 
-[node name="BGIcon" type="TextureRect" parent="Background/VBoxContainer2/Box8"]
+[node name="BGIcon" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer/Box8"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
 anchors_preset = 4
@@ -890,7 +885,7 @@ grow_vertical = 2
 texture = ExtResource("4_gbunn")
 expand_mode = 1
 
-[node name="Icon" type="TextureRect" parent="Background/VBoxContainer2/Box8/BGIcon"]
+[node name="Icon" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer/Box8/BGIcon"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -903,7 +898,7 @@ grow_horizontal = 2
 texture = ExtResource("14_th25c")
 expand_mode = 1
 
-[node name="Level" type="Label" parent="Background/VBoxContainer2/Box8/BGIcon"]
+[node name="Level" type="Label" parent="Background/ScrollContainer/VBoxContainer/Box8/BGIcon"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -921,7 +916,7 @@ label_settings = SubResource("LabelSettings_tkra7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BGDescription" type="TextureRect" parent="Background/VBoxContainer2/Box8"]
+[node name="BGDescription" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer/Box8"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -937,7 +932,7 @@ grow_vertical = 2
 texture = ExtResource("6_xaigo")
 expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background/VBoxContainer2/Box8/BGDescription"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/ScrollContainer/VBoxContainer/Box8/BGDescription"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -949,19 +944,19 @@ offset_bottom = 20.0
 grow_vertical = 2
 theme_override_constants/separation = 5
 
-[node name="Description" type="Label" parent="Background/VBoxContainer2/Box8/BGDescription/VBoxContainer"]
+[node name="Description" type="Label" parent="Background/ScrollContainer/VBoxContainer/Box8/BGDescription/VBoxContainer"]
 layout_mode = 2
 text = "- Aumenta a chance de crítico em 1%"
 label_settings = SubResource("LabelSettings_my8hm")
 vertical_alignment = 1
 
-[node name="Current" type="Label" parent="Background/VBoxContainer2/Box8/BGDescription/VBoxContainer"]
+[node name="Current" type="Label" parent="Background/ScrollContainer/VBoxContainer/Box8/BGDescription/VBoxContainer"]
 layout_mode = 2
 text = "- Current: 0%"
 label_settings = SubResource("LabelSettings_bhbul")
 vertical_alignment = 1
 
-[node name="IncreaseCriticalChance" type="TextureButton" parent="Background/VBoxContainer2/Box8" groups=["upgrades"]]
+[node name="IncreaseCriticalChance" type="TextureButton" parent="Background/ScrollContainer/VBoxContainer/Box8" groups=["upgrades"]]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -979,7 +974,7 @@ texture_pressed = ExtResource("7_l8338")
 texture_hover = ExtResource("8_30y0h")
 stretch_mode = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer2/Box8/IncreaseCriticalChance"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/ScrollContainer/VBoxContainer/Box8/IncreaseCriticalChance"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -993,34 +988,34 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Icon1" type="TextureRect" parent="Background/VBoxContainer2/Box8/IncreaseCriticalChance/HBoxContainer"]
+[node name="Icon1" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer/Box8/IncreaseCriticalChance/HBoxContainer"]
 custom_minimum_size = Vector2(15, 15)
 layout_mode = 2
 texture = ExtResource("9_h36f7")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Cost" type="Label" parent="Background/VBoxContainer2/Box8/IncreaseCriticalChance/HBoxContainer"]
+[node name="Cost" type="Label" parent="Background/ScrollContainer/VBoxContainer/Box8/IncreaseCriticalChance/HBoxContainer"]
 layout_mode = 2
 text = "15"
 label_settings = SubResource("LabelSettings_g2rxv")
 vertical_alignment = 1
 
-[node name="Icon2" type="TextureRect" parent="Background/VBoxContainer2/Box8/IncreaseCriticalChance/HBoxContainer"]
+[node name="Icon2" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer/Box8/IncreaseCriticalChance/HBoxContainer"]
 custom_minimum_size = Vector2(15, 15)
 layout_mode = 2
 texture = ExtResource("9_h36f7")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Box6" type="TextureRect" parent="Background/VBoxContainer2"]
+[node name="Box6" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer"]
 self_modulate = Color(0, 0, 1, 1)
 custom_minimum_size = Vector2(560, 68)
 layout_mode = 2
 texture = ExtResource("3_rwn3u")
 expand_mode = 1
 
-[node name="BGIcon" type="TextureRect" parent="Background/VBoxContainer2/Box6"]
+[node name="BGIcon" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer/Box6"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
 anchors_preset = 4
@@ -1034,7 +1029,7 @@ grow_vertical = 2
 texture = ExtResource("4_gbunn")
 expand_mode = 1
 
-[node name="Icon" type="TextureRect" parent="Background/VBoxContainer2/Box6/BGIcon"]
+[node name="Icon" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer/Box6/BGIcon"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -1047,7 +1042,7 @@ grow_horizontal = 2
 texture = ExtResource("14_o6m7x")
 expand_mode = 1
 
-[node name="Level" type="Label" parent="Background/VBoxContainer2/Box6/BGIcon"]
+[node name="Level" type="Label" parent="Background/ScrollContainer/VBoxContainer/Box6/BGIcon"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -1065,7 +1060,7 @@ label_settings = SubResource("LabelSettings_tkra7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BGDescription" type="TextureRect" parent="Background/VBoxContainer2/Box6"]
+[node name="BGDescription" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer/Box6"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1081,7 +1076,7 @@ grow_vertical = 2
 texture = ExtResource("6_xaigo")
 expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background/VBoxContainer2/Box6/BGDescription"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/ScrollContainer/VBoxContainer/Box6/BGDescription"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -1093,19 +1088,19 @@ offset_bottom = 20.0
 grow_vertical = 2
 theme_override_constants/separation = 5
 
-[node name="Description" type="Label" parent="Background/VBoxContainer2/Box6/BGDescription/VBoxContainer"]
+[node name="Description" type="Label" parent="Background/ScrollContainer/VBoxContainer/Box6/BGDescription/VBoxContainer"]
 layout_mode = 2
 text = "- Aumenta a duração das skill em +1s"
 label_settings = SubResource("LabelSettings_my8hm")
 vertical_alignment = 1
 
-[node name="Current" type="Label" parent="Background/VBoxContainer2/Box6/BGDescription/VBoxContainer"]
+[node name="Current" type="Label" parent="Background/ScrollContainer/VBoxContainer/Box6/BGDescription/VBoxContainer"]
 layout_mode = 2
 text = "- Current: 0%"
 label_settings = SubResource("LabelSettings_bhbul")
 vertical_alignment = 1
 
-[node name="IncreaseSkillDuration" type="TextureButton" parent="Background/VBoxContainer2/Box6" groups=["upgrades"]]
+[node name="IncreaseSkillDuration" type="TextureButton" parent="Background/ScrollContainer/VBoxContainer/Box6" groups=["upgrades"]]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -1123,7 +1118,7 @@ texture_pressed = ExtResource("7_l8338")
 texture_hover = ExtResource("8_30y0h")
 stretch_mode = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer2/Box6/IncreaseSkillDuration"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/ScrollContainer/VBoxContainer/Box6/IncreaseSkillDuration"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1137,34 +1132,34 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Icon1" type="TextureRect" parent="Background/VBoxContainer2/Box6/IncreaseSkillDuration/HBoxContainer"]
+[node name="Icon1" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer/Box6/IncreaseSkillDuration/HBoxContainer"]
 custom_minimum_size = Vector2(15, 15)
 layout_mode = 2
 texture = ExtResource("9_h36f7")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Cost" type="Label" parent="Background/VBoxContainer2/Box6/IncreaseSkillDuration/HBoxContainer"]
+[node name="Cost" type="Label" parent="Background/ScrollContainer/VBoxContainer/Box6/IncreaseSkillDuration/HBoxContainer"]
 layout_mode = 2
 text = "15"
 label_settings = SubResource("LabelSettings_g2rxv")
 vertical_alignment = 1
 
-[node name="Icon2" type="TextureRect" parent="Background/VBoxContainer2/Box6/IncreaseSkillDuration/HBoxContainer"]
+[node name="Icon2" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer/Box6/IncreaseSkillDuration/HBoxContainer"]
 custom_minimum_size = Vector2(15, 15)
 layout_mode = 2
 texture = ExtResource("9_h36f7")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Box7" type="TextureRect" parent="Background/VBoxContainer2"]
+[node name="Box7" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer"]
 self_modulate = Color(0, 0, 1, 1)
 custom_minimum_size = Vector2(560, 68)
 layout_mode = 2
 texture = ExtResource("3_rwn3u")
 expand_mode = 1
 
-[node name="BGIcon" type="TextureRect" parent="Background/VBoxContainer2/Box7"]
+[node name="BGIcon" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer/Box7"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
 anchors_preset = 4
@@ -1178,7 +1173,7 @@ grow_vertical = 2
 texture = ExtResource("4_gbunn")
 expand_mode = 1
 
-[node name="Icon" type="TextureRect" parent="Background/VBoxContainer2/Box7/BGIcon"]
+[node name="Icon" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer/Box7/BGIcon"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -1191,7 +1186,7 @@ grow_horizontal = 2
 texture = ExtResource("15_c0flr")
 expand_mode = 1
 
-[node name="Level" type="Label" parent="Background/VBoxContainer2/Box7/BGIcon"]
+[node name="Level" type="Label" parent="Background/ScrollContainer/VBoxContainer/Box7/BGIcon"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -1209,7 +1204,7 @@ label_settings = SubResource("LabelSettings_tkra7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BGDescription" type="TextureRect" parent="Background/VBoxContainer2/Box7"]
+[node name="BGDescription" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer/Box7"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1225,7 +1220,7 @@ grow_vertical = 2
 texture = ExtResource("6_xaigo")
 expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background/VBoxContainer2/Box7/BGDescription"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/ScrollContainer/VBoxContainer/Box7/BGDescription"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -1237,19 +1232,19 @@ offset_bottom = 20.0
 grow_vertical = 2
 theme_override_constants/separation = 5
 
-[node name="Description" type="Label" parent="Background/VBoxContainer2/Box7/BGDescription/VBoxContainer"]
+[node name="Description" type="Label" parent="Background/ScrollContainer/VBoxContainer/Box7/BGDescription/VBoxContainer"]
 layout_mode = 2
 text = "- Diminui o cooldown das skills em -1s"
 label_settings = SubResource("LabelSettings_my8hm")
 vertical_alignment = 1
 
-[node name="Current" type="Label" parent="Background/VBoxContainer2/Box7/BGDescription/VBoxContainer"]
+[node name="Current" type="Label" parent="Background/ScrollContainer/VBoxContainer/Box7/BGDescription/VBoxContainer"]
 layout_mode = 2
 text = "- Current: 0%"
 label_settings = SubResource("LabelSettings_bhbul")
 vertical_alignment = 1
 
-[node name="DecreaseSkillCooldown" type="TextureButton" parent="Background/VBoxContainer2/Box7" groups=["upgrades"]]
+[node name="DecreaseSkillCooldown" type="TextureButton" parent="Background/ScrollContainer/VBoxContainer/Box7" groups=["upgrades"]]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -1267,7 +1262,7 @@ texture_pressed = ExtResource("7_l8338")
 texture_hover = ExtResource("8_30y0h")
 stretch_mode = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer2/Box7/DecreaseSkillCooldown"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/ScrollContainer/VBoxContainer/Box7/DecreaseSkillCooldown"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1281,20 +1276,20 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Icon1" type="TextureRect" parent="Background/VBoxContainer2/Box7/DecreaseSkillCooldown/HBoxContainer"]
+[node name="Icon1" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer/Box7/DecreaseSkillCooldown/HBoxContainer"]
 custom_minimum_size = Vector2(15, 15)
 layout_mode = 2
 texture = ExtResource("9_h36f7")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Cost" type="Label" parent="Background/VBoxContainer2/Box7/DecreaseSkillCooldown/HBoxContainer"]
+[node name="Cost" type="Label" parent="Background/ScrollContainer/VBoxContainer/Box7/DecreaseSkillCooldown/HBoxContainer"]
 layout_mode = 2
 text = "15"
 label_settings = SubResource("LabelSettings_g2rxv")
 vertical_alignment = 1
 
-[node name="Icon2" type="TextureRect" parent="Background/VBoxContainer2/Box7/DecreaseSkillCooldown/HBoxContainer"]
+[node name="Icon2" type="TextureRect" parent="Background/ScrollContainer/VBoxContainer/Box7/DecreaseSkillCooldown/HBoxContainer"]
 custom_minimum_size = Vector2(15, 15)
 layout_mode = 2
 texture = ExtResource("9_h36f7")
@@ -1315,64 +1310,4 @@ texture_normal = ExtResource("13_4yxn4")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Tab1" type="TextureButton" parent="Background"]
-layout_mode = 0
-offset_left = 277.0
-offset_top = 81.0
-offset_right = 321.0
-offset_bottom = 103.0
-texture_normal = ExtResource("7_l8338")
-texture_pressed = ExtResource("7_l8338")
-texture_hover = ExtResource("8_30y0h")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="Background/Tab1"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -3.0
-offset_top = -8.5
-offset_right = 3.0
-offset_bottom = 8.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "1"
-label_settings = SubResource("LabelSettings_wm7cj")
-vertical_alignment = 1
-
-[node name="Tab2" type="TextureButton" parent="Background"]
-layout_mode = 0
-offset_left = 337.0
-offset_top = 81.0
-offset_right = 381.0
-offset_bottom = 103.0
-texture_normal = ExtResource("7_l8338")
-texture_pressed = ExtResource("7_l8338")
-texture_hover = ExtResource("8_30y0h")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="Background/Tab2"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -3.0
-offset_top = -8.5
-offset_right = 3.0
-offset_bottom = 8.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "2"
-label_settings = SubResource("LabelSettings_wm7cj")
-vertical_alignment = 1
-
 [connection signal="pressed" from="Background/Close" to="." method="_on_close_pressed"]
-[connection signal="pressed" from="Background/Tab1" to="." method="_on_tab_1_pressed"]
-[connection signal="pressed" from="Background/Tab2" to="." method="_on_tab_2_pressed"]

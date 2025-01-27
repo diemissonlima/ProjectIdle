@@ -1,0 +1,705 @@
+[gd_scene load_steps=17 format=3 uid="uid://fonmja5jp0c7"]
+
+[ext_resource type="Texture2D" uid="uid://7fknnavhqyfo" path="res://assets/prefabs/box/MessageBox01.png" id="1_n4coc"]
+[ext_resource type="Script" path="res://scripts/milestones.gd" id="1_uv620"]
+[ext_resource type="FontFile" uid="uid://c17ascng2deth" path="res://assets/font/njo_14.ttf" id="2_v55u3"]
+[ext_resource type="Texture2D" uid="uid://dvsioohm5fxr4" path="res://assets/prefabs/icons/X.png" id="3_4185k"]
+[ext_resource type="Texture2D" uid="uid://dg4a848xmx4jn" path="res://assets/prefabs/box/WindowSettings03_Panel02.png" id="4_cl6t8"]
+[ext_resource type="Texture2D" uid="uid://bdneqesb38sdk" path="res://assets/prefabs/box/Cell.png" id="5_feki4"]
+[ext_resource type="Texture2D" uid="uid://ds7s6bj0x8u20" path="res://assets/prefabs/icons/Icon_Small_Star.png" id="6_7jlml"]
+[ext_resource type="Texture2D" uid="uid://dq6f6g3vqcumu" path="res://assets/prefabs/box/MessageBox02.png" id="7_y7ong"]
+[ext_resource type="Texture2D" uid="uid://ctldyihhvugjg" path="res://assets/prefabs/buttons/ButtonHover.png" id="8_ymhm7"]
+[ext_resource type="Texture2D" uid="uid://j2khku0ce0y2" path="res://assets/prefabs/buttons/ButtonActive.png" id="9_tg542"]
+[ext_resource type="Texture2D" uid="uid://cykex46ttcc8g" path="res://assets/prefabs/icons/Icon_Small_Diamond.png" id="10_itf82"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_i43sn"]
+font = ExtResource("2_v55u3")
+font_size = 28
+
+[sub_resource type="LabelSettings" id="LabelSettings_u5gaf"]
+line_spacing = 0.0
+font = ExtResource("2_v55u3")
+font_size = 13
+font_color = Color(0, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1bbwf"]
+font = ExtResource("2_v55u3")
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vfu0j"]
+font = ExtResource("2_v55u3")
+font_size = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_638nf"]
+font = ExtResource("2_v55u3")
+font_size = 12
+
+[node name="Milestones" type="Control" groups=["milestones"]]
+visible = false
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -327.0
+offset_top = 8.0
+offset_right = 327.0
+offset_bottom = 490.0
+grow_horizontal = 2
+script = ExtResource("1_uv620")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_n4coc")
+
+[node name="Title" type="Label" parent="Background"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -75.5
+offset_top = 48.0
+offset_right = 75.5
+offset_bottom = 77.0
+grow_horizontal = 2
+text = "Milestones"
+label_settings = SubResource("LabelSettings_i43sn")
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+custom_minimum_size = Vector2(560, 68)
+layout_mode = 0
+offset_left = 48.0
+offset_top = 112.0
+offset_right = 608.0
+offset_bottom = 468.0
+theme_override_constants/separation = 15
+
+[node name="MileStoneInfo" type="TextureRect" parent="Background/VBoxContainer"]
+self_modulate = Color(0, 0, 1, 1)
+custom_minimum_size = Vector2(560, 74)
+layout_mode = 2
+texture = ExtResource("4_cl6t8")
+expand_mode = 1
+
+[node name="BGicon" type="TextureRect" parent="Background/VBoxContainer/MileStoneInfo"]
+visible = false
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = -30.0
+offset_right = 76.0
+offset_bottom = 30.0
+grow_vertical = 2
+texture = ExtResource("5_feki4")
+
+[node name="Icon" type="TextureRect" parent="Background/VBoxContainer/MileStoneInfo/BGicon"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -12.5
+offset_top = 3.0
+offset_right = 12.5
+offset_bottom = 28.0
+grow_horizontal = 2
+texture = ExtResource("6_7jlml")
+expand_mode = 1
+
+[node name="Stage" type="Label" parent="Background/VBoxContainer/MileStoneInfo/BGicon"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -22.5
+offset_top = -30.0
+offset_right = 22.5
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Stage 
+100"
+label_settings = SubResource("LabelSettings_u5gaf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BGdescription" type="TextureRect" parent="Background/VBoxContainer/MileStoneInfo"]
+custom_minimum_size = Vector2(308, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -204.5
+offset_top = -29.0
+offset_right = 204.5
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_y7ong")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/VBoxContainer/MileStoneInfo/BGdescription"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = -19.5
+offset_right = 177.0
+offset_bottom = 19.5
+grow_vertical = 2
+theme_override_constants/separation = 5
+
+[node name="TotalDamage" type="Label" parent="Background/VBoxContainer/MileStoneInfo/BGdescription/VBoxContainer"]
+layout_mode = 2
+text = "Bônus Damage: 1500%"
+label_settings = SubResource("LabelSettings_1bbwf")
+
+[node name="TotalGold" type="Label" parent="Background/VBoxContainer/MileStoneInfo/BGdescription/VBoxContainer"]
+layout_mode = 2
+text = "Bônus Gold: 1500%"
+label_settings = SubResource("LabelSettings_1bbwf")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Background/VBoxContainer/MileStoneInfo/BGdescription"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -191.0
+offset_top = -19.5
+offset_right = -16.0
+offset_bottom = 19.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 5
+
+[node name="TotaCriticalDamage" type="Label" parent="Background/VBoxContainer/MileStoneInfo/BGdescription/VBoxContainer2"]
+layout_mode = 2
+text = "Bônus C.Damage: 1500%"
+label_settings = SubResource("LabelSettings_1bbwf")
+
+[node name="TotalPrestigePoints" type="Label" parent="Background/VBoxContainer/MileStoneInfo/BGdescription/VBoxContainer2"]
+layout_mode = 2
+text = "Bônus P.Points: 1500%"
+label_settings = SubResource("LabelSettings_1bbwf")
+
+[node name="NextMilestone" type="Label" parent="Background/VBoxContainer/MileStoneInfo"]
+visible = false
+layout_mode = 2
+offset_left = 440.0
+offset_top = 9.0
+offset_right = 529.0
+offset_bottom = 38.0
+grow_horizontal = 0
+text = "Next Milestone
+Stage: 25/100"
+label_settings = SubResource("LabelSettings_vfu0j")
+horizontal_alignment = 1
+
+[node name="Claim" type="TextureButton" parent="Background/VBoxContainer/MileStoneInfo"]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -110.0
+offset_top = -29.0
+offset_right = -42.0
+offset_bottom = -9.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("8_ymhm7")
+texture_pressed = ExtResource("8_ymhm7")
+texture_hover = ExtResource("9_tg542")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer/MileStoneInfo/Claim"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.0
+offset_top = -20.0
+offset_right = 22.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 5
+
+[node name="TextureRect" type="TextureRect" parent="Background/VBoxContainer/MileStoneInfo/Claim/HBoxContainer"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+texture = ExtResource("10_itf82")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Background/VBoxContainer/MileStoneInfo/Claim/HBoxContainer"]
+layout_mode = 2
+text = "150"
+label_settings = SubResource("LabelSettings_638nf")
+horizontal_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Background/VBoxContainer/MileStoneInfo/Claim/HBoxContainer"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+texture = ExtResource("10_itf82")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Milestone1" type="TextureRect" parent="Background/VBoxContainer"]
+self_modulate = Color(0, 0, 1, 1)
+custom_minimum_size = Vector2(560, 74)
+layout_mode = 2
+texture = ExtResource("4_cl6t8")
+expand_mode = 1
+
+[node name="BGicon" type="TextureRect" parent="Background/VBoxContainer/Milestone1"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = -30.0
+offset_right = 76.0
+offset_bottom = 30.0
+grow_vertical = 2
+texture = ExtResource("5_feki4")
+
+[node name="Icon" type="TextureRect" parent="Background/VBoxContainer/Milestone1/BGicon"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -12.5
+offset_top = 3.0
+offset_right = 12.5
+offset_bottom = 28.0
+grow_horizontal = 2
+texture = ExtResource("6_7jlml")
+expand_mode = 1
+
+[node name="Stage" type="Label" parent="Background/VBoxContainer/Milestone1/BGicon"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -22.5
+offset_top = -30.0
+offset_right = 22.5
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Stage 
+100"
+label_settings = SubResource("LabelSettings_u5gaf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BGdescription" type="TextureRect" parent="Background/VBoxContainer/Milestone1"]
+custom_minimum_size = Vector2(308, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -29.0
+offset_right = 128.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_y7ong")
+expand_mode = 1
+
+[node name="Description" type="Label" parent="Background/VBoxContainer/Milestone1/BGdescription"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -8.5
+offset_right = 100.0
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Aumenta o dano em +15%"
+label_settings = SubResource("LabelSettings_1bbwf")
+horizontal_alignment = 1
+
+[node name="NextMilestone" type="Label" parent="Background/VBoxContainer/Milestone1"]
+layout_mode = 2
+offset_left = 440.0
+offset_top = 9.0
+offset_right = 529.0
+offset_bottom = 38.0
+grow_horizontal = 0
+text = "Next Milestone
+Stage: 25/100"
+label_settings = SubResource("LabelSettings_vfu0j")
+horizontal_alignment = 1
+
+[node name="Claim" type="TextureButton" parent="Background/VBoxContainer/Milestone1"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -110.0
+offset_top = -29.0
+offset_right = -42.0
+offset_bottom = -9.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("8_ymhm7")
+texture_pressed = ExtResource("8_ymhm7")
+texture_hover = ExtResource("9_tg542")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Background/VBoxContainer/Milestone1/Claim"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.5
+offset_top = -5.5
+offset_right = 15.5
+offset_bottom = 5.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Claim"
+label_settings = SubResource("LabelSettings_638nf")
+
+[node name="Milestone2" type="TextureRect" parent="Background/VBoxContainer"]
+self_modulate = Color(0, 0, 1, 1)
+custom_minimum_size = Vector2(560, 74)
+layout_mode = 2
+texture = ExtResource("4_cl6t8")
+expand_mode = 1
+
+[node name="BGicon" type="TextureRect" parent="Background/VBoxContainer/Milestone2"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = -30.0
+offset_right = 76.0
+offset_bottom = 30.0
+grow_vertical = 2
+texture = ExtResource("5_feki4")
+
+[node name="Icon" type="TextureRect" parent="Background/VBoxContainer/Milestone2/BGicon"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -12.5
+offset_top = 3.0
+offset_right = 12.5
+offset_bottom = 28.0
+grow_horizontal = 2
+texture = ExtResource("6_7jlml")
+expand_mode = 1
+
+[node name="Stage" type="Label" parent="Background/VBoxContainer/Milestone2/BGicon"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -22.5
+offset_top = -30.0
+offset_right = 22.5
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Stage 
+50"
+label_settings = SubResource("LabelSettings_u5gaf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BGdescription" type="TextureRect" parent="Background/VBoxContainer/Milestone2"]
+custom_minimum_size = Vector2(308, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -29.0
+offset_right = 128.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_y7ong")
+expand_mode = 1
+
+[node name="Description" type="Label" parent="Background/VBoxContainer/Milestone2/BGdescription"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -102.5
+offset_top = -8.5
+offset_right = 102.5
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Aumenta o dano em +15%"
+label_settings = SubResource("LabelSettings_1bbwf")
+horizontal_alignment = 1
+
+[node name="NextMilestone" type="Label" parent="Background/VBoxContainer/Milestone2"]
+layout_mode = 2
+offset_left = 440.0
+offset_top = 9.0
+offset_right = 529.0
+offset_bottom = 38.0
+grow_horizontal = 0
+text = "Next Milestone
+Stage: 25/100"
+label_settings = SubResource("LabelSettings_vfu0j")
+horizontal_alignment = 1
+
+[node name="Claim" type="TextureButton" parent="Background/VBoxContainer/Milestone2"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -110.0
+offset_top = -29.0
+offset_right = -42.0
+offset_bottom = -9.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("8_ymhm7")
+texture_pressed = ExtResource("8_ymhm7")
+texture_hover = ExtResource("9_tg542")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Background/VBoxContainer/Milestone2/Claim"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.5
+offset_top = -5.5
+offset_right = 15.5
+offset_bottom = 5.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Claim"
+label_settings = SubResource("LabelSettings_638nf")
+
+[node name="Milestone3" type="TextureRect" parent="Background/VBoxContainer"]
+self_modulate = Color(0, 0, 1, 1)
+custom_minimum_size = Vector2(560, 74)
+layout_mode = 2
+texture = ExtResource("4_cl6t8")
+expand_mode = 1
+
+[node name="BGicon" type="TextureRect" parent="Background/VBoxContainer/Milestone3"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = -30.0
+offset_right = 76.0
+offset_bottom = 30.0
+grow_vertical = 2
+texture = ExtResource("5_feki4")
+
+[node name="Icon" type="TextureRect" parent="Background/VBoxContainer/Milestone3/BGicon"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -12.5
+offset_top = 3.0
+offset_right = 12.5
+offset_bottom = 28.0
+grow_horizontal = 2
+texture = ExtResource("6_7jlml")
+expand_mode = 1
+
+[node name="Stage" type="Label" parent="Background/VBoxContainer/Milestone3/BGicon"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -22.5
+offset_top = -30.0
+offset_right = 22.5
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Stage 
+100"
+label_settings = SubResource("LabelSettings_u5gaf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BGdescription" type="TextureRect" parent="Background/VBoxContainer/Milestone3"]
+custom_minimum_size = Vector2(308, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -29.0
+offset_right = 128.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_y7ong")
+expand_mode = 1
+
+[node name="Description" type="Label" parent="Background/VBoxContainer/Milestone3/BGdescription"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -102.5
+offset_top = -8.5
+offset_right = 102.5
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Aumenta o dano em +15%"
+label_settings = SubResource("LabelSettings_1bbwf")
+horizontal_alignment = 1
+
+[node name="NextMilestone" type="Label" parent="Background/VBoxContainer/Milestone3"]
+layout_mode = 2
+offset_left = 440.0
+offset_top = 9.0
+offset_right = 529.0
+offset_bottom = 38.0
+grow_horizontal = 0
+text = "Next Milestone
+Stage: 25/100"
+label_settings = SubResource("LabelSettings_vfu0j")
+horizontal_alignment = 1
+
+[node name="Claim" type="TextureButton" parent="Background/VBoxContainer/Milestone3"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -110.0
+offset_top = -29.0
+offset_right = -42.0
+offset_bottom = -9.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("8_ymhm7")
+texture_pressed = ExtResource("8_ymhm7")
+texture_hover = ExtResource("9_tg542")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer/Milestone3/Claim"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.0
+offset_top = -20.0
+offset_right = 22.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 5
+
+[node name="TextureRect" type="TextureRect" parent="Background/VBoxContainer/Milestone3/Claim/HBoxContainer"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+texture = ExtResource("10_itf82")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Background/VBoxContainer/Milestone3/Claim/HBoxContainer"]
+layout_mode = 2
+text = "150"
+label_settings = SubResource("LabelSettings_638nf")
+horizontal_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Background/VBoxContainer/Milestone3/Claim/HBoxContainer"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+texture = ExtResource("10_itf82")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Close" type="TextureButton" parent="Background"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -65.0
+offset_top = 41.0
+offset_right = -25.0
+offset_bottom = 81.0
+grow_horizontal = 0
+texture_normal = ExtResource("3_4185k")
+stretch_mode = 5

@@ -21,6 +21,3 @@ func add_message(message: String, color: Color = Color.WHITE) -> void:
 	
 	await get_tree().create_timer(1.5).timeout
 	loot_box.get_child(0).queue_free()
-	
-	#if loot_box.get_child_count() > max_messages:
-		#loot_box.get_child(0).queue_free()
