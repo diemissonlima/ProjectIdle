@@ -41,7 +41,7 @@ func _ready() -> void:
 	set_label_upgrade() # seta as labels que informa o custo do upgrade
 	spawn_enemy() # spawna o inimigo
 	timer_player_attack.start(Player.attack_speed)
-	timer_save_game.start()
+	#timer_save_game.start()
 	
 	if World.stage_progress == 10:
 		timer_batalha.start(World.battle_time)
@@ -146,6 +146,10 @@ func killer_enemy(enemy_type) -> void:
 			"loot_box", "add_message", "+ " + World.format_number(enemy.dropped_gold) + \
 			" gold", Color.GREEN
 			)
+		
+		if enemy_type == 1:
+			enemy.item_drop()
+	
 		
 	World.kills += 1
 	
@@ -388,6 +392,12 @@ func _on_stats_pressed() -> void:
 func _on_upgrades_pressed() -> void:
 	get_tree().call_group("upgrade_screen", "update_label")
 	$Interface/Upgrades.show()
+
+
+func _on_equips_pressed() -> void:
+	get_tree().call_group("equipments", "load_equipment", "weapon")
+	get_tree().call_group("equipments", "load_equipment", "shield")
+	$Interface/Equipments.show()
 
 
 func _notification(what: int) -> void:

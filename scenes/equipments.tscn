@@ -1,15 +1,66 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhwtso3ysibcm"]
+[gd_scene load_steps=43 format=3 uid="uid://dhwtso3ysibcm"]
 
 [ext_resource type="Texture2D" uid="uid://e4o6nongfgvb" path="res://assets/prefabs/box/Menu02.png" id="1_8hbwa"]
+[ext_resource type="Script" path="res://scripts/equipments.gd" id="1_jx06y"]
 [ext_resource type="FontFile" uid="uid://c17ascng2deth" path="res://assets/font/njo_14.ttf" id="2_4ds7v"]
+[ext_resource type="Texture2D" uid="uid://bdneqesb38sdk" path="res://assets/prefabs/box/Cell.png" id="3_kr5lw"]
+[ext_resource type="Texture2D" uid="uid://cgbdqkrvghc22" path="res://assets/items/sword_01a.png" id="4_auhao"]
+[ext_resource type="Texture2D" uid="uid://d3fxtybl6m4u1" path="res://assets/prefabs/health_bar/BqBar.png" id="5_objob"]
+[ext_resource type="Texture2D" uid="uid://ddb1c688u5tr8" path="res://assets/prefabs/health_bar/Border.png" id="6_u8utt"]
+[ext_resource type="Texture2D" uid="uid://dauwat3wnbbpw" path="res://assets/prefabs/health_bar/BarMana.png" id="7_m0yau"]
+[ext_resource type="Texture2D" uid="uid://dikggt8lnyu8d" path="res://assets/prefabs/icons/Icon_Small_Lock.png" id="8_6g757"]
+[ext_resource type="Texture2D" uid="uid://bpppnpoptl5x2" path="res://assets/items/sword_01b.png" id="8_qtvah"]
+[ext_resource type="Texture2D" uid="uid://dfe1l0i2hrme2" path="res://assets/items/sword_01c.png" id="9_iprcd"]
+[ext_resource type="Texture2D" uid="uid://bhny2q5s803ib" path="res://assets/items/sword_01d.png" id="10_ltrck"]
+[ext_resource type="Texture2D" uid="uid://62nt43uj2inh" path="res://assets/items/sword_01e.png" id="11_sjril"]
+[ext_resource type="Texture2D" uid="uid://dn0ni5i7iu82s" path="res://assets/items/sword_02a.png" id="12_qs384"]
+[ext_resource type="Texture2D" uid="uid://cphxc31vjfjaj" path="res://assets/items/sword_02b.png" id="13_r18x4"]
+[ext_resource type="Texture2D" uid="uid://cxsgx8vrs01vm" path="res://assets/items/sword_02c.png" id="14_mwob5"]
+[ext_resource type="Texture2D" uid="uid://qd4hrybhb641" path="res://assets/items/sword_02d.png" id="15_25tms"]
+[ext_resource type="Texture2D" uid="uid://c10qxuemco75o" path="res://assets/items/sword_02e.png" id="16_csdib"]
+[ext_resource type="Texture2D" uid="uid://ciss38b30wa80" path="res://assets/items/sword_03a.png" id="17_1p6pg"]
+[ext_resource type="Texture2D" uid="uid://clcyjfbrteq83" path="res://assets/items/sword_03b.png" id="18_7x4hh"]
+[ext_resource type="Texture2D" uid="uid://bhyswegwbpctb" path="res://assets/items/sword_03c.png" id="19_uvbgy"]
+[ext_resource type="Texture2D" uid="uid://d31ddp2qdri74" path="res://assets/items/sword_03d.png" id="20_kbccb"]
+[ext_resource type="Texture2D" uid="uid://4wu1a333x3sp" path="res://assets/items/sword_03e.png" id="21_rgktw"]
+[ext_resource type="Texture2D" uid="uid://76bq8vvo6e0u" path="res://assets/items/shield_01a.png" id="23_kimv5"]
+[ext_resource type="Texture2D" uid="uid://b5w3crhcnl0wh" path="res://assets/items/shield_01b.png" id="24_gqcw1"]
+[ext_resource type="Texture2D" uid="uid://c5a4ltj75vt01" path="res://assets/items/shield_01c.png" id="25_l22h7"]
+[ext_resource type="Texture2D" uid="uid://cqsfe8cc4qs3d" path="res://assets/items/shield_01d.png" id="26_mw3oa"]
+[ext_resource type="Texture2D" uid="uid://dke60cw8ie6d1" path="res://assets/items/shield_01e.png" id="27_gxmsi"]
+[ext_resource type="Texture2D" uid="uid://b8k5p27bti1sj" path="res://assets/items/shield_02a.png" id="28_ha115"]
+[ext_resource type="Texture2D" uid="uid://bmop4nrph5i6y" path="res://assets/items/shield_02b.png" id="29_h0kwn"]
+[ext_resource type="Texture2D" uid="uid://chc75w24ceyvb" path="res://assets/items/shield_02c.png" id="30_ivonc"]
+[ext_resource type="Texture2D" uid="uid://d1iyv1nk4lggs" path="res://assets/items/shield_02d.png" id="31_sa2ts"]
+[ext_resource type="Texture2D" uid="uid://533hwi6a83mu" path="res://assets/items/shield_02e.png" id="32_cfqpm"]
+[ext_resource type="Texture2D" uid="uid://blseqv7tb5jhw" path="res://assets/items/shield_03a.png" id="33_btr68"]
+[ext_resource type="Texture2D" uid="uid://ix1ewqmpv1i0" path="res://assets/items/shield_03b.png" id="34_dkjpg"]
+[ext_resource type="Texture2D" uid="uid://mhipgwsqetja" path="res://assets/items/shield_03c.png" id="35_hjc2u"]
+[ext_resource type="Texture2D" uid="uid://d25evxr3a8n5w" path="res://assets/items/shield_03d.png" id="36_75an4"]
+[ext_resource type="Texture2D" uid="uid://bpu3yvtm30ull" path="res://assets/items/shield_03e.png" id="37_es458"]
+[ext_resource type="Texture2D" uid="uid://dvsioohm5fxr4" path="res://assets/prefabs/icons/X.png" id="39_tsw0c"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_p6cx1"]
 font = ExtResource("2_4ds7v")
 font_size = 30
+font_color = Color(0, 1, 0, 1)
 shadow_size = 0
 shadow_color = Color(0.976471, 0.976471, 0.976471, 0)
 
-[node name="Equipments" type="Control"]
+[sub_resource type="LabelSettings" id="LabelSettings_2r3gp"]
+font = ExtResource("2_4ds7v")
+font_size = 14
+outline_size = 2
+outline_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pkpna"]
+font = ExtResource("2_4ds7v")
+font_size = 12
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Equipments" type="Control" node_paths=PackedStringArray("weapon_container", "shield_container") groups=["equipments"]]
+visible = false
 custom_minimum_size = Vector2(661, 549)
 layout_mode = 3
 anchors_preset = 8
@@ -23,6 +74,9 @@ offset_right = 330.5
 offset_bottom = 274.5
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_jx06y")
+weapon_container = NodePath("Background/WeaponContainer")
+shield_container = NodePath("Background/ShieldContainer")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -38,19 +92,3120 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -112.0
-offset_top = 57.0
-offset_right = 112.0
-offset_bottom = 88.0
+offset_left = -94.0
+offset_top = 56.0
+offset_right = 94.0
+offset_bottom = 87.0
 grow_horizontal = 2
-text = "Equipamentos"
+text = "Equipments"
 label_settings = SubResource("LabelSettings_p6cx1")
 
-[node name="GridContainer" type="GridContainer" parent="Background"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="WeaponContainer" type="GridContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -116.0
+offset_right = 240.0
+offset_bottom = 164.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
 columns = 5
 
-[node name="Slot1" type="TextureRect" parent="Background/GridContainer"]
+[node name="Slot1" type="TextureButton" parent="Background/WeaponContainer"]
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
+disabled = true
+
+[node name="Color" type="ColorRect" parent="Background/WeaponContainer/Slot1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 1, 1)
+
+[node name="BG" type="TextureRect" parent="Background/WeaponContainer/Slot1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_kr5lw")
+
+[node name="Sprite" type="TextureRect" parent="Background/WeaponContainer/Slot1/BG"]
+modulate = Color(1, 1, 1, 0.0980392)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 20.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_auhao")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Level" type="Label" parent="Background/WeaponContainer/Slot1/BG"]
+visible = false
+layout_mode = 0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 34.0
+offset_bottom = 19.0
+text = "Lv 1"
+label_settings = SubResource("LabelSettings_2r3gp")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/WeaponContainer/Slot1/BG"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -17.0
+offset_right = 35.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 50.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_objob")
+texture_over = ExtResource("6_u8utt")
+texture_progress = ExtResource("7_m0yau")
+
+[node name="Progress" type="Label" parent="Background/WeaponContainer/Slot1/BG/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.5
+offset_top = -6.5
+offset_right = 14.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1 / 10"
+label_settings = SubResource("LabelSettings_pkpna")
+
+[node name="Lock" type="TextureRect" parent="Background/WeaponContainer/Slot1/BG"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("8_6g757")
+expand_mode = 1
+
+[node name="Slot2" type="TextureButton" parent="Background/WeaponContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+disabled = true
+
+[node name="Color" type="ColorRect" parent="Background/WeaponContainer/Slot2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 1, 1)
+
+[node name="BG" type="TextureRect" parent="Background/WeaponContainer/Slot2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_kr5lw")
+
+[node name="Sprite" type="TextureRect" parent="Background/WeaponContainer/Slot2/BG"]
+modulate = Color(1, 1, 1, 0.0980392)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 20.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_qtvah")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Level" type="Label" parent="Background/WeaponContainer/Slot2/BG"]
+visible = false
+layout_mode = 0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 34.0
+offset_bottom = 19.0
+text = "Lv 1"
+label_settings = SubResource("LabelSettings_2r3gp")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/WeaponContainer/Slot2/BG"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -17.0
+offset_right = 35.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_objob")
+texture_over = ExtResource("6_u8utt")
+texture_progress = ExtResource("7_m0yau")
+
+[node name="Progress" type="Label" parent="Background/WeaponContainer/Slot2/BG/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.5
+offset_top = -6.5
+offset_right = 14.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1 / 10"
+label_settings = SubResource("LabelSettings_pkpna")
+
+[node name="Lock" type="TextureRect" parent="Background/WeaponContainer/Slot2/BG"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("8_6g757")
+expand_mode = 1
+
+[node name="Slot3" type="TextureButton" parent="Background/WeaponContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+disabled = true
+
+[node name="Color" type="ColorRect" parent="Background/WeaponContainer/Slot3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 1, 1)
+
+[node name="BG" type="TextureRect" parent="Background/WeaponContainer/Slot3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_kr5lw")
+
+[node name="Sprite" type="TextureRect" parent="Background/WeaponContainer/Slot3/BG"]
+modulate = Color(1, 1, 1, 0.0980392)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 20.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_iprcd")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Level" type="Label" parent="Background/WeaponContainer/Slot3/BG"]
+visible = false
+layout_mode = 0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 34.0
+offset_bottom = 19.0
+text = "Lv 1"
+label_settings = SubResource("LabelSettings_2r3gp")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/WeaponContainer/Slot3/BG"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -17.0
+offset_right = 35.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_objob")
+texture_over = ExtResource("6_u8utt")
+texture_progress = ExtResource("7_m0yau")
+
+[node name="Progress" type="Label" parent="Background/WeaponContainer/Slot3/BG/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.5
+offset_top = -6.5
+offset_right = 14.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1 / 10"
+label_settings = SubResource("LabelSettings_pkpna")
+
+[node name="Lock" type="TextureRect" parent="Background/WeaponContainer/Slot3/BG"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("8_6g757")
+expand_mode = 1
+
+[node name="Slot4" type="TextureButton" parent="Background/WeaponContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+disabled = true
+
+[node name="Color" type="ColorRect" parent="Background/WeaponContainer/Slot4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 1, 1)
+
+[node name="BG" type="TextureRect" parent="Background/WeaponContainer/Slot4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_kr5lw")
+
+[node name="Sprite" type="TextureRect" parent="Background/WeaponContainer/Slot4/BG"]
+modulate = Color(1, 1, 1, 0.0980392)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 20.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_ltrck")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Level" type="Label" parent="Background/WeaponContainer/Slot4/BG"]
+visible = false
+layout_mode = 0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 34.0
+offset_bottom = 19.0
+text = "Lv 1"
+label_settings = SubResource("LabelSettings_2r3gp")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/WeaponContainer/Slot4/BG"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -17.0
+offset_right = 35.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_objob")
+texture_over = ExtResource("6_u8utt")
+texture_progress = ExtResource("7_m0yau")
+
+[node name="Progress" type="Label" parent="Background/WeaponContainer/Slot4/BG/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.5
+offset_top = -6.5
+offset_right = 14.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1 / 10"
+label_settings = SubResource("LabelSettings_pkpna")
+
+[node name="Lock" type="TextureRect" parent="Background/WeaponContainer/Slot4/BG"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("8_6g757")
+expand_mode = 1
+
+[node name="Slot5" type="TextureButton" parent="Background/WeaponContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+disabled = true
+
+[node name="Color" type="ColorRect" parent="Background/WeaponContainer/Slot5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 1, 1)
+
+[node name="BG" type="TextureRect" parent="Background/WeaponContainer/Slot5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_kr5lw")
+
+[node name="Sprite" type="TextureRect" parent="Background/WeaponContainer/Slot5/BG"]
+modulate = Color(1, 1, 1, 0.0980392)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 20.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_sjril")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Level" type="Label" parent="Background/WeaponContainer/Slot5/BG"]
+visible = false
+layout_mode = 0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 34.0
+offset_bottom = 19.0
+text = "Lv 1"
+label_settings = SubResource("LabelSettings_2r3gp")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/WeaponContainer/Slot5/BG"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -17.0
+offset_right = 35.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_objob")
+texture_over = ExtResource("6_u8utt")
+texture_progress = ExtResource("7_m0yau")
+
+[node name="Progress" type="Label" parent="Background/WeaponContainer/Slot5/BG/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.5
+offset_top = -6.5
+offset_right = 14.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1 / 10"
+label_settings = SubResource("LabelSettings_pkpna")
+
+[node name="Lock" type="TextureRect" parent="Background/WeaponContainer/Slot5/BG"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("8_6g757")
+expand_mode = 1
+
+[node name="Slot6" type="TextureButton" parent="Background/WeaponContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+disabled = true
+
+[node name="Color" type="ColorRect" parent="Background/WeaponContainer/Slot6"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 0, 1)
+
+[node name="BG" type="TextureRect" parent="Background/WeaponContainer/Slot6"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_kr5lw")
+
+[node name="Sprite" type="TextureRect" parent="Background/WeaponContainer/Slot6/BG"]
+modulate = Color(1, 1, 1, 0.0980392)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 20.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_qs384")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Level" type="Label" parent="Background/WeaponContainer/Slot6/BG"]
+visible = false
+layout_mode = 0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 34.0
+offset_bottom = 19.0
+text = "Lv 1"
+label_settings = SubResource("LabelSettings_2r3gp")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/WeaponContainer/Slot6/BG"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -17.0
+offset_right = 35.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_objob")
+texture_over = ExtResource("6_u8utt")
+texture_progress = ExtResource("7_m0yau")
+
+[node name="Progress" type="Label" parent="Background/WeaponContainer/Slot6/BG/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.5
+offset_top = -6.5
+offset_right = 14.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1 / 10"
+label_settings = SubResource("LabelSettings_pkpna")
+
+[node name="Lock" type="TextureRect" parent="Background/WeaponContainer/Slot6/BG"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("8_6g757")
+expand_mode = 1
+
+[node name="Slot7" type="TextureButton" parent="Background/WeaponContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+disabled = true
+
+[node name="Color" type="ColorRect" parent="Background/WeaponContainer/Slot7"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 0, 1)
+
+[node name="BG" type="TextureRect" parent="Background/WeaponContainer/Slot7"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_kr5lw")
+
+[node name="Sprite" type="TextureRect" parent="Background/WeaponContainer/Slot7/BG"]
+modulate = Color(1, 1, 1, 0.0980392)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 20.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_r18x4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Level" type="Label" parent="Background/WeaponContainer/Slot7/BG"]
+visible = false
+layout_mode = 0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 34.0
+offset_bottom = 19.0
+text = "Lv 1"
+label_settings = SubResource("LabelSettings_2r3gp")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/WeaponContainer/Slot7/BG"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -17.0
+offset_right = 35.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_objob")
+texture_over = ExtResource("6_u8utt")
+texture_progress = ExtResource("7_m0yau")
+
+[node name="Progress" type="Label" parent="Background/WeaponContainer/Slot7/BG/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.5
+offset_top = -6.5
+offset_right = 14.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1 / 10"
+label_settings = SubResource("LabelSettings_pkpna")
+
+[node name="Lock" type="TextureRect" parent="Background/WeaponContainer/Slot7/BG"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("8_6g757")
+expand_mode = 1
+
+[node name="Slot8" type="TextureButton" parent="Background/WeaponContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+disabled = true
+
+[node name="Color" type="ColorRect" parent="Background/WeaponContainer/Slot8"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 0, 1)
+
+[node name="BG" type="TextureRect" parent="Background/WeaponContainer/Slot8"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_kr5lw")
+
+[node name="Sprite" type="TextureRect" parent="Background/WeaponContainer/Slot8/BG"]
+modulate = Color(1, 1, 1, 0.0980392)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 20.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_mwob5")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Level" type="Label" parent="Background/WeaponContainer/Slot8/BG"]
+visible = false
+layout_mode = 0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 34.0
+offset_bottom = 19.0
+text = "Lv 1"
+label_settings = SubResource("LabelSettings_2r3gp")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/WeaponContainer/Slot8/BG"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -17.0
+offset_right = 35.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_objob")
+texture_over = ExtResource("6_u8utt")
+texture_progress = ExtResource("7_m0yau")
+
+[node name="Progress" type="Label" parent="Background/WeaponContainer/Slot8/BG/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.5
+offset_top = -6.5
+offset_right = 14.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1 / 10"
+label_settings = SubResource("LabelSettings_pkpna")
+
+[node name="Lock" type="TextureRect" parent="Background/WeaponContainer/Slot8/BG"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("8_6g757")
+expand_mode = 1
+
+[node name="Slot9" type="TextureButton" parent="Background/WeaponContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+disabled = true
+
+[node name="Color" type="ColorRect" parent="Background/WeaponContainer/Slot9"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 0, 1)
+
+[node name="BG" type="TextureRect" parent="Background/WeaponContainer/Slot9"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_kr5lw")
+
+[node name="Sprite" type="TextureRect" parent="Background/WeaponContainer/Slot9/BG"]
+modulate = Color(1, 1, 1, 0.0980392)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 20.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("15_25tms")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Level" type="Label" parent="Background/WeaponContainer/Slot9/BG"]
+visible = false
+layout_mode = 0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 34.0
+offset_bottom = 19.0
+text = "Lv 1"
+label_settings = SubResource("LabelSettings_2r3gp")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/WeaponContainer/Slot9/BG"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -17.0
+offset_right = 35.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_objob")
+texture_over = ExtResource("6_u8utt")
+texture_progress = ExtResource("7_m0yau")
+
+[node name="Progress" type="Label" parent="Background/WeaponContainer/Slot9/BG/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.5
+offset_top = -6.5
+offset_right = 14.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1 / 10"
+label_settings = SubResource("LabelSettings_pkpna")
+
+[node name="Lock" type="TextureRect" parent="Background/WeaponContainer/Slot9/BG"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("8_6g757")
+expand_mode = 1
+
+[node name="Slot10" type="TextureButton" parent="Background/WeaponContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+disabled = true
+
+[node name="Color" type="ColorRect" parent="Background/WeaponContainer/Slot10"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 0, 1)
+
+[node name="BG" type="TextureRect" parent="Background/WeaponContainer/Slot10"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_kr5lw")
+
+[node name="Sprite" type="TextureRect" parent="Background/WeaponContainer/Slot10/BG"]
+modulate = Color(1, 1, 1, 0.0980392)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 20.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("16_csdib")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Level" type="Label" parent="Background/WeaponContainer/Slot10/BG"]
+visible = false
+layout_mode = 0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 34.0
+offset_bottom = 19.0
+text = "Lv 1"
+label_settings = SubResource("LabelSettings_2r3gp")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/WeaponContainer/Slot10/BG"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -17.0
+offset_right = 35.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_objob")
+texture_over = ExtResource("6_u8utt")
+texture_progress = ExtResource("7_m0yau")
+
+[node name="Progress" type="Label" parent="Background/WeaponContainer/Slot10/BG/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.5
+offset_top = -6.5
+offset_right = 14.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1 / 10"
+label_settings = SubResource("LabelSettings_pkpna")
+
+[node name="Lock" type="TextureRect" parent="Background/WeaponContainer/Slot10/BG"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("8_6g757")
+expand_mode = 1
+
+[node name="Slot11" type="TextureButton" parent="Background/WeaponContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+disabled = true
+
+[node name="Color" type="ColorRect" parent="Background/WeaponContainer/Slot11"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 1, 1)
+
+[node name="BG" type="TextureRect" parent="Background/WeaponContainer/Slot11"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_kr5lw")
+
+[node name="Sprite" type="TextureRect" parent="Background/WeaponContainer/Slot11/BG"]
+modulate = Color(1, 1, 1, 0.0980392)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 20.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("17_1p6pg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Level" type="Label" parent="Background/WeaponContainer/Slot11/BG"]
+visible = false
+layout_mode = 0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 34.0
+offset_bottom = 19.0
+text = "Lv 1"
+label_settings = SubResource("LabelSettings_2r3gp")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/WeaponContainer/Slot11/BG"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -17.0
+offset_right = 35.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_objob")
+texture_over = ExtResource("6_u8utt")
+texture_progress = ExtResource("7_m0yau")
+
+[node name="Progress" type="Label" parent="Background/WeaponContainer/Slot11/BG/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.5
+offset_top = -6.5
+offset_right = 14.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1 / 10"
+label_settings = SubResource("LabelSettings_pkpna")
+
+[node name="Lock" type="TextureRect" parent="Background/WeaponContainer/Slot11/BG"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("8_6g757")
+expand_mode = 1
+
+[node name="Slot12" type="TextureButton" parent="Background/WeaponContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+disabled = true
+
+[node name="Color" type="ColorRect" parent="Background/WeaponContainer/Slot12"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 1, 1)
+
+[node name="BG" type="TextureRect" parent="Background/WeaponContainer/Slot12"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_kr5lw")
+
+[node name="Sprite" type="TextureRect" parent="Background/WeaponContainer/Slot12/BG"]
+modulate = Color(1, 1, 1, 0.0980392)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 20.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("18_7x4hh")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Level" type="Label" parent="Background/WeaponContainer/Slot12/BG"]
+visible = false
+layout_mode = 0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 34.0
+offset_bottom = 19.0
+text = "Lv 1"
+label_settings = SubResource("LabelSettings_2r3gp")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/WeaponContainer/Slot12/BG"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -17.0
+offset_right = 35.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_objob")
+texture_over = ExtResource("6_u8utt")
+texture_progress = ExtResource("7_m0yau")
+
+[node name="Progress" type="Label" parent="Background/WeaponContainer/Slot12/BG/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.5
+offset_top = -6.5
+offset_right = 14.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1 / 10"
+label_settings = SubResource("LabelSettings_pkpna")
+
+[node name="Lock" type="TextureRect" parent="Background/WeaponContainer/Slot12/BG"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("8_6g757")
+expand_mode = 1
+
+[node name="Slot13" type="TextureButton" parent="Background/WeaponContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+disabled = true
+
+[node name="Color" type="ColorRect" parent="Background/WeaponContainer/Slot13"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 0, 1)
+
+[node name="BG" type="TextureRect" parent="Background/WeaponContainer/Slot13"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_kr5lw")
+
+[node name="Sprite" type="TextureRect" parent="Background/WeaponContainer/Slot13/BG"]
+modulate = Color(1, 1, 1, 0.0980392)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 20.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("19_uvbgy")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Level" type="Label" parent="Background/WeaponContainer/Slot13/BG"]
+visible = false
+layout_mode = 0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 34.0
+offset_bottom = 19.0
+text = "Lv 1"
+label_settings = SubResource("LabelSettings_2r3gp")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/WeaponContainer/Slot13/BG"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -17.0
+offset_right = 35.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_objob")
+texture_over = ExtResource("6_u8utt")
+texture_progress = ExtResource("7_m0yau")
+
+[node name="Progress" type="Label" parent="Background/WeaponContainer/Slot13/BG/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.5
+offset_top = -6.5
+offset_right = 14.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1 / 10"
+label_settings = SubResource("LabelSettings_pkpna")
+
+[node name="Lock" type="TextureRect" parent="Background/WeaponContainer/Slot13/BG"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("8_6g757")
+expand_mode = 1
+
+[node name="Slot14" type="TextureButton" parent="Background/WeaponContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+disabled = true
+
+[node name="Color" type="ColorRect" parent="Background/WeaponContainer/Slot14"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 0, 1)
+
+[node name="BG" type="TextureRect" parent="Background/WeaponContainer/Slot14"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_kr5lw")
+
+[node name="Sprite" type="TextureRect" parent="Background/WeaponContainer/Slot14/BG"]
+modulate = Color(1, 1, 1, 0.0980392)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 20.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("20_kbccb")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Level" type="Label" parent="Background/WeaponContainer/Slot14/BG"]
+visible = false
+layout_mode = 0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 34.0
+offset_bottom = 19.0
+text = "Lv 1"
+label_settings = SubResource("LabelSettings_2r3gp")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/WeaponContainer/Slot14/BG"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -17.0
+offset_right = 35.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_objob")
+texture_over = ExtResource("6_u8utt")
+texture_progress = ExtResource("7_m0yau")
+
+[node name="Progress" type="Label" parent="Background/WeaponContainer/Slot14/BG/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.5
+offset_top = -6.5
+offset_right = 14.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1 / 10"
+label_settings = SubResource("LabelSettings_pkpna")
+
+[node name="Lock" type="TextureRect" parent="Background/WeaponContainer/Slot14/BG"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("8_6g757")
+expand_mode = 1
+
+[node name="Slot15" type="TextureButton" parent="Background/WeaponContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+disabled = true
+
+[node name="Color" type="ColorRect" parent="Background/WeaponContainer/Slot15"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0, 1)
+
+[node name="BG" type="TextureRect" parent="Background/WeaponContainer/Slot15"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_kr5lw")
+
+[node name="Sprite" type="TextureRect" parent="Background/WeaponContainer/Slot15/BG"]
+modulate = Color(1, 1, 1, 0.0980392)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 20.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("21_rgktw")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Level" type="Label" parent="Background/WeaponContainer/Slot15/BG"]
+visible = false
+layout_mode = 0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 34.0
+offset_bottom = 19.0
+text = "Lv 1"
+label_settings = SubResource("LabelSettings_2r3gp")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/WeaponContainer/Slot15/BG"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -17.0
+offset_right = 35.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_objob")
+texture_over = ExtResource("6_u8utt")
+texture_progress = ExtResource("7_m0yau")
+
+[node name="Progress" type="Label" parent="Background/WeaponContainer/Slot15/BG/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.5
+offset_top = -6.5
+offset_right = 14.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1 / 10"
+label_settings = SubResource("LabelSettings_pkpna")
+
+[node name="Lock" type="TextureRect" parent="Background/WeaponContainer/Slot15/BG"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("8_6g757")
+expand_mode = 1
+
+[node name="ShieldContainer" type="GridContainer" parent="Background"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -116.0
+offset_right = 240.0
+offset_bottom = 164.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 5
+
+[node name="Slot1" type="TextureButton" parent="Background/ShieldContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+disabled = true
+
+[node name="Color" type="ColorRect" parent="Background/ShieldContainer/Slot1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 1, 1)
+
+[node name="BG" type="TextureRect" parent="Background/ShieldContainer/Slot1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_kr5lw")
+
+[node name="Sprite" type="TextureRect" parent="Background/ShieldContainer/Slot1/BG"]
+modulate = Color(1, 1, 1, 0.0980392)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 20.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("23_kimv5")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Level" type="Label" parent="Background/ShieldContainer/Slot1/BG"]
+visible = false
+layout_mode = 0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 34.0
+offset_bottom = 19.0
+text = "Lv 1"
+label_settings = SubResource("LabelSettings_2r3gp")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/ShieldContainer/Slot1/BG"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -17.0
+offset_right = 35.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_objob")
+texture_over = ExtResource("6_u8utt")
+texture_progress = ExtResource("7_m0yau")
+
+[node name="Progress" type="Label" parent="Background/ShieldContainer/Slot1/BG/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.5
+offset_top = -6.5
+offset_right = 14.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1 / 10"
+label_settings = SubResource("LabelSettings_pkpna")
+
+[node name="Lock" type="TextureRect" parent="Background/ShieldContainer/Slot1/BG"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("8_6g757")
+expand_mode = 1
+
+[node name="Slot2" type="TextureButton" parent="Background/ShieldContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+disabled = true
+
+[node name="Color" type="ColorRect" parent="Background/ShieldContainer/Slot2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 1, 1)
+
+[node name="BG" type="TextureRect" parent="Background/ShieldContainer/Slot2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_kr5lw")
+
+[node name="Sprite" type="TextureRect" parent="Background/ShieldContainer/Slot2/BG"]
+modulate = Color(1, 1, 1, 0.0980392)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 20.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("24_gqcw1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Level" type="Label" parent="Background/ShieldContainer/Slot2/BG"]
+visible = false
+layout_mode = 0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 34.0
+offset_bottom = 19.0
+text = "Lv 1"
+label_settings = SubResource("LabelSettings_2r3gp")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/ShieldContainer/Slot2/BG"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -17.0
+offset_right = 35.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_objob")
+texture_over = ExtResource("6_u8utt")
+texture_progress = ExtResource("7_m0yau")
+
+[node name="Progress" type="Label" parent="Background/ShieldContainer/Slot2/BG/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.5
+offset_top = -6.5
+offset_right = 14.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1 / 10"
+label_settings = SubResource("LabelSettings_pkpna")
+
+[node name="Lock" type="TextureRect" parent="Background/ShieldContainer/Slot2/BG"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("8_6g757")
+expand_mode = 1
+
+[node name="Slot3" type="TextureButton" parent="Background/ShieldContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+disabled = true
+
+[node name="Color" type="ColorRect" parent="Background/ShieldContainer/Slot3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 1, 1)
+
+[node name="BG" type="TextureRect" parent="Background/ShieldContainer/Slot3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_kr5lw")
+
+[node name="Sprite" type="TextureRect" parent="Background/ShieldContainer/Slot3/BG"]
+modulate = Color(1, 1, 1, 0.0980392)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 20.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("25_l22h7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Level" type="Label" parent="Background/ShieldContainer/Slot3/BG"]
+visible = false
+layout_mode = 0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 34.0
+offset_bottom = 19.0
+text = "Lv 1"
+label_settings = SubResource("LabelSettings_2r3gp")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/ShieldContainer/Slot3/BG"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -17.0
+offset_right = 35.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_objob")
+texture_over = ExtResource("6_u8utt")
+texture_progress = ExtResource("7_m0yau")
+
+[node name="Progress" type="Label" parent="Background/ShieldContainer/Slot3/BG/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.5
+offset_top = -6.5
+offset_right = 14.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1 / 10"
+label_settings = SubResource("LabelSettings_pkpna")
+
+[node name="Lock" type="TextureRect" parent="Background/ShieldContainer/Slot3/BG"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("8_6g757")
+expand_mode = 1
+
+[node name="Slot4" type="TextureButton" parent="Background/ShieldContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+disabled = true
+
+[node name="Color" type="ColorRect" parent="Background/ShieldContainer/Slot4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 1, 1)
+
+[node name="BG" type="TextureRect" parent="Background/ShieldContainer/Slot4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_kr5lw")
+
+[node name="Sprite" type="TextureRect" parent="Background/ShieldContainer/Slot4/BG"]
+modulate = Color(1, 1, 1, 0.0980392)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 20.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("26_mw3oa")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Level" type="Label" parent="Background/ShieldContainer/Slot4/BG"]
+visible = false
+layout_mode = 0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 34.0
+offset_bottom = 19.0
+text = "Lv 1"
+label_settings = SubResource("LabelSettings_2r3gp")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/ShieldContainer/Slot4/BG"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -17.0
+offset_right = 35.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_objob")
+texture_over = ExtResource("6_u8utt")
+texture_progress = ExtResource("7_m0yau")
+
+[node name="Progress" type="Label" parent="Background/ShieldContainer/Slot4/BG/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.5
+offset_top = -6.5
+offset_right = 14.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1 / 10"
+label_settings = SubResource("LabelSettings_pkpna")
+
+[node name="Lock" type="TextureRect" parent="Background/ShieldContainer/Slot4/BG"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("8_6g757")
+expand_mode = 1
+
+[node name="Slot5" type="TextureButton" parent="Background/ShieldContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+disabled = true
+
+[node name="Color" type="ColorRect" parent="Background/ShieldContainer/Slot5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 1, 1)
+
+[node name="BG" type="TextureRect" parent="Background/ShieldContainer/Slot5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_kr5lw")
+
+[node name="Sprite" type="TextureRect" parent="Background/ShieldContainer/Slot5/BG"]
+modulate = Color(1, 1, 1, 0.0980392)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 20.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("27_gxmsi")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Level" type="Label" parent="Background/ShieldContainer/Slot5/BG"]
+visible = false
+layout_mode = 0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 34.0
+offset_bottom = 19.0
+text = "Lv 1"
+label_settings = SubResource("LabelSettings_2r3gp")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/ShieldContainer/Slot5/BG"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -17.0
+offset_right = 35.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_objob")
+texture_over = ExtResource("6_u8utt")
+texture_progress = ExtResource("7_m0yau")
+
+[node name="Progress" type="Label" parent="Background/ShieldContainer/Slot5/BG/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.5
+offset_top = -6.5
+offset_right = 14.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1 / 10"
+label_settings = SubResource("LabelSettings_pkpna")
+
+[node name="Lock" type="TextureRect" parent="Background/ShieldContainer/Slot5/BG"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("8_6g757")
+expand_mode = 1
+
+[node name="Slot6" type="TextureButton" parent="Background/ShieldContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+disabled = true
+
+[node name="Color" type="ColorRect" parent="Background/ShieldContainer/Slot6"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 0, 1)
+
+[node name="BG" type="TextureRect" parent="Background/ShieldContainer/Slot6"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_kr5lw")
+
+[node name="Sprite" type="TextureRect" parent="Background/ShieldContainer/Slot6/BG"]
+modulate = Color(1, 1, 1, 0.0980392)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 20.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("28_ha115")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Level" type="Label" parent="Background/ShieldContainer/Slot6/BG"]
+visible = false
+layout_mode = 0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 34.0
+offset_bottom = 19.0
+text = "Lv 1"
+label_settings = SubResource("LabelSettings_2r3gp")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/ShieldContainer/Slot6/BG"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -17.0
+offset_right = 35.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_objob")
+texture_over = ExtResource("6_u8utt")
+texture_progress = ExtResource("7_m0yau")
+
+[node name="Progress" type="Label" parent="Background/ShieldContainer/Slot6/BG/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.5
+offset_top = -6.5
+offset_right = 14.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1 / 10"
+label_settings = SubResource("LabelSettings_pkpna")
+
+[node name="Lock" type="TextureRect" parent="Background/ShieldContainer/Slot6/BG"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("8_6g757")
+expand_mode = 1
+
+[node name="Slot7" type="TextureButton" parent="Background/ShieldContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+disabled = true
+
+[node name="Color" type="ColorRect" parent="Background/ShieldContainer/Slot7"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 0, 1)
+
+[node name="BG" type="TextureRect" parent="Background/ShieldContainer/Slot7"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_kr5lw")
+
+[node name="Sprite" type="TextureRect" parent="Background/ShieldContainer/Slot7/BG"]
+modulate = Color(1, 1, 1, 0.0980392)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 20.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("29_h0kwn")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Level" type="Label" parent="Background/ShieldContainer/Slot7/BG"]
+visible = false
+layout_mode = 0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 34.0
+offset_bottom = 19.0
+text = "Lv 1"
+label_settings = SubResource("LabelSettings_2r3gp")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/ShieldContainer/Slot7/BG"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -17.0
+offset_right = 35.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_objob")
+texture_over = ExtResource("6_u8utt")
+texture_progress = ExtResource("7_m0yau")
+
+[node name="Progress" type="Label" parent="Background/ShieldContainer/Slot7/BG/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.5
+offset_top = -6.5
+offset_right = 14.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1 / 10"
+label_settings = SubResource("LabelSettings_pkpna")
+
+[node name="Lock" type="TextureRect" parent="Background/ShieldContainer/Slot7/BG"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("8_6g757")
+expand_mode = 1
+
+[node name="Slot8" type="TextureButton" parent="Background/ShieldContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+disabled = true
+
+[node name="Color" type="ColorRect" parent="Background/ShieldContainer/Slot8"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 0, 1)
+
+[node name="BG" type="TextureRect" parent="Background/ShieldContainer/Slot8"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_kr5lw")
+
+[node name="Sprite" type="TextureRect" parent="Background/ShieldContainer/Slot8/BG"]
+modulate = Color(1, 1, 1, 0.0980392)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 20.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("30_ivonc")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Level" type="Label" parent="Background/ShieldContainer/Slot8/BG"]
+visible = false
+layout_mode = 0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 34.0
+offset_bottom = 19.0
+text = "Lv 1"
+label_settings = SubResource("LabelSettings_2r3gp")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/ShieldContainer/Slot8/BG"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -17.0
+offset_right = 35.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_objob")
+texture_over = ExtResource("6_u8utt")
+texture_progress = ExtResource("7_m0yau")
+
+[node name="Progress" type="Label" parent="Background/ShieldContainer/Slot8/BG/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.5
+offset_top = -6.5
+offset_right = 14.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1 / 10"
+label_settings = SubResource("LabelSettings_pkpna")
+
+[node name="Lock" type="TextureRect" parent="Background/ShieldContainer/Slot8/BG"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("8_6g757")
+expand_mode = 1
+
+[node name="Slot9" type="TextureButton" parent="Background/ShieldContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+disabled = true
+
+[node name="Color" type="ColorRect" parent="Background/ShieldContainer/Slot9"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 0, 1)
+
+[node name="BG" type="TextureRect" parent="Background/ShieldContainer/Slot9"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_kr5lw")
+
+[node name="Sprite" type="TextureRect" parent="Background/ShieldContainer/Slot9/BG"]
+modulate = Color(1, 1, 1, 0.0980392)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 20.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("31_sa2ts")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Level" type="Label" parent="Background/ShieldContainer/Slot9/BG"]
+visible = false
+layout_mode = 0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 34.0
+offset_bottom = 19.0
+text = "Lv 1"
+label_settings = SubResource("LabelSettings_2r3gp")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/ShieldContainer/Slot9/BG"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -17.0
+offset_right = 35.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_objob")
+texture_over = ExtResource("6_u8utt")
+texture_progress = ExtResource("7_m0yau")
+
+[node name="Progress" type="Label" parent="Background/ShieldContainer/Slot9/BG/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.5
+offset_top = -6.5
+offset_right = 14.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1 / 10"
+label_settings = SubResource("LabelSettings_pkpna")
+
+[node name="Lock" type="TextureRect" parent="Background/ShieldContainer/Slot9/BG"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("8_6g757")
+expand_mode = 1
+
+[node name="Slot10" type="TextureButton" parent="Background/ShieldContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+disabled = true
+
+[node name="Color" type="ColorRect" parent="Background/ShieldContainer/Slot10"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 0, 1)
+
+[node name="BG" type="TextureRect" parent="Background/ShieldContainer/Slot10"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_kr5lw")
+
+[node name="Sprite" type="TextureRect" parent="Background/ShieldContainer/Slot10/BG"]
+modulate = Color(1, 1, 1, 0.0980392)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 20.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("32_cfqpm")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Level" type="Label" parent="Background/ShieldContainer/Slot10/BG"]
+visible = false
+layout_mode = 0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 34.0
+offset_bottom = 19.0
+text = "Lv 1"
+label_settings = SubResource("LabelSettings_2r3gp")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/ShieldContainer/Slot10/BG"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -17.0
+offset_right = 35.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_objob")
+texture_over = ExtResource("6_u8utt")
+texture_progress = ExtResource("7_m0yau")
+
+[node name="Progress" type="Label" parent="Background/ShieldContainer/Slot10/BG/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.5
+offset_top = -6.5
+offset_right = 14.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1 / 10"
+label_settings = SubResource("LabelSettings_pkpna")
+
+[node name="Lock" type="TextureRect" parent="Background/ShieldContainer/Slot10/BG"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("8_6g757")
+expand_mode = 1
+
+[node name="Slot11" type="TextureButton" parent="Background/ShieldContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+disabled = true
+
+[node name="Color" type="ColorRect" parent="Background/ShieldContainer/Slot11"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 1, 1)
+
+[node name="BG" type="TextureRect" parent="Background/ShieldContainer/Slot11"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_kr5lw")
+
+[node name="Sprite" type="TextureRect" parent="Background/ShieldContainer/Slot11/BG"]
+modulate = Color(1, 1, 1, 0.0980392)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 20.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("33_btr68")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Level" type="Label" parent="Background/ShieldContainer/Slot11/BG"]
+visible = false
+layout_mode = 0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 34.0
+offset_bottom = 19.0
+text = "Lv 1"
+label_settings = SubResource("LabelSettings_2r3gp")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/ShieldContainer/Slot11/BG"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -17.0
+offset_right = 35.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_objob")
+texture_over = ExtResource("6_u8utt")
+texture_progress = ExtResource("7_m0yau")
+
+[node name="Progress" type="Label" parent="Background/ShieldContainer/Slot11/BG/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.5
+offset_top = -6.5
+offset_right = 14.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1 / 10"
+label_settings = SubResource("LabelSettings_pkpna")
+
+[node name="Lock" type="TextureRect" parent="Background/ShieldContainer/Slot11/BG"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("8_6g757")
+expand_mode = 1
+
+[node name="Slot12" type="TextureButton" parent="Background/ShieldContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+disabled = true
+
+[node name="Color" type="ColorRect" parent="Background/ShieldContainer/Slot12"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 1, 1)
+
+[node name="BG" type="TextureRect" parent="Background/ShieldContainer/Slot12"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_kr5lw")
+
+[node name="Sprite" type="TextureRect" parent="Background/ShieldContainer/Slot12/BG"]
+modulate = Color(1, 1, 1, 0.0980392)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 20.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("34_dkjpg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Level" type="Label" parent="Background/ShieldContainer/Slot12/BG"]
+visible = false
+layout_mode = 0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 34.0
+offset_bottom = 19.0
+text = "Lv 1"
+label_settings = SubResource("LabelSettings_2r3gp")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/ShieldContainer/Slot12/BG"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -17.0
+offset_right = 35.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_objob")
+texture_over = ExtResource("6_u8utt")
+texture_progress = ExtResource("7_m0yau")
+
+[node name="Progress" type="Label" parent="Background/ShieldContainer/Slot12/BG/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.5
+offset_top = -6.5
+offset_right = 14.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1 / 10"
+label_settings = SubResource("LabelSettings_pkpna")
+
+[node name="Lock" type="TextureRect" parent="Background/ShieldContainer/Slot12/BG"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("8_6g757")
+expand_mode = 1
+
+[node name="Slot13" type="TextureButton" parent="Background/ShieldContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+disabled = true
+
+[node name="Color" type="ColorRect" parent="Background/ShieldContainer/Slot13"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 0, 1)
+
+[node name="BG" type="TextureRect" parent="Background/ShieldContainer/Slot13"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_kr5lw")
+
+[node name="Sprite" type="TextureRect" parent="Background/ShieldContainer/Slot13/BG"]
+modulate = Color(1, 1, 1, 0.0980392)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 20.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("35_hjc2u")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Level" type="Label" parent="Background/ShieldContainer/Slot13/BG"]
+visible = false
+layout_mode = 0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 34.0
+offset_bottom = 19.0
+text = "Lv 1"
+label_settings = SubResource("LabelSettings_2r3gp")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/ShieldContainer/Slot13/BG"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -17.0
+offset_right = 35.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_objob")
+texture_over = ExtResource("6_u8utt")
+texture_progress = ExtResource("7_m0yau")
+
+[node name="Progress" type="Label" parent="Background/ShieldContainer/Slot13/BG/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.5
+offset_top = -6.5
+offset_right = 14.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1 / 10"
+label_settings = SubResource("LabelSettings_pkpna")
+
+[node name="Lock" type="TextureRect" parent="Background/ShieldContainer/Slot13/BG"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("8_6g757")
+expand_mode = 1
+
+[node name="Slot14" type="TextureButton" parent="Background/ShieldContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+disabled = true
+
+[node name="Color" type="ColorRect" parent="Background/ShieldContainer/Slot14"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 0, 1)
+
+[node name="BG" type="TextureRect" parent="Background/ShieldContainer/Slot14"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_kr5lw")
+
+[node name="Sprite" type="TextureRect" parent="Background/ShieldContainer/Slot14/BG"]
+modulate = Color(1, 1, 1, 0.0980392)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 20.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("36_75an4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Level" type="Label" parent="Background/ShieldContainer/Slot14/BG"]
+visible = false
+layout_mode = 0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 34.0
+offset_bottom = 19.0
+text = "Lv 1"
+label_settings = SubResource("LabelSettings_2r3gp")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/ShieldContainer/Slot14/BG"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -17.0
+offset_right = 35.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_objob")
+texture_over = ExtResource("6_u8utt")
+texture_progress = ExtResource("7_m0yau")
+
+[node name="Progress" type="Label" parent="Background/ShieldContainer/Slot14/BG/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.5
+offset_top = -6.5
+offset_right = 14.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1 / 10"
+label_settings = SubResource("LabelSettings_pkpna")
+
+[node name="Lock" type="TextureRect" parent="Background/ShieldContainer/Slot14/BG"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("8_6g757")
+expand_mode = 1
+
+[node name="Slot15" type="TextureButton" parent="Background/ShieldContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+disabled = true
+
+[node name="Color" type="ColorRect" parent="Background/ShieldContainer/Slot15"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0, 1)
+
+[node name="BG" type="TextureRect" parent="Background/ShieldContainer/Slot15"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_kr5lw")
+
+[node name="Sprite" type="TextureRect" parent="Background/ShieldContainer/Slot15/BG"]
+modulate = Color(1, 1, 1, 0.0980392)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 20.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("37_es458")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Level" type="Label" parent="Background/ShieldContainer/Slot15/BG"]
+visible = false
+layout_mode = 0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 34.0
+offset_bottom = 19.0
+text = "Lv 1"
+label_settings = SubResource("LabelSettings_2r3gp")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/ShieldContainer/Slot15/BG"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -17.0
+offset_right = 35.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_objob")
+texture_over = ExtResource("6_u8utt")
+texture_progress = ExtResource("7_m0yau")
+
+[node name="Progress" type="Label" parent="Background/ShieldContainer/Slot15/BG/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.5
+offset_top = -6.5
+offset_right = 14.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1 / 10"
+label_settings = SubResource("LabelSettings_pkpna")
+
+[node name="Lock" type="TextureRect" parent="Background/ShieldContainer/Slot15/BG"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("8_6g757")
+expand_mode = 1
+
+[node name="Close" type="TextureButton" parent="Background"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -75.0
+offset_top = 53.0
+offset_right = -35.0
+offset_bottom = 93.0
+grow_horizontal = 0
+texture_normal = ExtResource("39_tsw0c")
+stretch_mode = 0
+
+[connection signal="pressed" from="Background/Close" to="." method="_on_close_pressed"]

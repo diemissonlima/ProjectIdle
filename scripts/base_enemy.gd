@@ -70,55 +70,72 @@ func drop() -> void:
 		var bonus_gold: float = skill_multiplier * dropped_gold / 100
 		
 		dropped_gold += bonus_gold
-		
-		
-	#for item in drop_items_list:
-			#var spawn_probability: float = drop_items_list[item]["drop_chance"]
-			#var rng: float = randf()
-			#
-			#print("Spawn Probability; ", spawn_probability)
-			#print("RNG: ", rng)
-			#
-			#if rng <= spawn_probability:
-				#drop_item(item, drop_items_list[item])
-		#
-		#print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
 
 
 func get_drop_items() -> Dictionary:
 	return {
-		"arma": {
-			"path": "caminho da imagem",
-			"type": "equipment",
-			"drop_chance": 0.15,
-			"attributes": {
-				"damage": 15,
-				"critical_chance": 0.10,
-				"critical_damage": 0.50
-			}
+		"commom": {
+			"type": "weapon",
+			"drop_chance": [0, 1.0],
+			"slot_list": [
+				"slot1", "slot2", "slot3", "slot4", "slot5"
+			]
 		},
 		
-		"armor": {
-			"path": "caminho da imagem",
-			"type": "equipment",
-			"drop_chance": 0.20,
-			"attributes": {
-				"gold_multiplier": 2.0,
-				"attack_speed": 0.1 
-			}
+		"uncommom": {
+			"type": "weapon",
+			"drop_chance": [0.0, 0.0],
+			"slot_list": [
+				"slot6", "slot7", "slot8", "slot9", "slot10"
+			]
 		},
 		
-		"gem": {
-			"path": "caminho da imagem",
-			"type": "resource",
-			"drop_chance": 0.40
+		"elite": {
+			"type": "weapon",
+			"drop_chance": [0, 0],
+			"slot_list": [
+				"slot11", "slot12"
+			]
+		},
+		
+		"epic": {
+			"type": "weapon",
+			"drop_chance": [0, 0],
+			"slot_list": [
+				"slot13", "slot14"
+			]
+		},
+		
+		"legendary": {
+			"type": "weapon",
+			"drop_chance": [0, 0],
+			"slot_list": [
+				"slot15"
+			]
 		}
 	}
 
 
-func drop_item(item_name: String, item_data: Dictionary) -> void:
-	print("Nome do item: ", item_name)
-	print("Dados do item: ", item_data)
+func item_drop() -> void:
+	for rarity in drop_items_list:
+		var spawn_probability: Array = drop_items_list[rarity]["drop_chance"]
+		var rng: float = randf()
+
+		if rng > spawn_probability[0] and rng <= spawn_probability[1]:
+			drop_item(rarity, drop_items_list[rarity])
+
+
+func drop_item(item_rarity: String, item_data: Dictionary) -> void:
+	var data: Dictionary = Data.data_management["equipments"]
+	var slot = item_data["slot_list"].pick_random()
+	
+	if data[item_data["type"]][slot]["is_locked"]:
+		data[item_data["type"]][slot]["is_locked"] = false
+		data[item_data["type"]][slot]["progress"] = 1
+	else:
+		data[item_data["type"]][slot]["progress"] += 1
+
+	get_tree().call_group("equipments", "add_item", slot, data[item_data["type"]][slot])
 
 
 func set_progresbar() -> void: # atualiza a barra de progresso da vida

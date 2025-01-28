@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=3 uid="uid://dtyw4v44a8ka4"]
+[gd_scene load_steps=94 format=3 uid="uid://dtyw4v44a8ka4"]
 
 [ext_resource type="Texture2D" uid="uid://bs4f04v00hl85" path="res://assets/backgrounds/Horizontal/1.png" id="1_m0651"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_mqmc1"]
@@ -70,6 +70,7 @@
 [ext_resource type="PackedScene" uid="uid://c2rd14h3lukps" path="res://scenes/loot_box.tscn" id="57_5t10c"]
 [ext_resource type="PackedScene" uid="uid://fonmja5jp0c7" path="res://scenes/milestones.tscn" id="58_wovga"]
 [ext_resource type="Texture2D" uid="uid://do22bmxeusi4a" path="res://assets/prefabs/icons/sword_03e.png" id="59_4eh2u"]
+[ext_resource type="PackedScene" uid="uid://dhwtso3ysibcm" path="res://scenes/equipments.tscn" id="59_uxexu"]
 [ext_resource type="Texture2D" uid="uid://c1rlf8hnaxpq2" path="res://assets/prefabs/icons/Icon_Small_Coin.png" id="60_5y4ps"]
 [ext_resource type="Texture2D" uid="uid://c26eco8t6djvs" path="res://assets/prefabs/icons/book_04f.png" id="61_pdtar"]
 [ext_resource type="Texture2D" uid="uid://c5onxi1s6n3ci" path="res://assets/prefabs/icons/interrogation-point.png" id="61_v3wpb"]
@@ -184,6 +185,8 @@ offset_bottom = 112.0
 [node name="Upgrades" parent="Interface" instance=ExtResource("56_xqafe")]
 
 [node name="Milestones" parent="Interface" instance=ExtResource("58_wovga")]
+
+[node name="Equipments" parent="Interface" instance=ExtResource("59_uxexu")]
 
 [node name="Background" type="TextureRect" parent="."]
 self_modulate = Color(1, 1, 1, 0.392157)
@@ -938,6 +941,7 @@ wait_time = 30.0
 [connection signal="pressed" from="Buttons/Raides" to="." method="_on_raides_pressed"]
 [connection signal="pressed" from="Buttons/Reset" to="." method="_on_reset_pressed"]
 [connection signal="pressed" from="Buttons/Stats" to="." method="_on_stats_pressed"]
+[connection signal="pressed" from="Buttons/Equips" to="." method="_on_equips_pressed"]
 [connection signal="pressed" from="Buttons/Upgrades" to="." method="_on_upgrades_pressed"]
 [connection signal="timeout" from="TimerPlayerAttack" to="." method="_on_timer_player_attack_timeout"]
 [connection signal="timeout" from="TimerBatalha" to="." method="_on_timer_timeout"]

@@ -154,20 +154,313 @@ var data_management: Dictionary = {
 		}
 	},
 	
-	#"milestones": {
-		#"milestone_1": {
-			#"type": "",
-			#"description": "",
-		#},
-		#
-		#"milestone_2": {
-			#
-		#},
-		#
-		#"milestone_3": {
-			#
-		#}
-	#}
+	"equipments": {
+		"weapon": {
+			"slot1": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 0,
+				"atributtes": {
+					"damage": 0,
+					"critical_damage": 0,
+				},
+				"progress": 0
+			},
+			"slot2": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 0,
+				"atributtes": {
+					"damage": 0,
+					"critical_damage": 0,
+				},
+				"progress": 0
+			},
+			"slot3": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 0,
+				"atributtes": {
+					"damage": 0,
+					"critical_damage": 0,
+				},
+				"progress": 0
+			},
+			"slot4": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 0,
+				"atributtes": {
+					"damage": 0,
+					"critical_damage": 0,
+				},
+				"progress": 0
+			},
+			"slot5": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 0,
+				"atributtes": {
+					"damage": 0,
+					"critical_damage": 0,
+				},
+				"progress": 0
+			},
+			"slot6": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 0,
+				"atributtes": {
+					"damage": 0,
+					"critical_damage": 0,
+				},
+				"progress": 0
+			},
+			"slot7": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 0,
+				"atributtes": {
+					"damage": 0,
+					"critical_damage": 0,
+				},
+				"progress": 0
+			},
+			"slot8": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 0,
+				"atributtes": {
+					"damage": 0,
+					"critical_damage": 0,
+				},
+				"progress": 0
+			},
+			"slot9": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 0,
+				"atributtes": {
+					"damage": 0,
+					"critical_damage": 0,
+				},
+				"progress": 0
+			},
+			"slot10": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 0,
+				"atributtes": {
+					"damage": 0,
+					"critical_damage": 0,
+				},
+				"progress": 0
+			},
+			"slot11": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 0,
+				"atributtes": {
+					"damage": 0,
+					"critical_damage": 0,
+				},
+				"progress": 0
+			},
+			"slot12": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 0,
+				"atributtes": {
+					"damage": 0,
+					"critical_damage": 0,
+				},
+				"progress": 0
+			},
+			"slot13": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 0,
+				"atributtes": {
+					"damage": 0,
+					"critical_damage": 0,
+				},
+				"progress": 0
+			},
+			"slot14": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 0,
+				"atributtes": {
+					"damage": 0,
+					"critical_damage": 0,
+				},
+				"progress": 0
+			},
+			"slot15": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 0,
+				"atributtes": {
+					"damage": 0,
+					"critical_damage": 0,
+				},
+				"progress": 0
+			}
+		},
+		
+		"shield": {
+			"slot1": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 0,
+				"atributtes": {
+					"gold": 0,
+					"prestige_points": 0
+				},
+				"progress": 0
+			},
+			"slot2": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 0,
+				"atributtes": {
+					"gold": 0,
+					"prestige_points": 0
+				},
+				"progress": 0
+			},
+			"slot3": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 0,
+				"atributtes": {
+					"gold": 0,
+					"prestige_points": 0
+				},
+				"progress": 0
+			},
+			"slot4": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 0,
+				"atributtes": {
+					"gold": 0,
+					"prestige_points": 0
+				},
+				"progress": 0
+			},
+			"slot5": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 0,
+				"atributtes": {
+					"gold": 0,
+					"prestige_points": 0
+				},
+				"progress": 0
+			},
+			"slot6": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 0,
+				"atributtes": {
+					"gold": 0,
+					"prestige_points": 0
+				},
+				"progress": 0
+			},
+			"slot7": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 0,
+				"atributtes": {
+					"gold": 0,
+					"prestige_points": 0
+				},
+				"progress": 0
+			},
+			"slot8": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 0,
+				"atributtes": {
+					"gold": 0,
+					"prestige_points": 0
+				},
+				"progress": 0
+			},
+			"slot9": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 0,
+				"atributtes": {
+					"gold": 0,
+					"prestige_points": 0
+				},
+				"progress": 0
+			},
+			"slot10": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 0,
+				"atributtes": {
+					"gold": 0,
+					"prestige_points": 0
+				},
+				"progress": 0
+			},
+			"slot11": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 0,
+				"atributtes": {
+					"gold": 0,
+					"prestige_points": 0
+				},
+				"progress": 0
+			},
+			"slot12": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 0,
+				"atributtes": {
+					"gold": 0,
+					"prestige_points": 0
+				},
+				"progress": 0
+			},
+			"slot13": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 0,
+				"atributtes": {
+					"gold": 0,
+					"prestige_points": 0
+				},
+				"progress": 0
+			},
+			"slot14": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 0,
+				"atributtes": {
+					"gold": 0,
+					"prestige_points": 0
+				},
+				"progress": 0
+			},
+			"slot15": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 0,
+				"atributtes": {
+					"gold": 0,
+					"prestige_points": 0
+				},
+				"progress": 0
+			}
+		}
+	}
 }
 
 
