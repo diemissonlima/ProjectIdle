@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://dhwtso3ysibcm"]
+[gd_scene load_steps=46 format=3 uid="uid://dhwtso3ysibcm"]
 
 [ext_resource type="Texture2D" uid="uid://e4o6nongfgvb" path="res://assets/prefabs/box/Menu02.png" id="1_8hbwa"]
 [ext_resource type="Script" path="res://scripts/equipments.gd" id="1_jx06y"]
@@ -39,6 +39,8 @@
 [ext_resource type="Texture2D" uid="uid://d25evxr3a8n5w" path="res://assets/items/shield_03d.png" id="36_75an4"]
 [ext_resource type="Texture2D" uid="uid://bpu3yvtm30ull" path="res://assets/items/shield_03e.png" id="37_es458"]
 [ext_resource type="Texture2D" uid="uid://dvsioohm5fxr4" path="res://assets/prefabs/icons/X.png" id="39_tsw0c"]
+[ext_resource type="Texture2D" uid="uid://ctldyihhvugjg" path="res://assets/prefabs/buttons/ButtonHover.png" id="40_duy53"]
+[ext_resource type="Texture2D" uid="uid://j2khku0ce0y2" path="res://assets/prefabs/buttons/ButtonActive.png" id="41_7gyf3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_p6cx1"]
 font = ExtResource("2_4ds7v")
@@ -58,6 +60,10 @@ font = ExtResource("2_4ds7v")
 font_size = 12
 outline_size = 6
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_h6a4u"]
+font = ExtResource("2_4ds7v")
+font_size = 12
 
 [node name="Equipments" type="Control" node_paths=PackedStringArray("weapon_container", "shield_container") groups=["equipments"]]
 visible = false
@@ -108,9 +114,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -240.0
-offset_top = -116.0
+offset_top = -108.0
 offset_right = 240.0
-offset_bottom = 164.0
+offset_bottom = 172.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/h_separation = 20
@@ -1656,9 +1662,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -240.0
-offset_top = -116.0
+offset_top = -108.0
 offset_right = 240.0
-offset_bottom = 164.0
+offset_bottom = 172.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/h_separation = 20
@@ -3195,6 +3201,62 @@ grow_horizontal = 0
 texture = ExtResource("8_6g757")
 expand_mode = 1
 
+[node name="SwordTab" type="TextureButton" parent="Background"]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 126.0
+offset_right = 312.0
+offset_bottom = 157.0
+texture_normal = ExtResource("40_duy53")
+texture_pressed = ExtResource("40_duy53")
+texture_hover = ExtResource("41_7gyf3")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Background/SwordTab"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -6.5
+offset_right = 24.0
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Swords"
+label_settings = SubResource("LabelSettings_h6a4u")
+
+[node name="ShieldTab" type="TextureButton" parent="Background"]
+layout_mode = 0
+offset_left = 349.0
+offset_top = 126.0
+offset_right = 413.0
+offset_bottom = 157.0
+texture_normal = ExtResource("40_duy53")
+texture_pressed = ExtResource("40_duy53")
+texture_hover = ExtResource("41_7gyf3")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Background/ShieldTab"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.5
+offset_top = -6.5
+offset_right = 22.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Shields"
+label_settings = SubResource("LabelSettings_h6a4u")
+
 [node name="Close" type="TextureButton" parent="Background"]
 layout_mode = 1
 anchors_preset = 1
@@ -3206,6 +3268,8 @@ offset_right = -35.0
 offset_bottom = 93.0
 grow_horizontal = 0
 texture_normal = ExtResource("39_tsw0c")
-stretch_mode = 0
+stretch_mode = 5
 
+[connection signal="pressed" from="Background/SwordTab" to="." method="_on_sword_tab_pressed"]
+[connection signal="pressed" from="Background/ShieldTab" to="." method="_on_shield_tab_pressed"]
 [connection signal="pressed" from="Background/Close" to="." method="_on_close_pressed"]

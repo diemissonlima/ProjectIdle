@@ -27,16 +27,44 @@ func load_equipment(type: String) -> void:
 	
 	for slot in target_container[type].get_children():
 		if not data_equipment[type][slot.name.to_lower()]["is_locked"]:
+			slot.get_node("BG/Level").text = "Lv " + str(data_equipment[type][slot.name.to_lower()]["level"])
+			slot.get_node("BG/ProgressBar").max_value = item_level_dict[str(
+				data_equipment[type][slot.name.to_lower()]["level"]
+			)]
+			slot.get_node("BG/ProgressBar").value = data_equipment[type][slot.name.to_lower()]["progress"]
+			slot.get_node("BG/ProgressBar/Progress").text = str(
+				data_equipment[type][slot.name.to_lower()]["progress"]
+				) + " / " + str(item_level_dict[str(
+					data_equipment[type][slot.name.to_lower()]["level"])]
+					)
 			slot.get_node("BG/Sprite").modulate.a = 1.0
 			slot.get_node("BG/Lock").visible = false
 			slot.get_node("BG/Level").visible = true
 			slot.get_node("BG/ProgressBar").visible = true
 
 
-func add_item(slot: String, item_data: Dictionary) -> void:
-	print("Slot: ", slot)
-	print("Item data: ", item_data)
+func add_item(type: String, slot: String, item_data: Dictionary) -> void:
+	if data_equipment[type][slot]["is_locked"]:
+		data_equipment[type][slot]["is_locked"] = false
+		data_equipment[type][slot]["progress"] = 1
+	else:
+		data_equipment[type][slot]["progress"] += 1
+	
+	print(type)
+	print("-=-=-=-=-=-=-=-=-=-=-=-=")
 
 
 func _on_close_pressed() -> void:
 	visible = false
+	weapon_container.visible = true
+	shield_container.visible = false
+
+
+func _on_sword_tab_pressed() -> void:
+	weapon_container.visible = true
+	shield_container.visible = false
+
+
+func _on_shield_tab_pressed() -> void:
+	weapon_container.visible = false
+	shield_container.visible = true

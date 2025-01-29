@@ -147,10 +147,6 @@ func killer_enemy(enemy_type) -> void:
 			" gold", Color.GREEN
 			)
 		
-		if enemy_type == 1:
-			enemy.item_drop()
-	
-		
 	World.kills += 1
 	
 	if not stop_progress:
@@ -159,8 +155,8 @@ func killer_enemy(enemy_type) -> void:
 		if World.stage_progress > 10:
 			if World.estagio % 5 == 0:
 				Player.skill_points += 1
-				#get_tree().call_group(
-				#"loot_box", "add_message", "+ 1 Ponto de Skill", Color.RED)
+				enemy.item_drop()
+				
 				load_background() # carrega um novo background
 				
 			World.estagio += 1 # incrementa o estagio em + 1

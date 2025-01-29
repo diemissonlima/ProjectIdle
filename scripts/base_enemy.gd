@@ -73,10 +73,13 @@ func drop() -> void:
 
 
 func get_drop_items() -> Dictionary:
-	return {
+	var rng: float = randf()
+	
+	if rng <= 0.5:
+		return {
 		"commom": {
 			"type": "weapon",
-			"drop_chance": [0, 1.0],
+			"drop_chance": [0, 0.75],
 			"slot_list": [
 				"slot1", "slot2", "slot3", "slot4", "slot5"
 			]
@@ -84,7 +87,7 @@ func get_drop_items() -> Dictionary:
 		
 		"uncommom": {
 			"type": "weapon",
-			"drop_chance": [0.0, 0.0],
+			"drop_chance": [0.75, 1.0],
 			"slot_list": [
 				"slot6", "slot7", "slot8", "slot9", "slot10"
 			]
@@ -114,12 +117,56 @@ func get_drop_items() -> Dictionary:
 			]
 		}
 	}
+	
+	else:
+		return {
+		"commom": {
+			"type": "shield",
+			"drop_chance": [0, 0.75],
+			"slot_list": [
+				"slot1", "slot2", "slot3", "slot4", "slot5"
+			]
+		},
+		
+		"uncommom": {
+			"type": "shield",
+			"drop_chance": [0.75, 1.0],
+			"slot_list": [
+				"slot6", "slot7", "slot8", "slot9", "slot10"
+			]
+		},
+		
+		"elite": {
+			"type": "shield",
+			"drop_chance": [0, 0],
+			"slot_list": [
+				"slot11", "slot12"
+			]
+		},
+		
+		"epic": {
+			"type": "shield",
+			"drop_chance": [0, 0],
+			"slot_list": [
+				"slot13", "slot14"
+			]
+		},
+		
+		"legendary": {
+			"type": "shield",
+			"drop_chance": [0, 0],
+			"slot_list": [
+				"slot15"
+			]
+		}
+	}
 
 
 func item_drop() -> void:
 	for rarity in drop_items_list:
 		var spawn_probability: Array = drop_items_list[rarity]["drop_chance"]
 		var rng: float = randf()
+		print("RNG: ", rng)
 
 		if rng > spawn_probability[0] and rng <= spawn_probability[1]:
 			drop_item(rarity, drop_items_list[rarity])
@@ -129,13 +176,7 @@ func drop_item(item_rarity: String, item_data: Dictionary) -> void:
 	var data: Dictionary = Data.data_management["equipments"]
 	var slot = item_data["slot_list"].pick_random()
 	
-	if data[item_data["type"]][slot]["is_locked"]:
-		data[item_data["type"]][slot]["is_locked"] = false
-		data[item_data["type"]][slot]["progress"] = 1
-	else:
-		data[item_data["type"]][slot]["progress"] += 1
-
-	get_tree().call_group("equipments", "add_item", slot, data[item_data["type"]][slot])
+	get_tree().call_group("equipments", "add_item", item_data["type"], slot, data[item_data["type"]][slot])
 
 
 func set_progresbar() -> void: # atualiza a barra de progresso da vida

@@ -14,8 +14,8 @@ var data_management: Dictionary = {
 	},
 	
 	"player": {
-		"ataque": 5.0,
-		"default_damage": 5.0,
+		"ataque": 10.0,
+		"default_damage": 10.0,
 		"attack_speed": 0.5,
 		"gold": 0,
 		"skill_points": 0,
@@ -159,7 +159,7 @@ var data_management: Dictionary = {
 			"slot1": {
 				"is_locked": true,
 				"is_equipped": false,
-				"level": 0,
+				"level": 1,
 				"atributtes": {
 					"damage": 0,
 					"critical_damage": 0,
@@ -169,7 +169,7 @@ var data_management: Dictionary = {
 			"slot2": {
 				"is_locked": true,
 				"is_equipped": false,
-				"level": 0,
+				"level": 1,
 				"atributtes": {
 					"damage": 0,
 					"critical_damage": 0,
@@ -179,7 +179,7 @@ var data_management: Dictionary = {
 			"slot3": {
 				"is_locked": true,
 				"is_equipped": false,
-				"level": 0,
+				"level": 1,
 				"atributtes": {
 					"damage": 0,
 					"critical_damage": 0,
@@ -189,7 +189,7 @@ var data_management: Dictionary = {
 			"slot4": {
 				"is_locked": true,
 				"is_equipped": false,
-				"level": 0,
+				"level": 1,
 				"atributtes": {
 					"damage": 0,
 					"critical_damage": 0,
@@ -199,7 +199,7 @@ var data_management: Dictionary = {
 			"slot5": {
 				"is_locked": true,
 				"is_equipped": false,
-				"level": 0,
+				"level": 1,
 				"atributtes": {
 					"damage": 0,
 					"critical_damage": 0,
@@ -209,7 +209,7 @@ var data_management: Dictionary = {
 			"slot6": {
 				"is_locked": true,
 				"is_equipped": false,
-				"level": 0,
+				"level": 1,
 				"atributtes": {
 					"damage": 0,
 					"critical_damage": 0,
@@ -219,7 +219,7 @@ var data_management: Dictionary = {
 			"slot7": {
 				"is_locked": true,
 				"is_equipped": false,
-				"level": 0,
+				"level": 1,
 				"atributtes": {
 					"damage": 0,
 					"critical_damage": 0,
@@ -229,7 +229,7 @@ var data_management: Dictionary = {
 			"slot8": {
 				"is_locked": true,
 				"is_equipped": false,
-				"level": 0,
+				"level": 1,
 				"atributtes": {
 					"damage": 0,
 					"critical_damage": 0,
@@ -239,7 +239,7 @@ var data_management: Dictionary = {
 			"slot9": {
 				"is_locked": true,
 				"is_equipped": false,
-				"level": 0,
+				"level": 1,
 				"atributtes": {
 					"damage": 0,
 					"critical_damage": 0,
@@ -249,7 +249,7 @@ var data_management: Dictionary = {
 			"slot10": {
 				"is_locked": true,
 				"is_equipped": false,
-				"level": 0,
+				"level": 1,
 				"atributtes": {
 					"damage": 0,
 					"critical_damage": 0,
@@ -259,7 +259,7 @@ var data_management: Dictionary = {
 			"slot11": {
 				"is_locked": true,
 				"is_equipped": false,
-				"level": 0,
+				"level": 1,
 				"atributtes": {
 					"damage": 0,
 					"critical_damage": 0,
@@ -269,7 +269,7 @@ var data_management: Dictionary = {
 			"slot12": {
 				"is_locked": true,
 				"is_equipped": false,
-				"level": 0,
+				"level": 1,
 				"atributtes": {
 					"damage": 0,
 					"critical_damage": 0,
@@ -279,7 +279,7 @@ var data_management: Dictionary = {
 			"slot13": {
 				"is_locked": true,
 				"is_equipped": false,
-				"level": 0,
+				"level": 1,
 				"atributtes": {
 					"damage": 0,
 					"critical_damage": 0,
@@ -289,7 +289,7 @@ var data_management: Dictionary = {
 			"slot14": {
 				"is_locked": true,
 				"is_equipped": false,
-				"level": 0,
+				"level": 1,
 				"atributtes": {
 					"damage": 0,
 					"critical_damage": 0,
@@ -299,7 +299,7 @@ var data_management: Dictionary = {
 			"slot15": {
 				"is_locked": true,
 				"is_equipped": false,
-				"level": 0,
+				"level": 1,
 				"atributtes": {
 					"damage": 0,
 					"critical_damage": 0,
@@ -312,7 +312,7 @@ var data_management: Dictionary = {
 			"slot1": {
 				"is_locked": true,
 				"is_equipped": false,
-				"level": 0,
+				"level": 1,
 				"atributtes": {
 					"gold": 0,
 					"prestige_points": 0
@@ -322,7 +322,7 @@ var data_management: Dictionary = {
 			"slot2": {
 				"is_locked": true,
 				"is_equipped": false,
-				"level": 0,
+				"level": 1,
 				"atributtes": {
 					"gold": 0,
 					"prestige_points": 0
@@ -332,7 +332,7 @@ var data_management: Dictionary = {
 			"slot3": {
 				"is_locked": true,
 				"is_equipped": false,
-				"level": 0,
+				"level": 1,
 				"atributtes": {
 					"gold": 0,
 					"prestige_points": 0
@@ -342,7 +342,7 @@ var data_management: Dictionary = {
 			"slot4": {
 				"is_locked": true,
 				"is_equipped": false,
-				"level": 0,
+				"level": 1,
 				"atributtes": {
 					"gold": 0,
 					"prestige_points": 0
@@ -352,7 +352,7 @@ var data_management: Dictionary = {
 			"slot5": {
 				"is_locked": true,
 				"is_equipped": false,
-				"level": 0,
+				"level": 1,
 				"atributtes": {
 					"gold": 0,
 					"prestige_points": 0
@@ -362,7 +362,7 @@ var data_management: Dictionary = {
 			"slot6": {
 				"is_locked": true,
 				"is_equipped": false,
-				"level": 0,
+				"level": 1,
 				"atributtes": {
 					"gold": 0,
 					"prestige_points": 0
@@ -372,7 +372,7 @@ var data_management: Dictionary = {
 			"slot7": {
 				"is_locked": true,
 				"is_equipped": false,
-				"level": 0,
+				"level": 1,
 				"atributtes": {
 					"gold": 0,
 					"prestige_points": 0
@@ -382,7 +382,7 @@ var data_management: Dictionary = {
 			"slot8": {
 				"is_locked": true,
 				"is_equipped": false,
-				"level": 0,
+				"level": 1,
 				"atributtes": {
 					"gold": 0,
 					"prestige_points": 0
@@ -392,7 +392,7 @@ var data_management: Dictionary = {
 			"slot9": {
 				"is_locked": true,
 				"is_equipped": false,
-				"level": 0,
+				"level": 1,
 				"atributtes": {
 					"gold": 0,
 					"prestige_points": 0
@@ -402,7 +402,7 @@ var data_management: Dictionary = {
 			"slot10": {
 				"is_locked": true,
 				"is_equipped": false,
-				"level": 0,
+				"level": 1,
 				"atributtes": {
 					"gold": 0,
 					"prestige_points": 0
@@ -412,7 +412,7 @@ var data_management: Dictionary = {
 			"slot11": {
 				"is_locked": true,
 				"is_equipped": false,
-				"level": 0,
+				"level": 1,
 				"atributtes": {
 					"gold": 0,
 					"prestige_points": 0
@@ -422,7 +422,7 @@ var data_management: Dictionary = {
 			"slot12": {
 				"is_locked": true,
 				"is_equipped": false,
-				"level": 0,
+				"level": 1,
 				"atributtes": {
 					"gold": 0,
 					"prestige_points": 0
@@ -432,7 +432,7 @@ var data_management: Dictionary = {
 			"slot13": {
 				"is_locked": true,
 				"is_equipped": false,
-				"level": 0,
+				"level": 1,
 				"atributtes": {
 					"gold": 0,
 					"prestige_points": 0
@@ -442,7 +442,7 @@ var data_management: Dictionary = {
 			"slot14": {
 				"is_locked": true,
 				"is_equipped": false,
-				"level": 0,
+				"level": 1,
 				"atributtes": {
 					"gold": 0,
 					"prestige_points": 0
@@ -452,7 +452,7 @@ var data_management: Dictionary = {
 			"slot15": {
 				"is_locked": true,
 				"is_equipped": false,
-				"level": 0,
+				"level": 1,
 				"atributtes": {
 					"gold": 0,
 					"prestige_points": 0
