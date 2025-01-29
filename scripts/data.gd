@@ -14,8 +14,8 @@ var data_management: Dictionary = {
 	},
 	
 	"player": {
-		"ataque": 10.0,
-		"default_damage": 10.0,
+		"ataque": 5.0,
+		"default_damage": 5.0,
 		"attack_speed": 0.5,
 		"gold": 0,
 		"skill_points": 0,
@@ -159,150 +159,165 @@ var data_management: Dictionary = {
 			"slot1": {
 				"is_locked": true,
 				"is_equipped": false,
+				"path": "res://assets/items/sword_01a.png",
 				"level": 1,
 				"atributtes": {
-					"damage": 0,
-					"critical_damage": 0,
+					"damage": 0.01,
+					"critical_damage": 0.01,
 				},
 				"progress": 0
 			},
 			"slot2": {
 				"is_locked": true,
 				"is_equipped": false,
+				"path": "res://assets/items/sword_01b.png",
 				"level": 1,
 				"atributtes": {
-					"damage": 0,
-					"critical_damage": 0,
+					"damage": 0.02,
+					"critical_damage": 0.02,
 				},
 				"progress": 0
 			},
 			"slot3": {
 				"is_locked": true,
 				"is_equipped": false,
+				"path": "res://assets/items/sword_01c.png",
 				"level": 1,
 				"atributtes": {
-					"damage": 0,
-					"critical_damage": 0,
+					"damage": 0.03,
+					"critical_damage": 0.03,
 				},
 				"progress": 0
 			},
 			"slot4": {
 				"is_locked": true,
 				"is_equipped": false,
+				"path": "res://assets/items/sword_01d.png",
 				"level": 1,
 				"atributtes": {
-					"damage": 0,
-					"critical_damage": 0,
+					"damage": 0.04,
+					"critical_damage": 0.04,
 				},
 				"progress": 0
 			},
 			"slot5": {
 				"is_locked": true,
 				"is_equipped": false,
+				"path": "res://assets/items/sword_01e.png",
 				"level": 1,
 				"atributtes": {
-					"damage": 0,
-					"critical_damage": 0,
+					"damage": 0.05,
+					"critical_damage": 0.05,
 				},
 				"progress": 0
 			},
 			"slot6": {
 				"is_locked": true,
 				"is_equipped": false,
+				"path": "res://assets/items/sword_02a.png",
 				"level": 1,
 				"atributtes": {
-					"damage": 0,
-					"critical_damage": 0,
+					"damage": 0.1,
+					"critical_damage": 0.1,
 				},
 				"progress": 0
 			},
 			"slot7": {
 				"is_locked": true,
 				"is_equipped": false,
+				"path": "res://assets/items/sword_02b.png",
 				"level": 1,
 				"atributtes": {
-					"damage": 0,
-					"critical_damage": 0,
+					"damage": 0.11,
+					"critical_damage": 0.11,
 				},
 				"progress": 0
 			},
 			"slot8": {
 				"is_locked": true,
 				"is_equipped": false,
+				"path": "res://assets/items/sword_02c.png",
 				"level": 1,
 				"atributtes": {
-					"damage": 0,
-					"critical_damage": 0,
+					"damage": 0.12,
+					"critical_damage": 0.12,
 				},
 				"progress": 0
 			},
 			"slot9": {
 				"is_locked": true,
 				"is_equipped": false,
+				"path": "res://assets/items/sword_02d.png",
 				"level": 1,
 				"atributtes": {
-					"damage": 0,
-					"critical_damage": 0,
+					"damage": 0.13,
+					"critical_damage": 0.13,
 				},
 				"progress": 0
 			},
 			"slot10": {
 				"is_locked": true,
 				"is_equipped": false,
+				"path": "res://assets/items/sword_02e.png",
 				"level": 1,
 				"atributtes": {
-					"damage": 0,
-					"critical_damage": 0,
+					"damage": 0.14,
+					"critical_damage": 0.14,
 				},
 				"progress": 0
 			},
 			"slot11": {
 				"is_locked": true,
 				"is_equipped": false,
+				"path": "res://assets/items/sword_03a.png",
 				"level": 1,
 				"atributtes": {
-					"damage": 0,
-					"critical_damage": 0,
+					"damage": 0.20,
+					"critical_damage": 0.20,
 				},
 				"progress": 0
 			},
 			"slot12": {
 				"is_locked": true,
 				"is_equipped": false,
+				"path": "res://assets/items/sword_03b.png",
 				"level": 1,
 				"atributtes": {
-					"damage": 0,
-					"critical_damage": 0,
+					"damage": 0.25,
+					"critical_damage": 0.25,
 				},
 				"progress": 0
 			},
 			"slot13": {
 				"is_locked": true,
 				"is_equipped": false,
+				"path": "res://assets/items/sword_03c.png",
 				"level": 1,
 				"atributtes": {
-					"damage": 0,
-					"critical_damage": 0,
+					"damage": 0.35,
+					"critical_damage": 0.35,
 				},
 				"progress": 0
 			},
 			"slot14": {
 				"is_locked": true,
 				"is_equipped": false,
+				"path": "res://assets/items/sword_03d.png",
 				"level": 1,
 				"atributtes": {
-					"damage": 0,
-					"critical_damage": 0,
+					"damage": 0.50,
+					"critical_damage": 0.50,
 				},
 				"progress": 0
 			},
 			"slot15": {
 				"is_locked": true,
 				"is_equipped": false,
+				"path": "res://assets/items/sword_03e.png",
 				"level": 1,
 				"atributtes": {
-					"damage": 0,
-					"critical_damage": 0,
+					"damage": 1.0,
+					"critical_damage": 1.0,
 				},
 				"progress": 0
 			}
@@ -312,150 +327,165 @@ var data_management: Dictionary = {
 			"slot1": {
 				"is_locked": true,
 				"is_equipped": false,
+				"path": "res://assets/items/shield_01a.png",
 				"level": 1,
 				"atributtes": {
-					"gold": 0,
-					"prestige_points": 0
+					"gold": 0.01,
+					"prestige_points": 0.01
 				},
 				"progress": 0
 			},
 			"slot2": {
 				"is_locked": true,
 				"is_equipped": false,
+				"path": "res://assets/items/shield_01b.png",
 				"level": 1,
 				"atributtes": {
-					"gold": 0,
-					"prestige_points": 0
+					"gold": 0.02,
+					"prestige_points": 0.02
 				},
 				"progress": 0
 			},
 			"slot3": {
 				"is_locked": true,
 				"is_equipped": false,
+				"path": "res://assets/items/shield_01c.png",
 				"level": 1,
 				"atributtes": {
-					"gold": 0,
-					"prestige_points": 0
+					"gold": 0.03,
+					"prestige_points": 0.03
 				},
 				"progress": 0
 			},
 			"slot4": {
 				"is_locked": true,
 				"is_equipped": false,
+				"path": "res://assets/items/shield_01d.png",
 				"level": 1,
 				"atributtes": {
-					"gold": 0,
-					"prestige_points": 0
+					"gold": 0.04,
+					"prestige_points": 0.04
 				},
 				"progress": 0
 			},
 			"slot5": {
 				"is_locked": true,
 				"is_equipped": false,
+				"path": "res://assets/items/shield_01e.png",
 				"level": 1,
 				"atributtes": {
-					"gold": 0,
-					"prestige_points": 0
+					"gold": 0.05,
+					"prestige_points": 0.05
 				},
 				"progress": 0
 			},
 			"slot6": {
 				"is_locked": true,
 				"is_equipped": false,
+				"path": "res://assets/items/shield_02a.png",
 				"level": 1,
 				"atributtes": {
-					"gold": 0,
-					"prestige_points": 0
+					"gold": 0.10,
+					"prestige_points": 0.10
 				},
 				"progress": 0
 			},
 			"slot7": {
 				"is_locked": true,
 				"is_equipped": false,
+				"path": "res://assets/items/shield_02b.png",
 				"level": 1,
 				"atributtes": {
-					"gold": 0,
-					"prestige_points": 0
+					"gold": 0.11,
+					"prestige_points": 0.11
 				},
 				"progress": 0
 			},
 			"slot8": {
 				"is_locked": true,
 				"is_equipped": false,
+				"path": "res://assets/items/shield_02c.png",
 				"level": 1,
 				"atributtes": {
-					"gold": 0,
-					"prestige_points": 0
+					"gold": 0.12,
+					"prestige_points": 0.12
 				},
 				"progress": 0
 			},
 			"slot9": {
 				"is_locked": true,
 				"is_equipped": false,
+				"path": "res://assets/items/shield_02d.png",
 				"level": 1,
 				"atributtes": {
-					"gold": 0,
-					"prestige_points": 0
+					"gold": 0.13,
+					"prestige_points": 0.13
 				},
 				"progress": 0
 			},
 			"slot10": {
 				"is_locked": true,
 				"is_equipped": false,
+				"path": "res://assets/items/shield_02e.png",
 				"level": 1,
 				"atributtes": {
-					"gold": 0,
-					"prestige_points": 0
+					"gold": 0.14,
+					"prestige_points": 0.14
 				},
 				"progress": 0
 			},
 			"slot11": {
 				"is_locked": true,
 				"is_equipped": false,
+				"path": "res://assets/items/shield_03a.png",
 				"level": 1,
 				"atributtes": {
-					"gold": 0,
-					"prestige_points": 0
+					"gold": 0.20,
+					"prestige_points": 0.20
 				},
 				"progress": 0
 			},
 			"slot12": {
 				"is_locked": true,
 				"is_equipped": false,
+				"path": "res://assets/items/shield_03b.png",
 				"level": 1,
 				"atributtes": {
-					"gold": 0,
-					"prestige_points": 0
+					"gold": 0.25,
+					"prestige_points": 0.25
 				},
 				"progress": 0
 			},
 			"slot13": {
 				"is_locked": true,
 				"is_equipped": false,
+				"path": "res://assets/items/shield_03c.png",
 				"level": 1,
 				"atributtes": {
-					"gold": 0,
-					"prestige_points": 0
+					"gold": 0.35,
+					"prestige_points": 0.35
 				},
 				"progress": 0
 			},
 			"slot14": {
 				"is_locked": true,
 				"is_equipped": false,
+				"path": "res://assets/items/shield_03d.png",
 				"level": 1,
 				"atributtes": {
-					"gold": 0,
-					"prestige_points": 0
+					"gold": 0.50,
+					"prestige_points": 0.50
 				},
 				"progress": 0
 			},
 			"slot15": {
 				"is_locked": true,
 				"is_equipped": false,
+				"path": "res://assets/items/shield_03e.png",
 				"level": 1,
 				"atributtes": {
-					"gold": 0,
-					"prestige_points": 0
+					"gold": 1.0,
+					"prestige_points": 1.0
 				},
 				"progress": 0
 			}
@@ -641,6 +671,344 @@ func reset_savegame() -> void:
 		"skill_cooldown": {
 			"level": 0,
 			"multiplier": 180
+		}
+	},
+	
+	"equipments": {
+		"weapon": {
+			"slot1": {
+				"is_locked": true,
+				"is_equipped": false,
+				"path": "res://assets/items/sword_01a.png",
+				"level": 1,
+				"atributtes": {
+					"damage": 0.01,
+					"critical_damage": 0.01,
+				},
+				"progress": 0
+			},
+			"slot2": {
+				"is_locked": true,
+				"is_equipped": false,
+				"path": "res://assets/items/sword_01b.png",
+				"level": 1,
+				"atributtes": {
+					"damage": 0.02,
+					"critical_damage": 0.02,
+				},
+				"progress": 0
+			},
+			"slot3": {
+				"is_locked": true,
+				"is_equipped": false,
+				"path": "res://assets/items/sword_01c.png",
+				"level": 1,
+				"atributtes": {
+					"damage": 0.03,
+					"critical_damage": 0.03,
+				},
+				"progress": 0
+			},
+			"slot4": {
+				"is_locked": true,
+				"is_equipped": false,
+				"path": "res://assets/items/sword_01d.png",
+				"level": 1,
+				"atributtes": {
+					"damage": 0.04,
+					"critical_damage": 0.04,
+				},
+				"progress": 0
+			},
+			"slot5": {
+				"is_locked": true,
+				"is_equipped": false,
+				"path": "res://assets/items/sword_01e.png",
+				"level": 1,
+				"atributtes": {
+					"damage": 0.05,
+					"critical_damage": 0.05,
+				},
+				"progress": 0
+			},
+			"slot6": {
+				"is_locked": true,
+				"is_equipped": false,
+				"path": "res://assets/items/sword_02a.png",
+				"level": 1,
+				"atributtes": {
+					"damage": 0.1,
+					"critical_damage": 0.1,
+				},
+				"progress": 0
+			},
+			"slot7": {
+				"is_locked": true,
+				"is_equipped": false,
+				"path": "res://assets/items/sword_02b.png",
+				"level": 1,
+				"atributtes": {
+					"damage": 0.11,
+					"critical_damage": 0.11,
+				},
+				"progress": 0
+			},
+			"slot8": {
+				"is_locked": true,
+				"is_equipped": false,
+				"path": "res://assets/items/sword_02c.png",
+				"level": 1,
+				"atributtes": {
+					"damage": 0.12,
+					"critical_damage": 0.12,
+				},
+				"progress": 0
+			},
+			"slot9": {
+				"is_locked": true,
+				"is_equipped": false,
+				"path": "res://assets/items/sword_02d.png",
+				"level": 1,
+				"atributtes": {
+					"damage": 0.13,
+					"critical_damage": 0.13,
+				},
+				"progress": 0
+			},
+			"slot10": {
+				"is_locked": true,
+				"is_equipped": false,
+				"path": "res://assets/items/sword_02e.png",
+				"level": 1,
+				"atributtes": {
+					"damage": 0.14,
+					"critical_damage": 0.14,
+				},
+				"progress": 0
+			},
+			"slot11": {
+				"is_locked": true,
+				"is_equipped": false,
+				"path": "res://assets/items/sword_03a.png",
+				"level": 1,
+				"atributtes": {
+					"damage": 0.20,
+					"critical_damage": 0.20,
+				},
+				"progress": 0
+			},
+			"slot12": {
+				"is_locked": true,
+				"is_equipped": false,
+				"path": "res://assets/items/sword_03b.png",
+				"level": 1,
+				"atributtes": {
+					"damage": 0.25,
+					"critical_damage": 0.25,
+				},
+				"progress": 0
+			},
+			"slot13": {
+				"is_locked": true,
+				"is_equipped": false,
+				"path": "res://assets/items/sword_03c.png",
+				"level": 1,
+				"atributtes": {
+					"damage": 0.35,
+					"critical_damage": 0.35,
+				},
+				"progress": 0
+			},
+			"slot14": {
+				"is_locked": true,
+				"is_equipped": false,
+				"path": "res://assets/items/sword_03d.png",
+				"level": 1,
+				"atributtes": {
+					"damage": 0.50,
+					"critical_damage": 0.50,
+				},
+				"progress": 0
+			},
+			"slot15": {
+				"is_locked": true,
+				"is_equipped": false,
+				"path": "res://assets/items/sword_03e.png",
+				"level": 1,
+				"atributtes": {
+					"damage": 1.0,
+					"critical_damage": 1.0,
+				},
+				"progress": 0
+			}
+		},
+		
+		"shield": {
+			"slot1": {
+				"is_locked": true,
+				"is_equipped": false,
+				"path": "res://assets/items/shield_01a.png",
+				"level": 1,
+				"atributtes": {
+					"gold": 0.01,
+					"prestige_points": 0.01
+				},
+				"progress": 0
+			},
+			"slot2": {
+				"is_locked": true,
+				"is_equipped": false,
+				"path": "res://assets/items/shield_01b.png",
+				"level": 1,
+				"atributtes": {
+					"gold": 0.02,
+					"prestige_points": 0.02
+				},
+				"progress": 0
+			},
+			"slot3": {
+				"is_locked": true,
+				"is_equipped": false,
+				"path": "res://assets/items/shield_01c.png",
+				"level": 1,
+				"atributtes": {
+					"gold": 0.03,
+					"prestige_points": 0.03
+				},
+				"progress": 0
+			},
+			"slot4": {
+				"is_locked": true,
+				"is_equipped": false,
+				"path": "res://assets/items/shield_01d.png",
+				"level": 1,
+				"atributtes": {
+					"gold": 0.04,
+					"prestige_points": 0.04
+				},
+				"progress": 0
+			},
+			"slot5": {
+				"is_locked": true,
+				"is_equipped": false,
+				"path": "res://assets/items/shield_01e.png",
+				"level": 1,
+				"atributtes": {
+					"gold": 0.05,
+					"prestige_points": 0.05
+				},
+				"progress": 0
+			},
+			"slot6": {
+				"is_locked": true,
+				"is_equipped": false,
+				"path": "res://assets/items/shield_02a.png",
+				"level": 1,
+				"atributtes": {
+					"gold": 0.10,
+					"prestige_points": 0.10
+				},
+				"progress": 0
+			},
+			"slot7": {
+				"is_locked": true,
+				"is_equipped": false,
+				"path": "res://assets/items/shield_02b.png",
+				"level": 1,
+				"atributtes": {
+					"gold": 0.11,
+					"prestige_points": 0.11
+				},
+				"progress": 0
+			},
+			"slot8": {
+				"is_locked": true,
+				"is_equipped": false,
+				"path": "res://assets/items/shield_02c.png",
+				"level": 1,
+				"atributtes": {
+					"gold": 0.12,
+					"prestige_points": 0.12
+				},
+				"progress": 0
+			},
+			"slot9": {
+				"is_locked": true,
+				"is_equipped": false,
+				"path": "res://assets/items/shield_02d.png",
+				"level": 1,
+				"atributtes": {
+					"gold": 0.13,
+					"prestige_points": 0.13
+				},
+				"progress": 0
+			},
+			"slot10": {
+				"is_locked": true,
+				"is_equipped": false,
+				"path": "res://assets/items/shield_02e.png",
+				"level": 1,
+				"atributtes": {
+					"gold": 0.14,
+					"prestige_points": 0.14
+				},
+				"progress": 0
+			},
+			"slot11": {
+				"is_locked": true,
+				"is_equipped": false,
+				"path": "res://assets/items/shield_03a.png",
+				"level": 1,
+				"atributtes": {
+					"gold": 0.20,
+					"prestige_points": 0.20
+				},
+				"progress": 0
+			},
+			"slot12": {
+				"is_locked": true,
+				"is_equipped": false,
+				"path": "res://assets/items/shield_03b.png",
+				"level": 1,
+				"atributtes": {
+					"gold": 0.25,
+					"prestige_points": 0.25
+				},
+				"progress": 0
+			},
+			"slot13": {
+				"is_locked": true,
+				"is_equipped": false,
+				"path": "res://assets/items/shield_03c.png",
+				"level": 1,
+				"atributtes": {
+					"gold": 0.35,
+					"prestige_points": 0.35
+				},
+				"progress": 0
+			},
+			"slot14": {
+				"is_locked": true,
+				"is_equipped": false,
+				"path": "res://assets/items/shield_03d.png",
+				"level": 1,
+				"atributtes": {
+					"gold": 0.50,
+					"prestige_points": 0.50
+				},
+				"progress": 0
+			},
+			"slot15": {
+				"is_locked": true,
+				"is_equipped": false,
+				"path": "res://assets/items/shield_03e.png",
+				"level": 1,
+				"atributtes": {
+					"gold": 1.0,
+					"prestige_points": 1.0
+				},
+				"progress": 0
+			}
 		}
 	}
 }

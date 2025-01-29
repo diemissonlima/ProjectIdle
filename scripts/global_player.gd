@@ -15,6 +15,9 @@ var gold: int
 var prestige_points: int
 var skill_points: int
 
+# itens equipados
+var equipped_weapon: String = ""
+var equipped_shield: String = ""
 
 # skills
 var attack_skill_level: int = 1
@@ -117,7 +120,14 @@ func alter_attack() -> void:
 	var critical_chance_multiplier: float = Data.data_management["upgrades"]["critical_chance"]["multiplier"]
 	var raid_damage_multiplier: float = Data.data_management["raids"]["raid_damage"]["multiplier"]
 	var upgrade_damage_multiplier: float = Data.data_management["upgrades"]["damage"]["multiplier"]
-	var damage_multiplier: float = (raid_damage_multiplier + upgrade_damage_multiplier) * 100
+	var equipped_weapon_damage_multiplier: float = 0.0
+	
+	if equipped_weapon != "":
+		equipped_weapon_damage_multiplier = Data.data_management["equipments"]["weapon"][equipped_weapon.to_lower()]["atributtes"]["damage"]
+	
+	var damage_multiplier: float = (
+		raid_damage_multiplier + upgrade_damage_multiplier + equipped_weapon_damage_multiplier
+		) * 100
 	
 	damage_total = damage + ((damage_multiplier * damage) / 100)
 	
@@ -129,7 +139,14 @@ func alter_attack() -> void:
 	if rng <= critical_chance + critical_chance_multiplier:
 		var upgrade_critical_damage_multiplier: float = Data.data_management["upgrades"]["critical_damage"]["multiplier"]
 		var raid_critical_damage_multiplier: float = Data.data_management["raids"]["raid_critical"]["multiplier"]
-		var critical_damage_multiplier: float = (upgrade_critical_damage_multiplier + raid_critical_damage_multiplier) * 100
+		var equipped_weapon_critical_damage_multiplier: float = 0.0
+		
+		if equipped_weapon != "":
+			equipped_weapon_critical_damage_multiplier = Data.data_management["equipments"]["weapon"][equipped_weapon.to_lower()]["atributtes"]["critical_damage"]
+		
+		var critical_damage_multiplier: float = (
+			upgrade_critical_damage_multiplier + raid_critical_damage_multiplier + equipped_weapon_critical_damage_multiplier
+			) * 100
 		
 		bonus_damage = (critical_damage_multiplier * damage_total) / 100
 		critical_attack = true

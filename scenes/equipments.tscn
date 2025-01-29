@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://dhwtso3ysibcm"]
+[gd_scene load_steps=50 format=3 uid="uid://dhwtso3ysibcm"]
 
 [ext_resource type="Texture2D" uid="uid://e4o6nongfgvb" path="res://assets/prefabs/box/Menu02.png" id="1_8hbwa"]
 [ext_resource type="Script" path="res://scripts/equipments.gd" id="1_jx06y"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dikggt8lnyu8d" path="res://assets/prefabs/icons/Icon_Small_Lock.png" id="8_6g757"]
 [ext_resource type="Texture2D" uid="uid://bpppnpoptl5x2" path="res://assets/items/sword_01b.png" id="8_qtvah"]
 [ext_resource type="Texture2D" uid="uid://dfe1l0i2hrme2" path="res://assets/items/sword_01c.png" id="9_iprcd"]
+[ext_resource type="Texture2D" uid="uid://ds7s6bj0x8u20" path="res://assets/prefabs/icons/Icon_Small_Star.png" id="9_ln1sw"]
 [ext_resource type="Texture2D" uid="uid://bhny2q5s803ib" path="res://assets/items/sword_01d.png" id="10_ltrck"]
 [ext_resource type="Texture2D" uid="uid://62nt43uj2inh" path="res://assets/items/sword_01e.png" id="11_sjril"]
 [ext_resource type="Texture2D" uid="uid://dn0ni5i7iu82s" path="res://assets/items/sword_02a.png" id="12_qs384"]
@@ -38,6 +39,7 @@
 [ext_resource type="Texture2D" uid="uid://mhipgwsqetja" path="res://assets/items/shield_03c.png" id="35_hjc2u"]
 [ext_resource type="Texture2D" uid="uid://d25evxr3a8n5w" path="res://assets/items/shield_03d.png" id="36_75an4"]
 [ext_resource type="Texture2D" uid="uid://bpu3yvtm30ull" path="res://assets/items/shield_03e.png" id="37_es458"]
+[ext_resource type="Texture2D" uid="uid://dq6f6g3vqcumu" path="res://assets/prefabs/box/MessageBox02.png" id="39_smh7n"]
 [ext_resource type="Texture2D" uid="uid://dvsioohm5fxr4" path="res://assets/prefabs/icons/X.png" id="39_tsw0c"]
 [ext_resource type="Texture2D" uid="uid://ctldyihhvugjg" path="res://assets/prefabs/buttons/ButtonHover.png" id="40_duy53"]
 [ext_resource type="Texture2D" uid="uid://j2khku0ce0y2" path="res://assets/prefabs/buttons/ButtonActive.png" id="41_7gyf3"]
@@ -60,6 +62,12 @@ font = ExtResource("2_4ds7v")
 font_size = 12
 outline_size = 6
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_v1ouu"]
+font = ExtResource("2_4ds7v")
+
+[sub_resource type="LabelSettings" id="LabelSettings_c03wh"]
+font = ExtResource("2_4ds7v")
 
 [sub_resource type="LabelSettings" id="LabelSettings_h6a4u"]
 font = ExtResource("2_4ds7v")
@@ -99,9 +107,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -94.0
-offset_top = 56.0
+offset_top = 33.0
 offset_right = 94.0
-offset_bottom = 87.0
+offset_bottom = 64.0
 grow_horizontal = 2
 text = "Equipments"
 label_settings = SubResource("LabelSettings_p6cx1")
@@ -114,9 +122,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -240.0
-offset_top = -108.0
+offset_top = -132.0
 offset_right = 240.0
-offset_bottom = 172.0
+offset_bottom = 148.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/h_separation = 20
@@ -210,6 +218,21 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "1 / 10"
 label_settings = SubResource("LabelSettings_pkpna")
+
+[node name="Equipped" type="TextureRect" parent="Background/WeaponContainer/Slot1/BG"]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("9_ln1sw")
+expand_mode = 1
 
 [node name="Lock" type="TextureRect" parent="Background/WeaponContainer/Slot1/BG"]
 custom_minimum_size = Vector2(20, 20)
@@ -327,6 +350,21 @@ grow_horizontal = 0
 texture = ExtResource("8_6g757")
 expand_mode = 1
 
+[node name="Equipped" type="TextureRect" parent="Background/WeaponContainer/Slot2/BG"]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("9_ln1sw")
+expand_mode = 1
+
 [node name="Slot3" type="TextureButton" parent="Background/WeaponContainer"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
@@ -427,6 +465,21 @@ offset_right = -6.0
 offset_bottom = 26.0
 grow_horizontal = 0
 texture = ExtResource("8_6g757")
+expand_mode = 1
+
+[node name="Equipped" type="TextureRect" parent="Background/WeaponContainer/Slot3/BG"]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("9_ln1sw")
 expand_mode = 1
 
 [node name="Slot4" type="TextureButton" parent="Background/WeaponContainer"]
@@ -531,6 +584,21 @@ grow_horizontal = 0
 texture = ExtResource("8_6g757")
 expand_mode = 1
 
+[node name="Equipped" type="TextureRect" parent="Background/WeaponContainer/Slot4/BG"]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("9_ln1sw")
+expand_mode = 1
+
 [node name="Slot5" type="TextureButton" parent="Background/WeaponContainer"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
@@ -631,6 +699,21 @@ offset_right = -6.0
 offset_bottom = 26.0
 grow_horizontal = 0
 texture = ExtResource("8_6g757")
+expand_mode = 1
+
+[node name="Equipped" type="TextureRect" parent="Background/WeaponContainer/Slot5/BG"]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("9_ln1sw")
 expand_mode = 1
 
 [node name="Slot6" type="TextureButton" parent="Background/WeaponContainer"]
@@ -735,6 +818,21 @@ grow_horizontal = 0
 texture = ExtResource("8_6g757")
 expand_mode = 1
 
+[node name="Equipped" type="TextureRect" parent="Background/WeaponContainer/Slot6/BG"]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("9_ln1sw")
+expand_mode = 1
+
 [node name="Slot7" type="TextureButton" parent="Background/WeaponContainer"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
@@ -835,6 +933,21 @@ offset_right = -6.0
 offset_bottom = 26.0
 grow_horizontal = 0
 texture = ExtResource("8_6g757")
+expand_mode = 1
+
+[node name="Equipped" type="TextureRect" parent="Background/WeaponContainer/Slot7/BG"]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("9_ln1sw")
 expand_mode = 1
 
 [node name="Slot8" type="TextureButton" parent="Background/WeaponContainer"]
@@ -939,6 +1052,21 @@ grow_horizontal = 0
 texture = ExtResource("8_6g757")
 expand_mode = 1
 
+[node name="Equipped" type="TextureRect" parent="Background/WeaponContainer/Slot8/BG"]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("9_ln1sw")
+expand_mode = 1
+
 [node name="Slot9" type="TextureButton" parent="Background/WeaponContainer"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
@@ -1039,6 +1167,21 @@ offset_right = -6.0
 offset_bottom = 26.0
 grow_horizontal = 0
 texture = ExtResource("8_6g757")
+expand_mode = 1
+
+[node name="Equipped" type="TextureRect" parent="Background/WeaponContainer/Slot9/BG"]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("9_ln1sw")
 expand_mode = 1
 
 [node name="Slot10" type="TextureButton" parent="Background/WeaponContainer"]
@@ -1143,6 +1286,21 @@ grow_horizontal = 0
 texture = ExtResource("8_6g757")
 expand_mode = 1
 
+[node name="Equipped" type="TextureRect" parent="Background/WeaponContainer/Slot10/BG"]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("9_ln1sw")
+expand_mode = 1
+
 [node name="Slot11" type="TextureButton" parent="Background/WeaponContainer"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
@@ -1243,6 +1401,21 @@ offset_right = -6.0
 offset_bottom = 26.0
 grow_horizontal = 0
 texture = ExtResource("8_6g757")
+expand_mode = 1
+
+[node name="Equipped" type="TextureRect" parent="Background/WeaponContainer/Slot11/BG"]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("9_ln1sw")
 expand_mode = 1
 
 [node name="Slot12" type="TextureButton" parent="Background/WeaponContainer"]
@@ -1347,6 +1520,21 @@ grow_horizontal = 0
 texture = ExtResource("8_6g757")
 expand_mode = 1
 
+[node name="Equipped" type="TextureRect" parent="Background/WeaponContainer/Slot12/BG"]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("9_ln1sw")
+expand_mode = 1
+
 [node name="Slot13" type="TextureButton" parent="Background/WeaponContainer"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
@@ -1447,6 +1635,21 @@ offset_right = -6.0
 offset_bottom = 26.0
 grow_horizontal = 0
 texture = ExtResource("8_6g757")
+expand_mode = 1
+
+[node name="Equipped" type="TextureRect" parent="Background/WeaponContainer/Slot13/BG"]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("9_ln1sw")
 expand_mode = 1
 
 [node name="Slot14" type="TextureButton" parent="Background/WeaponContainer"]
@@ -1551,6 +1754,21 @@ grow_horizontal = 0
 texture = ExtResource("8_6g757")
 expand_mode = 1
 
+[node name="Equipped" type="TextureRect" parent="Background/WeaponContainer/Slot14/BG"]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("9_ln1sw")
+expand_mode = 1
+
 [node name="Slot15" type="TextureButton" parent="Background/WeaponContainer"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
@@ -1653,6 +1871,21 @@ grow_horizontal = 0
 texture = ExtResource("8_6g757")
 expand_mode = 1
 
+[node name="Equipped" type="TextureRect" parent="Background/WeaponContainer/Slot15/BG"]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("9_ln1sw")
+expand_mode = 1
+
 [node name="ShieldContainer" type="GridContainer" parent="Background"]
 visible = false
 layout_mode = 1
@@ -1662,9 +1895,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -240.0
-offset_top = -108.0
+offset_top = -132.0
 offset_right = 240.0
-offset_bottom = 172.0
+offset_bottom = 148.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/h_separation = 20
@@ -1773,6 +2006,21 @@ grow_horizontal = 0
 texture = ExtResource("8_6g757")
 expand_mode = 1
 
+[node name="Equipped" type="TextureRect" parent="Background/ShieldContainer/Slot1/BG"]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -24.0
+offset_top = 6.0
+offset_right = -4.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("9_ln1sw")
+expand_mode = 1
+
 [node name="Slot2" type="TextureButton" parent="Background/ShieldContainer"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
@@ -1873,6 +2121,21 @@ offset_right = -6.0
 offset_bottom = 26.0
 grow_horizontal = 0
 texture = ExtResource("8_6g757")
+expand_mode = 1
+
+[node name="Equipped" type="TextureRect" parent="Background/ShieldContainer/Slot2/BG"]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -24.0
+offset_top = 6.0
+offset_right = -4.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("9_ln1sw")
 expand_mode = 1
 
 [node name="Slot3" type="TextureButton" parent="Background/ShieldContainer"]
@@ -1977,6 +2240,21 @@ grow_horizontal = 0
 texture = ExtResource("8_6g757")
 expand_mode = 1
 
+[node name="Equipped" type="TextureRect" parent="Background/ShieldContainer/Slot3/BG"]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -24.0
+offset_top = 6.0
+offset_right = -4.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("9_ln1sw")
+expand_mode = 1
+
 [node name="Slot4" type="TextureButton" parent="Background/ShieldContainer"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
@@ -2077,6 +2355,21 @@ offset_right = -6.0
 offset_bottom = 26.0
 grow_horizontal = 0
 texture = ExtResource("8_6g757")
+expand_mode = 1
+
+[node name="Equipped" type="TextureRect" parent="Background/ShieldContainer/Slot4/BG"]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -24.0
+offset_top = 6.0
+offset_right = -4.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("9_ln1sw")
 expand_mode = 1
 
 [node name="Slot5" type="TextureButton" parent="Background/ShieldContainer"]
@@ -2181,6 +2474,21 @@ grow_horizontal = 0
 texture = ExtResource("8_6g757")
 expand_mode = 1
 
+[node name="Equipped" type="TextureRect" parent="Background/ShieldContainer/Slot5/BG"]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -24.0
+offset_top = 6.0
+offset_right = -4.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("9_ln1sw")
+expand_mode = 1
+
 [node name="Slot6" type="TextureButton" parent="Background/ShieldContainer"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
@@ -2281,6 +2589,21 @@ offset_right = -6.0
 offset_bottom = 26.0
 grow_horizontal = 0
 texture = ExtResource("8_6g757")
+expand_mode = 1
+
+[node name="Equipped" type="TextureRect" parent="Background/ShieldContainer/Slot6/BG"]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -24.0
+offset_top = 6.0
+offset_right = -4.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("9_ln1sw")
 expand_mode = 1
 
 [node name="Slot7" type="TextureButton" parent="Background/ShieldContainer"]
@@ -2385,6 +2708,21 @@ grow_horizontal = 0
 texture = ExtResource("8_6g757")
 expand_mode = 1
 
+[node name="Equipped" type="TextureRect" parent="Background/ShieldContainer/Slot7/BG"]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -24.0
+offset_top = 6.0
+offset_right = -4.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("9_ln1sw")
+expand_mode = 1
+
 [node name="Slot8" type="TextureButton" parent="Background/ShieldContainer"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
@@ -2485,6 +2823,21 @@ offset_right = -6.0
 offset_bottom = 26.0
 grow_horizontal = 0
 texture = ExtResource("8_6g757")
+expand_mode = 1
+
+[node name="Equipped" type="TextureRect" parent="Background/ShieldContainer/Slot8/BG"]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -24.0
+offset_top = 6.0
+offset_right = -4.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("9_ln1sw")
 expand_mode = 1
 
 [node name="Slot9" type="TextureButton" parent="Background/ShieldContainer"]
@@ -2589,6 +2942,21 @@ grow_horizontal = 0
 texture = ExtResource("8_6g757")
 expand_mode = 1
 
+[node name="Equipped" type="TextureRect" parent="Background/ShieldContainer/Slot9/BG"]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -24.0
+offset_top = 6.0
+offset_right = -4.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("9_ln1sw")
+expand_mode = 1
+
 [node name="Slot10" type="TextureButton" parent="Background/ShieldContainer"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
@@ -2689,6 +3057,21 @@ offset_right = -6.0
 offset_bottom = 26.0
 grow_horizontal = 0
 texture = ExtResource("8_6g757")
+expand_mode = 1
+
+[node name="Equipped" type="TextureRect" parent="Background/ShieldContainer/Slot10/BG"]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -24.0
+offset_top = 6.0
+offset_right = -4.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("9_ln1sw")
 expand_mode = 1
 
 [node name="Slot11" type="TextureButton" parent="Background/ShieldContainer"]
@@ -2793,6 +3176,21 @@ grow_horizontal = 0
 texture = ExtResource("8_6g757")
 expand_mode = 1
 
+[node name="Equipped" type="TextureRect" parent="Background/ShieldContainer/Slot11/BG"]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -24.0
+offset_top = 6.0
+offset_right = -4.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("9_ln1sw")
+expand_mode = 1
+
 [node name="Slot12" type="TextureButton" parent="Background/ShieldContainer"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
@@ -2893,6 +3291,21 @@ offset_right = -6.0
 offset_bottom = 26.0
 grow_horizontal = 0
 texture = ExtResource("8_6g757")
+expand_mode = 1
+
+[node name="Equipped" type="TextureRect" parent="Background/ShieldContainer/Slot12/BG"]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -24.0
+offset_top = 6.0
+offset_right = -4.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("9_ln1sw")
 expand_mode = 1
 
 [node name="Slot13" type="TextureButton" parent="Background/ShieldContainer"]
@@ -2997,6 +3410,21 @@ grow_horizontal = 0
 texture = ExtResource("8_6g757")
 expand_mode = 1
 
+[node name="Equipped" type="TextureRect" parent="Background/ShieldContainer/Slot13/BG"]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -24.0
+offset_top = 6.0
+offset_right = -4.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("9_ln1sw")
+expand_mode = 1
+
 [node name="Slot14" type="TextureButton" parent="Background/ShieldContainer"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
@@ -3097,6 +3525,21 @@ offset_right = -6.0
 offset_bottom = 26.0
 grow_horizontal = 0
 texture = ExtResource("8_6g757")
+expand_mode = 1
+
+[node name="Equipped" type="TextureRect" parent="Background/ShieldContainer/Slot14/BG"]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -24.0
+offset_top = 6.0
+offset_right = -4.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("9_ln1sw")
 expand_mode = 1
 
 [node name="Slot15" type="TextureButton" parent="Background/ShieldContainer"]
@@ -3201,12 +3644,195 @@ grow_horizontal = 0
 texture = ExtResource("8_6g757")
 expand_mode = 1
 
+[node name="Equipped" type="TextureRect" parent="Background/ShieldContainer/Slot15/BG"]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -24.0
+offset_top = 6.0
+offset_right = -4.0
+offset_bottom = 26.0
+grow_horizontal = 0
+texture = ExtResource("9_ln1sw")
+expand_mode = 1
+
+[node name="ItemInfo" type="Node2D" parent="Background"]
+visible = false
+
+[node name="BGColor" type="ColorRect" parent="Background/ItemInfo"]
+custom_minimum_size = Vector2(80, 80)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 91.5
+offset_top = 431.5
+offset_right = 171.5
+offset_bottom = 511.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 1, 1)
+
+[node name="BGItemInfo" type="TextureRect" parent="Background/ItemInfo/BGColor"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_kr5lw")
+
+[node name="Sprite" type="TextureRect" parent="Background/ItemInfo/BGColor/BGItemInfo"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("27_gxmsi")
+expand_mode = 1
+
+[node name="BGInfo" type="TextureRect" parent="Background/ItemInfo"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 190.5
+offset_top = 437.5
+offset_right = 472.5
+offset_bottom = 507.5
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("39_smh7n")
+expand_mode = 1
+
+[node name="ItemName" type="Label" parent="Background/ItemInfo/BGInfo"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -138.0
+offset_top = 2.0
+offset_right = 138.0
+offset_bottom = 19.0
+grow_horizontal = 2
+text = "Commom Sword Lv 1"
+label_settings = SubResource("LabelSettings_v1ouu")
+horizontal_alignment = 1
+
+[node name="Atributte1" type="Label" parent="Background/ItemInfo/BGInfo"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -138.0
+offset_top = -12.0
+offset_right = 138.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Damage: +15%"
+label_settings = SubResource("LabelSettings_v1ouu")
+horizontal_alignment = 1
+
+[node name="Atributte2" type="Label" parent="Background/ItemInfo/BGInfo"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -138.0
+offset_top = 12.0
+offset_right = 138.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Critical Damage: +15%"
+label_settings = SubResource("LabelSettings_v1ouu")
+horizontal_alignment = 1
+
+[node name="EquipItem" type="TextureButton" parent="Background/ItemInfo"]
+offset_left = 491.0
+offset_top = 438.0
+offset_right = 572.0
+offset_bottom = 468.0
+texture_normal = ExtResource("40_duy53")
+texture_pressed = ExtResource("40_duy53")
+texture_hover = ExtResource("41_7gyf3")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Background/ItemInfo/EquipItem"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.5
+offset_top = -8.5
+offset_right = 25.5
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Equip"
+label_settings = SubResource("LabelSettings_c03wh")
+
+[node name="UnequipItem" type="TextureButton" parent="Background/ItemInfo"]
+offset_left = 491.0
+offset_top = 476.0
+offset_right = 572.0
+offset_bottom = 506.0
+texture_normal = ExtResource("40_duy53")
+texture_pressed = ExtResource("40_duy53")
+texture_hover = ExtResource("41_7gyf3")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Background/ItemInfo/UnequipItem"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.5
+offset_top = -8.5
+offset_right = 25.5
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Unequip"
+label_settings = SubResource("LabelSettings_c03wh")
+
 [node name="SwordTab" type="TextureButton" parent="Background"]
 layout_mode = 0
 offset_left = 248.0
-offset_top = 126.0
+offset_top = 80.0
 offset_right = 312.0
-offset_bottom = 157.0
+offset_bottom = 111.0
 texture_normal = ExtResource("40_duy53")
 texture_pressed = ExtResource("40_duy53")
 texture_hover = ExtResource("41_7gyf3")
@@ -3232,9 +3858,9 @@ label_settings = SubResource("LabelSettings_h6a4u")
 [node name="ShieldTab" type="TextureButton" parent="Background"]
 layout_mode = 0
 offset_left = 349.0
-offset_top = 126.0
+offset_top = 80.0
 offset_right = 413.0
-offset_bottom = 157.0
+offset_bottom = 111.0
 texture_normal = ExtResource("40_duy53")
 texture_pressed = ExtResource("40_duy53")
 texture_hover = ExtResource("41_7gyf3")
@@ -3270,6 +3896,8 @@ grow_horizontal = 0
 texture_normal = ExtResource("39_tsw0c")
 stretch_mode = 5
 
+[connection signal="pressed" from="Background/ItemInfo/EquipItem" to="." method="_on_equip_item_pressed"]
+[connection signal="pressed" from="Background/ItemInfo/UnequipItem" to="." method="_on_unequip_item_pressed"]
 [connection signal="pressed" from="Background/SwordTab" to="." method="_on_sword_tab_pressed"]
 [connection signal="pressed" from="Background/ShieldTab" to="." method="_on_shield_tab_pressed"]
 [connection signal="pressed" from="Background/Close" to="." method="_on_close_pressed"]

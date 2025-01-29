@@ -54,7 +54,12 @@ func drop() -> void:
 	var base_gold: int = 3
 	var gold_raid_multiplier: float = Data.data_management["raids"]["raid_gold"]["multiplier"]
 	var gold_upgrade_multiplier: float = Data.data_management["upgrades"]["gold"]["multiplier"]
-	var total_gold_multiplier: float = gold_raid_multiplier + gold_upgrade_multiplier
+	var gold_equip_multiplier: float = 0.0#Data.data_management["equipments"]["shield"][Player.]
+	
+	if Player.equipped_shield != "":
+		gold_equip_multiplier = Data.data_management["equipments"]["shield"][Player.equipped_shield.to_lower()]["atributtes"]["gold"]
+		
+	var total_gold_multiplier: float = gold_raid_multiplier + gold_upgrade_multiplier + gold_equip_multiplier
 	
 	match enemy_type:
 		0: # enemy NORMAL
@@ -87,7 +92,7 @@ func get_drop_items() -> Dictionary:
 		
 		"uncommom": {
 			"type": "weapon",
-			"drop_chance": [0.75, 1.0],
+			"drop_chance": [0.75, 0.90],
 			"slot_list": [
 				"slot6", "slot7", "slot8", "slot9", "slot10"
 			]
@@ -95,7 +100,7 @@ func get_drop_items() -> Dictionary:
 		
 		"elite": {
 			"type": "weapon",
-			"drop_chance": [0, 0],
+			"drop_chance": [0.90, 0.94],
 			"slot_list": [
 				"slot11", "slot12"
 			]
@@ -103,7 +108,7 @@ func get_drop_items() -> Dictionary:
 		
 		"epic": {
 			"type": "weapon",
-			"drop_chance": [0, 0],
+			"drop_chance": [0.94, 0.98],
 			"slot_list": [
 				"slot13", "slot14"
 			]
@@ -111,7 +116,7 @@ func get_drop_items() -> Dictionary:
 		
 		"legendary": {
 			"type": "weapon",
-			"drop_chance": [0, 0],
+			"drop_chance": [0.98, 1.0],
 			"slot_list": [
 				"slot15"
 			]
@@ -130,7 +135,7 @@ func get_drop_items() -> Dictionary:
 		
 		"uncommom": {
 			"type": "shield",
-			"drop_chance": [0.75, 1.0],
+			"drop_chance": [0.75, 0.90],
 			"slot_list": [
 				"slot6", "slot7", "slot8", "slot9", "slot10"
 			]
@@ -138,7 +143,7 @@ func get_drop_items() -> Dictionary:
 		
 		"elite": {
 			"type": "shield",
-			"drop_chance": [0, 0],
+			"drop_chance": [0.90, 0.94],
 			"slot_list": [
 				"slot11", "slot12"
 			]
@@ -146,7 +151,7 @@ func get_drop_items() -> Dictionary:
 		
 		"epic": {
 			"type": "shield",
-			"drop_chance": [0, 0],
+			"drop_chance": [0.94, 0.98],
 			"slot_list": [
 				"slot13", "slot14"
 			]
@@ -154,7 +159,7 @@ func get_drop_items() -> Dictionary:
 		
 		"legendary": {
 			"type": "shield",
-			"drop_chance": [0, 0],
+			"drop_chance": [0.98, 1.0],
 			"slot_list": [
 				"slot15"
 			]
@@ -166,17 +171,36 @@ func item_drop() -> void:
 	for rarity in drop_items_list:
 		var spawn_probability: Array = drop_items_list[rarity]["drop_chance"]
 		var rng: float = randf()
-		print("RNG: ", rng)
 
 		if rng > spawn_probability[0] and rng <= spawn_probability[1]:
 			drop_item(rarity, drop_items_list[rarity])
+			return
 
 
 func drop_item(item_rarity: String, item_data: Dictionary) -> void:
 	var data: Dictionary = Data.data_management["equipments"]
 	var slot = item_data["slot_list"].pick_random()
+	var drop_message: String = "Drop: " + item_data["type"].capitalize()
+	var color_message: Color
 	
-	get_tree().call_group("equipments", "add_item", item_data["type"], slot, data[item_data["type"]][slot])
+	if item_rarity == "commom":
+		color_message = Color.SKY_BLUE
+	elif item_rarity == "uncommom":
+		color_message = Color.GREEN
+	elif item_rarity == "elite":
+		color_message = Color.FUCHSIA
+	elif item_rarity == "epic":
+		color_message = Color.GOLD
+	elif item_rarity == "legendary":
+		color_message = Color.RED
+	
+	get_tree().call_group(
+		"loot_box", "add_message", "lootbox_2", drop_message, color_message
+		)
+	get_tree().call_group(
+		"equipments", "add_item", item_data["type"], slot, 
+		data[item_data["type"]][slot]
+		)
 
 
 func set_progresbar() -> void: # atualiza a barra de progresso da vida

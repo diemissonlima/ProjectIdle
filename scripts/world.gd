@@ -143,10 +143,14 @@ func killer_enemy(enemy_type) -> void:
 	if enemy_type == 0 or enemy_type == 1:
 		Data.data_management["statistics"]["monster"]["enemy_" + str(enemy.id)] += 1
 		get_tree().call_group(
-			"loot_box", "add_message", "+ " + World.format_number(enemy.dropped_gold) + \
-			" gold", Color.GREEN
+			"loot_box", "add_message", "lootbox_1", "+ " \
+			+ World.format_number(enemy.dropped_gold) + " gold", Color.GREEN
 			)
-		
+	
+	var rng_drop: float = randf()
+	if rng_drop < 0.15:
+		enemy.item_drop()
+	
 	World.kills += 1
 	
 	if not stop_progress:
@@ -155,7 +159,6 @@ func killer_enemy(enemy_type) -> void:
 		if World.stage_progress > 10:
 			if World.estagio % 5 == 0:
 				Player.skill_points += 1
-				enemy.item_drop()
 				
 				load_background() # carrega um novo background
 				
@@ -214,10 +217,16 @@ func reload_battle() -> void:
 func prestige_points() -> int:
 	var base_points: int = (World.estagio - reset_target) * 1.05
 	var scaling_factor: float = 1.10
-	var multiplier: float = Data.data_management["upgrades"]["prestige_points"]["multiplier"] * 100
+	var upgrade_multiplier: float = Data.data_management["upgrades"]["prestige_points"]["multiplier"]
+	var equip_multiplier: float = 0.0
+	
+	if Player.equipped_shield != "":
+		equip_multiplier = Data.data_management["equipments"]["shield"][Player.equipped_shield.to_lower()]["atributtes"]["prestige_points"]
+		
+	var total_multiplier: float = (upgrade_multiplier + equip_multiplier) * 100
 	var points: float = base_points * pow(scaling_factor, World.reset) # 1.10 ** resets
 	
-	var bonus_points: float = (multiplier * points) / 100
+	var bonus_points: float = (total_multiplier * points) / 100
 	
 	return points + bonus_points
 
@@ -391,8 +400,6 @@ func _on_upgrades_pressed() -> void:
 
 
 func _on_equips_pressed() -> void:
-	get_tree().call_group("equipments", "load_equipment", "weapon")
-	get_tree().call_group("equipments", "load_equipment", "shield")
 	$Interface/Equipments.show()
 
 
