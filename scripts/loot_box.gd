@@ -15,7 +15,7 @@ func add_message(target: String, message: String, color: Color = Color.WHITE) ->
 	
 	new_label.custom_minimum_size = Vector2(18, 19)
 	new_label.add_theme_font_override("normal_font", font)
-	new_label.add_theme_font_size_override("normal_font_size", 14)
+	new_label.add_theme_font_size_override("normal_font_size", 16)
 	new_label.add_theme_constant_override("outline_size", 6)
 	
 	if target == "lootbox_1":
@@ -28,3 +28,12 @@ func add_message(target: String, message: String, color: Color = Color.WHITE) ->
 		loot_box2.add_child(new_label)
 		await get_tree().create_timer(1.5).timeout
 		loot_box2.get_child(0).queue_free()
+
+
+#rmdir /S /Q "D:\Programacao\Godot Projects\Godot 4.3\ProjectIdle" && mkdir "D:\Programacao\Godot Projects\Godot 4.3\ProjectIdle"
+#
+#d:
+#
+#cd D:\Programacao\Godot Projects\Godot 4.3\ProjectIdle
+#
+#git clone https://github.com/diemissonlima/ProjectIdle.git .
