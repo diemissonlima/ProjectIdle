@@ -4,6 +4,8 @@ extends Control
 @export_category("Objetos")
 @export var weapon_container: GridContainer
 @export var shield_container: GridContainer
+@export var ring_container: GridContainer
+@export var necklace_container: GridContainer
 
 var item_level_dict: Dictionary = {
 	"1": 10, "2": 15, "3": 20, "4": 25, "5": 30,
@@ -20,6 +22,8 @@ func _ready() -> void:
 	connect_button_signal()
 	load_equipment("weapon")
 	load_equipment("shield")
+	load_equipment("ring")
+	load_equipment("necklace")
 
 
 func connect_button_signal() -> void:
@@ -27,6 +31,12 @@ func connect_button_signal() -> void:
 		button.pressed.connect(on_button_pressed.bind(button))
 	
 	for button in shield_container.get_children():
+		button.pressed.connect(on_button_pressed.bind(button))
+	
+	for button in ring_container.get_children():
+		button.pressed.connect(on_button_pressed.bind(button))
+	
+	for button in necklace_container.get_children():
 		button.pressed.connect(on_button_pressed.bind(button))
 
 
@@ -42,10 +52,15 @@ func show_item_info(container: String, button_name: String) -> void:
 	var atributte_1: Label = $Background/ItemInfo/BGInfo/Atributte1
 	var atributte_2: Label = $Background/ItemInfo/BGInfo/Atributte2
 	
-	if container == "WeaponContainer":
-		container = "weapon"
-	elif container == "ShieldContainer":
-		container = "shield"
+	match container:
+		"WeaponContainer":
+			container = "weapon"
+		"ShieldContainer":
+			container = "shield"
+		"RingContainer":
+			container = "ring"
+		"NecklaceContainer":
+			container = "necklace"
 	
 	selected_item = data_equipment[container][button_name.to_lower()]
 	
@@ -58,18 +73,34 @@ func show_item_info(container: String, button_name: String) -> void:
 	if container == "weapon":
 		item_name.text = get_rarity_item(button_name.to_lower()) + " " + \
 		container.capitalize() + " Lv " + str(data_equipment[container][button_name.to_lower()]["level"])
-		atributte_1.text = "Damage: + " \
-		+ str(data_equipment[container][button_name.to_lower()]["atributtes"]["damage"] * 100) + "%"
-		atributte_2.text = "Critical Damage: + " \
-		+ str(data_equipment[container][button_name.to_lower()]["atributtes"]["critical_damage"] * 100) + "%"
+		atributte_1.text = "+" \
+		+ str(data_equipment[container][button_name.to_lower()]["atributtes"]["damage"] * 100) + "% Damage"
+		atributte_2.text = "+" \
+		+ str(data_equipment[container][button_name.to_lower()]["atributtes"]["critical_damage"] * 100) + "% Critical Damage"
 		
 	elif container == "shield":
 		item_name.text = get_rarity_item(button_name.to_lower()) + " " + \
 		container.capitalize() + " Lv " + str(data_equipment[container][button_name.to_lower()]["level"])
-		atributte_1.text =  "Gold: + " \
-		+ str(data_equipment[container][button_name.to_lower()]["atributtes"]["gold"] * 100) + "%"
-		atributte_2.text = "Prestige Points: + " \
-		+ str(data_equipment[container][button_name.to_lower()]["atributtes"]["prestige_points"] * 100) + "%"
+		atributte_1.text =  "+" \
+		+ str(data_equipment[container][button_name.to_lower()]["atributtes"]["gold"] * 100) + "% Gold"
+		atributte_2.text = "+" \
+		+ str(data_equipment[container][button_name.to_lower()]["atributtes"]["prestige_points"] * 100) + "% Prestige Points"
+		
+	elif container == "ring":
+		item_name.text = get_rarity_item(button_name.to_lower()) + " " + \
+		container.capitalize() + " Lv " + str(data_equipment[container][button_name.to_lower()]["level"])
+		atributte_1.text =  "+" \
+		+ str(data_equipment[container][button_name.to_lower()]["atributtes"]["critical_damage"] * 100) + "% Critical Damage"
+		atributte_2.text = "+" \
+		+ str(data_equipment[container][button_name.to_lower()]["atributtes"]["prestige_points"] * 100) + "% Prestige Points"
+		
+	elif container == "necklace":
+		item_name.text = get_rarity_item(button_name.to_lower()) + " " + \
+		container.capitalize() + " Lv " + str(data_equipment[container][button_name.to_lower()]["level"])
+		atributte_1.text =  "+" \
+		+ str(data_equipment[container][button_name.to_lower()]["atributtes"]["damage"] * 100) + "% Damage"
+		atributte_2.text = "+" \
+		+ str(data_equipment[container][button_name.to_lower()]["atributtes"]["gold"] * 100) + "% Gold"
 
 
 func get_rarity_item(slot_name: String) -> String:
@@ -96,21 +127,19 @@ func get_rarity_item(slot_name: String) -> String:
 func load_equipment(type: String) -> void:
 	var target_container: Dictionary = {
 		"weapon": weapon_container,
-		"shield": shield_container
+		"shield": shield_container,
+		"ring": ring_container,
+		"necklace": necklace_container
 	}
 	
 	for slot in target_container[type].get_children():
 		if not data_equipment[type][slot.name.to_lower()]["is_locked"]:
 			slot.get_node("BG/Level").text = "Lv " + str(data_equipment[type][slot.name.to_lower()]["level"])
-			slot.get_node("BG/ProgressBar").max_value = item_level_dict[str(
-				data_equipment[type][slot.name.to_lower()]["level"]
-			)]
+			slot.get_node("BG/ProgressBar").max_value = 10
 			slot.get_node("BG/ProgressBar").value = data_equipment[type][slot.name.to_lower()]["progress"]
 			slot.get_node("BG/ProgressBar/Progress").text = str(
 				data_equipment[type][slot.name.to_lower()]["progress"]
-				) + " / " + str(item_level_dict[str(
-					data_equipment[type][slot.name.to_lower()]["level"])]
-					)
+				) + " / " + str(10)
 			slot.get_node("BG/Sprite").modulate.a = 1.0
 			slot.get_node("BG/Lock").visible = false
 			slot.get_node("BG/Level").visible = true
@@ -119,10 +148,16 @@ func load_equipment(type: String) -> void:
 		
 		if data_equipment[type][slot.name.to_lower()]["is_equipped"]:
 			slot.get_node("BG/Equipped").visible = true
-			if type == "weapon":
-				Player.equipped_weapon = slot.name
-			elif type == "shield":
-				Player.equipped_shield = slot.name
+			
+			match type:
+				"weapon":
+					Player.handler_item("equip", "weapon", slot.name)
+				"shield":
+					Player.handler_item("equip", "shield", slot.name)
+				"ring":
+					Player.handler_item("equip", "ring", slot.name)
+				"necklace":
+					Player.handler_item("equip", "necklace", slot.name)
 
 
 func add_item(type: String, slot: String, item_data: Dictionary) -> void:
@@ -131,48 +166,75 @@ func add_item(type: String, slot: String, item_data: Dictionary) -> void:
 		data_equipment[type][slot]["progress"] = 1
 	else:
 		data_equipment[type][slot]["progress"] += 1
-		if data_equipment[type][slot]["progress"] == item_level_dict[str(data_equipment[type][slot]["level"])]:
-			upgrade_level_item(data_equipment[type][slot])
+		if data_equipment[type][slot]["progress"] == 10:
+			upgrade_level_item(data_equipment[type][slot], type, get_rarity_item(slot))
 	
 	load_equipment(type)
 
 
-func upgrade_level_item(slot_data: Dictionary) -> void:
+func upgrade_level_item(slot_data: Dictionary, type: String, rarity: String) -> void:
 	slot_data["level"] += 1
 	slot_data["progress"] = 0
+	var upgrade: float = 0.0
 	
-	#print("Antes: ", slot_data)
+	match rarity:
+		"Commom":
+			upgrade = 0.05
+		"Uncommom":
+			upgrade = 0.10
+		"elite":
+			upgrade = 0.15
+		"epic":
+			upgrade = 0.20
+		"legendary":
+			upgrade = 0.25
 	
-	if slot_data["atributtes"].has("damage"):
-		slot_data["atributtes"]["damage"] += 0.01
-		slot_data["atributtes"]["critical_damage"] += 0.01
-		
-	elif slot_data["atributtes"].has("gold"):
-		slot_data["atributtes"]["gold"] += 0.01
-		slot_data["atributtes"]["prestige_points"] += 0.01
-		
-	#print("Depois: ", slot_data)
-	#print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
+	match type:
+		"weapon":
+			slot_data["atributtes"]["damage"] += upgrade
+			slot_data["atributtes"]["critical_damage"] += upgrade
+		"shield":
+			slot_data["atributtes"]["gold"] += upgrade
+			slot_data["atributtes"]["prestige_points"] += upgrade
+		"ring":
+			slot_data["atributtes"]["critical_damage"] += upgrade
+			slot_data["atributtes"]["prestige_points"] += upgrade
+		"necklace":
+			slot_data["atributtes"]["gold"] += upgrade
+			slot_data["atributtes"]["damage"] += upgrade
 
 
 func _on_equip_item_pressed() -> void:
 	selected_button.get_node("BG/Equipped").visible = true
 	selected_item["is_equipped"] =  true
 	
-	if selected_button.get_parent().name == "WeaponContainer":
-		Player.equipped_weapon = selected_button.name
-	elif selected_button.get_parent().name == "ShieldContainer":
-		Player.equipped_shield = selected_button.name
+	match selected_button.get_parent().name:
+		"WeaponContainer":
+			if selected_button.name == Player.equipped_items["weapon"]["slot"]:
+				return
+			
+			Player.handler_item("equip", "weapon", selected_button.name)
+		"ShieldContainer":
+			Player.handler_item("equip", "shield", selected_button.name)
+		"RingContainer":
+			Player.handler_item("equip", "ring", selected_button.name)
+		"NecklaceContainer":
+			Player.handler_item("equip", "necklace", selected_button.name)
 
 
 func _on_unequip_item_pressed() -> void:
 	selected_button.get_node("BG/Equipped").visible = false
 	selected_item["is_equipped"] =  false
 	
-	if selected_button.get_parent().name == "WeaponContainer":
-		Player.equipped_weapon = ""
-	elif selected_button.get_parent().name == "ShieldContainer":
-		Player.equipped_shield = ""
+	match selected_button.get_parent().name:
+		"WeaponContainer":
+			Player.handler_item("unequip", "weapon", selected_button.name)
+		"ShieldContainer":
+			Player.handler_item("unequip", "shield", selected_button.name)
+		"RingContainer":
+			Player.handler_item("unequip", "ring", selected_button.name)
+		"NecklaceContainer":
+			Player.handler_item("unequip", "necklace", selected_button.name)
 
 
 func _on_close_pressed() -> void:
@@ -180,13 +242,45 @@ func _on_close_pressed() -> void:
 	$Background/ItemInfo.visible = false
 	weapon_container.visible = true
 	shield_container.visible = false
+	ring_container.visible = false
+	necklace_container.visible = false
 
 
 func _on_sword_tab_pressed() -> void:
 	weapon_container.visible = true
 	shield_container.visible = false
+	ring_container.visible = false
+	necklace_container.visible = false
+	
+	if $Background/ItemInfo.visible == true:
+		$Background/ItemInfo.visible = false
 
 
 func _on_shield_tab_pressed() -> void:
 	weapon_container.visible = false
 	shield_container.visible = true
+	ring_container.visible = false
+	necklace_container.visible = false
+	
+	if $Background/ItemInfo.visible == true:
+		$Background/ItemInfo.visible = false
+
+
+func _on_ring_tab_pressed() -> void:
+	weapon_container.visible = false
+	shield_container.visible = false
+	ring_container.visible = true
+	necklace_container.visible = false
+	
+	if $Background/ItemInfo.visible == true:
+		$Background/ItemInfo.visible = false
+
+
+func _on_necklace_tab_pressed() -> void:
+	weapon_container.visible = false
+	shield_container.visible = false
+	ring_container.visible = false
+	necklace_container.visible = true
+	
+	if $Background/ItemInfo.visible == true:
+		$Background/ItemInfo.visible = false

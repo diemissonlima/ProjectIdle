@@ -13,11 +13,40 @@ var bonus_critical_chance: float
 # recursos
 var gold: int
 var prestige_points: int
+var points: int
 var skill_points: int
 
 # itens equipados
-var equipped_weapon: String = ""
-var equipped_shield: String = ""
+var equipped_items: Dictionary = {
+	"weapon": {
+		"slot": "",
+		"bonus_attributes": {
+			"damage": 0.0,
+			"critical_damage": 0.0
+		}
+	},
+	"shield": {
+		"slot": "",
+		"bonus_attributes": {
+			"gold": 0.0,
+			"prestige_points": 0.0
+		}
+	},
+	"ring": {
+		"slot": "",
+		"bonus_attributes": {
+			"critical_damage": 0.0,
+			"prestige_points": 0.0
+		}
+	},
+	"necklace": {
+		"slot": "",
+		"bonus_attributes": {
+			"gold": 0.0,
+			"damage": 0.0
+		}
+	}
+}
 
 # skills
 var attack_skill_level: int = 1
@@ -63,6 +92,7 @@ func load_data() -> void:
 	gold = data["gold"]
 	skill_points = data["skill_points"]
 	prestige_points = data["prestige_points"]
+	points = Data.data_management["statistics"]["points"]
 	x_upgrade_ataque = data["x_upgrade_ataque"]
 	x_upgrade_time = data["x_upgrade_time"]
 	skill_duration = data_upgrade["skill_duration"]["multiplier"]
@@ -94,6 +124,7 @@ func save_data() -> void:
 	data["gold"] = gold
 	data["skill_points"] = skill_points
 	data["prestige_points"] = prestige_points
+	Data.data_management["statistics"]["points"] = points
 	data["x_upgrade_ataque"] = x_upgrade_ataque
 	data["x_upgrade_time"] = x_upgrade_time
 	data_upgrade["skill_duration"]["multiplier"] = skill_duration
@@ -116,17 +147,28 @@ func save_data() -> void:
 	Data.save_data()
 
 
+func handler_item(state: String, equipment_type: String, slot: String) -> void:
+	var data_equipment: Dictionary = Data.data_management["equipments"][equipment_type][slot.to_lower()]
+	
+	if state == "equip":
+		equipped_items[equipment_type]["slot"] = slot
+		equipped_items[equipment_type]["bonus_attributes"] = data_equipment["atributtes"].duplicate()
+		
+	elif state == "unequip":
+		equipped_items[equipment_type]["slot"] = ""
+		for key in equipped_items[equipment_type]["bonus_attributes"].keys():
+			equipped_items[equipment_type]["bonus_attributes"][key] = 0.0
+
+
 func alter_attack() -> void:
 	var critical_chance_multiplier: float = Data.data_management["upgrades"]["critical_chance"]["multiplier"]
 	var raid_damage_multiplier: float = Data.data_management["raids"]["raid_damage"]["multiplier"]
 	var upgrade_damage_multiplier: float = Data.data_management["upgrades"]["damage"]["multiplier"]
-	var equipped_weapon_damage_multiplier: float = 0.0
-	
-	if equipped_weapon != "":
-		equipped_weapon_damage_multiplier = Data.data_management["equipments"]["weapon"][equipped_weapon.to_lower()]["atributtes"]["damage"]
+	var equipment_damage_multiplier: float = equipped_items["weapon"]["bonus_attributes"]["damage"] \
+	 + equipped_items["necklace"]["bonus_attributes"]["damage"]
 	
 	var damage_multiplier: float = (
-		raid_damage_multiplier + upgrade_damage_multiplier + equipped_weapon_damage_multiplier
+		raid_damage_multiplier + upgrade_damage_multiplier + equipment_damage_multiplier
 		) * 100
 	
 	damage_total = damage + ((damage_multiplier * damage) / 100)
@@ -139,13 +181,11 @@ func alter_attack() -> void:
 	if rng <= critical_chance + critical_chance_multiplier:
 		var upgrade_critical_damage_multiplier: float = Data.data_management["upgrades"]["critical_damage"]["multiplier"]
 		var raid_critical_damage_multiplier: float = Data.data_management["raids"]["raid_critical"]["multiplier"]
-		var equipped_weapon_critical_damage_multiplier: float = 0.0
-		
-		if equipped_weapon != "":
-			equipped_weapon_critical_damage_multiplier = Data.data_management["equipments"]["weapon"][equipped_weapon.to_lower()]["atributtes"]["critical_damage"]
+		var equipment_critical_damage_multiplier: float = equipped_items["weapon"]["bonus_attributes"]["critical_damage"] \
+		+ equipped_items["ring"]["bonus_attributes"]["critical_damage"]
 		
 		var critical_damage_multiplier: float = (
-			upgrade_critical_damage_multiplier + raid_critical_damage_multiplier + equipped_weapon_critical_damage_multiplier
+			upgrade_critical_damage_multiplier + raid_critical_damage_multiplier + equipment_critical_damage_multiplier
 			) * 100
 		
 		bonus_damage = (critical_damage_multiplier * damage_total) / 100

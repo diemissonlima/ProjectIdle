@@ -16,37 +16,32 @@ extends Control
 func update_label() -> void:
 	var raids: Dictionary = Data.data_management["raids"]
 	var upgrade: Dictionary = Data.data_management["upgrades"]
-	var weapon_data: Dictionary = Data.data_management["equipments"]["weapon"]
-	var shield_data: Dictionary = Data.data_management["equipments"]["shield"]
+	var equipments: Dictionary = Player.equipped_items
 	
-	
-	var total_gold_boost = (raids["raid_gold"]["multiplier"] + upgrade["gold"]["multiplier"]) * 100
-	var total_dps_boost = (raids["raid_damage"]["multiplier"] + upgrade["damage"]["multiplier"]) * 100
-	var total_prestige_boost = upgrade["prestige_points"]["multiplier"] * 100
-	var total_c_damage_boost = (raids["raid_critical"]["multiplier"] + upgrade["critical_damage"]["multiplier"]) * 100
-	var total_critical_chance = (Player.critical_chance + upgrade["critical_chance"]["multiplier"]) * 100
-	
-	if Player.equipped_shield != "":
-		total_gold_boost = (
-			raids["raid_gold"]["multiplier"] + upgrade["gold"]["multiplier"] 
-			+ shield_data[Player.equipped_shield.to_lower()]["atributtes"]["gold"]
-			) * 100
-			
-		total_prestige_boost = (
-			upgrade["prestige_points"]["multiplier"] + 
-			shield_data[Player.equipped_shield.to_lower()]["atributtes"]["prestige_points"]
-			) * 100
-	
-	if Player.equipped_weapon != "":
-		total_dps_boost = (
-			raids["raid_damage"]["multiplier"] + upgrade["damage"]["multiplier"] + 
-			weapon_data[Player.equipped_weapon.to_lower()]["atributtes"]["damage"]
+	var total_gold_boost = (
+		raids["raid_gold"]["multiplier"] + upgrade["gold"]["multiplier"] \
+		+ equipments["shield"]["bonus_attributes"]["gold"] \
+		+ equipments["necklace"]["bonus_attributes"]["gold"]
 		) * 100
 		
-		total_c_damage_boost = (
-			raids["raid_critical"]["multiplier"] + upgrade["critical_damage"]["multiplier"] + 
-			weapon_data[Player.equipped_weapon.to_lower()]["atributtes"]["critical_damage"]
+	var total_dps_boost = (
+		raids["raid_damage"]["multiplier"] + upgrade["damage"]["multiplier"] \
+		+ equipments["weapon"]["bonus_attributes"]["damage"] \
+		+ equipments["necklace"]["bonus_attributes"]["damage"]
 		) * 100
+		
+	var total_prestige_boost = (
+		upgrade["prestige_points"]["multiplier"] + equipments["shield"]["bonus_attributes"]["prestige_points"] \
+		+ equipments["ring"]["bonus_attributes"]["prestige_points"]
+		) * 100
+	
+	var total_c_damage_boost = (
+		raids["raid_critical"]["multiplier"] + upgrade["critical_damage"]["multiplier"] \
+		+ equipments["weapon"]["bonus_attributes"]["critical_damage"] \
+		+ equipments["ring"]["bonus_attributes"]["critical_damage"]
+		) * 100
+		
+	var total_critical_chance = (Player.critical_chance + upgrade["critical_chance"]["multiplier"]) * 100
 	
 	game_time.text = "Gametime: " + format_gameplay_time()
 	average_stage.text = "Highest Stage: " + str(World.avg_estagio)

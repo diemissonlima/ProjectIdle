@@ -28,12 +28,3 @@ func add_message(target: String, message: String, color: Color = Color.WHITE) ->
 		loot_box2.add_child(new_label)
 		await get_tree().create_timer(1.5).timeout
 		loot_box2.get_child(0).queue_free()
-
-
-#rmdir /S /Q "D:\Programacao\Godot Projects\Godot 4.3\ProjectIdle" && mkdir "D:\Programacao\Godot Projects\Godot 4.3\ProjectIdle"
-#
-#d:
-#
-#cd D:\Programacao\Godot Projects\Godot 4.3\ProjectIdle
-#
-#git clone https://github.com/diemissonlima/ProjectIdle.git .
