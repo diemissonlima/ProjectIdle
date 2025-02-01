@@ -7351,9 +7351,9 @@ label_settings = SubResource("LabelSettings_v1ouu")
 
 [node name="EquipItem" type="TextureButton" parent="Background/ItemInfo"]
 offset_left = 491.0
-offset_top = 438.0
+offset_top = 448.0
 offset_right = 572.0
-offset_bottom = 468.0
+offset_bottom = 498.0
 texture_normal = ExtResource("40_duy53")
 texture_pressed = ExtResource("40_duy53")
 texture_hover = ExtResource("41_7gyf3")
@@ -7374,33 +7374,6 @@ offset_bottom = 8.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Equip"
-label_settings = SubResource("LabelSettings_c03wh")
-
-[node name="UnequipItem" type="TextureButton" parent="Background/ItemInfo"]
-offset_left = 491.0
-offset_top = 476.0
-offset_right = 572.0
-offset_bottom = 506.0
-texture_normal = ExtResource("40_duy53")
-texture_pressed = ExtResource("40_duy53")
-texture_hover = ExtResource("41_7gyf3")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="Label" type="Label" parent="Background/ItemInfo/UnequipItem"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -25.5
-offset_top = -8.5
-offset_right = 25.5
-offset_bottom = 8.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "Unequip"
 label_settings = SubResource("LabelSettings_c03wh")
 
 [node name="SwordTab" type="TextureButton" parent="Background"]
@@ -7533,7 +7506,6 @@ texture_normal = ExtResource("39_tsw0c")
 stretch_mode = 5
 
 [connection signal="pressed" from="Background/ItemInfo/EquipItem" to="." method="_on_equip_item_pressed"]
-[connection signal="pressed" from="Background/ItemInfo/UnequipItem" to="." method="_on_unequip_item_pressed"]
 [connection signal="pressed" from="Background/SwordTab" to="." method="_on_sword_tab_pressed"]
 [connection signal="pressed" from="Background/ShieldTab" to="." method="_on_shield_tab_pressed"]
 [connection signal="pressed" from="Background/RingTab" to="." method="_on_ring_tab_pressed"]

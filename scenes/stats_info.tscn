@@ -21,7 +21,7 @@ font_size = 20
 font = ExtResource("2_3wqe3")
 font_size = 20
 
-[node name="StatsInfo" type="Control" node_paths=PackedStringArray("game_time", "average_stage", "total_gold", "total_resets", "monster_kill", "dps_boost", "gold_boost", "prestige_boost", "critical_chance", "critical_damage") groups=["stats_info"]]
+[node name="StatsInfo" type="Control" node_paths=PackedStringArray("game_time", "average_stage", "total_gold", "total_resets", "monster_kill", "points", "dps_boost", "gold_boost", "prestige_boost", "critical_chance", "critical_damage") groups=["stats_info"]]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -36,6 +36,7 @@ average_stage = NodePath("Background/VBoxContainer/LabelAvgStage")
 total_gold = NodePath("Background/VBoxContainer/LabelTotalGold")
 total_resets = NodePath("Background/VBoxContainer/LabelResets")
 monster_kill = NodePath("Background/VBoxContainer/LabelMonsterKill")
+points = NodePath("Background/VBoxContainer2/LabelPoints")
 dps_boost = NodePath("Background/VBoxContainer2/LabelDpsBoost")
 gold_boost = NodePath("Background/VBoxContainer2/LabelGoldBoost")
 prestige_boost = NodePath("Background/VBoxContainer2/LabelPrestigeBoost")
@@ -118,6 +119,13 @@ offset_top = 112.0
 offset_right = 643.0
 offset_bottom = 277.0
 theme_override_constants/separation = 15
+
+[node name="LabelPoints" type="Label" parent="Background/VBoxContainer2"]
+layout_mode = 2
+text = "Points: 1572"
+label_settings = SubResource("LabelSettings_yt8sq")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="LabelDpsBoost" type="Label" parent="Background/VBoxContainer2"]
 layout_mode = 2

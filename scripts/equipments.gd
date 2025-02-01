@@ -158,6 +158,9 @@ func load_equipment(type: String) -> void:
 					Player.handler_item("equip", "ring", slot.name)
 				"necklace":
 					Player.handler_item("equip", "necklace", slot.name)
+					
+		else:
+			slot.get_node("BG/Equipped").visible = false
 
 
 func add_item(type: String, slot: String, item_data: Dictionary) -> void:
@@ -173,21 +176,22 @@ func add_item(type: String, slot: String, item_data: Dictionary) -> void:
 
 
 func upgrade_level_item(slot_data: Dictionary, type: String, rarity: String) -> void:
+	var upgrade: float = 0.0
+	
 	slot_data["level"] += 1
 	slot_data["progress"] = 0
-	var upgrade: float = 0.0
 	
 	match rarity:
 		"Commom":
-			upgrade = 0.05
-		"Uncommom":
 			upgrade = 0.10
-		"elite":
-			upgrade = 0.15
-		"epic":
+		"Uncommom":
 			upgrade = 0.20
+		"elite":
+			upgrade = 0.30
+		"epic":
+			upgrade = 0.40
 		"legendary":
-			upgrade = 0.25
+			upgrade = 0.50
 	
 	match type:
 		"weapon":
@@ -210,31 +214,48 @@ func _on_equip_item_pressed() -> void:
 	
 	match selected_button.get_parent().name:
 		"WeaponContainer":
-			if selected_button.name == Player.equipped_items["weapon"]["slot"]:
+			if Player.equipped_items["weapon"]["slot"] == "":
+				Player.handler_item("equip", "weapon", selected_button.name)
+				
+			elif selected_button.name == Player.equipped_items["weapon"]["slot"]:
 				return
+				
+			else:
+				Player.handler_item("unequip", "weapon", Player.equipped_items["weapon"]["slot"])
+				Player.handler_item("equip", "weapon", selected_button.name)
 			
-			Player.handler_item("equip", "weapon", selected_button.name)
 		"ShieldContainer":
-			Player.handler_item("equip", "shield", selected_button.name)
+			if Player.equipped_items["shield"]["slot"] == "":
+				Player.handler_item("equip", "shield", selected_button.name)
+				
+			elif selected_button.name == Player.equipped_items["shield"]["slot"]:
+				return
+				
+			else:
+				Player.handler_item("unequip", "shield", Player.equipped_items["shield"]["slot"])
+				Player.handler_item("equip", "shield", selected_button.name)
+			
 		"RingContainer":
-			Player.handler_item("equip", "ring", selected_button.name)
-		"NecklaceContainer":
-			Player.handler_item("equip", "necklace", selected_button.name)
+			if Player.equipped_items["ring"]["slot"] == "":
+				Player.handler_item("equip", "ring", selected_button.name)
+				
+			elif selected_button.name == Player.equipped_items["ring"]["slot"]:
+				return
+				
+			else:
+				Player.handler_item("unequip", "ring", Player.equipped_items["ring"]["slot"])
+				Player.handler_item("equip", "ring", selected_button.name)
 
-
-func _on_unequip_item_pressed() -> void:
-	selected_button.get_node("BG/Equipped").visible = false
-	selected_item["is_equipped"] =  false
-	
-	match selected_button.get_parent().name:
-		"WeaponContainer":
-			Player.handler_item("unequip", "weapon", selected_button.name)
-		"ShieldContainer":
-			Player.handler_item("unequip", "shield", selected_button.name)
-		"RingContainer":
-			Player.handler_item("unequip", "ring", selected_button.name)
 		"NecklaceContainer":
-			Player.handler_item("unequip", "necklace", selected_button.name)
+			if Player.equipped_items["necklace"]["slot"] == "":
+				Player.handler_item("equip", "necklace", selected_button.name)
+				
+			elif selected_button.name == Player.equipped_items["necklace"]["slot"]:
+				return
+				
+			else:
+				Player.handler_item("unequip", "necklace", Player.equipped_items["necklace"]["slot"])
+				Player.handler_item("equip", "necklace", selected_button.name)
 
 
 func _on_close_pressed() -> void:

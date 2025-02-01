@@ -29,7 +29,6 @@ extends Control
 
 var prestige_points_awarded: int = 0
 var reset_target: int = 50
-var timer_farm: float = 0.5
 var stop_progress: bool = false
 var raid_fight: bool = false
 

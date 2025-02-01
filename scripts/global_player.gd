@@ -155,9 +155,8 @@ func handler_item(state: String, equipment_type: String, slot: String) -> void:
 		equipped_items[equipment_type]["bonus_attributes"] = data_equipment["atributtes"].duplicate()
 		
 	elif state == "unequip":
-		equipped_items[equipment_type]["slot"] = ""
-		for key in equipped_items[equipment_type]["bonus_attributes"].keys():
-			equipped_items[equipment_type]["bonus_attributes"][key] = 0.0
+		data_equipment["is_equipped"] = false
+		get_tree().call_group("equipments", "load_equipment", equipment_type)
 
 
 func alter_attack() -> void:

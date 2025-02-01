@@ -6,6 +6,7 @@ extends Control
 @export var total_gold: Label
 @export var total_resets: Label
 @export var monster_kill: Label
+@export var points: Label
 @export var dps_boost: Label
 @export var gold_boost: Label
 @export var prestige_boost: Label
@@ -47,7 +48,8 @@ func update_label() -> void:
 	average_stage.text = "Highest Stage: " + str(World.avg_estagio)
 	total_gold.text = "Total Gold: " + World.format_number(World.gold_gain)
 	total_resets.text = "Total Resets: " + str(World.reset)
-	monster_kill.text = "Monster Kill: " + str(World.kills)
+	monster_kill.text = "Enemy Kills: " + str(World.kills)
+	points.text = "Points: " + str(Player.points)
 	dps_boost.text = "DPS Boost: +" + str(total_dps_boost) + "%"
 	gold_boost.text = "Gold Boost: +" + str(total_gold_boost) + "%"
 	prestige_boost.text = "P. Points Boost: +" + str(total_prestige_boost) + "%"
