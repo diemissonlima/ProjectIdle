@@ -26,6 +26,7 @@ extends Control
 @export_category("Variaveis")
 @export var enemy_list: Array[PackedScene]
 @export var enemy_list2: Array[PackedScene]
+@export var drop_chance: float
 
 var prestige_points_awarded: int = 0
 var reset_target: int = 50
@@ -147,8 +148,8 @@ func killer_enemy(enemy_type) -> void:
 			)
 	
 	var rng_drop: float = randf()
-	#if rng_drop < 0.10:
-	enemy.item_drop()
+	if rng_drop < drop_chance:
+		enemy.item_drop()
 	
 	World.kills += 1
 	

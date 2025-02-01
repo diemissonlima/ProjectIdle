@@ -48,7 +48,7 @@ func set_label_info() -> void:
 	label_gametime.text = "Tempo de Jogo: " + get_gametime()
 	label_current_stage.text = "Estagio Atual: " + str(data["world"]["current_stage"])
 	label_max_stage.text = "Estagio Maximo: " + str(data["world"]["highest_stage"])
-	label_current_gold.text = "Gold: " + str(data["player"]["gold"])
+	label_current_gold.text = "Gold: " + World.format_number(data["player"]["gold"])
 	label_resets.text = "Resets: " + str(data["world"]["reset"])
 
 
@@ -58,7 +58,7 @@ func get_gametime() -> String:
 	var minute = (int(gametime) % 3600) / 60
 	var second = int(gametime) % 60
 	
-	return "%02d:%02d:%02d" % [hour, minute, second]
+	return "%02dh : %02dm : %02ds" % [hour, minute, second]
 
 
 func _on_new_game_pressed() -> void:

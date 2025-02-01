@@ -16,6 +16,7 @@ var item_level_dict: Dictionary = {
 var data_equipment: Dictionary = Data.data_management["equipments"]
 var selected_item
 var selected_button
+var equipment_type: String = ""
 
 
 func _ready() -> void:
@@ -24,6 +25,76 @@ func _ready() -> void:
 	load_equipment("shield")
 	load_equipment("ring")
 	load_equipment("necklace")
+
+
+func drop_item() -> void:
+	var rng: float = 0.0
+	var slot: String = ""
+	var equipment_type: String = ""
+	var rarity: String = ""
+	
+	var slot_list: Array = []
+	var item_attribute: Array = [
+		"damage", "critical_damage", "prestige_points", "gold"
+	]
+	var type_list: Array = [
+		"weapon", "shield", "ring", "necklace"
+	]
+	var attribute_range: Array = []
+	
+	var item_attribute_1: String = item_attribute.pick_random()
+	var item_attribute_2: String = item_attribute.pick_random()
+	
+	var item_info: Dictionary = {}
+	
+	
+	rng = randf()
+	if rng > 0.0 and rng <= 0.75:
+		rarity = "Commom"
+		slot_list = ["slot1", "slot2", "slot3", "slot4", "slot5"]
+		attribute_range = [30, 50]
+	elif rng > 0.75 and rng <= 0.90:
+		rarity = "Uncommom"
+		slot_list = ["slot6", "slot7", "slot8", "slot9", "slot10"]
+		attribute_range = [51, 80]
+	elif rng > 0.90 and rng <= 0.95:
+		rarity = "Elite"
+		slot_list = ["slot11", "slot12"]
+		attribute_range = [81, 100]
+		rarity = "Epic"
+		slot_list = ["slot13", "slot14"]
+		attribute_range = [101, 150]
+	elif rng > 0.99 and rng <= 1.0:
+		rarity = "Legendary"
+		slot_list = ["slot15"]
+		attribute_range = [151, 200]
+	
+	while item_attribute_2 == item_attribute_1:
+		item_attribute_2 = item_attribute.pick_random()
+		if item_attribute_2 != item_attribute_1:
+			break
+	
+	var attribute_value_1: float = (randi_range(attribute_range[0], attribute_range[1]) / 100.0)
+	var attribute_value_2: float = (randi_range(attribute_range[0], attribute_range[1]) / 100.0)
+	
+	slot = slot_list.pick_random()
+	equipment_type = type_list.pick_random()
+	
+	item_info = {
+		"slot": slot,
+		"rarity": rarity,
+		"type": equipment_type,
+		"atributtes": {
+			item_attribute_1: attribute_value_1,
+			item_attribute_2: attribute_value_2
+		}
+	}
+	
+	print(item_info)
+	
+	Data.data_management["equipments"][equipment_type][slot.to_lower()]["atributtes"] = (
+		item_info["atributtes"]
+	)
 
 
 func connect_button_signal() -> void:
@@ -62,6 +133,7 @@ func show_item_info(container: String, button_name: String) -> void:
 		"NecklaceContainer":
 			container = "necklace"
 	
+	equipment_type = container
 	selected_item = data_equipment[container][button_name.to_lower()]
 	
 	item_texture.texture = load(
@@ -212,50 +284,15 @@ func _on_equip_item_pressed() -> void:
 	selected_button.get_node("BG/Equipped").visible = true
 	selected_item["is_equipped"] =  true
 	
-	match selected_button.get_parent().name:
-		"WeaponContainer":
-			if Player.equipped_items["weapon"]["slot"] == "":
-				Player.handler_item("equip", "weapon", selected_button.name)
-				
-			elif selected_button.name == Player.equipped_items["weapon"]["slot"]:
-				return
-				
-			else:
-				Player.handler_item("unequip", "weapon", Player.equipped_items["weapon"]["slot"])
-				Player.handler_item("equip", "weapon", selected_button.name)
-			
-		"ShieldContainer":
-			if Player.equipped_items["shield"]["slot"] == "":
-				Player.handler_item("equip", "shield", selected_button.name)
-				
-			elif selected_button.name == Player.equipped_items["shield"]["slot"]:
-				return
-				
-			else:
-				Player.handler_item("unequip", "shield", Player.equipped_items["shield"]["slot"])
-				Player.handler_item("equip", "shield", selected_button.name)
-			
-		"RingContainer":
-			if Player.equipped_items["ring"]["slot"] == "":
-				Player.handler_item("equip", "ring", selected_button.name)
-				
-			elif selected_button.name == Player.equipped_items["ring"]["slot"]:
-				return
-				
-			else:
-				Player.handler_item("unequip", "ring", Player.equipped_items["ring"]["slot"])
-				Player.handler_item("equip", "ring", selected_button.name)
-
-		"NecklaceContainer":
-			if Player.equipped_items["necklace"]["slot"] == "":
-				Player.handler_item("equip", "necklace", selected_button.name)
-				
-			elif selected_button.name == Player.equipped_items["necklace"]["slot"]:
-				return
-				
-			else:
-				Player.handler_item("unequip", "necklace", Player.equipped_items["necklace"]["slot"])
-				Player.handler_item("equip", "necklace", selected_button.name)
+	if Player.equipped_items[equipment_type]["slot"] == "":
+		Player.handler_item("equip", equipment_type, selected_button.name)
+	
+	elif selected_button.name == Player.equipped_items[equipment_type]["slot"]:
+		return
+		
+	else:
+		Player.handler_item("unequip", equipment_type, Player.equipped_items[equipment_type]["slot"])
+		Player.handler_item("equip", equipment_type, selected_button.name)
 
 
 func _on_close_pressed() -> void:

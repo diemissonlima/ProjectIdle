@@ -65,7 +65,7 @@ func format_gameplay_time() -> String:
 	if hours <= 0:
 		return "%02dm : %02ds" % [minutes, seconds]
 	
-	return "%02dh : %02dm : %02ds" % [hours, minutes, seconds]
+	return "%02d : %02d : %02d" % [hours, minutes, seconds]
 
 
 func _on_close_pressed() -> void:
