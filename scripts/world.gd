@@ -41,7 +41,7 @@ func _ready() -> void:
 	set_label_upgrade() # seta as labels que informa o custo do upgrade
 	spawn_enemy() # spawna o inimigo
 	timer_player_attack.start(Player.attack_speed)
-	#timer_save_game.start()
+	timer_save_game.start()
 	
 	if World.stage_progress == 10:
 		timer_batalha.start(World.battle_time)
@@ -137,9 +137,15 @@ func killer_enemy(enemy_type) -> void:
 	
 	get_tree().call_group("enemy", "next_health")
 	raid_fight = false
+	
+	enemy.drop()
 	Player.gold += enemy.dropped_gold
 	World.gold_gain += enemy.dropped_gold
 	
+	var rng_drop: float = randf()
+	if rng_drop < drop_chance:
+		enemy.item_drop()
+		
 	if enemy_type == 0 or enemy_type == 1:
 		Data.data_management["statistics"]["monster"]["enemy_" + str(enemy.id)] += 1
 		get_tree().call_group(
@@ -147,19 +153,15 @@ func killer_enemy(enemy_type) -> void:
 			+ World.format_number(enemy.dropped_gold) + " gold", Color.GREEN
 			)
 	
-	var rng_drop: float = randf()
-	if rng_drop < drop_chance:
-		enemy.item_drop()
-	
 	World.kills += 1
 	
 	if not stop_progress:
 		if enemy.enemy_type == 0 or enemy.enemy_type == 1:
 			World.stage_progress += 1
 		if World.stage_progress > 10:
+			Player.points += World.estagio
 			if World.estagio % 5 == 0:
 				Player.skill_points += 1
-				Player.points += World.estagio
 				
 				load_background() # carrega um novo background
 				

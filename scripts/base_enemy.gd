@@ -21,7 +21,6 @@ func _ready() -> void:
 	set_enemy_type()
 	increase_health()
 	set_progresbar()
-	drop()
 
 
 func _process(_delta: float) -> void:
@@ -40,7 +39,7 @@ func set_enemy_type() -> void:
 
 func increase_health() -> void:
 	var base_health: float = 10.0  # Vida inicial
-	var scaling_factor: float = 1.10  # Fator de crescimento exponencial
+	var scaling_factor: float = 1.05  # Fator de crescimento exponencial
 	max_health = base_health * pow(scaling_factor, World.estagio)
 	
 	match enemy_type:
@@ -124,7 +123,7 @@ func get_drop_items() -> Dictionary:
 		return {
 		"commom": {
 			"type": "weapon",
-			"drop_chance": [0, 0.75],
+			"drop_chance": [0, 0.80],
 			"slot_list": [
 				"slot1", "slot2", "slot3", "slot4", "slot5"
 			]
@@ -132,7 +131,7 @@ func get_drop_items() -> Dictionary:
 		
 		"uncommom": {
 			"type": "weapon",
-			"drop_chance": [0.75, 1.0],
+			"drop_chance": [0.80, 0.90],
 			"slot_list": [
 				"slot6", "slot7", "slot8", "slot9", "slot10"
 			]
@@ -140,7 +139,7 @@ func get_drop_items() -> Dictionary:
 		
 		"elite": {
 			"type": "weapon",
-			"drop_chance": [0.0, 0.0],
+			"drop_chance": [0.90, 0.95],
 			"slot_list": [
 				"slot11", "slot12"
 			]
@@ -148,7 +147,7 @@ func get_drop_items() -> Dictionary:
 		
 		"epic": {
 			"type": "weapon",
-			"drop_chance": [0.0, 0.0],
+			"drop_chance": [0.95, 0.99],
 			"slot_list": [
 				"slot13", "slot14"
 			]
@@ -156,7 +155,7 @@ func get_drop_items() -> Dictionary:
 		
 		"legendary": {
 			"type": "weapon",
-			"drop_chance": [0.0, 0.0],
+			"drop_chance": [0.99, 1.0],
 			"slot_list": [
 				"slot15"
 			]
@@ -167,7 +166,7 @@ func get_drop_items() -> Dictionary:
 		return {
 			"commom": {
 			"type": "ring",
-			"drop_chance": [0, 0.75],
+			"drop_chance": [0, 0.80],
 			"slot_list": [
 				"slot1", "slot2", "slot3", "slot4", "slot5"
 			]
@@ -175,7 +174,7 @@ func get_drop_items() -> Dictionary:
 		
 		"uncommom": {
 			"type": "ring",
-			"drop_chance": [0.75, 1.0],
+			"drop_chance": [0.80, 0.90],
 			"slot_list": [
 				"slot6", "slot7", "slot8", "slot9", "slot10"
 			]
@@ -183,7 +182,7 @@ func get_drop_items() -> Dictionary:
 		
 		"elite": {
 			"type": "ring",
-			"drop_chance": [0.0, 0.0],
+			"drop_chance": [0.90, 0.95],
 			"slot_list": [
 				"slot11", "slot12"
 			]
@@ -191,7 +190,7 @@ func get_drop_items() -> Dictionary:
 		
 		"epic": {
 			"type": "ring",
-			"drop_chance": [0.0, 0.0],
+			"drop_chance": [0.95, 0.99],
 			"slot_list": [
 				"slot13", "slot14"
 			]
@@ -199,7 +198,7 @@ func get_drop_items() -> Dictionary:
 		
 		"legendary": {
 			"type": "ring",
-			"drop_chance": [0.0, 0.0],
+			"drop_chance": [0.99, 1.0],
 			"slot_list": [
 				"slot15"
 			]
@@ -210,7 +209,7 @@ func get_drop_items() -> Dictionary:
 		return {
 			"commom": {
 				"type": "necklace",
-				"drop_chance": [0, 0.75],
+				"drop_chance": [0, 0.80],
 				"slot_list": [
 					"slot1", "slot2", "slot3", "slot4", "slot5"
 				]
@@ -218,7 +217,7 @@ func get_drop_items() -> Dictionary:
 		
 			"uncommom": {
 				"type": "necklace",
-				"drop_chance": [0.75, 1.0],
+				"drop_chance": [0.80, 0.90],
 				"slot_list": [
 					"slot6", "slot7", "slot8", "slot9", "slot10"
 				]
@@ -226,7 +225,7 @@ func get_drop_items() -> Dictionary:
 		
 			"elite": {
 				"type": "necklace",
-				"drop_chance": [0.0, 0.0],
+				"drop_chance": [0.90, 0.95],
 				"slot_list": [
 					"slot11", "slot12"
 				]
@@ -234,7 +233,7 @@ func get_drop_items() -> Dictionary:
 		
 			"epic": {
 				"type": "necklace",
-				"drop_chance": [0.0, 0.0],
+				"drop_chance": [0.95, 0.99],
 				"slot_list": [
 					"slot13", "slot14"
 				]
@@ -242,7 +241,7 @@ func get_drop_items() -> Dictionary:
 		
 			"legendary": {
 				"type": "necklace",
-				"drop_chance": [0.0, 0.0],
+				"drop_chance": [0.99, 1.0],
 				"slot_list": [
 					"slot15"
 				]
@@ -253,7 +252,7 @@ func get_drop_items() -> Dictionary:
 		return {
 		"commom": {
 			"type": "shield",
-			"drop_chance": [0, 0.75],
+			"drop_chance": [0, 0.80],
 			"slot_list": [
 				"slot1", "slot2", "slot3", "slot4", "slot5"
 			]
@@ -261,7 +260,7 @@ func get_drop_items() -> Dictionary:
 		
 		"uncommom": {
 			"type": "shield",
-			"drop_chance": [0.75, 1.0],
+			"drop_chance": [0.80, 0.90],
 			"slot_list": [
 				"slot6", "slot7", "slot8", "slot9", "slot10"
 			]
@@ -269,7 +268,7 @@ func get_drop_items() -> Dictionary:
 		
 		"elite": {
 			"type": "shield",
-			"drop_chance": [0.0, 0.0],
+			"drop_chance": [0.90, 0.95],
 			"slot_list": [
 				"slot11", "slot12"
 			]
@@ -277,7 +276,7 @@ func get_drop_items() -> Dictionary:
 		
 		"epic": {
 			"type": "shield",
-			"drop_chance": [0.0, 0.0],
+			"drop_chance": [0.95, 0.99],
 			"slot_list": [
 				"slot13", "slot14"
 			]
@@ -285,7 +284,7 @@ func get_drop_items() -> Dictionary:
 		
 		"legendary": {
 			"type": "shield",
-			"drop_chance": [0.0, 0.0],
+			"drop_chance": [0.99, 1.0],
 			"slot_list": [
 				"slot15"
 			]
