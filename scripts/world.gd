@@ -145,6 +145,7 @@ func killer_enemy(enemy_type) -> void:
 	var rng_drop: float = randf()
 	if rng_drop < drop_chance:
 		enemy.item_drop()
+		#enemy.drop_item_2()
 		
 	if enemy_type == 0 or enemy_type == 1:
 		Data.data_management["statistics"]["monster"]["enemy_" + str(enemy.id)] += 1

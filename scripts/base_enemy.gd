@@ -39,7 +39,7 @@ func set_enemy_type() -> void:
 
 func increase_health() -> void:
 	var base_health: float = 10.0  # Vida inicial
-	var scaling_factor: float = 1.05  # Fator de crescimento exponencial
+	var scaling_factor: float = 1.10  # Fator de crescimento exponencial
 	max_health = base_health * pow(scaling_factor, World.estagio)
 	
 	match enemy_type:
@@ -76,48 +76,6 @@ func drop() -> void:
 
 func get_drop_items() -> Dictionary:
 	var rng: float = randf()
-	
-	#return {
-		#"commom": {
-			#"type": "weapon",
-			#"drop_chance": [0, 0.75],
-			#"slot_list": [
-				#"slot1", "slot2", "slot3", "slot4", "slot5"
-			#]
-		#},
-		#
-		#"uncommom": {
-			#"type": "weapon",
-			#"drop_chance": [0.75, 0.90],
-			#"slot_list": [
-				#"slot6", "slot7", "slot8", "slot9", "slot10"
-			#]
-		#},
-		#
-		#"elite": {
-			#"type": "weapon",
-			#"drop_chance": [0.90, 0.95],
-			#"slot_list": [
-				#"slot11", "slot12"
-			#]
-		#},
-		#
-		#"epic": {
-			#"type": "weapon",
-			#"drop_chance": [0.95, 0.99],
-			#"slot_list": [
-				#"slot13", "slot14"
-			#]
-		#},
-		#
-		#"legendary": {
-			#"type": "weapon",
-			#"drop_chance": [0.99, 1.0],
-			#"slot_list": [
-				#"slot15"
-			#]
-		#}
-	#}
 	
 	if rng <= 0.25:
 		return {
@@ -326,6 +284,72 @@ func drop_item(item_rarity: String, item_data: Dictionary) -> void:
 		"equipments", "add_item", item_data["type"], slot, 
 		data[item_data["type"]][slot]
 		)
+
+
+func drop_item_2() -> void:
+	var rng: float = 0.0
+	var slot: String = ""
+	var equipment_type: String = ""
+	var rarity: String = ""
+	
+	var slot_list: Array = []
+	var item_attribute: Array = [
+		"damage", "critical_damage", "prestige_points", "gold"
+	]
+	var type_list: Array = [
+		"weapon", "shield", "ring", "necklace"
+	]
+	var attribute_range: Array = []
+	
+	var item_attribute_1: String = item_attribute.pick_random()
+	var item_attribute_2: String = item_attribute.pick_random()
+	
+	var item_data: Dictionary = {}
+	
+	
+	rng = randf()
+	if rng > 0.0 and rng <= 0.75:
+		rarity = "Commom"
+		slot_list = ["slot1", "slot2", "slot3", "slot4", "slot5"]
+		attribute_range = [30, 50]
+	elif rng > 0.75 and rng <= 0.90:
+		rarity = "Uncommom"
+		slot_list = ["slot6", "slot7", "slot8", "slot9", "slot10"]
+		attribute_range = [51, 80]
+	elif rng > 0.90 and rng <= 0.95:
+		rarity = "Elite"
+		slot_list = ["slot11", "slot12"]
+		attribute_range = [81, 100]
+		rarity = "Epic"
+		slot_list = ["slot13", "slot14"]
+		attribute_range = [101, 150]
+	elif rng > 0.99 and rng <= 1.0:
+		rarity = "Legendary"
+		slot_list = ["slot15"]
+		attribute_range = [151, 200]
+	
+	while item_attribute_2 == item_attribute_1:
+		item_attribute_2 = item_attribute.pick_random()
+		if item_attribute_2 != item_attribute_1:
+			break
+	
+	var attribute_value_1: float = (randi_range(attribute_range[0], attribute_range[1]) / 100.0)
+	var attribute_value_2: float = (randi_range(attribute_range[0], attribute_range[1]) / 100.0)
+	
+	slot = slot_list.pick_random()
+	equipment_type = "weapon"#type_list.pick_random()
+	
+	item_data = {
+		"slot": slot,
+		"rarity": rarity,
+		"type": equipment_type,
+		"atributtes": {
+			item_attribute_1: attribute_value_1,
+			item_attribute_2: attribute_value_2
+		}
+	}
+	
+	get_tree().call_group("equipments", "add_item_2", item_data)
 
 
 func set_progresbar() -> void: # atualiza a barra de progresso da vida

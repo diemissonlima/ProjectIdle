@@ -8,10 +8,10 @@ extends Control
 @export var necklace_container: GridContainer
 
 var item_level_dict: Dictionary = {
-	"1": 10, "2": 15, "3": 20, "4": 25, "5": 30,
-	"6": 35, "7": 40, "8": 45, "9": 50, "10": 55,
-	"11": 60, "12": 65, "13": 70, "14": 75, "15": 80,
-	"16": 85, "17": 90, "18": 95, "19": 100, "20": 105
+	"1": 2, "2": 3, "3": 4, "4": 5, "5": 6,
+	"6": 7, "7": 8, "8": 9, "9": 10, "10": 11,
+	"11": 12, "12": 13, "13": 14, "14": 15, "15": 16,
+	"16": 17, "17": 18, "18": 19, "19": 20, "20": 21
 }
 var data_equipment: Dictionary = Data.data_management["equipments"]
 var selected_item
@@ -25,76 +25,6 @@ func _ready() -> void:
 	load_equipment("shield")
 	load_equipment("ring")
 	load_equipment("necklace")
-
-
-func drop_item() -> void:
-	var rng: float = 0.0
-	var slot: String = ""
-	var equipment_type: String = ""
-	var rarity: String = ""
-	
-	var slot_list: Array = []
-	var item_attribute: Array = [
-		"damage", "critical_damage", "prestige_points", "gold"
-	]
-	var type_list: Array = [
-		"weapon", "shield", "ring", "necklace"
-	]
-	var attribute_range: Array = []
-	
-	var item_attribute_1: String = item_attribute.pick_random()
-	var item_attribute_2: String = item_attribute.pick_random()
-	
-	var item_info: Dictionary = {}
-	
-	
-	rng = randf()
-	if rng > 0.0 and rng <= 0.75:
-		rarity = "Commom"
-		slot_list = ["slot1", "slot2", "slot3", "slot4", "slot5"]
-		attribute_range = [30, 50]
-	elif rng > 0.75 and rng <= 0.90:
-		rarity = "Uncommom"
-		slot_list = ["slot6", "slot7", "slot8", "slot9", "slot10"]
-		attribute_range = [51, 80]
-	elif rng > 0.90 and rng <= 0.95:
-		rarity = "Elite"
-		slot_list = ["slot11", "slot12"]
-		attribute_range = [81, 100]
-		rarity = "Epic"
-		slot_list = ["slot13", "slot14"]
-		attribute_range = [101, 150]
-	elif rng > 0.99 and rng <= 1.0:
-		rarity = "Legendary"
-		slot_list = ["slot15"]
-		attribute_range = [151, 200]
-	
-	while item_attribute_2 == item_attribute_1:
-		item_attribute_2 = item_attribute.pick_random()
-		if item_attribute_2 != item_attribute_1:
-			break
-	
-	var attribute_value_1: float = (randi_range(attribute_range[0], attribute_range[1]) / 100.0)
-	var attribute_value_2: float = (randi_range(attribute_range[0], attribute_range[1]) / 100.0)
-	
-	slot = slot_list.pick_random()
-	equipment_type = type_list.pick_random()
-	
-	item_info = {
-		"slot": slot,
-		"rarity": rarity,
-		"type": equipment_type,
-		"atributtes": {
-			item_attribute_1: attribute_value_1,
-			item_attribute_2: attribute_value_2
-		}
-	}
-	
-	print(item_info)
-	
-	Data.data_management["equipments"][equipment_type][slot.to_lower()]["atributtes"] = (
-		item_info["atributtes"]
-	)
 
 
 func connect_button_signal() -> void:
@@ -141,6 +71,21 @@ func show_item_info(container: String, button_name: String) -> void:
 		)
 	
 	get_rarity_item(button_name.to_lower())
+	
+	#var keys: Array = []
+	#for key in data_equipment[container][button_name.to_lower()]["atributtes"].keys():
+		#keys.append(key)
+	#
+	#item_name.text = get_rarity_item(button_name.to_lower()) + " " + \
+		#container.capitalize() + " Lv " + str(data_equipment[container][button_name.to_lower()]["level"])
+	#
+	#atributte_1.text = "+ " \
+	#+ str(data_equipment[container][button_name.to_lower()]["atributtes"][keys[0]] * 100) \
+	#+ "% " + keys[0].capitalize()
+	#
+	#atributte_2.text = "+ " \
+	#+ str(data_equipment[container][button_name.to_lower()]["atributtes"][keys[1]] * 100) \
+	#+ "% " + keys[1].capitalize()
 	
 	if container == "weapon":
 		item_name.text = get_rarity_item(button_name.to_lower()) + " " + \
@@ -207,11 +152,15 @@ func load_equipment(type: String) -> void:
 	for slot in target_container[type].get_children():
 		if not data_equipment[type][slot.name.to_lower()]["is_locked"]:
 			slot.get_node("BG/Level").text = "Lv " + str(data_equipment[type][slot.name.to_lower()]["level"])
-			slot.get_node("BG/ProgressBar").max_value = 10
+			slot.get_node("BG/ProgressBar").max_value = item_level_dict[str(
+				data_equipment[type][slot.name.to_lower()]["level"]
+			)]
 			slot.get_node("BG/ProgressBar").value = data_equipment[type][slot.name.to_lower()]["progress"]
 			slot.get_node("BG/ProgressBar/Progress").text = str(
 				data_equipment[type][slot.name.to_lower()]["progress"]
-				) + " / " + str(10)
+				) + " / " + str(item_level_dict[str(
+					data_equipment[type][slot.name.to_lower()]["level"])]
+					)
 			slot.get_node("BG/Sprite").modulate.a = 1.0
 			slot.get_node("BG/Lock").visible = false
 			slot.get_node("BG/Level").visible = true
@@ -235,13 +184,27 @@ func load_equipment(type: String) -> void:
 			slot.get_node("BG/Equipped").visible = false
 
 
+func add_item_2(item_data: Dictionary) -> void:
+	var equipment_type: String = item_data["type"]
+	var slot: String = item_data["slot"]
+	
+	if data_equipment[equipment_type][slot]["is_locked"]:
+		data_equipment[equipment_type][slot]["is_locked"] = false
+		data_equipment[equipment_type][slot]["progress"] = 1
+		data_equipment[equipment_type][slot]["atributtes"] = item_data["atributtes"]
+	else:
+		data_equipment[equipment_type][slot]["progress"] += 1
+
+	load_equipment(equipment_type)
+
+
 func add_item(type: String, slot: String, item_data: Dictionary) -> void:
 	if data_equipment[type][slot]["is_locked"]:
 		data_equipment[type][slot]["is_locked"] = false
 		data_equipment[type][slot]["progress"] = 1
 	else:
 		data_equipment[type][slot]["progress"] += 1
-		if data_equipment[type][slot]["progress"] == 10:
+		if data_equipment[type][slot]["progress"] == item_level_dict[str(data_equipment[type][slot]["level"])]:
 			upgrade_level_item(data_equipment[type][slot], type, get_rarity_item(slot))
 	
 	load_equipment(type)
@@ -255,15 +218,15 @@ func upgrade_level_item(slot_data: Dictionary, type: String, rarity: String) -> 
 	
 	match rarity:
 		"Commom":
-			upgrade = 0.10
+			upgrade = 0.15
 		"Uncommom":
-			upgrade = 0.20
-		"elite":
 			upgrade = 0.30
+		"elite":
+			upgrade = 0.45
 		"epic":
-			upgrade = 0.40
+			upgrade = 0.60
 		"legendary":
-			upgrade = 0.50
+			upgrade = 0.75
 	
 	match type:
 		"weapon":
