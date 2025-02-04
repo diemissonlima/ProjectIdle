@@ -320,6 +320,7 @@ func drop_item_2() -> void:
 		rarity = "Elite"
 		slot_list = ["slot11", "slot12"]
 		attribute_range = [81, 100]
+	elif rng > 0.95 and rng <= 0.99:
 		rarity = "Epic"
 		slot_list = ["slot13", "slot14"]
 		attribute_range = [101, 150]

@@ -194,7 +194,9 @@ func add_item_2(item_data: Dictionary) -> void:
 		data_equipment[equipment_type][slot]["atributtes"] = item_data["atributtes"]
 	else:
 		data_equipment[equipment_type][slot]["progress"] += 1
-
+		if data_equipment[equipment_type][slot]["progress"] == item_level_dict[str(data_equipment[equipment_type][slot]["level"])]:
+			upgrade_level_item(data_equipment[equipment_type][slot], equipment_type, item_data["rarity"])
+		
 	load_equipment(equipment_type)
 
 
@@ -206,7 +208,7 @@ func add_item(type: String, slot: String, item_data: Dictionary) -> void:
 		data_equipment[type][slot]["progress"] += 1
 		if data_equipment[type][slot]["progress"] == item_level_dict[str(data_equipment[type][slot]["level"])]:
 			upgrade_level_item(data_equipment[type][slot], type, get_rarity_item(slot))
-	
+			
 	load_equipment(type)
 
 
