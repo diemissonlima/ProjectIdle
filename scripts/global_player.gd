@@ -22,12 +22,16 @@ var equipped_items: Dictionary = {
 		"slot": "",
 		"bonus_attributes": {
 			"damage": 0.0,
-			"critical_damage": 0.0
+			"critical_damage": 0.0,
+			"gold": 0.0,
+			"prestige_points": 0.0
 		}
 	},
 	"shield": {
 		"slot": "",
 		"bonus_attributes": {
+			"damage": 0.0,
+			"critical_damage": 0.0,
 			"gold": 0.0,
 			"prestige_points": 0.0
 		}
@@ -35,15 +39,19 @@ var equipped_items: Dictionary = {
 	"ring": {
 		"slot": "",
 		"bonus_attributes": {
+			"damage": 0.0,
 			"critical_damage": 0.0,
+			"gold": 0.0,
 			"prestige_points": 0.0
 		}
 	},
 	"necklace": {
 		"slot": "",
 		"bonus_attributes": {
+			"damage": 0.0,
+			"critical_damage": 0.0,
 			"gold": 0.0,
-			"damage": 0.0
+			"prestige_points": 0.0
 		}
 	}
 }
@@ -149,13 +157,21 @@ func save_data() -> void:
 
 func handler_item(state: String, equipment_type: String, slot: String) -> void:
 	var data_equipment: Dictionary = Data.data_management["equipments"][equipment_type][slot.to_lower()]
+	var keys: Array = []
 	
 	if state == "equip":
+		for key in data_equipment["atributtes"].keys():
+			keys.append(key)
+		
 		equipped_items[equipment_type]["slot"] = slot
-		equipped_items[equipment_type]["bonus_attributes"] = data_equipment["atributtes"].duplicate()
+		equipped_items[equipment_type]["bonus_attributes"][keys[0]] = data_equipment["atributtes"][keys[0]]
+		equipped_items[equipment_type]["bonus_attributes"][keys[1]] = data_equipment["atributtes"][keys[1]]
 		
 	elif state == "unequip":
 		data_equipment["is_equipped"] = false
+		for key in equipped_items[equipment_type]["bonus_attributes"].keys():
+			equipped_items[equipment_type]["bonus_attributes"][key] = 0.0
+		
 		get_tree().call_group("equipments", "load_equipment", equipment_type)
 
 
@@ -163,8 +179,12 @@ func alter_attack() -> void:
 	var critical_chance_multiplier: float = Data.data_management["upgrades"]["critical_chance"]["multiplier"]
 	var raid_damage_multiplier: float = Data.data_management["raids"]["raid_damage"]["multiplier"]
 	var upgrade_damage_multiplier: float = Data.data_management["upgrades"]["damage"]["multiplier"]
-	var equipment_damage_multiplier: float = equipped_items["weapon"]["bonus_attributes"]["damage"] \
-	 + equipped_items["necklace"]["bonus_attributes"]["damage"]
+	var equipment_damage_multiplier: float = (
+		equipped_items["weapon"]["bonus_attributes"]["damage"] \
+	 	+ equipped_items["shield"]["bonus_attributes"]["damage"] \
+		+ equipped_items["ring"]["bonus_attributes"]["damage"] \
+		+ equipped_items["necklace"]["bonus_attributes"]["damage"]
+	)
 	
 	var damage_multiplier: float = (
 		raid_damage_multiplier + upgrade_damage_multiplier + equipment_damage_multiplier
@@ -180,8 +200,12 @@ func alter_attack() -> void:
 	if rng <= critical_chance + critical_chance_multiplier:
 		var upgrade_critical_damage_multiplier: float = Data.data_management["upgrades"]["critical_damage"]["multiplier"]
 		var raid_critical_damage_multiplier: float = Data.data_management["raids"]["raid_critical"]["multiplier"]
-		var equipment_critical_damage_multiplier: float = equipped_items["weapon"]["bonus_attributes"]["critical_damage"] \
-		+ equipped_items["ring"]["bonus_attributes"]["critical_damage"]
+		var equipment_critical_damage_multiplier: float = (
+			equipped_items["weapon"]["bonus_attributes"]["critical_damage"] \
+			+ equipped_items["shield"]["bonus_attributes"]["critical_damage"] \
+			+ equipped_items["ring"]["bonus_attributes"]["critical_damage"] \
+			+ equipped_items["necklace"]["bonus_attributes"]["critical_damage"]
+		)
 		
 		var critical_damage_multiplier: float = (
 			upgrade_critical_damage_multiplier + raid_critical_damage_multiplier + equipment_critical_damage_multiplier

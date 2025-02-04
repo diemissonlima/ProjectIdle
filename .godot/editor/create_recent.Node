@@ -1,15 +1,14 @@
-Node2D
 Label
+VBoxContainer
+Node2D
 TextureButton
 TextureRect
 Node
 ColorRect
 RichTextLabel
 TextureProgressBar
-VBoxContainer
 HBoxContainer
 ScrollContainer
 TextEdit
 Control
 Timer
-GridContainer

@@ -7,6 +7,12 @@ extends Control
 @export var ring_container: GridContainer
 @export var necklace_container: GridContainer
 
+@export_category("Bonus Info")
+@export var bonus_damage: Label
+@export var bonus_gold: Label
+@export var bonus_critical_damage: Label
+@export var bonus_prestige_points: Label
+
 var item_level_dict: Dictionary = {
 	"1": 2, "2": 3, "3": 4, "4": 5, "5": 6,
 	"6": 7, "7": 8, "8": 9, "9": 10, "10": 11,
@@ -25,6 +31,7 @@ func _ready() -> void:
 	load_equipment("shield")
 	load_equipment("ring")
 	load_equipment("necklace")
+	show_bonus_item()
 
 
 func connect_button_signal() -> void:
@@ -72,52 +79,20 @@ func show_item_info(container: String, button_name: String) -> void:
 	
 	get_rarity_item(button_name.to_lower())
 	
-	#var keys: Array = []
-	#for key in data_equipment[container][button_name.to_lower()]["atributtes"].keys():
-		#keys.append(key)
-	#
-	#item_name.text = get_rarity_item(button_name.to_lower()) + " " + \
-		#container.capitalize() + " Lv " + str(data_equipment[container][button_name.to_lower()]["level"])
-	#
-	#atributte_1.text = "+ " \
-	#+ str(data_equipment[container][button_name.to_lower()]["atributtes"][keys[0]] * 100) \
-	#+ "% " + keys[0].capitalize()
-	#
-	#atributte_2.text = "+ " \
-	#+ str(data_equipment[container][button_name.to_lower()]["atributtes"][keys[1]] * 100) \
-	#+ "% " + keys[1].capitalize()
+	var keys: Array = []
+	for key in data_equipment[container][button_name.to_lower()]["atributtes"].keys():
+		keys.append(key)
 	
-	if container == "weapon":
-		item_name.text = get_rarity_item(button_name.to_lower()) + " " + \
+	item_name.text = get_rarity_item(button_name.to_lower()) + " " + \
 		container.capitalize() + " Lv " + str(data_equipment[container][button_name.to_lower()]["level"])
-		atributte_1.text = "+" \
-		+ str(data_equipment[container][button_name.to_lower()]["atributtes"]["damage"] * 100) + "% Damage"
-		atributte_2.text = "+" \
-		+ str(data_equipment[container][button_name.to_lower()]["atributtes"]["critical_damage"] * 100) + "% Critical Damage"
 		
-	elif container == "shield":
-		item_name.text = get_rarity_item(button_name.to_lower()) + " " + \
-		container.capitalize() + " Lv " + str(data_equipment[container][button_name.to_lower()]["level"])
-		atributte_1.text =  "+" \
-		+ str(data_equipment[container][button_name.to_lower()]["atributtes"]["gold"] * 100) + "% Gold"
-		atributte_2.text = "+" \
-		+ str(data_equipment[container][button_name.to_lower()]["atributtes"]["prestige_points"] * 100) + "% Prestige Points"
-		
-	elif container == "ring":
-		item_name.text = get_rarity_item(button_name.to_lower()) + " " + \
-		container.capitalize() + " Lv " + str(data_equipment[container][button_name.to_lower()]["level"])
-		atributte_1.text =  "+" \
-		+ str(data_equipment[container][button_name.to_lower()]["atributtes"]["critical_damage"] * 100) + "% Critical Damage"
-		atributte_2.text = "+" \
-		+ str(data_equipment[container][button_name.to_lower()]["atributtes"]["prestige_points"] * 100) + "% Prestige Points"
-		
-	elif container == "necklace":
-		item_name.text = get_rarity_item(button_name.to_lower()) + " " + \
-		container.capitalize() + " Lv " + str(data_equipment[container][button_name.to_lower()]["level"])
-		atributte_1.text =  "+" \
-		+ str(data_equipment[container][button_name.to_lower()]["atributtes"]["damage"] * 100) + "% Damage"
-		atributte_2.text = "+" \
-		+ str(data_equipment[container][button_name.to_lower()]["atributtes"]["gold"] * 100) + "% Gold"
+	atributte_1.text = "+ " \
+	+ str(data_equipment[container][button_name.to_lower()]["atributtes"][keys[0]] * 100) \
+	+ "% " + keys[0].capitalize()
+	
+	atributte_2.text = "+ " \
+	+ str(data_equipment[container][button_name.to_lower()]["atributtes"][keys[1]] * 100) \
+	+ "% " + keys[1].capitalize()
 
 
 func get_rarity_item(slot_name: String) -> String:
@@ -184,7 +159,7 @@ func load_equipment(type: String) -> void:
 			slot.get_node("BG/Equipped").visible = false
 
 
-func add_item_2(item_data: Dictionary) -> void:
+func add_item(item_data: Dictionary) -> void:
 	var equipment_type: String = item_data["type"]
 	var slot: String = item_data["slot"]
 	
@@ -200,20 +175,9 @@ func add_item_2(item_data: Dictionary) -> void:
 	load_equipment(equipment_type)
 
 
-func add_item(type: String, slot: String, item_data: Dictionary) -> void:
-	if data_equipment[type][slot]["is_locked"]:
-		data_equipment[type][slot]["is_locked"] = false
-		data_equipment[type][slot]["progress"] = 1
-	else:
-		data_equipment[type][slot]["progress"] += 1
-		if data_equipment[type][slot]["progress"] == item_level_dict[str(data_equipment[type][slot]["level"])]:
-			upgrade_level_item(data_equipment[type][slot], type, get_rarity_item(slot))
-			
-	load_equipment(type)
-
-
 func upgrade_level_item(slot_data: Dictionary, type: String, rarity: String) -> void:
 	var upgrade: float = 0.0
+	var keys: Array = []
 	
 	slot_data["level"] += 1
 	slot_data["progress"] = 0
@@ -230,19 +194,13 @@ func upgrade_level_item(slot_data: Dictionary, type: String, rarity: String) -> 
 		"legendary":
 			upgrade = 0.75
 	
-	match type:
-		"weapon":
-			slot_data["atributtes"]["damage"] += upgrade
-			slot_data["atributtes"]["critical_damage"] += upgrade
-		"shield":
-			slot_data["atributtes"]["gold"] += upgrade
-			slot_data["atributtes"]["prestige_points"] += upgrade
-		"ring":
-			slot_data["atributtes"]["critical_damage"] += upgrade
-			slot_data["atributtes"]["prestige_points"] += upgrade
-		"necklace":
-			slot_data["atributtes"]["gold"] += upgrade
-			slot_data["atributtes"]["damage"] += upgrade
+	for key in slot_data["atributtes"].keys():
+		keys.append(key)
+	
+	slot_data["atributtes"][keys[0]] += upgrade
+	slot_data["atributtes"][keys[1]] += upgrade
+	
+	show_bonus_item()
 
 
 func _on_equip_item_pressed() -> void:
@@ -258,6 +216,26 @@ func _on_equip_item_pressed() -> void:
 	else:
 		Player.handler_item("unequip", equipment_type, Player.equipped_items[equipment_type]["slot"])
 		Player.handler_item("equip", equipment_type, selected_button.name)
+		
+	show_bonus_item()
+
+
+func show_bonus_item() -> void:
+	var damage: float = 0.0
+	var gold: float = 0.0
+	var critical_damage: float = 0.0
+	var prestige_points: float = 0.0
+	
+	for key in Player.equipped_items:
+		damage += Player.equipped_items[key]["bonus_attributes"]["damage"]
+		gold += Player.equipped_items[key]["bonus_attributes"]["gold"]
+		critical_damage += Player.equipped_items[key]["bonus_attributes"]["critical_damage"]
+		prestige_points += Player.equipped_items[key]["bonus_attributes"]["prestige_points"]
+	
+	bonus_damage.text = "+ " + str(damage * 100) + "% Damage"
+	bonus_gold.text = "+ " + str(gold * 100) + "% Gold"
+	bonus_critical_damage.text = "+ " + str(critical_damage * 100) + "% Critical Damage"
+	bonus_prestige_points.text = "+ " + str(prestige_points * 100) + "% Prestige Points"
 
 
 func _on_close_pressed() -> void:

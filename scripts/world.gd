@@ -144,8 +144,7 @@ func killer_enemy(enemy_type) -> void:
 	
 	var rng_drop: float = randf()
 	if rng_drop < drop_chance:
-		enemy.item_drop()
-		#enemy.drop_item_2()
+		enemy.drop_item()
 		
 	if enemy_type == 0 or enemy_type == 1:
 		Data.data_management["statistics"]["monster"]["enemy_" + str(enemy.id)] += 1
@@ -222,8 +221,12 @@ func prestige_points() -> int:
 	var base_points: int = (World.estagio - reset_target) * 1.05
 	var scaling_factor: float = 1.10
 	var upgrade_multiplier: float = Data.data_management["upgrades"]["prestige_points"]["multiplier"]
-	var equipment_multiplier: float = Player.equipped_items["shield"]["bonus_attributes"]["prestige_points"] \
-	+ Player.equipped_items["ring"]["bonus_attributes"]["prestige_points"]
+	var equipment_multiplier: float = (
+		Player.equipped_items["weapon"]["bonus_attributes"]["prestige_points"] \
+		+ Player.equipped_items["shield"]["bonus_attributes"]["prestige_points"] \
+		+ Player.equipped_items["ring"]["bonus_attributes"]["prestige_points"] \
+		+ Player.equipped_items["necklace"]["bonus_attributes"]["prestige_points"]
+	)
 
 	var total_multiplier: float = (upgrade_multiplier + equipment_multiplier) * 100
 	var points: float = base_points * pow(scaling_factor, World.reset) # 1.10 ** resets

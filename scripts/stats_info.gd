@@ -21,25 +21,34 @@ func update_label() -> void:
 	
 	var total_gold_boost = (
 		raids["raid_gold"]["multiplier"] + upgrade["gold"]["multiplier"] \
+		+ equipments["weapon"]["bonus_attributes"]["gold"] \
 		+ equipments["shield"]["bonus_attributes"]["gold"] \
+		+ equipments["ring"]["bonus_attributes"]["gold"] \
 		+ equipments["necklace"]["bonus_attributes"]["gold"]
 		) * 100
 		
 	var total_dps_boost = (
 		raids["raid_damage"]["multiplier"] + upgrade["damage"]["multiplier"] \
 		+ equipments["weapon"]["bonus_attributes"]["damage"] \
+		+ equipments["shield"]["bonus_attributes"]["damage"] \
+		+ equipments["ring"]["bonus_attributes"]["damage"] \
 		+ equipments["necklace"]["bonus_attributes"]["damage"]
 		) * 100
 		
 	var total_prestige_boost = (
-		upgrade["prestige_points"]["multiplier"] + equipments["shield"]["bonus_attributes"]["prestige_points"] \
-		+ equipments["ring"]["bonus_attributes"]["prestige_points"]
+		upgrade["prestige_points"]["multiplier"] \
+		+ equipments["weapon"]["bonus_attributes"]["prestige_points"] \
+		+ equipments["shield"]["bonus_attributes"]["prestige_points"] \
+		+ equipments["ring"]["bonus_attributes"]["prestige_points"] \
+		+ equipments["necklace"]["bonus_attributes"]["prestige_points"]
 		) * 100
 	
 	var total_c_damage_boost = (
 		raids["raid_critical"]["multiplier"] + upgrade["critical_damage"]["multiplier"] \
 		+ equipments["weapon"]["bonus_attributes"]["critical_damage"] \
-		+ equipments["ring"]["bonus_attributes"]["critical_damage"]
+		+ equipments["shield"]["bonus_attributes"]["critical_damage"] \
+		+ equipments["ring"]["bonus_attributes"]["critical_damage"] \
+		+ equipments["necklace"]["bonus_attributes"]["critical_damage"]
 		) * 100
 		
 	var total_critical_chance = (Player.critical_chance + upgrade["critical_chance"]["multiplier"]) * 100

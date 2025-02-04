@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://dhwtso3ysibcm"]
+[gd_scene load_steps=82 format=3 uid="uid://dhwtso3ysibcm"]
 
 [ext_resource type="Texture2D" uid="uid://e4o6nongfgvb" path="res://assets/prefabs/box/Menu02.png" id="1_8hbwa"]
 [ext_resource type="Script" path="res://scripts/equipments.gd" id="1_jx06y"]
@@ -77,7 +77,20 @@
 [sub_resource type="LabelSettings" id="LabelSettings_p6cx1"]
 font = ExtResource("2_4ds7v")
 font_size = 30
-font_color = Color(0, 1, 0, 1)
+shadow_size = 0
+shadow_color = Color(0.976471, 0.976471, 0.976471, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fodxi"]
+font = ExtResource("2_4ds7v")
+font_size = 18
+shadow_size = 0
+shadow_color = Color(0.976471, 0.976471, 0.976471, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_v647c"]
+font = ExtResource("2_4ds7v")
+font_size = 12
+outline_size = 1
+outline_color = Color(1, 0, 0, 1)
 shadow_size = 0
 shadow_color = Color(0.976471, 0.976471, 0.976471, 0)
 
@@ -103,7 +116,7 @@ font = ExtResource("2_4ds7v")
 font = ExtResource("2_4ds7v")
 font_size = 12
 
-[node name="Equipments" type="Control" node_paths=PackedStringArray("weapon_container", "shield_container", "ring_container", "necklace_container") groups=["equipments"]]
+[node name="Equipments" type="Control" node_paths=PackedStringArray("weapon_container", "shield_container", "ring_container", "necklace_container", "bonus_damage", "bonus_gold", "bonus_critical_damage", "bonus_prestige_points") groups=["equipments"]]
 visible = false
 custom_minimum_size = Vector2(661, 549)
 layout_mode = 3
@@ -123,6 +136,10 @@ weapon_container = NodePath("Background/WeaponContainer")
 shield_container = NodePath("Background/ShieldContainer")
 ring_container = NodePath("Background/RingContainer")
 necklace_container = NodePath("Background/NecklaceContainer")
+bonus_damage = NodePath("Background/BonusContainer/Damage")
+bonus_gold = NodePath("Background/BonusContainer/Gold")
+bonus_critical_damage = NodePath("Background/BonusContainer/CriticalDamage")
+bonus_prestige_points = NodePath("Background/BonusContainer/Prestig Points")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -138,13 +155,55 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -94.0
+offset_left = -86.0
 offset_top = 33.0
-offset_right = 94.0
+offset_right = 102.0
 offset_bottom = 64.0
 grow_horizontal = 2
 text = "Equipments"
 label_settings = SubResource("LabelSettings_p6cx1")
+
+[node name="TitleBonus" type="Label" parent="Background"]
+layout_mode = 1
+offset_left = 93.5
+offset_top = 25.5
+offset_right = 150.5
+offset_bottom = 44.5
+text = "Bonus"
+label_settings = SubResource("LabelSettings_fodxi")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BonusContainer" type="VBoxContainer" parent="Background"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 49.0
+offset_right = 196.0
+offset_bottom = 113.0
+
+[node name="Damage" type="Label" parent="Background/BonusContainer"]
+layout_mode = 2
+text = "+ 500% Damage"
+label_settings = SubResource("LabelSettings_v647c")
+vertical_alignment = 1
+
+[node name="Gold" type="Label" parent="Background/BonusContainer"]
+layout_mode = 2
+text = "+ 500% Gold"
+label_settings = SubResource("LabelSettings_v647c")
+vertical_alignment = 1
+
+[node name="CriticalDamage" type="Label" parent="Background/BonusContainer"]
+layout_mode = 2
+text = "+ 500% Critical Damage"
+label_settings = SubResource("LabelSettings_v647c")
+vertical_alignment = 1
+
+[node name="Prestig Points" type="Label" parent="Background/BonusContainer"]
+layout_mode = 2
+text = "+ 500% Prestige Points"
+label_settings = SubResource("LabelSettings_v647c")
+vertical_alignment = 1
 
 [node name="WeaponContainer" type="GridContainer" parent="Background"]
 layout_mode = 1
@@ -7379,9 +7438,9 @@ label_settings = SubResource("LabelSettings_c03wh")
 [node name="SwordTab" type="TextureButton" parent="Background"]
 custom_minimum_size = Vector2(64, 33)
 layout_mode = 0
-offset_left = 204.0
+offset_left = 212.0
 offset_top = 79.0
-offset_right = 268.0
+offset_right = 276.0
 offset_bottom = 112.0
 texture_normal = ExtResource("40_duy53")
 texture_pressed = ExtResource("40_duy53")
@@ -7408,9 +7467,9 @@ label_settings = SubResource("LabelSettings_h6a4u")
 [node name="ShieldTab" type="TextureButton" parent="Background"]
 custom_minimum_size = Vector2(64, 33)
 layout_mode = 0
-offset_left = 277.0
+offset_left = 285.0
 offset_top = 79.0
-offset_right = 341.0
+offset_right = 349.0
 offset_bottom = 112.0
 texture_normal = ExtResource("40_duy53")
 texture_pressed = ExtResource("40_duy53")
@@ -7437,9 +7496,9 @@ label_settings = SubResource("LabelSettings_h6a4u")
 [node name="RingTab" type="TextureButton" parent="Background"]
 custom_minimum_size = Vector2(64, 33)
 layout_mode = 0
-offset_left = 350.0
+offset_left = 358.0
 offset_top = 79.0
-offset_right = 414.0
+offset_right = 422.0
 offset_bottom = 112.0
 texture_normal = ExtResource("40_duy53")
 texture_pressed = ExtResource("40_duy53")
@@ -7466,9 +7525,9 @@ label_settings = SubResource("LabelSettings_h6a4u")
 [node name="NecklaceTab" type="TextureButton" parent="Background"]
 custom_minimum_size = Vector2(64, 33)
 layout_mode = 0
-offset_left = 423.0
+offset_left = 431.0
 offset_top = 79.0
-offset_right = 487.0
+offset_right = 495.0
 offset_bottom = 112.0
 texture_normal = ExtResource("40_duy53")
 texture_pressed = ExtResource("40_duy53")

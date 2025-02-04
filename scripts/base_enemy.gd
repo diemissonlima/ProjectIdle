@@ -13,11 +13,9 @@ var health: float = 0.0 # vida
 var max_health: float = 0.0
 
 var dropped_gold: int
-var drop_items_list: Dictionary = {}
 
 
 func _ready() -> void:
-	drop_items_list = get_drop_items()
 	set_enemy_type()
 	increase_health()
 	set_progresbar()
@@ -53,8 +51,12 @@ func drop() -> void:
 	var base_gold: int = 3
 	var gold_raid_multiplier: float = Data.data_management["raids"]["raid_gold"]["multiplier"]
 	var gold_upgrade_multiplier: float = Data.data_management["upgrades"]["gold"]["multiplier"]
-	var equipment_gold_multiplier: float = Player.equipped_items["shield"]["bonus_attributes"]["gold"] \
-	+ Player.equipped_items["necklace"]["bonus_attributes"]["gold"]
+	var equipment_gold_multiplier: float = (
+		Player.equipped_items["weapon"]["bonus_attributes"]["gold"] \
+		+ Player.equipped_items["shield"]["bonus_attributes"]["gold"] \
+		+ Player.equipped_items["ring"]["bonus_attributes"]["gold"] \
+		+ Player.equipped_items["necklace"]["bonus_attributes"]["gold"]
+	)
 
 	var total_gold_multiplier: float = gold_raid_multiplier + gold_upgrade_multiplier + equipment_gold_multiplier
 	
@@ -74,223 +76,13 @@ func drop() -> void:
 		dropped_gold += bonus_gold
 
 
-func get_drop_items() -> Dictionary:
-	var rng: float = randf()
-	
-	if rng <= 0.25:
-		return {
-		"commom": {
-			"type": "weapon",
-			"drop_chance": [0, 0.80],
-			"slot_list": [
-				"slot1", "slot2", "slot3", "slot4", "slot5"
-			]
-		},
-		
-		"uncommom": {
-			"type": "weapon",
-			"drop_chance": [0.80, 0.90],
-			"slot_list": [
-				"slot6", "slot7", "slot8", "slot9", "slot10"
-			]
-		},
-		
-		"elite": {
-			"type": "weapon",
-			"drop_chance": [0.90, 0.95],
-			"slot_list": [
-				"slot11", "slot12"
-			]
-		},
-		
-		"epic": {
-			"type": "weapon",
-			"drop_chance": [0.95, 0.99],
-			"slot_list": [
-				"slot13", "slot14"
-			]
-		},
-		
-		"legendary": {
-			"type": "weapon",
-			"drop_chance": [0.99, 1.0],
-			"slot_list": [
-				"slot15"
-			]
-		}
-	}
-	
-	elif rng > 0.25 and rng <= 0.50:
-		return {
-			"commom": {
-			"type": "ring",
-			"drop_chance": [0, 0.80],
-			"slot_list": [
-				"slot1", "slot2", "slot3", "slot4", "slot5"
-			]
-		},
-		
-		"uncommom": {
-			"type": "ring",
-			"drop_chance": [0.80, 0.90],
-			"slot_list": [
-				"slot6", "slot7", "slot8", "slot9", "slot10"
-			]
-		},
-		
-		"elite": {
-			"type": "ring",
-			"drop_chance": [0.90, 0.95],
-			"slot_list": [
-				"slot11", "slot12"
-			]
-		},
-		
-		"epic": {
-			"type": "ring",
-			"drop_chance": [0.95, 0.99],
-			"slot_list": [
-				"slot13", "slot14"
-			]
-		},
-		
-		"legendary": {
-			"type": "ring",
-			"drop_chance": [0.99, 1.0],
-			"slot_list": [
-				"slot15"
-			]
-		}
-		}
-	
-	elif rng > 0.50 and rng <= 0.75:
-		return {
-			"commom": {
-				"type": "necklace",
-				"drop_chance": [0, 0.80],
-				"slot_list": [
-					"slot1", "slot2", "slot3", "slot4", "slot5"
-				]
-			},
-		
-			"uncommom": {
-				"type": "necklace",
-				"drop_chance": [0.80, 0.90],
-				"slot_list": [
-					"slot6", "slot7", "slot8", "slot9", "slot10"
-				]
-			},
-		
-			"elite": {
-				"type": "necklace",
-				"drop_chance": [0.90, 0.95],
-				"slot_list": [
-					"slot11", "slot12"
-				]
-			},
-		
-			"epic": {
-				"type": "necklace",
-				"drop_chance": [0.95, 0.99],
-				"slot_list": [
-					"slot13", "slot14"
-				]
-			},
-		
-			"legendary": {
-				"type": "necklace",
-				"drop_chance": [0.99, 1.0],
-				"slot_list": [
-					"slot15"
-				]
-			}
-		}
-	
-	else:
-		return {
-		"commom": {
-			"type": "shield",
-			"drop_chance": [0, 0.80],
-			"slot_list": [
-				"slot1", "slot2", "slot3", "slot4", "slot5"
-			]
-		},
-		
-		"uncommom": {
-			"type": "shield",
-			"drop_chance": [0.80, 0.90],
-			"slot_list": [
-				"slot6", "slot7", "slot8", "slot9", "slot10"
-			]
-		},
-		
-		"elite": {
-			"type": "shield",
-			"drop_chance": [0.90, 0.95],
-			"slot_list": [
-				"slot11", "slot12"
-			]
-		},
-		
-		"epic": {
-			"type": "shield",
-			"drop_chance": [0.95, 0.99],
-			"slot_list": [
-				"slot13", "slot14"
-			]
-		},
-		
-		"legendary": {
-			"type": "shield",
-			"drop_chance": [0.99, 1.0],
-			"slot_list": [
-				"slot15"
-			]
-		}
-	}
-
-
-func item_drop() -> void:
-	for rarity in drop_items_list:
-		var spawn_probability: Array = drop_items_list[rarity]["drop_chance"]
-		var rng: float = randf()
-
-		if rng > spawn_probability[0] and rng <= spawn_probability[1]:
-			drop_item(rarity, drop_items_list[rarity])
-			return
-
-
-func drop_item(item_rarity: String, item_data: Dictionary) -> void:
-	var data: Dictionary = Data.data_management["equipments"]
-	var slot = item_data["slot_list"].pick_random()
-	var drop_message: String = "Drop: " + item_data["type"].capitalize()
-	var color_message: Color
-	
-	if item_rarity == "commom":
-		color_message = Color.SKY_BLUE
-	elif item_rarity == "uncommom":
-		color_message = Color.GREEN
-	elif item_rarity == "elite":
-		color_message = Color.FUCHSIA
-	elif item_rarity == "epic":
-		color_message = Color.GOLD
-	elif item_rarity == "legendary":
-		color_message = Color.RED
-	
-	get_tree().call_group(
-		"loot_box", "add_message", "lootbox_2", drop_message, color_message
-		)
-	get_tree().call_group(
-		"equipments", "add_item", item_data["type"], slot, 
-		data[item_data["type"]][slot]
-		)
-
-
-func drop_item_2() -> void:
+func drop_item() -> void:
 	var rng: float = 0.0
 	var slot: String = ""
 	var equipment_type: String = ""
 	var rarity: String = ""
+	var drop_message: String = ""
+	var color_message: Color
 	
 	var slot_list: Array = []
 	var item_attribute: Array = [
@@ -338,7 +130,9 @@ func drop_item_2() -> void:
 	var attribute_value_2: float = (randi_range(attribute_range[0], attribute_range[1]) / 100.0)
 	
 	slot = slot_list.pick_random()
-	equipment_type = "weapon"#type_list.pick_random()
+	equipment_type = type_list.pick_random()
+	
+	drop_message = "Drop: " + equipment_type.capitalize()
 	
 	item_data = {
 		"slot": slot,
@@ -350,7 +144,22 @@ func drop_item_2() -> void:
 		}
 	}
 	
-	get_tree().call_group("equipments", "add_item_2", item_data)
+	if rarity == "Commom":
+		color_message = Color.SKY_BLUE
+	elif rarity == "Uncommom":
+		color_message = Color.GREEN
+	elif rarity == "Elite":
+		color_message = Color.FUCHSIA
+	elif rarity == "Epic":
+		color_message = Color.GOLD
+	elif rarity == "Legendary":
+		color_message = Color.RED
+	
+	get_tree().call_group(
+		"loot_box", "add_message", "lootbox_2", drop_message, color_message
+		)
+	
+	get_tree().call_group("equipments", "add_item", item_data)
 
 
 func set_progresbar() -> void: # atualiza a barra de progresso da vida
