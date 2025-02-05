@@ -14,8 +14,8 @@ var data_management: Dictionary = {
 	},
 	
 	"player": {
-		"ataque": 10.0,
-		"default_damage": 10.0,
+		"ataque": 5.0,
+		"default_damage": 5.0,
 		"attack_speed": 0.5,
 		"gold": 0,
 		"skill_points": 0,

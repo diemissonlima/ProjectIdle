@@ -1,11 +1,11 @@
 Label
+RichTextLabel
 VBoxContainer
 Node2D
 TextureButton
 TextureRect
 Node
 ColorRect
-RichTextLabel
 TextureProgressBar
 HBoxContainer
 ScrollContainer

@@ -1,3 +1,5 @@
+res://scenes/equipments.tscn
+res://scripts/equipments.gd
 res://scenes/world.tscn
 res://scenes/rewards_offline.tscn
 res://scenes/box_skill_info.tscn
@@ -6,6 +8,6 @@ res://scenes/stats_info.tscn
 res://scenes/loot_box.tscn
 res://scenes/raids.tscn
 res://scenes/upgrades.tscn
-res://scenes/equipments.tscn
 res://scenes/main_menu.tscn
-res://scripts/equipments.gd
+res://scripts/base_enemy.gd
+res://scripts/data.gd

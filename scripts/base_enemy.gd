@@ -37,7 +37,7 @@ func set_enemy_type() -> void:
 
 func increase_health() -> void:
 	var base_health: float = 10.0  # Vida inicial
-	var scaling_factor: float = 1.10  # Fator de crescimento exponencial
+	var scaling_factor: float = 1.05  # Fator de crescimento exponencial
 	max_health = base_health * pow(scaling_factor, World.estagio)
 	
 	match enemy_type:
@@ -104,19 +104,19 @@ func drop_item() -> void:
 		rarity = "Commom"
 		slot_list = ["slot1", "slot2", "slot3", "slot4", "slot5"]
 		attribute_range = [30, 50]
-	elif rng > 0.75 and rng <= 0.90:
+	elif rng > 0.75 and rng <= 0.95:
 		rarity = "Uncommom"
 		slot_list = ["slot6", "slot7", "slot8", "slot9", "slot10"]
 		attribute_range = [51, 80]
-	elif rng > 0.90 and rng <= 0.95:
+	elif rng > 0.95 and rng <= 0.99:
 		rarity = "Elite"
 		slot_list = ["slot11", "slot12"]
 		attribute_range = [81, 100]
-	elif rng > 0.95 and rng <= 0.99:
+	elif rng > 0.99 and rng <= 0.997:
 		rarity = "Epic"
 		slot_list = ["slot13", "slot14"]
 		attribute_range = [101, 150]
-	elif rng > 0.99 and rng <= 1.0:
+	elif rng > 0.997 and rng <= 1.0:
 		rarity = "Legendary"
 		slot_list = ["slot15"]
 		attribute_range = [151, 200]

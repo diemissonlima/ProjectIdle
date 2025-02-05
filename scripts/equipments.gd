@@ -59,6 +59,19 @@ func show_item_info(container: String, button_name: String) -> void:
 	var item_name: Label = $Background/ItemInfo/BGInfo/ItemName
 	var atributte_1: Label = $Background/ItemInfo/BGInfo/Atributte1
 	var atributte_2: Label = $Background/ItemInfo/BGInfo/Atributte2
+	var rarity: String = get_rarity_item(button_name.to_lower())
+	
+	if rarity == "Commom":
+		$Background/ItemInfo/BGColor.color = Color(0, 255, 255)
+	elif rarity == "Uncommom":
+		$Background/ItemInfo/BGColor.color = Color(0, 255, 0)
+	elif rarity == "Elite":
+		$Background/ItemInfo/BGColor.color = Color(255, 0, 255)
+	elif rarity == "Epic":
+		$Background/ItemInfo/BGColor.color = Color(255, 255, 0)
+	elif rarity == "Legendary":
+		$Background/ItemInfo/BGColor.color = Color(255, 0, 0)
+	
 	
 	match container:
 		"WeaponContainer":
