@@ -3,6 +3,9 @@ class_name BaseEnemy
 
 
 @export var id: int
+@export var progress_bar: TextureProgressBar
+
+var tween: Tween
 
 enum EnemyType {
 	NORMAL, BOSS, BOSS_RAID_DAMAGE, BOSS_RAID_GOLD, BOSS_RAID_CRITICAL
@@ -19,7 +22,9 @@ func _ready() -> void:
 	set_enemy_type()
 	increase_health()
 	set_progresbar()
-
+	
+	tween = get_tree().create_tween()
+	
 
 func _process(_delta: float) -> void:
 	$TextureProgressBar/Label.text = str(
@@ -37,7 +42,7 @@ func set_enemy_type() -> void:
 
 func increase_health() -> void:
 	var base_health: float = 10.0  # Vida inicial
-	var scaling_factor: float = 1.05  # Fator de crescimento exponencial
+	var scaling_factor: float = 1.10  # Fator de crescimento exponencial
 	max_health = base_health * pow(scaling_factor, World.estagio)
 	
 	match enemy_type:
@@ -45,6 +50,15 @@ func increase_health() -> void:
 			max_health += max_health * 10
 		
 	health = max_health
+
+
+func animate_health_bar(damage: int) -> void:
+	var new_health = max(health - damage, 0)
+	
+	tween = get_tree().create_tween()
+	
+	if tween and is_instance_valid(progress_bar):
+		tween.tween_property(progress_bar, "value", new_health, 1.0).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 
 
 func drop() -> void:
@@ -93,33 +107,50 @@ func drop_item() -> void:
 	]
 	var attribute_range: Array = []
 	
-	var item_attribute_1: String = item_attribute.pick_random()
-	var item_attribute_2: String = item_attribute.pick_random()
+	var item_attribute_1: String = ""
+	var item_attribute_2: String = ""
 	
 	var item_data: Dictionary = {}
 	
+	equipment_type = type_list.pick_random()
+	
+	match equipment_type:
+		"weapon":
+			item_attribute = ["damage", "critical_damage"]
+		
+		"shield":
+			item_attribute = ["prestige_points", "gold"]
+		
+		"ring":
+			item_attribute = ["critical_damage", "prestige_points"]
+		
+		"necklace":
+			item_attribute = ["damage", "gold"]
+	
+	item_attribute_1 = item_attribute.pick_random()
+	item_attribute_2 = item_attribute.pick_random()
 	
 	rng = randf()
 	if rng > 0.0 and rng <= 0.75:
 		rarity = "Commom"
 		slot_list = ["slot1", "slot2", "slot3", "slot4", "slot5"]
-		attribute_range = [30, 50]
+		attribute_range = [75, 100]
 	elif rng > 0.75 and rng <= 0.95:
 		rarity = "Uncommom"
 		slot_list = ["slot6", "slot7", "slot8", "slot9", "slot10"]
-		attribute_range = [51, 80]
-	elif rng > 0.95 and rng <= 0.99:
+		attribute_range = [101, 150]
+	elif rng > 0.95 and rng <= 0.97:
 		rarity = "Elite"
 		slot_list = ["slot11", "slot12"]
-		attribute_range = [81, 100]
-	elif rng > 0.99 and rng <= 0.997:
+		attribute_range = [151, 225]
+	elif rng > 0.97 and rng <= 0.99:
 		rarity = "Epic"
 		slot_list = ["slot13", "slot14"]
-		attribute_range = [101, 150]
-	elif rng > 0.997 and rng <= 1.0:
+		attribute_range = [226, 300]
+	elif rng > 0.99 and rng <= 1.0:
 		rarity = "Legendary"
 		slot_list = ["slot15"]
-		attribute_range = [151, 200]
+		attribute_range = [300, 500]
 	
 	while item_attribute_2 == item_attribute_1:
 		item_attribute_2 = item_attribute.pick_random()
@@ -130,7 +161,6 @@ func drop_item() -> void:
 	var attribute_value_2: float = (randi_range(attribute_range[0], attribute_range[1]) / 100.0)
 	
 	slot = slot_list.pick_random()
-	equipment_type = type_list.pick_random()
 	
 	drop_message = "Drop: " + equipment_type.capitalize()
 	
@@ -163,5 +193,5 @@ func drop_item() -> void:
 
 
 func set_progresbar() -> void: # atualiza a barra de progresso da vida
-	$TextureProgressBar.max_value = max_health
-	$TextureProgressBar.value = health
+	progress_bar.max_value = max_health
+	progress_bar.value = health

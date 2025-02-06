@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://dhwtso3ysibcm"]
+[gd_scene load_steps=82 format=3 uid="uid://dhwtso3ysibcm"]
 
 [ext_resource type="Texture2D" uid="uid://e4o6nongfgvb" path="res://assets/prefabs/box/Menu02.png" id="1_8hbwa"]
 [ext_resource type="Script" path="res://scripts/equipments.gd" id="1_jx06y"]
@@ -105,9 +105,6 @@ font = ExtResource("2_4ds7v")
 font_size = 12
 outline_size = 6
 outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_w8536"]
-font = ExtResource("2_4ds7v")
 
 [sub_resource type="LabelSettings" id="LabelSettings_v1ouu"]
 font = ExtResource("2_4ds7v")
@@ -7365,20 +7362,12 @@ grow_vertical = 0
 texture = ExtResource("39_smh7n")
 expand_mode = 1
 
-[node name="ItemName" type="Label" parent="Background/ItemInfo/BGInfo"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -138.0
-offset_top = 2.0
-offset_right = 138.0
+[node name="ItemName" type="RichTextLabel" parent="Background/ItemInfo/BGInfo"]
+layout_mode = 0
+offset_right = 281.0
 offset_bottom = 19.0
-grow_horizontal = 2
-text = "Commom Sword Lv 1"
-label_settings = SubResource("LabelSettings_w8536")
-horizontal_alignment = 1
-vertical_alignment = 1
+theme_override_fonts/normal_font = ExtResource("2_4ds7v")
+bbcode_enabled = true
 
 [node name="Atributte1" type="Label" parent="Background/ItemInfo/BGInfo"]
 layout_mode = 1

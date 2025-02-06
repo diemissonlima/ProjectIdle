@@ -104,7 +104,7 @@ func update_timer_display() ->  void: # função pra atualizar label de batalha
 
 func take_enemy_damage(_damage: float) -> void: # causa dano ao inimigo
 	enemy.health -= round(_damage) # diminui a vida em funcao do dano do player
-	
+	enemy.animate_health_bar(round(_damage))
 	if enemy.health <= 0: # se a vida chegar a zero, chama a função de matar o inimigo
 		enemy.queue_free() # deleta o inimigo da cena
 		killer_enemy(enemy.enemy_type)
@@ -116,21 +116,21 @@ func killer_enemy(enemy_type) -> void:
 		Player.skill_points += 5
 		
 		if raid_level % 5 == 0:
-			Data.data_management["raids"]["raid_damage"]["multiplier"] += 0.5
+			Data.data_management["raids"]["raid_damage"]["multiplier"] += 1.0
 		
 		Data.data_management["raids"]["raid_damage"]["level"] += 1
 		get_tree().call_group("raids_management", "update_cooldown_raid", "raid_damage")
 	
 	if enemy_type == 3: # boss raid gold
 		Player.skill_points += 1
-		Data.data_management["raids"]["raid_gold"]["multiplier"] += 0.25
+		Data.data_management["raids"]["raid_gold"]["multiplier"] += 0.50
 		
 		Data.data_management["raids"]["raid_gold"]["level"] += 1
 		get_tree().call_group("raids_management", "update_cooldown_raid", "raid_gold")
 	
 	if enemy_type == 4: # boss raid citical
 		Player.skill_points += 1
-		Data.data_management["raids"]["raid_critical"]["multiplier"] += 0.15
+		Data.data_management["raids"]["raid_critical"]["multiplier"] += 0.30
 		
 		Data.data_management["raids"]["raid_critical"]["level"] += 1
 		get_tree().call_group("raids_management", "update_cooldown_raid", "raid_critical")
@@ -218,7 +218,7 @@ func reload_battle() -> void:
 
 
 func prestige_points() -> int:
-	var base_points: int = (World.estagio - reset_target) * 1.05
+	var base_points: int = (World.estagio - reset_target) * 1.50
 	var scaling_factor: float = 1.10
 	var upgrade_multiplier: float = Data.data_management["upgrades"]["prestige_points"]["multiplier"]
 	var equipment_multiplier: float = (
@@ -229,7 +229,7 @@ func prestige_points() -> int:
 	)
 
 	var total_multiplier: float = (upgrade_multiplier + equipment_multiplier) * 100
-	var points: float = base_points * pow(scaling_factor, World.reset) # 1.10 ** resets
+	var points: float = base_points * pow(scaling_factor, World.reset) 
 	
 	var bonus_points: float = (total_multiplier * points) / 100
 	

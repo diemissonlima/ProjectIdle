@@ -56,22 +56,11 @@ func on_button_pressed(button: TextureButton) -> void:
 
 func show_item_info(container: String, button_name: String) -> void:
 	var item_texture: TextureRect = $Background/ItemInfo/BGColor/BGItemInfo/Sprite
-	var item_name: Label = $Background/ItemInfo/BGInfo/ItemName
+	var item_name: RichTextLabel = $Background/ItemInfo/BGInfo/ItemName
 	var atributte_1: Label = $Background/ItemInfo/BGInfo/Atributte1
 	var atributte_2: Label = $Background/ItemInfo/BGInfo/Atributte2
 	var rarity: String = get_rarity_item(button_name.to_lower())
-	
-	if rarity == "Commom":
-		$Background/ItemInfo/BGColor.color = Color(0, 255, 255)
-	elif rarity == "Uncommom":
-		$Background/ItemInfo/BGColor.color = Color(0, 255, 0)
-	elif rarity == "Elite":
-		$Background/ItemInfo/BGColor.color = Color(255, 0, 255)
-	elif rarity == "Epic":
-		$Background/ItemInfo/BGColor.color = Color(255, 255, 0)
-	elif rarity == "Legendary":
-		$Background/ItemInfo/BGColor.color = Color(255, 0, 0)
-	
+	var text_color: Color = Color.WHITE
 	
 	match container:
 		"WeaponContainer":
@@ -90,15 +79,31 @@ func show_item_info(container: String, button_name: String) -> void:
 		data_equipment[container][button_name.to_lower()]["path"]
 		)
 	
-	get_rarity_item(button_name.to_lower())
-	
 	var keys: Array = []
 	for key in data_equipment[container][button_name.to_lower()]["atributtes"].keys():
 		keys.append(key)
-	
-	item_name.text = get_rarity_item(button_name.to_lower()) + " " + \
-		container.capitalize() + " Lv " + str(data_equipment[container][button_name.to_lower()]["level"])
 		
+	if rarity == "Commom":
+		$Background/ItemInfo/BGColor.color = Color(0, 255, 255)
+		text_color = Color(0, 255, 255)
+	elif rarity == "Uncommom":
+		$Background/ItemInfo/BGColor.color = Color(0, 255, 0)
+		text_color = Color(0, 255, 0)
+	elif rarity == "Elite":
+		$Background/ItemInfo/BGColor.color = Color(255, 0, 255)
+		text_color = Color(255, 0, 255)
+	elif rarity == "Epic":
+		$Background/ItemInfo/BGColor.color = Color(255, 255, 0)
+		text_color = Color(255, 255, 0)
+	elif rarity == "Legendary":
+		$Background/ItemInfo/BGColor.color = Color(255, 0, 0)
+		text_color = Color(255, 0, 0)
+	
+	item_name.text = "[center][color=%s]%s[/color][/center]" % [
+		text_color.to_html(), rarity + " " + container.capitalize() + " Lvl " \
+		+ str(data_equipment[container][button_name.to_lower()]["level"])
+		]
+	
 	atributte_1.text = "+ " \
 	+ str(data_equipment[container][button_name.to_lower()]["atributtes"][keys[0]] * 100) \
 	+ "% " + keys[0].capitalize()

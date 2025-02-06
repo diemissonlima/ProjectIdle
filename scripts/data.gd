@@ -14,8 +14,8 @@ var data_management: Dictionary = {
 	},
 	
 	"player": {
-		"ataque": 5.0,
-		"default_damage": 5.0,
+		"ataque": 10.0,
+		"default_damage": 10.0,
 		"attack_speed": 0.5,
 		"gold": 0,
 		"skill_points": 0,
@@ -25,14 +25,14 @@ var data_management: Dictionary = {
 		"skills": {
 			"increase_attack": {
 				"level": 1,
-				"multiplier": 0.5,
+				"multiplier": 1.0,
 				"duration": 0.0,
 				"cooldown": 0.0,
 			},
 			
 			"increase_gold": {
 				"level": 1,
-				"multiplier": 0.5,
+				"multiplier": 1.0,
 				"duration": 0.0,
 				"cooldown": 0.0,
 			},
