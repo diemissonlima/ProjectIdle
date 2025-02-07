@@ -202,15 +202,15 @@ func upgrade_level_item(slot_data: Dictionary, type: String, rarity: String) -> 
 	
 	match rarity:
 		"Commom":
-			upgrade = 0.15
+			upgrade = 0.50
 		"Uncommom":
-			upgrade = 0.30
+			upgrade = 1.00
 		"elite":
-			upgrade = 0.45
+			upgrade = 1.50
 		"epic":
-			upgrade = 0.60
+			upgrade = 2.0
 		"legendary":
-			upgrade = 0.75
+			upgrade = 3.0
 	
 	for key in slot_data["atributtes"].keys():
 		keys.append(key)

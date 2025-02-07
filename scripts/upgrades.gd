@@ -46,7 +46,7 @@ func on_button_pressed(button_name: String) -> void:
 			
 			Player.prestige_points -= int(box_damage_cost.text)
 			data["damage"]["level"] += 1
-			data["damage"]["multiplier"] += 0.25
+			data["damage"]["multiplier"] += 0.50
 			
 		"IncreaseGold":
 			if Player.prestige_points < int(box_gold_cost.text):
@@ -54,7 +54,7 @@ func on_button_pressed(button_name: String) -> void:
 			
 			Player.prestige_points -= int(box_gold_cost.text)
 			data["gold"]["level"] += 1
-			data["gold"]["multiplier"] += 0.50
+			data["gold"]["multiplier"] += 1.0
 			
 		"IncreaseCriticalDamage":
 			if Player.prestige_points < int(box_critical_damage_cost.text):
@@ -62,7 +62,7 @@ func on_button_pressed(button_name: String) -> void:
 			
 			Player.prestige_points -= int(box_critical_damage_cost.text)
 			data["critical_damage"]["level"] += 1
-			data["critical_damage"]["multiplier"] += 0.15
+			data["critical_damage"]["multiplier"] += 0.30
 			
 		"IncreaseRaidTime":
 			if Player.prestige_points < int(box_raid_time_cost.text):
@@ -78,7 +78,7 @@ func on_button_pressed(button_name: String) -> void:
 			
 			Player.prestige_points -= int(box_prestige_points_cost.text)
 			data["prestige_points"]["level"] += 1
-			data["prestige_points"]["multiplier"] += 0.25
+			data["prestige_points"]["multiplier"] += 0.50
 		
 		"IncreaseSkillDuration":
 			if Player.prestige_points < int(box_skill_duration_cost.text):

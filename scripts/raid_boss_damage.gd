@@ -15,13 +15,13 @@ func increase_health():
 	health = Data.data_management["raids"]["raid_damage"]["hp"]
 	max_health = health
 	
-	$TextureProgressBar.max_value = max_health
-	$TextureProgressBar.value = health
+	progress_bar.max_value = max_health
+	progress_bar.value = health
 
 
 func next_health() -> void:
-	var base_health = 10000
-	var scaling_factor: float = 1.40  # Fator de crescimento exponencial
+	var base_health = 50000
+	var scaling_factor: float = 1.50  # Fator de crescimento exponencial
 	
 	var health = base_health * pow(
 		scaling_factor, Data.data_management["raids"]["raid_damage"]["level"]

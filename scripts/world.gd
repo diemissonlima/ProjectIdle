@@ -84,8 +84,8 @@ func set_stage_label() -> void:
 
 
 func set_label_upgrade() -> void:
-	label_upgrade_ataque_cost.text = "DPS: " + World.format_number(Player.x_upgrade_ataque * 250) + " Gold" # Exibe custo upgrade ataque
-	label_upgrade_time_cost.text = "Tempo: " + World.format_number(Player.x_upgrade_time * 350) + " Gold" # exibe custo upgrade tempo de batalha
+	label_upgrade_ataque_cost.text = "DPS: " + World.format_number(Player.x_upgrade_ataque * 150) + " Gold" # Exibe custo upgrade ataque
+	label_upgrade_time_cost.text = "Tempo: " + World.format_number(Player.x_upgrade_time * 250) + " Gold" # exibe custo upgrade tempo de batalha
 
 
 func update_timer_display() ->  void: # função pra atualizar label de batalha
@@ -104,7 +104,7 @@ func update_timer_display() ->  void: # função pra atualizar label de batalha
 
 func take_enemy_damage(_damage: float) -> void: # causa dano ao inimigo
 	enemy.health -= round(_damage) # diminui a vida em funcao do dano do player
-	enemy.animate_health_bar(round(_damage))
+	#enemy.animate_health_bar(round(_damage))
 	if enemy.health <= 0: # se a vida chegar a zero, chama a função de matar o inimigo
 		enemy.queue_free() # deleta o inimigo da cena
 		killer_enemy(enemy.enemy_type)
@@ -218,7 +218,7 @@ func reload_battle() -> void:
 
 
 func prestige_points() -> int:
-	var base_points: int = (World.estagio - reset_target) * 1.50
+	var base_points: int = (World.estagio - reset_target) * 2.0
 	var scaling_factor: float = 1.10
 	var upgrade_multiplier: float = Data.data_management["upgrades"]["prestige_points"]["multiplier"]
 	var equipment_multiplier: float = (
@@ -227,13 +227,13 @@ func prestige_points() -> int:
 		+ Player.equipped_items["ring"]["bonus_attributes"]["prestige_points"] \
 		+ Player.equipped_items["necklace"]["bonus_attributes"]["prestige_points"]
 	)
-
+	
 	var total_multiplier: float = (upgrade_multiplier + equipment_multiplier) * 100
 	var points: float = base_points * pow(scaling_factor, World.reset) 
 	
 	var bonus_points: float = (total_multiplier * points) / 100
 	
-	return points + bonus_points
+	return round(points + bonus_points)
 
 
 func reset() -> void:
@@ -337,7 +337,7 @@ func _on_timer_save_game_timeout() -> void:
 
 
 func _on_increase_ataque_pressed() -> void:
-	var upgrade_cost = Player.x_upgrade_ataque * 250
+	var upgrade_cost = Player.x_upgrade_ataque * 150
 	
 	if upgrade_cost > Player.gold:
 		return
@@ -348,11 +348,11 @@ func _on_increase_ataque_pressed() -> void:
 	Player.damage += 1
 	Player.default_damage += 1
 	# Exibe custo upgrade ataque
-	label_upgrade_ataque_cost.text = "Ataque: " + World.format_number(Player.x_upgrade_ataque * 250) + " Gold"
+	label_upgrade_ataque_cost.text = "Ataque: " + World.format_number(Player.x_upgrade_ataque * 150) + " Gold"
 
 
 func _on_increase_time_pressed() -> void:
-	var upgrade_cost = Player.x_upgrade_time * 350
+	var upgrade_cost = Player.x_upgrade_time * 250
 	
 	if upgrade_cost > Player.gold:
 		return
@@ -363,7 +363,7 @@ func _on_increase_time_pressed() -> void:
 	World.battle_time += 1
 	
 	# exibe custo upgrade tempo de batalha
-	label_upgrade_time_cost.text = "Tempo: " + World.format_number(Player.x_upgrade_time * 350) + " Gold"
+	label_upgrade_time_cost.text = "Tempo: " + World.format_number(Player.x_upgrade_time * 250) + " Gold"
 
 
 func _on_reset_pressed() -> void:

@@ -58,7 +58,9 @@ func animate_health_bar(damage: int) -> void:
 	tween = get_tree().create_tween()
 	
 	if tween and is_instance_valid(progress_bar):
-		tween.tween_property(progress_bar, "value", new_health, 1.0).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		tween.tween_property(
+			progress_bar, "value", new_health, 1.0
+			).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 
 
 func drop() -> void:
@@ -76,10 +78,10 @@ func drop() -> void:
 	
 	match enemy_type:
 		0: # enemy NORMAL
-			base_gold += 5 + (World.estagio * 2)
+			base_gold += 5 + (World.estagio * 20)
 
 		1: # enemy BOSS
-			base_gold += (20 + World.estagio * 8) * 2
+			base_gold += (20 + World.estagio * 80) * 2
 		
 	dropped_gold = round(base_gold + (base_gold * total_gold_multiplier))
 	
@@ -134,23 +136,23 @@ func drop_item() -> void:
 	if rng > 0.0 and rng <= 0.75:
 		rarity = "Commom"
 		slot_list = ["slot1", "slot2", "slot3", "slot4", "slot5"]
-		attribute_range = [75, 100]
+		attribute_range = [100, 150]
 	elif rng > 0.75 and rng <= 0.95:
 		rarity = "Uncommom"
 		slot_list = ["slot6", "slot7", "slot8", "slot9", "slot10"]
-		attribute_range = [101, 150]
+		attribute_range = [200, 250]
 	elif rng > 0.95 and rng <= 0.97:
 		rarity = "Elite"
 		slot_list = ["slot11", "slot12"]
-		attribute_range = [151, 225]
+		attribute_range = [300, 350]
 	elif rng > 0.97 and rng <= 0.99:
 		rarity = "Epic"
 		slot_list = ["slot13", "slot14"]
-		attribute_range = [226, 300]
+		attribute_range = [400, 450]
 	elif rng > 0.99 and rng <= 1.0:
 		rarity = "Legendary"
 		slot_list = ["slot15"]
-		attribute_range = [300, 500]
+		attribute_range = [500, 750]
 	
 	while item_attribute_2 == item_attribute_1:
 		item_attribute_2 = item_attribute.pick_random()

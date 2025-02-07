@@ -225,7 +225,7 @@ theme_override_constants/separation = 5
 
 [node name="Description" type="Label" parent="Background/ScrollContainer/VBoxContainer/Box1/BGDescription/VBoxContainer"]
 layout_mode = 2
-text = "- Bônus de +25% de dano"
+text = "- Bônus de +50% de dano"
 label_settings = SubResource("LabelSettings_my8hm")
 vertical_alignment = 1
 
@@ -370,7 +370,7 @@ theme_override_constants/separation = 5
 
 [node name="Description" type="Label" parent="Background/ScrollContainer/VBoxContainer/Box2/BGDescription/VBoxContainer"]
 layout_mode = 2
-text = "- Bônus de drop de gold em +50%"
+text = "- Bônus de drop de gold em +100%"
 label_settings = SubResource("LabelSettings_my8hm")
 vertical_alignment = 1
 
@@ -514,7 +514,7 @@ theme_override_constants/separation = 5
 
 [node name="Description" type="Label" parent="Background/ScrollContainer/VBoxContainer/Box3/BGDescription/VBoxContainer"]
 layout_mode = 2
-text = "- Bônus de dano crítico de +15%"
+text = "- Bônus de dano crítico de +30%"
 label_settings = SubResource("LabelSettings_my8hm")
 vertical_alignment = 1
 
@@ -802,7 +802,7 @@ theme_override_constants/separation = 5
 
 [node name="Description" type="Label" parent="Background/ScrollContainer/VBoxContainer/Box5/BGDescription/VBoxContainer"]
 layout_mode = 2
-text = "- Bônus de Pontos de Prestígio de +25%"
+text = "- Bônus de Pontos de Prestígio de +50%"
 label_settings = SubResource("LabelSettings_my8hm")
 vertical_alignment = 1
 
