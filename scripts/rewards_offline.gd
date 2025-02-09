@@ -36,15 +36,17 @@ func calculate_offline_gold() -> void:
 		time_offline = max_offline_gold
 	
 	if time_offline > 0:
-		var gold_per_second = Player.damage * 0.1
+		var scaling_factor: float = 1.25
+		var gold_per_second = Player.damage * 0.25
 		var gold_earned = int(time_offline * gold_per_second)
+		var total_gold_earned: float = gold_earned * pow(scaling_factor, World.reset)
 		var info: Array
 		
-		info.append([time_offline, gold_per_second, gold_earned])
+		info.append([time_offline, gold_per_second, total_gold_earned])
 		show_label_info(info)
 		
-		Player.gold += gold_earned
-		World.gold_gain += gold_earned
+		Player.gold += total_gold_earned
+		World.gold_gain += total_gold_earned
 
 
 func convert_time_offline(time: int) -> String:

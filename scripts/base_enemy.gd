@@ -22,9 +22,7 @@ func _ready() -> void:
 	set_enemy_type()
 	increase_health()
 	set_progresbar()
-	
-	tween = get_tree().create_tween()
-	
+
 
 func _process(_delta: float) -> void:
 	$TextureProgressBar/Label.text = str(
@@ -63,6 +61,14 @@ func animate_health_bar(damage: int) -> void:
 			).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 
 
+func calculate_exp() -> int:
+	var exp_base: int = 1
+	var scaling_factor: float = 1.10
+	var exp = exp_base * pow(scaling_factor, World.estagio)
+	
+	return round(exp)
+
+
 func drop() -> void:
 	var base_gold: int = 3
 	var gold_raid_multiplier: float = Data.data_management["raids"]["raid_gold"]["multiplier"]
@@ -78,10 +84,10 @@ func drop() -> void:
 	
 	match enemy_type:
 		0: # enemy NORMAL
-			base_gold += 5 + (World.estagio * 20)
+			base_gold += 5 + (World.estagio * 10)
 
 		1: # enemy BOSS
-			base_gold += (20 + World.estagio * 80) * 2
+			base_gold += (20 + World.estagio * 40) * 2
 		
 	dropped_gold = round(base_gold + (base_gold * total_gold_multiplier))
 	

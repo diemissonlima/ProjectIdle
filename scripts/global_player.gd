@@ -1,6 +1,8 @@
 extends Node
 
 # atributos
+var level: int = 1
+var current_exp: float = 0.0
 var damage: float = 5.0
 var damage_total: float
 var default_damage: float
@@ -69,7 +71,6 @@ var increase_criticaldamage_multiplier: float = 2.0
 var attackspeed_skill_level: int = 1
 var increase_attackspeed_multiplier: float = 1.25
 
-
 var skill_duration: float = 0.0
 var skill_duration_level: int = 1
 var skill_cooldown: float = 0.0
@@ -81,6 +82,13 @@ var gold_skill_on: bool = false
 var attackspeed_skill_on: bool = false
 var critical_damage_skill_on: bool = false
 var damage_skill_on: bool = false
+
+var level_dict: Dictionary = {
+	"1": 50, "2": 625, "3": 781, "4": 976, "5": 1220,
+	"6": 1525, "7": 1907, "8": 2384, "9": 2980, "10": 3725,
+	"11": 4656, "12": 5820, "13": 7275, "14": 9093, "15": 11366,
+	"16": 14207, "17": 17759, "18": 22199, "19": 27749, "20": 34687
+}
 
 
 func _ready() -> void:
@@ -94,6 +102,8 @@ func load_data() -> void:
 	var data_skills = data["skills"]
 	var data_upgrade = Data.data_management["upgrades"]
 	
+	level = data["level"]
+	current_exp = data["current_exp"]
 	damage = data["ataque"]
 	default_damage = data["default_damage"]
 	attack_speed = data["attack_speed"]
@@ -126,6 +136,8 @@ func save_data() -> void:
 	var data_skills = data["skills"]
 	var data_upgrade = Data.data_management["upgrades"]
 	
+	data["level"] = level
+	data["current_exp"] = current_exp
 	data["ataque"] = damage
 	data["default_damage"] = default_damage
 	data["attack_speed"] = attack_speed
@@ -153,6 +165,14 @@ func save_data() -> void:
 	data_skills["increase_critical_damage"]["multiplier"] = increase_criticaldamage_multiplier
 	
 	Data.save_data()
+
+
+func update_exp(value: int) -> void:
+	current_exp += value
+	
+	if current_exp >= level_dict[str(level)]:
+		level += 1
+		current_exp = 0
 
 
 func handler_item(state: String, equipment_type: String, slot: String) -> void:
@@ -187,7 +207,7 @@ func alter_attack() -> void:
 	)
 	
 	var damage_multiplier: float = (
-		raid_damage_multiplier + upgrade_damage_multiplier + equipment_damage_multiplier
+		upgrade_damage_multiplier + equipment_damage_multiplier + raid_damage_multiplier
 		) * 100
 	
 	damage_total = damage + ((damage_multiplier * damage) / 100)

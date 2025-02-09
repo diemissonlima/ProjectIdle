@@ -1,10 +1,4 @@
-res://scenes/upgrades.tscn
-res://scripts/upgrades.gd
 res://scenes/world.tscn
-res://scripts/base_enemy.gd
-res://scripts/equipments.gd
-res://scripts/data.gd
-res://scripts/world.gd
 res://scenes/base_enemy.tscn
 res://scenes/rewards_offline.tscn
 res://scenes/box_skill_info.tscn
@@ -12,8 +6,8 @@ res://scenes/reset_info.tscn
 res://scenes/stats_info.tscn
 res://scenes/loot_box.tscn
 res://scenes/raids.tscn
+res://scenes/upgrades.tscn
 res://scenes/equipments.tscn
 res://scenes/main_menu.tscn
-res://scripts/raid_boss_critical.gd
-res://scripts/raid_boss_damage.gd
-res://scripts/raid_boss_gold.gd
+res://scripts/global_player.gd
+res://scripts/world.gd

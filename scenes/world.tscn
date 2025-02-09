@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://dtyw4v44a8ka4"]
+[gd_scene load_steps=98 format=3 uid="uid://dtyw4v44a8ka4"]
 
 [ext_resource type="Texture2D" uid="uid://bs4f04v00hl85" path="res://assets/backgrounds/Horizontal/1.png" id="1_m0651"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_mqmc1"]
@@ -74,9 +74,12 @@
 [ext_resource type="Texture2D" uid="uid://c1rlf8hnaxpq2" path="res://assets/prefabs/icons/Icon_Small_Coin.png" id="60_5y4ps"]
 [ext_resource type="Texture2D" uid="uid://c26eco8t6djvs" path="res://assets/prefabs/icons/book_04f.png" id="61_pdtar"]
 [ext_resource type="Texture2D" uid="uid://c5onxi1s6n3ci" path="res://assets/prefabs/icons/interrogation-point.png" id="61_v3wpb"]
+[ext_resource type="Texture2D" uid="uid://bxdpv2k70yv4v" path="res://assets/prefabs/health_bar/ProgressBar01_Background.png" id="64_6uaqy"]
 [ext_resource type="Texture2D" uid="uid://cykex46ttcc8g" path="res://assets/prefabs/icons/Icon_Small_Diamond.png" id="64_jpit2"]
 [ext_resource type="Texture2D" uid="uid://cycc5sf6td3w5" path="res://assets/skills/08.png" id="65_asbbg"]
+[ext_resource type="Texture2D" uid="uid://c87vpjjynbswi" path="res://assets/prefabs/health_bar/ProgressBar01_Border.png" id="65_up28s"]
 [ext_resource type="Texture2D" uid="uid://7fknnavhqyfo" path="res://assets/prefabs/box/MessageBox01.png" id="65_waswf"]
+[ext_resource type="Texture2D" uid="uid://djgwhn307h28p" path="res://assets/prefabs/health_bar/ProgressBar01_Bar.png" id="66_v01rl"]
 [ext_resource type="Texture2D" uid="uid://73d4eskglr32" path="res://assets/prefabs/icons/29.png" id="67_evpem"]
 [ext_resource type="Texture2D" uid="uid://c46pptcjh5hyp" path="res://assets/prefabs/icons/Wenrexa Shield.png" id="69_ngy2m"]
 [ext_resource type="Texture2D" uid="uid://cwhk8temihlnp" path="res://assets/prefabs/icons/25.png" id="85_ftqql"]
@@ -86,6 +89,12 @@
 font = ExtResource("23_fp0v3")
 font_size = 12
 outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4p342"]
+font = ExtResource("13_lkpp6")
+font_size = 22
+outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ec5ub"]
@@ -170,8 +179,8 @@ drop_chance = 0.005
 [node name="Interface" type="CanvasLayer" parent="."]
 
 [node name="LootBox" parent="Interface" instance=ExtResource("57_5t10c")]
-offset_top = -30.0
-offset_bottom = 112.0
+offset_top = -37.0
+offset_bottom = 105.0
 
 [node name="BoxSkillInfo" parent="Interface" instance=ExtResource("51_5f82i")]
 
@@ -236,6 +245,43 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Next Stage"
 label_settings = SubResource("LabelSettings_cavrc")
+
+[node name="ExpBar" type="TextureProgressBar" parent="Background"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -348.0
+offset_top = -34.0
+offset_right = 349.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 75.0
+nine_patch_stretch = true
+texture_under = ExtResource("64_6uaqy")
+texture_over = ExtResource("65_up28s")
+texture_progress = ExtResource("66_v01rl")
+
+[node name="ExpLabel" type="Label" parent="Background/ExpBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -12.5
+offset_right = 46.0
+offset_bottom = 10.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "150 / 1500"
+label_settings = SubResource("LabelSettings_4p342")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Labels" type="Node" parent="."]
 
@@ -668,10 +714,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -136.0
-offset_top = 80.0
-offset_right = -86.0
-offset_bottom = 130.0
+offset_left = -128.0
+offset_top = 59.0
+offset_right = -78.0
+offset_bottom = 109.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("24_clftt")
@@ -717,10 +763,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -69.0
-offset_top = 80.0
-offset_right = -19.0
-offset_bottom = 130.0
+offset_left = -61.0
+offset_top = 59.0
+offset_right = -11.0
+offset_bottom = 109.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("26_5jnhr")
@@ -766,10 +812,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -2.0
-offset_top = 80.0
-offset_right = 48.0
-offset_bottom = 130.0
+offset_left = 6.0
+offset_top = 59.0
+offset_right = 56.0
+offset_bottom = 109.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("27_34dut")
@@ -815,10 +861,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -2.0
-offset_top = 80.0
-offset_right = 48.0
-offset_bottom = 130.0
+offset_left = 6.0
+offset_top = 59.0
+offset_right = 56.0
+offset_bottom = 109.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("27_34dut")
@@ -864,10 +910,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 62.0
-offset_top = 80.0
-offset_right = 112.0
-offset_bottom = 130.0
+offset_left = 70.0
+offset_top = 59.0
+offset_right = 120.0
+offset_bottom = 109.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("65_asbbg")

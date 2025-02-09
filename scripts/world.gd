@@ -139,6 +139,7 @@ func killer_enemy(enemy_type) -> void:
 	raid_fight = false
 	
 	enemy.drop()
+	Player.update_exp(enemy.calculate_exp())
 	Player.gold += enemy.dropped_gold
 	World.gold_gain += enemy.dropped_gold
 	
@@ -219,7 +220,7 @@ func reload_battle() -> void:
 
 func prestige_points() -> int:
 	var base_points: int = (World.estagio - reset_target) * 2.0
-	var scaling_factor: float = 1.10
+	var scaling_factor: float = 1.15
 	var upgrade_multiplier: float = Data.data_management["upgrades"]["prestige_points"]["multiplier"]
 	var equipment_multiplier: float = (
 		Player.equipped_items["weapon"]["bonus_attributes"]["prestige_points"] \
