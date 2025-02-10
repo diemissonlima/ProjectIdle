@@ -84,7 +84,7 @@ var critical_damage_skill_on: bool = false
 var damage_skill_on: bool = false
 
 var level_dict: Dictionary = {
-	"1": 50, "2": 625, "3": 781, "4": 976, "5": 1220,
+	"1": 500, "2": 625, "3": 781, "4": 976, "5": 1220,
 	"6": 1525, "7": 1907, "8": 2384, "9": 2980, "10": 3725,
 	"11": 4656, "12": 5820, "13": 7275, "14": 9093, "15": 11366,
 	"16": 14207, "17": 17759, "18": 22199, "19": 27749, "20": 34687
@@ -171,8 +171,11 @@ func update_exp(value: int) -> void:
 	current_exp += value
 	
 	if current_exp >= level_dict[str(level)]:
+		var leftover = current_exp - level_dict[str(level)]
+		current_exp = leftover
 		level += 1
-		current_exp = 0
+	
+	get_tree().call_group("world", "update_expbar")
 
 
 func handler_item(state: String, equipment_type: String, slot: String) -> void:

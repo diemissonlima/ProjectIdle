@@ -63,7 +63,7 @@ func animate_health_bar(damage: int) -> void:
 
 func calculate_exp() -> int:
 	var exp_base: int = 1
-	var scaling_factor: float = 1.10
+	var scaling_factor: float = 1.05
 	var exp = exp_base * pow(scaling_factor, World.estagio)
 	
 	return round(exp)

@@ -1,4 +1,6 @@
 res://scenes/world.tscn
+res://scripts/global_player.gd
+res://scripts/world.gd
 res://scenes/base_enemy.tscn
 res://scenes/rewards_offline.tscn
 res://scenes/box_skill_info.tscn
@@ -9,5 +11,4 @@ res://scenes/raids.tscn
 res://scenes/upgrades.tscn
 res://scenes/equipments.tscn
 res://scenes/main_menu.tscn
-res://scripts/global_player.gd
-res://scripts/world.gd
+res://scripts/base_enemy.gd
