@@ -14,7 +14,6 @@ extends Control
 @export var label_gold: Label
 @export var label_skill_points: Label
 @export var label_prestige_points: Label
-@export var label_player_level: Label
 @export var label_player_atk: Label
 @export var label_upgrade_ataque_cost: Label
 @export var label_upgrade_time_cost: Label
@@ -81,7 +80,6 @@ func set_stage_label() -> void:
 	label_skill_points.text = "S.Points: " + str(Player.skill_points)
 	label_prestige_points.text = "P.Points: " + World.format_number(round(Player.prestige_points))
 	label_player_atk.text = "DPS: " + World.format_number(round(Player.damage_total)) # exibe ataque do player
-	label_player_level.text = "Lvl: " + str(Player.level)
 	
 	update_timer_display() # chama função pra atualizar a label de tempo de batalha
 
@@ -300,7 +298,7 @@ func update_expbar() -> void:
 	var progress_bar: TextureProgressBar = $Background/ExpBar
 	var exp_label: Label = $Background/ExpBar/ExpLabel
 	
-	exp_label.text = str(Player.current_exp) + " / " + str(Player.level_dict[str(Player.level)])
+	exp_label.text = "Lvl " + str(Player.level) + "  " + str(Player.current_exp) + " / " + str(Player.level_dict[str(Player.level)])
 	progress_bar.value = Player.current_exp
 	progress_bar.max_value = Player.level_dict[str(Player.level)]
 

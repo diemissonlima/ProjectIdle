@@ -20,8 +20,8 @@ func increase_health():
 
 
 func next_health() -> void:
-	var base_health = 35000
-	var scaling_factor: float = 1.50 # Fator de crescimento exponencial
+	var base_health = 50000
+	var scaling_factor: float = 1.40 # Fator de crescimento exponencial
 	
 	var health = base_health * pow(
 		scaling_factor, Data.data_management["raids"]["raid_gold"]["level"]

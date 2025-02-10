@@ -87,7 +87,7 @@ func drop() -> void:
 			base_gold += 5 + (World.estagio * 10)
 
 		1: # enemy BOSS
-			base_gold += (20 + World.estagio * 40) * 2
+			base_gold += 20 + (World.estagio * 20) * 2
 		
 	dropped_gold = round(base_gold + (base_gold * total_gold_multiplier))
 	
@@ -142,19 +142,19 @@ func drop_item() -> void:
 	if rng > 0.0 and rng <= 0.75:
 		rarity = "Commom"
 		slot_list = ["slot1", "slot2", "slot3", "slot4", "slot5"]
-		attribute_range = [100, 150]
+		attribute_range = [50, 100]
 	elif rng > 0.75 and rng <= 0.95:
 		rarity = "Uncommom"
 		slot_list = ["slot6", "slot7", "slot8", "slot9", "slot10"]
-		attribute_range = [200, 250]
+		attribute_range = [150, 200]
 	elif rng > 0.95 and rng <= 0.97:
 		rarity = "Elite"
 		slot_list = ["slot11", "slot12"]
-		attribute_range = [300, 350]
+		attribute_range = [250, 300]
 	elif rng > 0.97 and rng <= 0.99:
 		rarity = "Epic"
 		slot_list = ["slot13", "slot14"]
-		attribute_range = [400, 450]
+		attribute_range = [350, 400]
 	elif rng > 0.99 and rng <= 1.0:
 		rarity = "Legendary"
 		slot_list = ["slot15"]

@@ -14,8 +14,8 @@ var data_management: Dictionary = {
 	},
 	
 	"player": {
-		"ataque": 5.0,
-		"default_damage": 5.0,
+		"ataque": 10.0,
+		"default_damage": 10.0,
 		"attack_speed": 0.5,
 		"level": 1,
 		"current_exp": 0,
@@ -95,21 +95,21 @@ var data_management: Dictionary = {
 	"raids": {
 		"raid_damage": {
 			"level": 1,
-			"hp": 15000,
+			"hp": 50000,
 			"multiplier": 0.0,
 			"time_left": 0.0
 		},
 		
 		"raid_gold": {
 			"level": 1,
-			"hp": 10000,
+			"hp": 50000,
 			"multiplier": 0.0,
 			"time_left": 0.0
 		},
 		
 		"raid_critical": {
 			"level": 1,
-			"hp": 10000,
+			"hp": 50000,
 			"multiplier": 0.0,
 			"time_left": 0.0
 		}

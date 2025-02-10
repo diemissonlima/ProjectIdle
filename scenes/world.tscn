@@ -93,8 +93,8 @@ outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_4p342"]
 font = ExtResource("13_lkpp6")
-font_size = 22
-outline_size = 5
+font_size = 18
+outline_size = 8
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ec5ub"]
@@ -105,8 +105,11 @@ outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_8875g"]
+line_spacing = 0.0
 font = ExtResource("13_lkpp6")
 font_size = 20
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_4et66"]
 font = ExtResource("13_lkpp6")
@@ -147,7 +150,7 @@ font_size = 30
 outline_size = 6
 outline_color = Color(0, 0, 0, 1)
 
-[node name="World" type="Control" node_paths=PackedStringArray("background", "timer_batalha", "timer_player_attack", "timer_save_game", "spawn_position", "label_stage", "label_substage", "label_contador", "label_gold", "label_skill_points", "label_prestige_points", "label_player_level", "label_player_atk", "label_upgrade_ataque_cost", "label_upgrade_time_cost", "increase_attack", "increase_battle_time", "btn_next_stage") groups=["world"]]
+[node name="World" type="Control" node_paths=PackedStringArray("background", "timer_batalha", "timer_player_attack", "timer_save_game", "spawn_position", "label_stage", "label_substage", "label_contador", "label_gold", "label_skill_points", "label_prestige_points", "label_player_atk", "label_upgrade_ataque_cost", "label_upgrade_time_cost", "increase_attack", "increase_battle_time", "btn_next_stage") groups=["world"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -166,7 +169,6 @@ label_contador = NodePath("Labels/HBoxContainer2/LabelContador")
 label_gold = NodePath("Labels/HBoxContainer/LabelGold")
 label_skill_points = NodePath("Labels/HBoxContainer/LabelSkillPoints")
 label_prestige_points = NodePath("Labels/HBoxContainer/LabelPrestigePoints")
-label_player_level = NodePath("Labels/HBoxContainer/LabelLvl")
 label_player_atk = NodePath("Labels/HBoxContainer/LabelPlayerAtk")
 label_upgrade_ataque_cost = NodePath("Buttons/IncreaseAtaque/LabelUpgradeAtaqueCost")
 label_upgrade_time_cost = NodePath("Buttons/IncreaseTime/LabelUpgradeTimeCost")
@@ -175,7 +177,7 @@ increase_battle_time = NodePath("Buttons/IncreaseTime")
 btn_next_stage = NodePath("Background/NextStage")
 enemy_list = Array[PackedScene]([ExtResource("2_mc2mg"), ExtResource("3_wv77d"), ExtResource("4_4lrad"), ExtResource("5_ypc2a"), ExtResource("6_760qv"), ExtResource("7_nckfb"), ExtResource("8_gq87j"), ExtResource("9_h1yai"), ExtResource("10_5dmow"), ExtResource("11_fk4lp"), ExtResource("12_gew8y"), ExtResource("13_jgsd4"), ExtResource("14_l3jc0"), ExtResource("15_kow05"), ExtResource("16_amtns"), ExtResource("17_cwqjs"), ExtResource("18_yotpx"), ExtResource("19_m5chr"), ExtResource("20_gfeyn"), ExtResource("21_2stjs")])
 enemy_list2 = Array[PackedScene]([ExtResource("2_0hpjr"), ExtResource("3_jhtr8"), ExtResource("4_ujmjt"), ExtResource("5_hhb6s"), ExtResource("6_6sjm6"), ExtResource("27_i5xaf"), ExtResource("28_xqfgk"), ExtResource("29_7osm5"), ExtResource("30_j1xi3"), ExtResource("31_oc0en"), ExtResource("32_r8dy6"), ExtResource("33_mwqfe"), ExtResource("34_csskn"), ExtResource("35_s7jr6"), ExtResource("36_75au4"), ExtResource("37_fkoch"), ExtResource("38_ps132"), ExtResource("39_535it"), ExtResource("40_rbgvi"), ExtResource("41_k35sk"), ExtResource("42_50nva"), ExtResource("43_vrkv6"), ExtResource("44_wonp5"), ExtResource("45_r12ph"), ExtResource("46_pxwds"), ExtResource("47_xgrj4"), ExtResource("48_utny8"), ExtResource("49_w88iv"), ExtResource("50_vcssp")])
-drop_chance = 0.005
+drop_chance = 0.01
 
 [node name="Interface" type="CanvasLayer" parent="."]
 
@@ -273,9 +275,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -46.0
-offset_top = -12.5
+offset_top = -11.5
 offset_right = 46.0
-offset_bottom = 10.5
+offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "150 / 1500"
@@ -303,24 +305,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -287.0
+offset_left = -308.0
 offset_top = 152.0
-offset_right = 301.0
+offset_right = 320.0
 offset_bottom = 192.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 45
 alignment = 1
 
-[node name="LabelLvl" type="Label" parent="Labels/HBoxContainer"]
-layout_mode = 2
-text = "Lvl: 5"
-label_settings = SubResource("LabelSettings_8875g")
-vertical_alignment = 1
-
 [node name="LabelPlayerAtk" type="Label" parent="Labels/HBoxContainer"]
 layout_mode = 2
-text = "DPS: 5"
+text = "DPS: 500.5M"
 label_settings = SubResource("LabelSettings_8875g")
 vertical_alignment = 1
 
@@ -329,9 +325,9 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = -29.0
+offset_left = -22.0
 offset_top = -12.0
-offset_right = -9.0
+offset_right = -2.0
 offset_bottom = 8.0
 grow_vertical = 2
 texture = ExtResource("59_4eh2u")
@@ -339,7 +335,7 @@ expand_mode = 1
 
 [node name="LabelGold" type="Label" parent="Labels/HBoxContainer"]
 layout_mode = 2
-text = "Gold: 100"
+text = "Gold: 100.5M"
 label_settings = SubResource("LabelSettings_4et66")
 horizontal_alignment = 1
 
@@ -348,9 +344,9 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = -25.0
+offset_left = -29.0
 offset_top = -11.0
-offset_right = -5.0
+offset_right = -9.0
 offset_bottom = 9.0
 grow_vertical = 2
 texture = ExtResource("60_5y4ps")
@@ -358,7 +354,7 @@ expand_mode = 1
 
 [node name="LabelSkillPoints" type="Label" parent="Labels/HBoxContainer"]
 layout_mode = 2
-text = "S. Points: 25"
+text = "S.Points: 25"
 label_settings = SubResource("LabelSettings_qo20n")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -368,9 +364,9 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = -27.0
+offset_left = -25.0
 offset_top = -12.0
-offset_right = -7.0
+offset_right = -5.0
 offset_bottom = 8.0
 grow_vertical = 2
 texture = ExtResource("61_pdtar")
@@ -378,7 +374,7 @@ expand_mode = 1
 
 [node name="LabelPrestigePoints" type="Label" parent="Labels/HBoxContainer"]
 layout_mode = 2
-text = "P.Points: 2500"
+text = "P.Points: 100.5M"
 label_settings = SubResource("LabelSettings_qo20n")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -389,9 +385,9 @@ anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = -27.0
-offset_top = -12.0
+offset_top = -10.0
 offset_right = -7.0
-offset_bottom = 8.0
+offset_bottom = 10.0
 grow_vertical = 2
 texture = ExtResource("64_jpit2")
 expand_mode = 1

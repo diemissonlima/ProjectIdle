@@ -83,16 +83,12 @@ var attackspeed_skill_on: bool = false
 var critical_damage_skill_on: bool = false
 var damage_skill_on: bool = false
 
-var level_dict: Dictionary = {
-	"1": 500, "2": 625, "3": 781, "4": 976, "5": 1220,
-	"6": 1525, "7": 1907, "8": 2384, "9": 2980, "10": 3725,
-	"11": 4656, "12": 5820, "13": 7275, "14": 9093, "15": 11366,
-	"16": 14207, "17": 17759, "18": 22199, "19": 27749, "20": 34687
-}
+var level_dict: Dictionary = {}
 
 
 func _ready() -> void:
 	load_data()
+	populate_level_dict()
 	damage_total = damage + bonus_damage
 
 
@@ -165,6 +161,14 @@ func save_data() -> void:
 	data_skills["increase_critical_damage"]["multiplier"] = increase_criticaldamage_multiplier
 	
 	Data.save_data()
+
+
+func populate_level_dict() -> void:
+	var initial_value: float = 1000
+
+	for i in range(1, 101):
+		level_dict[str(i)] = round(initial_value)
+		initial_value += initial_value * 0.30
 
 
 func update_exp(value: int) -> void:
