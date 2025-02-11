@@ -37,10 +37,10 @@ var enemy
 
 
 func _ready() -> void:
+	update_expbar()
 	load_background() # carrega o background do estagio
 	set_label_upgrade() # seta as labels que informa o custo do upgrade
 	spawn_enemy() # spawna o inimigo
-	update_expbar()
 	timer_player_attack.start(Player.attack_speed)
 	#timer_save_game.start()
 	
@@ -298,7 +298,9 @@ func update_expbar() -> void:
 	var progress_bar: TextureProgressBar = $Background/ExpBar
 	var exp_label: Label = $Background/ExpBar/ExpLabel
 	
-	exp_label.text = "Lvl " + str(Player.level) + "  " + str(Player.current_exp) + " / " + str(Player.level_dict[str(Player.level)])
+	exp_label.text = "Lvl " + str(Player.level) + "  " + World.format_number(Player.current_exp) \
+	+ " / " + World.format_number(Player.level_dict[str(Player.level)])
+	
 	progress_bar.value = Player.current_exp
 	progress_bar.max_value = Player.level_dict[str(Player.level)]
 

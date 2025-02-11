@@ -164,6 +164,7 @@ text = "Equipments"
 label_settings = SubResource("LabelSettings_p6cx1")
 
 [node name="TitleBonus" type="Label" parent="Background"]
+visible = false
 layout_mode = 1
 offset_left = 93.5
 offset_top = 25.5
@@ -175,6 +176,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="BonusContainer" type="VBoxContainer" parent="Background"]
+visible = false
 layout_mode = 0
 offset_left = 47.0
 offset_top = 49.0

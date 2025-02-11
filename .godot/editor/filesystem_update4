@@ -9,8 +9,4 @@ res://scenes/raids.tscn
 res://scenes/upgrades.tscn
 res://scenes/equipments.tscn
 res://scenes/main_menu.tscn
-res://scripts/base_enemy.gd
 res://scripts/world.gd
-res://scripts/raid_boss_critical.gd
-res://scripts/raid_boss_gold.gd
-res://scripts/data.gd
