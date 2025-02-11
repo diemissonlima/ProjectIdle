@@ -53,7 +53,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	World.gameplay_time += delta
 	set_stage_label() # atualiza constantemente o label de vida do inimigo
-	set_label_upgrade()
 
 
 func start_timer() -> void: # inicia os contadores
@@ -355,13 +354,21 @@ func _on_increase_ataque_pressed() -> void:
 	if upgrade_cost > Player.gold:
 		return
 	
+	#if Player.upgrade_attack(10) <= Player.gold:
+		#upgrade_cost = Player.upgrade_attack(10)
+		#Player.x_upgrade_ataque += 10
+		#Player.damage += 1
+		#Player.default_damage += 1
+	#else:
+		#upgrade_cost = Player.upgrade_attack(1)
+		
 	Player.gold -= upgrade_cost
 	
 	Player.x_upgrade_ataque += 1
 	Player.damage += 1
 	Player.default_damage += 1
-	# Exibe custo upgrade ataque
-	label_upgrade_ataque_cost.text = "Ataque: " + World.format_number(Player.x_upgrade_ataque * 150) + " Gold"
+	
+	set_label_upgrade()
 
 
 func _on_increase_time_pressed() -> void:
@@ -375,8 +382,7 @@ func _on_increase_time_pressed() -> void:
 	Player.x_upgrade_time += 1
 	World.battle_time += 1
 	
-	# exibe custo upgrade tempo de batalha
-	label_upgrade_time_cost.text = "Tempo: " + World.format_number(Player.x_upgrade_time * 250) + " Gold"
+	set_label_upgrade()
 
 
 func _on_reset_pressed() -> void:

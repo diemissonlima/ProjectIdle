@@ -9,4 +9,5 @@ res://scenes/raids.tscn
 res://scenes/upgrades.tscn
 res://scenes/equipments.tscn
 res://scenes/main_menu.tscn
+res://scripts/global_player.gd
 res://scripts/world.gd
