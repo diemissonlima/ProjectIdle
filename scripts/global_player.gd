@@ -90,24 +90,21 @@ func _ready() -> void:
 	load_data()
 	populate_level_dict()
 	damage_total = damage + bonus_damage
-	
-	var initial_cost: int = 150
-	var quantity: int = 2
-	
-	print("Upgrade 1x: ", calculate_total_upgrade(1))
-	print("Upgrade 2x: ", calculate_total_upgrade(2))
-	print("Upgrade 3x: ", calculate_total_upgrade(3))
-	print("Upgrade 4x: ", calculate_total_upgrade(4))
-	print("Upgrade 5x: ", calculate_total_upgrade(5))
-	print("Upgrade 6x: ", calculate_total_upgrade(6))
-	print("Upgrade 7x: ", calculate_total_upgrade(7))
-	print("Upgrade 8x: ", calculate_total_upgrade(8))
+	calculate_price()
 
 
-func calculate_total_upgrade(quantity: int) -> int:
-	var attack_base_cost: int = 150
+func calculate_price() -> void:
+	var current_cost: int = Player.x_upgrade_ataque * 150
+	var next_cost: int = current_cost + 150
+	var total_cost: int
 	
-	return attack_base_cost * (quantity * (quantity + 1)) / 2
+	var index: int = 0
+	for j in range(5):
+		index += 1
+		total_cost += current_cost * index
+		print("Custo: ", current_cost * index)
+		print("Custo Total: ", total_cost)
+		print("-=-=-=-=-=-=-=-=-=-=-")
 
 
 func load_data() -> void:
