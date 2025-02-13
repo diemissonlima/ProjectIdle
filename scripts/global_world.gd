@@ -9,6 +9,15 @@ var avg_estagio: int = 1
 var reset: int = 0
 var kills: int = 0
 var gold_gain: float = 0.0
+var total_itens_dropped: int = 0
+
+var rng_item: Dictionary = {
+	"commom": [0.0, 0.75],
+	"uncommom": [0.75, 0.95],
+	"elite": [0.95, 0.97],
+	"epic": [0.97, 0.99],
+	"legendary": [0.99, 1.0]
+	}
 
 
 func _ready() -> void:
@@ -29,6 +38,7 @@ func load_data() -> void:
 	
 	kills = Data.data_management["statistics"]["kills"]
 	gold_gain = Data.data_management["statistics"]["gold_gain"]
+	total_itens_dropped = Data.data_management["statistics"]["itens_dropped"]
 
 
 func save_data() -> void:
@@ -43,8 +53,28 @@ func save_data() -> void:
 	
 	Data.data_management["statistics"]["kills"] = kills
 	Data.data_management["statistics"]["gold_gain"] = gold_gain
+	Data.data_management["statistics"]["itens_dropped"] = total_itens_dropped
 	
 	Data.save_data()
+
+
+func update_rng_item() -> void:
+	total_itens_dropped += 1
+	
+	if total_itens_dropped == 10:
+		rng_item["uncommom"][1] -= 0.01
+		rng_item["elite"][0] = 0.99
+		rng_item["elite"][1] = 1.0
+	
+	elif total_itens_dropped == 15:
+		rng_item["uncommom"][1] -= 0.02
+		rng_item["elite"][0] = 0.98
+		rng_item["elite"][1] = 1.0
+		
+	elif total_itens_dropped == 25:
+		rng_item["uncommom"][1] -= 0.03
+		rng_item["elite"][0] = 0.97
+		rng_item["elite"][1] = 1.0
 
 
 func format_number(value: float) -> String:

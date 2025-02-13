@@ -146,6 +146,7 @@ func killer_enemy(enemy_type) -> void:
 	var rng_drop: float = randf()
 	if rng_drop < drop_chance:
 		enemy.drop_item()
+		#World.update_rng_item()
 		
 	if enemy_type == 0 or enemy_type == 1:
 		Data.data_management["statistics"]["monster"]["enemy_" + str(enemy.id)] += 1
@@ -354,14 +355,30 @@ func _on_increase_ataque_pressed() -> void:
 	if upgrade_cost > Player.gold:
 		return
 	
-	#if Player.upgrade_attack(10) <= Player.gold:
-		#upgrade_cost = Player.upgrade_attack(10)
-		#Player.x_upgrade_ataque += 10
-		#Player.damage += 1
-		#Player.default_damage += 1
-	#else:
-		#upgrade_cost = Player.upgrade_attack(1)
+	if Player.calculate_price(Player.x_upgrade_ataque, 50) <= Player.gold:
+		upgrade_cost = Player.calculate_price(Player.x_upgrade_ataque, 50)
 		
+		Player.gold -= upgrade_cost
+	
+		Player.x_upgrade_ataque += 50
+		Player.damage += 50
+		Player.default_damage += 50
+
+		set_label_upgrade()
+		return
+	
+	elif Player.calculate_price(Player.x_upgrade_ataque, 10) <= Player.gold:
+		upgrade_cost = Player.calculate_price(Player.x_upgrade_ataque, 10)
+		
+		Player.gold -= upgrade_cost
+	
+		Player.x_upgrade_ataque += 10
+		Player.damage += 10
+		Player.default_damage += 10
+
+		set_label_upgrade()
+		return
+	
 	Player.gold -= upgrade_cost
 	
 	Player.x_upgrade_ataque += 1

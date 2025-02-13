@@ -59,6 +59,7 @@ var data_management: Dictionary = {
 		"kills": 0,
 		"gold_gain": 0,
 		"points": 0,
+		"itens_dropped": 0,
 		"monster": {
 			"enemy_1": 0,
 			"enemy_2": 0,
