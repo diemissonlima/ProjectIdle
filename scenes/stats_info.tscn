@@ -36,7 +36,7 @@ average_stage = NodePath("Background/VBoxContainer/LabelAvgStage")
 total_gold = NodePath("Background/VBoxContainer/LabelTotalGold")
 total_resets = NodePath("Background/VBoxContainer/LabelResets")
 monster_kill = NodePath("Background/VBoxContainer/LabelMonsterKill")
-points = NodePath("Background/VBoxContainer2/LabelPoints")
+points = NodePath("Background/VBoxContainer/LabelPoints")
 dps_boost = NodePath("Background/VBoxContainer2/LabelDpsBoost")
 gold_boost = NodePath("Background/VBoxContainer2/LabelGoldBoost")
 prestige_boost = NodePath("Background/VBoxContainer2/LabelPrestigeBoost")
@@ -73,90 +73,79 @@ label_settings = SubResource("LabelSettings_ow2ig")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background"]
 layout_mode = 0
-offset_left = 18.0
+offset_left = 42.0
 offset_top = 112.0
-offset_right = 328.0
-offset_bottom = 241.0
+offset_right = 304.0
+offset_bottom = 313.0
 theme_override_constants/separation = 15
 
 [node name="LabelGameTime" type="Label" parent="Background/VBoxContainer"]
 layout_mode = 2
 text = "Gametime: 00h : 00m: 00m"
 label_settings = SubResource("LabelSettings_mvwma")
-horizontal_alignment = 1
 
 [node name="LabelAvgStage" type="Label" parent="Background/VBoxContainer"]
 layout_mode = 2
 text = "Highest Stage: 10"
 label_settings = SubResource("LabelSettings_ndoey")
-horizontal_alignment = 1
 
 [node name="LabelTotalGold" type="Label" parent="Background/VBoxContainer"]
 layout_mode = 2
 text = "Total Gold: 0"
 label_settings = SubResource("LabelSettings_yt8sq")
-horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="LabelResets" type="Label" parent="Background/VBoxContainer"]
 layout_mode = 2
 text = "Total Resets: 0"
 label_settings = SubResource("LabelSettings_yt8sq")
-horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="LabelMonsterKill" type="Label" parent="Background/VBoxContainer"]
 layout_mode = 2
 text = "Monster Kill: 50000"
 label_settings = SubResource("LabelSettings_yt8sq")
-horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelPoints" type="Label" parent="Background/VBoxContainer"]
+layout_mode = 2
+text = "Points: 1572"
+label_settings = SubResource("LabelSettings_yt8sq")
 vertical_alignment = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Background"]
 layout_mode = 0
-offset_left = 334.0
+offset_left = 377.0
 offset_top = 112.0
-offset_right = 643.0
-offset_bottom = 277.0
+offset_right = 619.0
+offset_bottom = 313.0
 theme_override_constants/separation = 15
-
-[node name="LabelPoints" type="Label" parent="Background/VBoxContainer2"]
-layout_mode = 2
-text = "Points: 1572"
-label_settings = SubResource("LabelSettings_yt8sq")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="LabelDpsBoost" type="Label" parent="Background/VBoxContainer2"]
 layout_mode = 2
 text = "DPS Boost: 100%"
 label_settings = SubResource("LabelSettings_yt8sq")
-horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="LabelGoldBoost" type="Label" parent="Background/VBoxContainer2"]
 layout_mode = 2
 text = "Gold Boost: 150%"
 label_settings = SubResource("LabelSettings_mvwma")
-horizontal_alignment = 1
 
 [node name="LabelPrestigeBoost" type="Label" parent="Background/VBoxContainer2"]
 layout_mode = 2
 text = "P. Points Boost: 16%"
 label_settings = SubResource("LabelSettings_ndoey")
-horizontal_alignment = 1
 
 [node name="LabelCriticalDamage" type="Label" parent="Background/VBoxContainer2"]
 layout_mode = 2
 text = "Critical Damage: 16%"
 label_settings = SubResource("LabelSettings_ndoey")
-horizontal_alignment = 1
 
 [node name="LabelCriticalChance" type="Label" parent="Background/VBoxContainer2"]
 layout_mode = 2
 text = "Critical Chance: 5%"
 label_settings = SubResource("LabelSettings_mvwma")
-horizontal_alignment = 1
 
 [node name="Close" type="TextureButton" parent="Background"]
 layout_mode = 1

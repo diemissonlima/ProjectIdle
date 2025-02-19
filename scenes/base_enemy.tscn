@@ -23,6 +23,7 @@ progress_bar = NodePath("TextureProgressBar")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.784314)
+position = Vector2(0, -27.5)
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 visible = false

@@ -1,12 +1,41 @@
-[gd_scene load_steps=4 format=3 uid="uid://cdbhowxa3illi"]
+[gd_scene load_steps=8 format=3 uid="uid://cdbhowxa3illi"]
 
 [ext_resource type="PackedScene" uid="uid://brqejvbbcws0g" path="res://scenes/base_enemy.tscn" id="1_5d7nc"]
 [ext_resource type="Script" path="res://scripts/raid_boss_damage.gd" id="2_piem6"]
-[ext_resource type="Texture2D" uid="uid://dpr40jl4cvbbp" path="res://assets/characters/18.png" id="3_wxl5p"]
+[ext_resource type="Texture2D" uid="uid://dfxrvq0j4w85i" path="res://assets/enemy/boss/damage/1.png" id="4_lt0kc"]
+[ext_resource type="Texture2D" uid="uid://blrmsnjix2rio" path="res://assets/enemy/boss/damage/2.png" id="5_k5vf1"]
+[ext_resource type="Texture2D" uid="uid://mmtk4qftvrvx" path="res://assets/enemy/boss/damage/3.png" id="6_3vka6"]
+[ext_resource type="Texture2D" uid="uid://cm15nuuhuvcrm" path="res://assets/enemy/boss/damage/4.png" id="7_smwjm"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x5spw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_lt0kc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_k5vf1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_3vka6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_smwjm")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [node name="RaidBossDamage" instance=ExtResource("1_5d7nc")]
 script = ExtResource("2_piem6")
 
 [node name="Sprite" parent="." index="0"]
 position = Vector2(0, -46.5)
-texture = ExtResource("3_wxl5p")
+
+[node name="Animation" type="AnimatedSprite2D" parent="." index="3"]
+position = Vector2(0, -34.5)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_x5spw")
+animation = &"idle"
+autoplay = "idle"

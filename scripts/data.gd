@@ -60,37 +60,7 @@ var data_management: Dictionary = {
 		"gold_gain": 0,
 		"points": 0,
 		"itens_dropped": 0,
-		"monster": {
-			"enemy_1": 0,
-			"enemy_2": 0,
-			"enemy_3": 0,
-			"enemy_4": 0,
-			"enemy_5": 0,
-			"enemy_6": 0,
-			"enemy_7": 0,
-			"enemy_8": 0,
-			"enemy_9": 0,
-			"enemy_10": 0,
-			"enemy_11": 0,
-			"enemy_12": 0,
-			"enemy_13": 0,
-			"enemy_14": 0,
-			"enemy_15": 0,
-			"enemy_16": 0,
-			"enemy_17": 0,
-			"enemy_18": 0,
-			"enemy_19": 0,
-			"enemy_20": 0,
-			"enemy_21": 0,
-			"enemy_22": 0,
-			"enemy_23": 0,
-			"enemy_24": 0,
-			"enemy_25": 0,
-			"enemy_26": 0,
-			"enemy_27": 0,
-			"enemy_28": 0,
-			"enemy_29": 0,
-		}
+		"monster": {}
 	},
 	
 	"raids": {
@@ -874,9 +844,11 @@ func reset_savegame() -> void:
 	},
 	
 	"player": {
-		"ataque": 25.0,
-		"default_damage": 25.0,
+		"ataque": 10.0,
+		"default_damage": 10.0,
 		"attack_speed": 0.5,
+		"level": 1,
+		"current_exp": 0,
 		"gold": 0,
 		"skill_points": 0,
 		"prestige_points": 0,
@@ -917,57 +889,28 @@ func reset_savegame() -> void:
 		"kills": 0,
 		"gold_gain": 0,
 		"points": 0,
-		"monster": {
-			"enemy_1": 0,
-			"enemy_2": 0,
-			"enemy_3": 0,
-			"enemy_4": 0,
-			"enemy_5": 0,
-			"enemy_6": 0,
-			"enemy_7": 0,
-			"enemy_8": 0,
-			"enemy_9": 0,
-			"enemy_10": 0,
-			"enemy_11": 0,
-			"enemy_12": 0,
-			"enemy_13": 0,
-			"enemy_14": 0,
-			"enemy_15": 0,
-			"enemy_16": 0,
-			"enemy_17": 0,
-			"enemy_18": 0,
-			"enemy_19": 0,
-			"enemy_20": 0,
-			"enemy_21": 0,
-			"enemy_22": 0,
-			"enemy_23": 0,
-			"enemy_24": 0,
-			"enemy_25": 0,
-			"enemy_26": 0,
-			"enemy_27": 0,
-			"enemy_28": 0,
-			"enemy_29": 0,
-		}
+		"itens_dropped": 0,
+		"monster": {}
 	},
 	
 	"raids": {
 		"raid_damage": {
 			"level": 1,
-			"hp": 15000,
+			"hp": 50000,
 			"multiplier": 0.0,
 			"time_left": 0.0
 		},
 		
 		"raid_gold": {
 			"level": 1,
-			"hp": 10000,
+			"hp": 50000,
 			"multiplier": 0.0,
 			"time_left": 0.0
 		},
 		
 		"raid_critical": {
 			"level": 1,
-			"hp": 10000,
+			"hp": 50000,
 			"multiplier": 0.0,
 			"time_left": 0.0
 		}

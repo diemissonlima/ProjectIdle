@@ -3,13 +3,13 @@
 [ext_resource type="Texture2D" uid="uid://7fknnavhqyfo" path="res://assets/prefabs/box/MessageBox01.png" id="1_gwr62"]
 [ext_resource type="Script" path="res://scripts/raids.gd" id="1_iq11o"]
 [ext_resource type="FontFile" uid="uid://c17ascng2deth" path="res://assets/font/njo_14.ttf" id="3_0fdb3"]
-[ext_resource type="Texture2D" uid="uid://dpr40jl4cvbbp" path="res://assets/characters/18.png" id="3_0qqfr"]
+[ext_resource type="Texture2D" uid="uid://dfxrvq0j4w85i" path="res://assets/enemy/boss/damage/1.png" id="3_1c3h4"]
 [ext_resource type="Texture2D" uid="uid://ctldyihhvugjg" path="res://assets/prefabs/buttons/ButtonHover.png" id="4_jj6vw"]
 [ext_resource type="Texture2D" uid="uid://c26eco8t6djvs" path="res://assets/prefabs/icons/book_04f.png" id="5_l7s1v"]
 [ext_resource type="Texture2D" uid="uid://j2khku0ce0y2" path="res://assets/prefabs/buttons/ButtonActive.png" id="5_qomfh"]
-[ext_resource type="Texture2D" uid="uid://dilxelrb6fla5" path="res://assets/characters/187.png" id="7_xp435"]
-[ext_resource type="Texture2D" uid="uid://ehexccwrumfu" path="res://assets/characters/98.png" id="8_jw0q5"]
+[ext_resource type="Texture2D" uid="uid://datls7vkf2jwn" path="res://assets/enemy/boss/gold/1.png" id="8_6cgxp"]
 [ext_resource type="Texture2D" uid="uid://dvsioohm5fxr4" path="res://assets/prefabs/icons/X.png" id="8_xrlkn"]
+[ext_resource type="Texture2D" uid="uid://dn6hf7tbk4xcb" path="res://assets/enemy/boss/critical/1.png" id="9_ofjgp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7s6ow"]
 font = ExtResource("3_0fdb3")
@@ -99,7 +99,7 @@ offset_top = -55.0
 offset_right = 200.0
 offset_bottom = 87.0
 grow_vertical = 2
-texture = ExtResource("3_0qqfr")
+texture = ExtResource("3_1c3h4")
 expand_mode = 1
 
 [node name="Name" type="Label" parent="BackgroundDano"]
@@ -158,7 +158,7 @@ offset_top = 47.0
 offset_right = 103.0
 offset_bottom = 76.0
 grow_horizontal = 2
-text = "Para cada 5 níveis o dano aumenta em 2x"
+text = "Para cada 5 níveis o dano é multiplicado por 2"
 label_settings = SubResource("LabelSettings_e4y32")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -333,7 +333,7 @@ offset_top = -55.0
 offset_right = 200.0
 offset_bottom = 87.0
 grow_vertical = 2
-texture = ExtResource("7_xp435")
+texture = ExtResource("8_6cgxp")
 expand_mode = 1
 
 [node name="Name" type="Label" parent="BackgroundGold"]
@@ -392,7 +392,7 @@ offset_top = 43.0
 offset_right = 103.0
 offset_bottom = 91.0
 grow_horizontal = 2
-text = "Para cada nível o aumenta o drop de gold em 50%"
+text = "Para cada nível o aumenta o drop de gold em 100%"
 label_settings = SubResource("LabelSettings_e4y32")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -566,7 +566,7 @@ offset_top = -55.0
 offset_right = 200.0
 offset_bottom = 87.0
 grow_vertical = 2
-texture = ExtResource("8_jw0q5")
+texture = ExtResource("9_ofjgp")
 expand_mode = 1
 
 [node name="Name" type="Label" parent="BackgroundCritical"]
@@ -625,7 +625,7 @@ offset_top = 47.0
 offset_right = 103.0
 offset_bottom = 76.0
 grow_horizontal = 2
-text = "Para cada nível aumenta o dano crítico em 30%"
+text = "Para cada nível aumenta o dano crítico em 50%"
 label_settings = SubResource("LabelSettings_e4y32")
 horizontal_alignment = 1
 vertical_alignment = 1

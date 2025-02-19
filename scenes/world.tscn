@@ -1,87 +1,89 @@
-[gd_scene load_steps=98 format=3 uid="uid://dtyw4v44a8ka4"]
+[gd_scene load_steps=101 format=3 uid="uid://dtyw4v44a8ka4"]
 
 [ext_resource type="Texture2D" uid="uid://bs4f04v00hl85" path="res://assets/backgrounds/Horizontal/1.png" id="1_m0651"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_mqmc1"]
-[ext_resource type="PackedScene" uid="uid://cavy31n0ailot" path="res://scenes/enemies_2/enemy_1.tscn" id="2_0hpjr"]
-[ext_resource type="PackedScene" uid="uid://cejgs6yhr5ypv" path="res://scenes/enemies/enemy_1.tscn" id="2_mc2mg"]
-[ext_resource type="PackedScene" uid="uid://byjw6td437eho" path="res://scenes/enemies_2/enemy_2.tscn" id="3_jhtr8"]
-[ext_resource type="PackedScene" uid="uid://cg4cyf3dx2aig" path="res://scenes/enemies/enemy_2.tscn" id="3_wv77d"]
-[ext_resource type="PackedScene" uid="uid://cbnhj1sov3k0s" path="res://scenes/enemies/enemy_3.tscn" id="4_4lrad"]
-[ext_resource type="PackedScene" uid="uid://cbbdoj58brpdu" path="res://scenes/enemies_2/enemy_3.tscn" id="4_ujmjt"]
-[ext_resource type="PackedScene" uid="uid://dmtrotdytd40s" path="res://scenes/enemies_2/enemy_4.tscn" id="5_hhb6s"]
-[ext_resource type="PackedScene" uid="uid://c0qp37x3kwm5d" path="res://scenes/enemies/enemy_4.tscn" id="5_ypc2a"]
-[ext_resource type="PackedScene" uid="uid://6qogs5mfddnu" path="res://scenes/enemies_2/enemy_5.tscn" id="6_6sjm6"]
-[ext_resource type="PackedScene" uid="uid://b6jnmsao8odb8" path="res://scenes/enemies/enemy_5.tscn" id="6_760qv"]
-[ext_resource type="PackedScene" uid="uid://iqa7uacl52jl" path="res://scenes/enemies/enemy_6.tscn" id="7_nckfb"]
-[ext_resource type="PackedScene" uid="uid://chpdkct27y53c" path="res://scenes/enemies/enemy_7.tscn" id="8_gq87j"]
-[ext_resource type="PackedScene" uid="uid://c7rksm8c4ascr" path="res://scenes/enemies/enemy_8.tscn" id="9_h1yai"]
-[ext_resource type="PackedScene" uid="uid://jyuep867p2te" path="res://scenes/enemies/enemy_9.tscn" id="10_5dmow"]
-[ext_resource type="PackedScene" uid="uid://ducqjlcf8248p" path="res://scenes/enemies/enemy_10.tscn" id="11_fk4lp"]
-[ext_resource type="PackedScene" uid="uid://cyv4lym5mqdpb" path="res://scenes/enemies/enemy_11.tscn" id="12_gew8y"]
-[ext_resource type="PackedScene" uid="uid://djchtawpikn4o" path="res://scenes/enemies/enemy_12.tscn" id="13_jgsd4"]
 [ext_resource type="FontFile" uid="uid://c17ascng2deth" path="res://assets/font/njo_14.ttf" id="13_lkpp6"]
-[ext_resource type="PackedScene" uid="uid://bgt5lpuqjx7si" path="res://scenes/enemies/enemy_13.tscn" id="14_l3jc0"]
-[ext_resource type="PackedScene" uid="uid://37dnyuemyq4b" path="res://scenes/enemies/enemy_14.tscn" id="15_kow05"]
-[ext_resource type="PackedScene" uid="uid://cn5o8wbklgidj" path="res://scenes/enemies/enemy_15.tscn" id="16_amtns"]
-[ext_resource type="PackedScene" uid="uid://b642qi3jmp2jp" path="res://scenes/enemies/enemy_16.tscn" id="17_cwqjs"]
-[ext_resource type="PackedScene" uid="uid://c08663ff1lbqk" path="res://scenes/enemies/enemy_17.tscn" id="18_yotpx"]
-[ext_resource type="PackedScene" uid="uid://dacs2lsj8ixgd" path="res://scenes/enemies/enemy_18.tscn" id="19_m5chr"]
-[ext_resource type="PackedScene" uid="uid://qcxs5m16k84x" path="res://scenes/enemies/enemy_19.tscn" id="20_gfeyn"]
-[ext_resource type="PackedScene" uid="uid://d4eps5whcklm1" path="res://scenes/enemies/enemy_20.tscn" id="21_2stjs"]
 [ext_resource type="FontFile" uid="uid://bbffvnjq4vip2" path="res://assets/font/Berry Rotunda.ttf" id="23_fp0v3"]
 [ext_resource type="Texture2D" uid="uid://coj08cwalry7w" path="res://assets/skills/03.png" id="24_clftt"]
 [ext_resource type="Script" path="res://scenes/skills_management.gd" id="24_y8pb2"]
 [ext_resource type="Texture2D" uid="uid://btxjnjlhj68f0" path="res://assets/skills/47.png" id="26_5jnhr"]
 [ext_resource type="Texture2D" uid="uid://j2khku0ce0y2" path="res://assets/prefabs/buttons/ButtonActive.png" id="26_rmh1k"]
 [ext_resource type="Texture2D" uid="uid://d0nka1xu6hei2" path="res://assets/skills/07.png" id="27_34dut"]
-[ext_resource type="PackedScene" uid="uid://d3vr61w0vsx5j" path="res://scenes/enemies_2/enemy_6.tscn" id="27_i5xaf"]
 [ext_resource type="Texture2D" uid="uid://ds6wdvby7m13k" path="res://assets/prefabs/icons/33.png" id="27_ipvoa"]
 [ext_resource type="Texture2D" uid="uid://ctldyihhvugjg" path="res://assets/prefabs/buttons/ButtonHover.png" id="27_tjtnp"]
-[ext_resource type="PackedScene" uid="uid://c71nbip5jvrkj" path="res://scenes/enemies_2/enemy_7.tscn" id="28_xqfgk"]
-[ext_resource type="PackedScene" uid="uid://bbe0y66hw7q6c" path="res://scenes/enemies_2/enemy_8.tscn" id="29_7osm5"]
-[ext_resource type="PackedScene" uid="uid://bbhf4ykcaquyu" path="res://scenes/enemies_2/enemy_9.tscn" id="30_j1xi3"]
-[ext_resource type="PackedScene" uid="uid://cif4q36pdgktv" path="res://scenes/enemies_2/enemy_10.tscn" id="31_oc0en"]
+[ext_resource type="PackedScene" uid="uid://bhyosy7m4l285" path="res://scenes/enemy/enemy_31.tscn" id="32_cyrsv"]
 [ext_resource type="Texture2D" uid="uid://bl7cx8j6dcmqd" path="res://assets/prefabs/icons/24.png" id="32_muu7r"]
-[ext_resource type="PackedScene" uid="uid://c34lcgq8ekawe" path="res://scenes/enemies_2/enemy_11.tscn" id="32_r8dy6"]
-[ext_resource type="PackedScene" uid="uid://cddr25x1ss7m6" path="res://scenes/enemies_2/enemy_12.tscn" id="33_mwqfe"]
-[ext_resource type="PackedScene" uid="uid://dv6exl0dql8p" path="res://scenes/enemies_2/enemy_13.tscn" id="34_csskn"]
-[ext_resource type="PackedScene" uid="uid://dcyvim4j4wq18" path="res://scenes/enemies_2/enemy_14.tscn" id="35_s7jr6"]
-[ext_resource type="PackedScene" uid="uid://fo5cpdar2r11" path="res://scenes/enemies_2/enemy_15.tscn" id="36_75au4"]
-[ext_resource type="PackedScene" uid="uid://bime3d1jrnf6u" path="res://scenes/enemies_2/enemy_16.tscn" id="37_fkoch"]
-[ext_resource type="PackedScene" uid="uid://ddlbxcjayftut" path="res://scenes/enemies_2/enemy_17.tscn" id="38_ps132"]
-[ext_resource type="PackedScene" uid="uid://cevooh1vav0bu" path="res://scenes/enemies_2/enemy_18.tscn" id="39_535it"]
-[ext_resource type="PackedScene" uid="uid://b3cfxgyilctru" path="res://scenes/enemies_2/enemy_19.tscn" id="40_rbgvi"]
-[ext_resource type="PackedScene" uid="uid://dq2ull87dli2l" path="res://scenes/enemies_2/enemy_20.tscn" id="41_k35sk"]
-[ext_resource type="PackedScene" uid="uid://bxpepcv783v0h" path="res://scenes/enemies_2/enemy_21.tscn" id="42_50nva"]
-[ext_resource type="PackedScene" uid="uid://dqryipcwn36uq" path="res://scenes/enemies_2/enemy_22.tscn" id="43_vrkv6"]
-[ext_resource type="PackedScene" uid="uid://xtsue427kn75" path="res://scenes/enemies_2/enemy_23.tscn" id="44_wonp5"]
-[ext_resource type="PackedScene" uid="uid://dsna324nq2udw" path="res://scenes/enemies_2/enemy_24.tscn" id="45_r12ph"]
-[ext_resource type="PackedScene" uid="uid://bs8fghjcmqmqd" path="res://scenes/enemies_2/enemy_25.tscn" id="46_pxwds"]
-[ext_resource type="PackedScene" uid="uid://ojixuxuv3g6y" path="res://scenes/enemies_2/enemy_26.tscn" id="47_xgrj4"]
-[ext_resource type="PackedScene" uid="uid://cawamj5b7wely" path="res://scenes/enemies_2/enemy_27.tscn" id="48_utny8"]
-[ext_resource type="PackedScene" uid="uid://bsux6jsmf15hs" path="res://scenes/enemies_2/enemy_28.tscn" id="49_w88iv"]
-[ext_resource type="PackedScene" uid="uid://b5j4ddakarwfi" path="res://scenes/enemies_2/enemy_29.tscn" id="50_vcssp"]
+[ext_resource type="PackedScene" uid="uid://dqiyxvkfrtfsn" path="res://scenes/enemy/enemy_32.tscn" id="33_y68fc"]
+[ext_resource type="PackedScene" uid="uid://c1umtypnvcgxw" path="res://scenes/enemy/enemy_33.tscn" id="34_h1nu3"]
+[ext_resource type="PackedScene" uid="uid://c8i4mk3epdwdr" path="res://scenes/enemy/enemy_34.tscn" id="35_ch6d4"]
+[ext_resource type="PackedScene" uid="uid://dlaeno26m821x" path="res://scenes/enemy/enemy_35.tscn" id="36_2o2px"]
+[ext_resource type="PackedScene" uid="uid://m3seamd52fuv" path="res://scenes/enemy/enemy_36.tscn" id="37_8osbt"]
+[ext_resource type="PackedScene" uid="uid://b71o4a7nnnuay" path="res://scenes/enemy/enemy_37.tscn" id="38_6j0ou"]
+[ext_resource type="PackedScene" uid="uid://dltgffqyqeehi" path="res://scenes/enemy/enemy_38.tscn" id="39_0wvig"]
+[ext_resource type="PackedScene" uid="uid://emjs2c8gch5x" path="res://scenes/enemy/enemy_39.tscn" id="40_2b7j0"]
+[ext_resource type="PackedScene" uid="uid://6ox4c21qdird" path="res://scenes/enemy/enemy_40.tscn" id="41_p4jll"]
+[ext_resource type="PackedScene" uid="uid://c0fu1018wkscs" path="res://scenes/enemy/enemy_41.tscn" id="42_2nn50"]
+[ext_resource type="PackedScene" uid="uid://peyn5jvnttat" path="res://scenes/enemy/enemy_42.tscn" id="43_7q1hp"]
+[ext_resource type="PackedScene" uid="uid://d4n0aspn6ftm7" path="res://scenes/enemy/enemy_43.tscn" id="44_7fmgn"]
+[ext_resource type="PackedScene" uid="uid://bichdl3bgcids" path="res://scenes/enemy/enemy_44.tscn" id="45_60g2t"]
+[ext_resource type="PackedScene" uid="uid://chml8n3xvhebl" path="res://scenes/enemy/enemy_45.tscn" id="46_k0fo2"]
+[ext_resource type="PackedScene" uid="uid://cl1xpm0dssn8q" path="res://scenes/enemy/enemy_46.tscn" id="47_skusa"]
+[ext_resource type="PackedScene" uid="uid://cs810vqrdf4h6" path="res://scenes/enemy/enemy_47.tscn" id="48_yff6i"]
+[ext_resource type="PackedScene" uid="uid://dyq7slw7mhw4a" path="res://scenes/enemy/enemy_48.tscn" id="49_hcmmp"]
+[ext_resource type="PackedScene" uid="uid://bcbnx2kuj8qcq" path="res://scenes/enemy/enemy_49.tscn" id="50_i5xnf"]
+[ext_resource type="PackedScene" uid="uid://dc5ngue5rukk0" path="res://scenes/enemy/enemy_1.tscn" id="51_1e858"]
 [ext_resource type="PackedScene" uid="uid://81y6vvel1y5x" path="res://scenes/box_skill_info.tscn" id="51_5f82i"]
+[ext_resource type="PackedScene" uid="uid://btncgmw3xwore" path="res://scenes/enemy/enemy_50.tscn" id="51_rbfth"]
 [ext_resource type="PackedScene" uid="uid://c6lhyr4se57yr" path="res://scenes/rewards_offline.tscn" id="51_y8onn"]
+[ext_resource type="PackedScene" uid="uid://rk725favumu5" path="res://scenes/enemy/enemy_2.tscn" id="52_fqtl8"]
+[ext_resource type="PackedScene" uid="uid://b85wnclmib5c3" path="res://scenes/enemy/enemy_3.tscn" id="53_r7oij"]
 [ext_resource type="PackedScene" uid="uid://dt5qe7guofq8w" path="res://scenes/raids.tscn" id="53_tkji6"]
+[ext_resource type="PackedScene" uid="uid://bt3qe60stgp4q" path="res://scenes/enemy/enemy_4.tscn" id="54_x07ig"]
 [ext_resource type="PackedScene" uid="uid://blbyblciesemb" path="res://scenes/reset_info.tscn" id="54_y5ges"]
 [ext_resource type="PackedScene" uid="uid://rb53rxo4e4vs" path="res://scenes/stats_info.tscn" id="55_l267x"]
+[ext_resource type="PackedScene" uid="uid://bl42relw0lyvw" path="res://scenes/enemy/enemy_5.tscn" id="55_oye8o"]
+[ext_resource type="PackedScene" uid="uid://cuifhr5olp2n7" path="res://scenes/enemy/enemy_6.tscn" id="56_feapd"]
 [ext_resource type="PackedScene" uid="uid://pyxcf5iw6v3c" path="res://scenes/upgrades.tscn" id="56_xqafe"]
 [ext_resource type="PackedScene" uid="uid://c2rd14h3lukps" path="res://scenes/loot_box.tscn" id="57_5t10c"]
+[ext_resource type="PackedScene" uid="uid://dtjjstvrcs3tj" path="res://scenes/enemy/enemy_7.tscn" id="57_mqkmy"]
+[ext_resource type="PackedScene" uid="uid://by2vb16v7c5p8" path="res://scenes/enemy/enemy_8.tscn" id="58_ra3ha"]
 [ext_resource type="PackedScene" uid="uid://fonmja5jp0c7" path="res://scenes/milestones.tscn" id="58_wovga"]
 [ext_resource type="Texture2D" uid="uid://do22bmxeusi4a" path="res://assets/prefabs/icons/sword_03e.png" id="59_4eh2u"]
+[ext_resource type="PackedScene" uid="uid://ltjkcko3v4xd" path="res://scenes/enemy/enemy_9.tscn" id="59_5b0dk"]
 [ext_resource type="PackedScene" uid="uid://dhwtso3ysibcm" path="res://scenes/equipments.tscn" id="59_uxexu"]
 [ext_resource type="Texture2D" uid="uid://c1rlf8hnaxpq2" path="res://assets/prefabs/icons/Icon_Small_Coin.png" id="60_5y4ps"]
+[ext_resource type="PackedScene" uid="uid://m2ep0tcvmrte" path="res://scenes/enemy/enemy_10.tscn" id="60_7kxj3"]
 [ext_resource type="Texture2D" uid="uid://c26eco8t6djvs" path="res://assets/prefabs/icons/book_04f.png" id="61_pdtar"]
 [ext_resource type="Texture2D" uid="uid://c5onxi1s6n3ci" path="res://assets/prefabs/icons/interrogation-point.png" id="61_v3wpb"]
+[ext_resource type="PackedScene" uid="uid://bp77jd6i2msmp" path="res://scenes/enemy/enemy_11.tscn" id="61_xk3dw"]
+[ext_resource type="PackedScene" uid="uid://dfei0dvpqsbpp" path="res://scenes/enemy/enemy_12.tscn" id="62_ct4o8"]
+[ext_resource type="PackedScene" uid="uid://2wwiqf51gmnb" path="res://scenes/enemy/enemy_13.tscn" id="63_6qhoc"]
 [ext_resource type="Texture2D" uid="uid://bxdpv2k70yv4v" path="res://assets/prefabs/health_bar/ProgressBar01_Background.png" id="64_6uaqy"]
 [ext_resource type="Texture2D" uid="uid://cykex46ttcc8g" path="res://assets/prefabs/icons/Icon_Small_Diamond.png" id="64_jpit2"]
+[ext_resource type="PackedScene" uid="uid://b3npmttb81mj1" path="res://scenes/enemy/enemy_14.tscn" id="64_tdbqv"]
+[ext_resource type="PackedScene" uid="uid://bhoiv3gcoo13d" path="res://scenes/enemy/enemy_15.tscn" id="65_8ybr7"]
 [ext_resource type="Texture2D" uid="uid://cycc5sf6td3w5" path="res://assets/skills/08.png" id="65_asbbg"]
 [ext_resource type="Texture2D" uid="uid://c87vpjjynbswi" path="res://assets/prefabs/health_bar/ProgressBar01_Border.png" id="65_up28s"]
 [ext_resource type="Texture2D" uid="uid://7fknnavhqyfo" path="res://assets/prefabs/box/MessageBox01.png" id="65_waswf"]
+[ext_resource type="PackedScene" uid="uid://b044avwfo362p" path="res://scenes/enemy/enemy_16.tscn" id="66_ljrwe"]
 [ext_resource type="Texture2D" uid="uid://djgwhn307h28p" path="res://assets/prefabs/health_bar/ProgressBar01_Bar.png" id="66_v01rl"]
 [ext_resource type="Texture2D" uid="uid://73d4eskglr32" path="res://assets/prefabs/icons/29.png" id="67_evpem"]
+[ext_resource type="PackedScene" uid="uid://bixrinbh7ndce" path="res://scenes/enemy/enemy_17.tscn" id="67_ms06q"]
+[ext_resource type="PackedScene" uid="uid://wsy172wqmxcv" path="res://scenes/enemy/enemy_18.tscn" id="68_waqa2"]
+[ext_resource type="PackedScene" uid="uid://dndhftqfmymi" path="res://scenes/enemy/enemy_19.tscn" id="69_mn1wq"]
 [ext_resource type="Texture2D" uid="uid://c46pptcjh5hyp" path="res://assets/prefabs/icons/Wenrexa Shield.png" id="69_ngy2m"]
+[ext_resource type="PackedScene" uid="uid://kg16krjjsjyh" path="res://scenes/enemy/enemy_20.tscn" id="70_8266u"]
+[ext_resource type="PackedScene" uid="uid://derh7vcvv07wv" path="res://scenes/enemy/enemy_21.tscn" id="71_4g782"]
+[ext_resource type="PackedScene" uid="uid://bg2he05ep5wvv" path="res://scenes/enemy/enemy_22.tscn" id="72_fbbjv"]
+[ext_resource type="PackedScene" uid="uid://34ksmd674oec" path="res://scenes/enemy/enemy_23.tscn" id="73_de2em"]
+[ext_resource type="Texture2D" uid="uid://dvurnj71k1cnh" path="res://assets/prefabs/buttons/Switch_05.png" id="73_f204f"]
+[ext_resource type="PackedScene" uid="uid://c1co5vkhdp10d" path="res://scenes/enemy/enemy_24.tscn" id="74_j68gt"]
+[ext_resource type="PackedScene" uid="uid://ckid4eqyylnx1" path="res://scenes/enemy/enemy_25.tscn" id="75_0vku4"]
+[ext_resource type="PackedScene" uid="uid://cgf6dkwap172n" path="res://scenes/enemy/enemy_26.tscn" id="76_javlu"]
+[ext_resource type="PackedScene" uid="uid://dteyh0qnis12o" path="res://scenes/enemy/enemy_27.tscn" id="77_buwgc"]
+[ext_resource type="PackedScene" uid="uid://buwa24g5asqxp" path="res://scenes/enemy/enemy_28.tscn" id="78_kvxy3"]
+[ext_resource type="PackedScene" uid="uid://beguie8yahqw4" path="res://scenes/enemy/enemy_29.tscn" id="79_tbyf4"]
+[ext_resource type="PackedScene" uid="uid://bty0xw15epl5i" path="res://scenes/enemy/enemy_30.tscn" id="80_ne7nu"]
 [ext_resource type="Texture2D" uid="uid://cwhk8temihlnp" path="res://assets/prefabs/icons/25.png" id="85_ftqql"]
 [ext_resource type="Texture2D" uid="uid://c0pp25wfxbomi" path="res://assets/prefabs/icons/16.png" id="86_8fgdh"]
 
@@ -100,7 +102,7 @@ outline_color = Color(0, 0, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_ec5ub"]
 line_spacing = 0.0
 font = ExtResource("13_lkpp6")
-font_size = 35
+font_size = 22
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
@@ -121,7 +123,7 @@ font_size = 20
 
 [sub_resource type="LabelSettings" id="LabelSettings_qp1ac"]
 font = ExtResource("13_lkpp6")
-font_size = 35
+font_size = 22
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
@@ -132,6 +134,9 @@ font = ExtResource("23_fp0v3")
 font = ExtResource("13_lkpp6")
 
 [sub_resource type="LabelSettings" id="LabelSettings_8i3yq"]
+font = ExtResource("13_lkpp6")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ewphj"]
 font = ExtResource("13_lkpp6")
 
 [sub_resource type="LabelSettings" id="LabelSettings_d8mo2"]
@@ -150,7 +155,7 @@ font_size = 30
 outline_size = 6
 outline_color = Color(0, 0, 0, 1)
 
-[node name="World" type="Control" node_paths=PackedStringArray("background", "timer_batalha", "timer_player_attack", "timer_save_game", "spawn_position", "label_stage", "label_substage", "label_contador", "label_gold", "label_skill_points", "label_prestige_points", "label_player_atk", "label_upgrade_ataque_cost", "label_upgrade_time_cost", "increase_attack", "increase_battle_time", "btn_next_stage") groups=["world"]]
+[node name="World" type="Control" node_paths=PackedStringArray("background", "timer_batalha", "timer_player_attack", "timer_save_game", "spawn_position", "label_stage", "label_substage", "label_contador", "label_gold", "label_skill_points", "label_prestige_points", "label_player_atk", "label_upgrade_ataque_cost", "label_upgrade_time_cost", "increase_attack", "increase_battle_time", "btn_next_stage", "btn_auto_skill") groups=["world"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -175,9 +180,9 @@ label_upgrade_time_cost = NodePath("Buttons/IncreaseTime/LabelUpgradeTimeCost")
 increase_attack = NodePath("Buttons/IncreaseAtaque")
 increase_battle_time = NodePath("Buttons/IncreaseTime")
 btn_next_stage = NodePath("Background/NextStage")
-enemy_list = Array[PackedScene]([ExtResource("2_mc2mg"), ExtResource("3_wv77d"), ExtResource("4_4lrad"), ExtResource("5_ypc2a"), ExtResource("6_760qv"), ExtResource("7_nckfb"), ExtResource("8_gq87j"), ExtResource("9_h1yai"), ExtResource("10_5dmow"), ExtResource("11_fk4lp"), ExtResource("12_gew8y"), ExtResource("13_jgsd4"), ExtResource("14_l3jc0"), ExtResource("15_kow05"), ExtResource("16_amtns"), ExtResource("17_cwqjs"), ExtResource("18_yotpx"), ExtResource("19_m5chr"), ExtResource("20_gfeyn"), ExtResource("21_2stjs")])
-enemy_list2 = Array[PackedScene]([ExtResource("2_0hpjr"), ExtResource("3_jhtr8"), ExtResource("4_ujmjt"), ExtResource("5_hhb6s"), ExtResource("6_6sjm6"), ExtResource("27_i5xaf"), ExtResource("28_xqfgk"), ExtResource("29_7osm5"), ExtResource("30_j1xi3"), ExtResource("31_oc0en"), ExtResource("32_r8dy6"), ExtResource("33_mwqfe"), ExtResource("34_csskn"), ExtResource("35_s7jr6"), ExtResource("36_75au4"), ExtResource("37_fkoch"), ExtResource("38_ps132"), ExtResource("39_535it"), ExtResource("40_rbgvi"), ExtResource("41_k35sk"), ExtResource("42_50nva"), ExtResource("43_vrkv6"), ExtResource("44_wonp5"), ExtResource("45_r12ph"), ExtResource("46_pxwds"), ExtResource("47_xgrj4"), ExtResource("48_utny8"), ExtResource("49_w88iv"), ExtResource("50_vcssp")])
-drop_chance = 0.01
+btn_auto_skill = NodePath("Buttons/AutoSkill")
+enemy_list = Array[PackedScene]([ExtResource("51_1e858"), ExtResource("52_fqtl8"), ExtResource("53_r7oij"), ExtResource("54_x07ig"), ExtResource("55_oye8o"), ExtResource("56_feapd"), ExtResource("57_mqkmy"), ExtResource("58_ra3ha"), ExtResource("59_5b0dk"), ExtResource("60_7kxj3"), ExtResource("61_xk3dw"), ExtResource("62_ct4o8"), ExtResource("63_6qhoc"), ExtResource("64_tdbqv"), ExtResource("65_8ybr7"), ExtResource("66_ljrwe"), ExtResource("67_ms06q"), ExtResource("68_waqa2"), ExtResource("69_mn1wq"), ExtResource("70_8266u"), ExtResource("71_4g782"), ExtResource("72_fbbjv"), ExtResource("73_de2em"), ExtResource("74_j68gt"), ExtResource("75_0vku4"), ExtResource("76_javlu"), ExtResource("77_buwgc"), ExtResource("78_kvxy3"), ExtResource("79_tbyf4"), ExtResource("80_ne7nu"), ExtResource("32_cyrsv"), ExtResource("33_y68fc"), ExtResource("34_h1nu3"), ExtResource("35_ch6d4"), ExtResource("36_2o2px"), ExtResource("37_8osbt"), ExtResource("38_6j0ou"), ExtResource("39_0wvig"), ExtResource("40_2b7j0"), ExtResource("41_p4jll"), ExtResource("42_2nn50"), ExtResource("43_7q1hp"), ExtResource("44_7fmgn"), ExtResource("45_60g2t"), ExtResource("46_k0fo2"), ExtResource("47_skusa"), ExtResource("48_yff6i"), ExtResource("49_hcmmp"), ExtResource("50_i5xnf"), ExtResource("51_rbfth")])
+drop_chance = 0.15
 
 [node name="Interface" type="CanvasLayer" parent="."]
 
@@ -291,12 +296,10 @@ vertical_alignment = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -81.5
-offset_top = 2.0
-offset_right = 85.5
-offset_bottom = 38.0
+offset_left = -0.5
+offset_right = 0.5
+offset_bottom = 23.0
 grow_horizontal = 2
-text = "Stage: 100"
 label_settings = SubResource("LabelSettings_ec5ub")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Labels"]
@@ -396,10 +399,10 @@ expand_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -50.0
-offset_top = 43.0
-offset_right = 50.0
-offset_bottom = 83.0
+offset_left = -29.0
+offset_top = 31.0
+offset_right = 34.0
+offset_bottom = 54.0
 grow_horizontal = 2
 alignment = 1
 
@@ -426,9 +429,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -251.0
-offset_top = -107.0
+offset_top = -115.0
 offset_right = -199.0
-offset_bottom = -76.0
+offset_bottom = -84.0
 grow_horizontal = 2
 grow_vertical = 0
 texture_normal = ExtResource("27_tjtnp")
@@ -474,9 +477,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = 54.0
-offset_top = -107.0
+offset_top = -115.0
 offset_right = 106.0
-offset_bottom = -76.0
+offset_bottom = -84.0
 grow_horizontal = 2
 grow_vertical = 0
 texture_normal = ExtResource("27_tjtnp")
@@ -513,6 +516,31 @@ grow_vertical = 2
 text = "Tempo: 150"
 label_settings = SubResource("LabelSettings_8i3yq")
 vertical_alignment = 1
+
+[node name="AutoSkill" type="TextureButton" parent="Buttons"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -54.5
+offset_top = -46.0
+offset_right = 8.5
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("73_f204f")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Buttons/AutoSkill"]
+layout_mode = 0
+offset_left = -7.0
+offset_top = -20.0
+offset_right = 74.0
+offset_bottom = -3.0
+text = "Auto Skill"
+label_settings = SubResource("LabelSettings_ewphj")
 
 [node name="Raides" type="TextureButton" parent="Buttons"]
 offset_left = 25.0
@@ -987,6 +1015,7 @@ wait_time = 30.0
 [connection signal="pressed" from="Background/NextStage" to="." method="_on_next_stage_pressed"]
 [connection signal="pressed" from="Buttons/IncreaseAtaque" to="." method="_on_increase_ataque_pressed"]
 [connection signal="pressed" from="Buttons/IncreaseTime" to="." method="_on_increase_time_pressed"]
+[connection signal="pressed" from="Buttons/AutoSkill" to="." method="_on_auto_skill_pressed"]
 [connection signal="pressed" from="Buttons/Raides" to="." method="_on_raides_pressed"]
 [connection signal="pressed" from="Buttons/Reset" to="." method="_on_reset_pressed"]
 [connection signal="pressed" from="Buttons/Stats" to="." method="_on_stats_pressed"]

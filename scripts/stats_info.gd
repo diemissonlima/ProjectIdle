@@ -57,13 +57,13 @@ func update_label() -> void:
 	average_stage.text = "Highest Stage: " + str(World.avg_estagio)
 	total_gold.text = "Total Gold: " + World.format_number(World.gold_gain)
 	total_resets.text = "Total Resets: " + str(World.reset)
-	monster_kill.text = "Enemy Kills: " + str(World.kills)
-	points.text = "Points: " + str(Player.points)
-	dps_boost.text = "DPS Boost: +" + str(total_dps_boost) + "%"
-	gold_boost.text = "Gold Boost: +" + str(total_gold_boost) + "%"
-	prestige_boost.text = "P. Points Boost: +" + str(total_prestige_boost) + "%"
-	critical_damage.text = "Critical Damage: +" + str(total_c_damage_boost) + "%"
-	critical_chance.text = "Critical Chance: +" + str(total_critical_chance) + "%"
+	monster_kill.text = "Enemy Kills: " + World.format_number_separator(str(World.kills))
+	points.text = "Points: " + World.format_number_separator(str(Player.points))
+	dps_boost.text = "+ %" + World.format_number_separator(str(total_dps_boost)) + " DPS Boost"
+	gold_boost.text = "+ %" + World.format_number_separator(str(total_gold_boost)) + " Gold Boost"
+	prestige_boost.text = "+ %" + World.format_number_separator(str(total_prestige_boost)) + " P. Points Boost"
+	critical_damage.text = "+ %" + World.format_number_separator(str(total_c_damage_boost)) + " Critical Damage"
+	critical_chance.text = "+ %" + str(total_critical_chance) + " Critical Chance"
 
 
 func format_gameplay_time() -> String:

@@ -13,10 +13,10 @@ var total_itens_dropped: int = 0
 
 var rng_item: Dictionary = {
 	"commom": [0.0, 0.75],
-	"uncommom": [0.75, 0.95],
-	"elite": [0.95, 0.97],
-	"epic": [0.97, 0.99],
-	"legendary": [0.99, 1.0]
+	"uncommom": [0.75, 0.95], # 0,75 - 0,95
+	"elite": [0.95, 0.97], # 0,95 - 0,97
+	"epic": [0.97, 0.99], # 0,97 - 0,99
+	"legendary": [0.99, 1.0] # 0,99 - 1,0
 	}
 
 
@@ -97,6 +97,21 @@ func format_number(value: float) -> String:
 	var formatted_value = str(value if fmod(value, 1) != 0 else int(value))
 	
 	return formatted_value + suffixes[index]
+
+
+func format_number_separator(number: String) -> String:
+	var num = int(number)
+	var formatted = []
+	var num_str = str(num)
+	var count = 0
+	
+	for i in range(num_str.length() -1, -1, -1):
+		formatted.push_front(num_str[i])
+		count += 1
+		if count % 3 == 0 and i != 0:
+			formatted.push_front(".")
+	
+	return "".join(formatted)
 
 
 func _notification(what: int) -> void:

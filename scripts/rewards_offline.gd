@@ -37,7 +37,7 @@ func calculate_offline_gold() -> void:
 	
 	if time_offline > 0:
 		var scaling_factor: float = 1.25
-		var gold_per_second = Player.damage * 0.25
+		var gold_per_second = Player.damage * 0.10
 		var gold_earned = int(time_offline * gold_per_second)
 		var total_gold_earned: float = gold_earned * pow(scaling_factor, World.reset)
 		var info: Array

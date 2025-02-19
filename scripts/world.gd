@@ -22,10 +22,10 @@ extends Control
 @export var increase_attack: TextureButton
 @export var increase_battle_time: TextureButton
 @export var btn_next_stage: TextureButton
+@export var btn_auto_skill: TextureButton
 
 @export_category("Variaveis")
 @export var enemy_list: Array[PackedScene]
-@export var enemy_list2: Array[PackedScene]
 @export var drop_chance: float
 
 var prestige_points_awarded: int = 0
@@ -48,6 +48,8 @@ func _ready() -> void:
 		timer_batalha.start(World.battle_time)
 		label_contador.show()
 		label_substage.hide()
+	
+	set_stage_label()
 
 
 func _process(delta: float) -> void:
@@ -61,7 +63,7 @@ func start_timer() -> void: # inicia os contadores
 
 
 func spawn_enemy() -> void: # função que realiza o spawn do inimigo
-	enemy = enemy_list2.pick_random().instantiate() # seleciona um inimigo aleatorio da lista
+	enemy = enemy_list.pick_random().instantiate() # seleciona um inimigo aleatorio da lista
 	enemy.global_position = spawn_position.global_position # seta a posicao do inimigo na tela
 	get_tree().root.call_deferred("add_child", enemy) # adiciona o inimigo à cena
 
@@ -117,6 +119,8 @@ func killer_enemy(enemy_type) -> void:
 		
 		if raid_level % 5 == 0:
 			Data.data_management["raids"]["raid_damage"]["multiplier"] += 1.0
+			Player.damage *= 2
+			Player.default_damage = Player.damage
 		
 		Data.data_management["raids"]["raid_damage"]["level"] += 1
 		get_tree().call_group("raids_management", "update_cooldown_raid", "raid_damage")
@@ -143,13 +147,9 @@ func killer_enemy(enemy_type) -> void:
 	Player.gold += enemy.dropped_gold
 	World.gold_gain += enemy.dropped_gold
 	
-	var rng_drop: float = randf()
-	if rng_drop < drop_chance:
-		enemy.drop_item()
-		#World.update_rng_item()
-		
 	if enemy_type == 0 or enemy_type == 1:
-		Data.data_management["statistics"]["monster"]["enemy_" + str(enemy.id)] += 1
+		populate_monster_dict(enemy.id)
+		
 		get_tree().call_group(
 			"loot_box", "add_message", "lootbox_1", "+ " \
 			+ World.format_number(enemy.dropped_gold) + " gold", Color.GREEN
@@ -163,6 +163,10 @@ func killer_enemy(enemy_type) -> void:
 		if World.stage_progress > 10:
 			Player.points += World.estagio
 			if World.estagio % 5 == 0:
+				var rng_drop: float = randf()
+				if rng_drop < drop_chance:
+					enemy.drop_item()
+					
 				Player.skill_points += 1
 				
 				load_background() # carrega um novo background
@@ -280,10 +284,10 @@ func stop_battle(raid_type: String) -> void:
 			enemy_path = "res://scenes/boss_raids/raid_boss_critical.tscn"
 	
 	spawn_boss_raid(enemy_path)
-	start_raid_battle()
+	start_raid_battle(raid_type)
 
 
-func start_raid_battle() -> void:
+func start_raid_battle(raid_type: String) -> void:
 	raid_fight = true
 	var bonus_time = Data.data_management["upgrades"]["raid_time"]["multiplier"]
 	
@@ -298,11 +302,22 @@ func update_expbar() -> void:
 	var progress_bar: TextureProgressBar = $Background/ExpBar
 	var exp_label: Label = $Background/ExpBar/ExpLabel
 	
-	exp_label.text = "Lvl " + str(Player.level) + "  " + World.format_number(Player.current_exp) \
-	+ " / " + World.format_number(Player.level_dict[str(Player.level)])
+	exp_label.text = "Lvl " + World.format_number_separator(str(Player.level)) + " - " + World.format_number_separator(str(Player.current_exp)) \
+	+ " / " + World.format_number_separator(str(Player.level_dict[str(Player.level)]))
 	
 	progress_bar.value = Player.current_exp
 	progress_bar.max_value = Player.level_dict[str(Player.level)]
+
+
+func populate_monster_dict(id: int) -> void:
+	var suffix: String = "enemy_"
+	var enemy: String = suffix + str(id)
+	
+	if Data.data_management["statistics"]["monster"].has(enemy):
+		Data.data_management["statistics"]["monster"][enemy] += 1
+		return
+		
+	Data.data_management["statistics"]["monster"][enemy] = 1
 
 
 func _on_timer_player_attack_timeout() -> void: # sinal que é chamado quando o timer de ataque zera
@@ -355,37 +370,21 @@ func _on_increase_ataque_pressed() -> void:
 	if upgrade_cost > Player.gold:
 		return
 	
-	if Player.calculate_price(Player.x_upgrade_ataque, 50) <= Player.gold:
-		upgrade_cost = Player.calculate_price(Player.x_upgrade_ataque, 50)
-		
-		Player.gold -= upgrade_cost
+	var amount_list: Array = [
+		500, 400, 300, 200, 100, 50, 10, 1
+	]
 	
-		Player.x_upgrade_ataque += 50
-		Player.damage += 50
-		Player.default_damage += 50
-
-		set_label_upgrade()
-		return
-	
-	elif Player.calculate_price(Player.x_upgrade_ataque, 10) <= Player.gold:
-		upgrade_cost = Player.calculate_price(Player.x_upgrade_ataque, 10)
-		
-		Player.gold -= upgrade_cost
-	
-		Player.x_upgrade_ataque += 10
-		Player.damage += 10
-		Player.default_damage += 10
-
-		set_label_upgrade()
-		return
-	
-	Player.gold -= upgrade_cost
-	
-	Player.x_upgrade_ataque += 1
-	Player.damage += 1
-	Player.default_damage += 1
-	
-	set_label_upgrade()
+	for amount in amount_list:
+		if Player.calculate_price(Player.x_upgrade_ataque, amount) <= Player.gold:
+			upgrade_cost = Player.calculate_price(Player.x_upgrade_ataque, amount)
+			
+			Player.gold -= upgrade_cost
+			
+			Player.x_upgrade_ataque += amount
+			Player.damage += amount
+			Player.default_damage += amount
+			
+			set_label_upgrade()
 
 
 func _on_increase_time_pressed() -> void:
@@ -423,6 +422,20 @@ func _on_next_stage_pressed() -> void:
 		timer_player_attack.start(Player.attack_speed)
 		label_contador.show()
 		label_substage.hide()
+
+
+func _on_auto_skill_pressed() -> void:
+	if Player.auto_skill_on:
+		Player.auto_skill_on = false
+		btn_auto_skill.texture_normal = load(
+			"res://assets/prefabs/buttons/Switch_05.png"
+		)
+		
+	else:
+		Player.auto_skill_on = true
+		btn_auto_skill.texture_normal = load(
+			"res://assets/prefabs/buttons/Switch_04.png"
+		)
 
 
 func _on_raides_pressed() -> void:

@@ -1,12 +1,41 @@
-[gd_scene load_steps=4 format=3 uid="uid://dei3bfqpqnmyn"]
+[gd_scene load_steps=8 format=3 uid="uid://dei3bfqpqnmyn"]
 
 [ext_resource type="PackedScene" uid="uid://brqejvbbcws0g" path="res://scenes/base_enemy.tscn" id="1_37v8a"]
 [ext_resource type="Script" path="res://scripts/raid_boss_gold.gd" id="2_h6c3l"]
-[ext_resource type="Texture2D" uid="uid://dilxelrb6fla5" path="res://assets/characters/187.png" id="3_72gys"]
+[ext_resource type="Texture2D" uid="uid://datls7vkf2jwn" path="res://assets/enemy/boss/gold/1.png" id="3_hpw6o"]
+[ext_resource type="Texture2D" uid="uid://ccdiax5qhfm8e" path="res://assets/enemy/boss/gold/2.png" id="4_jqix5"]
+[ext_resource type="Texture2D" uid="uid://bgwxj2kul5o7e" path="res://assets/enemy/boss/gold/3.png" id="5_ywrdi"]
+[ext_resource type="Texture2D" uid="uid://c8l6pebfxva7u" path="res://assets/enemy/boss/gold/4.png" id="6_m2id0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f0nu7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_hpw6o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jqix5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ywrdi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_m2id0")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [node name="RaidBossGold" instance=ExtResource("1_37v8a")]
 script = ExtResource("2_h6c3l")
 
 [node name="Sprite" parent="." index="0"]
 position = Vector2(0, -42.5)
-texture = ExtResource("3_72gys")
+
+[node name="Animation" type="AnimatedSprite2D" parent="." index="3"]
+position = Vector2(0, -42.5)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_f0nu7")
+animation = &"idle"
+autoplay = "idle"

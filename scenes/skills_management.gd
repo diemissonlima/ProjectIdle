@@ -180,7 +180,8 @@ func on_timer_cooldown_timeout(button: TextureButton) -> void:
 	button.disabled = false
 	button.get_node("Label").hide()
 	
-	#on_button_pressed(button)
+	if Player.auto_skill_on:
+		on_button_pressed(button)
 
 
 func _notification(what: int) -> void:

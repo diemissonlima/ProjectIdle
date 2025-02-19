@@ -82,6 +82,7 @@ var gold_skill_on: bool = false
 var attackspeed_skill_on: bool = false
 var critical_damage_skill_on: bool = false
 var damage_skill_on: bool = false
+var auto_skill_on: bool = false
 
 var level_dict: Dictionary = {}
 
@@ -90,27 +91,6 @@ func _ready() -> void:
 	load_data()
 	populate_level_dict()
 	damage_total = damage + bonus_damage
-
-
-func calculate_price(upgrade_level: int, quantity: int) -> int:
-	var attack_cost_base: int = 150 # custo base do upgrade
-	var attack_upgrade_level: int = upgrade_level
-	
-	var upgrade_cost: int = 0
-	var total_upgrade_cost: int = 0
-	
-	for j in range(quantity):
-		attack_upgrade_level += 1
-		upgrade_cost = attack_upgrade_level * 150
-		
-		total_upgrade_cost += upgrade_cost
-	
-		#print("quantidade de upgrades: ", attack_upgrade_level)
-		#print("custo upgrade: ", upgrade_cost)
-		#print("total upgrade: ", total_upgrade_cost)
-		#print("-=-=-=-=-=-=-=-=-=-=-=-")
-		
-	return total_upgrade_cost
 
 
 func load_data() -> void:
@@ -203,6 +183,28 @@ func update_exp(value: int) -> void:
 	get_tree().call_group("world", "update_expbar")
 
 
+func calculate_price(upgrade_level: int, quantity: int) -> int:
+	var attack_cost_base: int = 150 # custo base do upgrade
+	var attack_upgrade_level: int = upgrade_level
+	
+	var upgrade_cost: int = 0
+	var total_upgrade_cost: int = 0
+	
+	for j in range(quantity):
+		attack_upgrade_level += 1
+		upgrade_cost = attack_upgrade_level * 150
+		
+		total_upgrade_cost += upgrade_cost
+	
+		#print("quantidade de upgrades: ", attack_upgrade_level)
+		#print("custo upgrade: ", upgrade_cost)
+		#print("total upgrade: ", total_upgrade_cost)
+		#print("-=-=-=-=-=-=-=-=-=-=-=-")
+		
+	return total_upgrade_cost
+
+
+
 func handler_item(state: String, equipment_type: String, slot: String) -> void:
 	var data_equipment: Dictionary = Data.data_management["equipments"][equipment_type][slot.to_lower()]
 	var keys: Array = []
@@ -225,7 +227,7 @@ func handler_item(state: String, equipment_type: String, slot: String) -> void:
 
 func alter_attack() -> void:
 	var critical_chance_multiplier: float = Data.data_management["upgrades"]["critical_chance"]["multiplier"]
-	var raid_damage_multiplier: float = Data.data_management["raids"]["raid_damage"]["multiplier"]
+	#var raid_damage_multiplier: float = Data.data_management["raids"]["raid_damage"]["multiplier"]
 	var upgrade_damage_multiplier: float = Data.data_management["upgrades"]["damage"]["multiplier"]
 	var equipment_damage_multiplier: float = (
 		equipped_items["weapon"]["bonus_attributes"]["damage"] \
@@ -235,7 +237,7 @@ func alter_attack() -> void:
 	)
 	
 	var damage_multiplier: float = (
-		upgrade_damage_multiplier + equipment_damage_multiplier + raid_damage_multiplier
+		upgrade_damage_multiplier + equipment_damage_multiplier
 		) * 100
 	
 	damage_total = damage + ((damage_multiplier * damage) / 100)

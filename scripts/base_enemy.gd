@@ -4,6 +4,11 @@ class_name BaseEnemy
 
 @export var id: int
 @export var progress_bar: TextureProgressBar
+@export_enum(
+	"Warrior", "Fighting Fairy", "Spirit", "Angel", "Dark Ladie",
+	"Dark Beast", "Earth Beast", "Warrior Goddess", "Wizard", "Combat Girl",
+	"Sorceress", "Golem", "Necromancer", "Troll", "Attack Golem"
+) var type: String
 
 var tween: Tween
 
@@ -40,7 +45,7 @@ func set_enemy_type() -> void:
 
 func increase_health() -> void:
 	var base_health: float = 10.0  # Vida inicial
-	var scaling_factor: float = 1.10  # Fator de crescimento exponencial
+	var scaling_factor: float = 1.05  # Fator de crescimento exponencial
 	max_health = base_health * pow(scaling_factor, World.estagio)
 	
 	match enemy_type:
