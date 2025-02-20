@@ -1,35 +1,36 @@
-[gd_scene load_steps=7 format=3 uid="uid://rk725favumu5"]
+[gd_scene load_steps=7 format=3 uid="uid://ltj0p88n644q"]
 
-[ext_resource type="PackedScene" uid="uid://cx5frq6m3q4fp" path="res://scenes/enemy/enemy_base.tscn" id="1_o4ar7"]
-[ext_resource type="Texture2D" uid="uid://b6obluch6cx20" path="res://assets/enemy/normal/2/1.png" id="2_mrifa"]
-[ext_resource type="Texture2D" uid="uid://d31b2ofwrlim5" path="res://assets/enemy/normal/2/2.png" id="3_uy0ig"]
-[ext_resource type="Texture2D" uid="uid://bedo8fc5a8pgu" path="res://assets/enemy/normal/2/3.png" id="4_dxuqd"]
-[ext_resource type="Texture2D" uid="uid://daniu62ogeqxu" path="res://assets/enemy/normal/2/4.png" id="5_0plnv"]
+[ext_resource type="PackedScene" uid="uid://cx5frq6m3q4fp" path="res://scenes/enemy/enemy_base.tscn" id="1_2a7as"]
+[ext_resource type="Texture2D" uid="uid://c2o6e4nfdmctg" path="res://assets/enemy/normal/2/1.png" id="2_pku72"]
+[ext_resource type="Texture2D" uid="uid://7pjskyebe1d1" path="res://assets/enemy/normal/2/2.png" id="3_7r0cb"]
+[ext_resource type="Texture2D" uid="uid://b2nvq8e2yw3td" path="res://assets/enemy/normal/2/3.png" id="4_t2qd3"]
+[ext_resource type="Texture2D" uid="uid://d1jngk1uf7v6p" path="res://assets/enemy/normal/2/4.png" id="5_scagv"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_kcvdm"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_7rglc"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_mrifa")
+"texture": ExtResource("2_pku72")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_uy0ig")
+"texture": ExtResource("3_7r0cb")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_dxuqd")
+"texture": ExtResource("4_t2qd3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_0plnv")
+"texture": ExtResource("5_scagv")
 }],
 "loop": true,
 "name": &"idle",
 "speed": 5.0
 }]
 
-[node name="Enemy2" instance=ExtResource("1_o4ar7")]
+[node name="Enemy2" instance=ExtResource("1_2a7as")]
 id = 2
-type = "Warrior"
+type = "Necromancer"
 
 [node name="Animation" parent="." index="1"]
-position = Vector2(0, -39)
-sprite_frames = SubResource("SpriteFrames_kcvdm")
+position = Vector2(0, -36.5)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_7rglc")

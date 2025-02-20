@@ -1,34 +1,35 @@
-[gd_scene load_steps=7 format=3 uid="uid://34ksmd674oec"]
+[gd_scene load_steps=7 format=3 uid="uid://bwf6ao7v8jtts"]
 
-[ext_resource type="PackedScene" uid="uid://cx5frq6m3q4fp" path="res://scenes/enemy/enemy_base.tscn" id="1_7k0dm"]
-[ext_resource type="Texture2D" uid="uid://ewtp77x1eaq7" path="res://assets/enemy/normal/23/1.png" id="2_pkj23"]
-[ext_resource type="Texture2D" uid="uid://c5eoa1r6ufsad" path="res://assets/enemy/normal/23/2.png" id="3_s8ps2"]
-[ext_resource type="Texture2D" uid="uid://can30rsoohgu0" path="res://assets/enemy/normal/23/3.png" id="4_b00rt"]
-[ext_resource type="Texture2D" uid="uid://baope2o5uftq4" path="res://assets/enemy/normal/23/4.png" id="5_v7wty"]
+[ext_resource type="PackedScene" uid="uid://cx5frq6m3q4fp" path="res://scenes/enemy/enemy_base.tscn" id="1_tbke3"]
+[ext_resource type="Texture2D" uid="uid://bd4g3iw6djmmf" path="res://assets/enemy/normal/23/1.png" id="2_unwkq"]
+[ext_resource type="Texture2D" uid="uid://mcuo0mlh7r4c" path="res://assets/enemy/normal/23/2.png" id="3_cgt5d"]
+[ext_resource type="Texture2D" uid="uid://bnxrtnoeg5ti0" path="res://assets/enemy/normal/23/3.png" id="4_3fs1n"]
+[ext_resource type="Texture2D" uid="uid://8imk00ru2bnk" path="res://assets/enemy/normal/23/4.png" id="5_rt4fn"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_8uyp3"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_hp0ys"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_pkj23")
+"texture": ExtResource("2_unwkq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_s8ps2")
+"texture": ExtResource("3_cgt5d")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_b00rt")
+"texture": ExtResource("4_3fs1n")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_v7wty")
+"texture": ExtResource("5_rt4fn")
 }],
 "loop": true,
 "name": &"idle",
 "speed": 5.0
 }]
 
-[node name="Enemy23" instance=ExtResource("1_7k0dm")]
+[node name="Enemy23" instance=ExtResource("1_tbke3")]
 id = 23
+type = "Dark Beast"
 
 [node name="Animation" parent="." index="1"]
-position = Vector2(0, -48)
-sprite_frames = SubResource("SpriteFrames_8uyp3")
+position = Vector2(0, -43.5)
+sprite_frames = SubResource("SpriteFrames_hp0ys")

@@ -1,3 +1,10 @@
 res://scenes/world.tscn
-res://scripts/rewards_offline.gd
-res://scripts/upgrades.gd
+res://scenes/main_menu.tscn
+res://scenes/box_skill_info.tscn
+res://scenes/reset_info.tscn
+res://scenes/stats_info.tscn
+res://scenes/raids.tscn
+res://scenes/upgrades.tscn
+res://scenes/enemy/enemy_base.tscn
+res://scripts/global_player.gd
+res://scripts/world.gd

@@ -1,34 +1,35 @@
-[gd_scene load_steps=7 format=3 uid="uid://dndhftqfmymi"]
+[gd_scene load_steps=7 format=3 uid="uid://b15q4knelaca4"]
 
-[ext_resource type="PackedScene" uid="uid://cx5frq6m3q4fp" path="res://scenes/enemy/enemy_base.tscn" id="1_tx63j"]
-[ext_resource type="Texture2D" uid="uid://dpsmcoodkvr4j" path="res://assets/enemy/normal/19/1.png" id="2_uh8pm"]
-[ext_resource type="Texture2D" uid="uid://ujyqytssaoth" path="res://assets/enemy/normal/19/2.png" id="3_qm2ig"]
-[ext_resource type="Texture2D" uid="uid://dwy7ibe8qhj1i" path="res://assets/enemy/normal/19/3.png" id="4_6iimk"]
-[ext_resource type="Texture2D" uid="uid://cxn3trsti7kpn" path="res://assets/enemy/normal/19/4.png" id="5_44eky"]
+[ext_resource type="PackedScene" uid="uid://cx5frq6m3q4fp" path="res://scenes/enemy/enemy_base.tscn" id="1_78u68"]
+[ext_resource type="Texture2D" uid="uid://b5qp7ofieynx4" path="res://assets/enemy/normal/19/1.png" id="2_meyqf"]
+[ext_resource type="Texture2D" uid="uid://byuaa301fxdg6" path="res://assets/enemy/normal/19/2.png" id="3_l8xme"]
+[ext_resource type="Texture2D" uid="uid://cd41chd72l63a" path="res://assets/enemy/normal/19/3.png" id="4_82kiw"]
+[ext_resource type="Texture2D" uid="uid://2rvlrvwbaak3" path="res://assets/enemy/normal/19/4.png" id="5_5bk0s"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_qamkj"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_8gow5"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_uh8pm")
+"texture": ExtResource("2_meyqf")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_qm2ig")
+"texture": ExtResource("3_l8xme")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_6iimk")
+"texture": ExtResource("4_82kiw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_44eky")
+"texture": ExtResource("5_5bk0s")
 }],
 "loop": true,
 "name": &"idle",
 "speed": 5.0
 }]
 
-[node name="Enemy19" instance=ExtResource("1_tx63j")]
+[node name="Enemy19" instance=ExtResource("1_78u68")]
 id = 19
+type = "Spirit"
 
 [node name="Animation" parent="." index="1"]
-position = Vector2(0, -53.5)
-sprite_frames = SubResource("SpriteFrames_qamkj")
+position = Vector2(-0.5, -45)
+sprite_frames = SubResource("SpriteFrames_8gow5")

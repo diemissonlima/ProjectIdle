@@ -127,14 +127,14 @@ func killer_enemy(enemy_type) -> void:
 	
 	if enemy_type == 3: # boss raid gold
 		Player.skill_points += 1
-		Data.data_management["raids"]["raid_gold"]["multiplier"] += 0.50
+		Data.data_management["raids"]["raid_gold"]["multiplier"] += 1.0
 		
 		Data.data_management["raids"]["raid_gold"]["level"] += 1
 		get_tree().call_group("raids_management", "update_cooldown_raid", "raid_gold")
 	
 	if enemy_type == 4: # boss raid citical
 		Player.skill_points += 1
-		Data.data_management["raids"]["raid_critical"]["multiplier"] += 0.30
+		Data.data_management["raids"]["raid_critical"]["multiplier"] += 0.50
 		
 		Data.data_management["raids"]["raid_critical"]["level"] += 1
 		get_tree().call_group("raids_management", "update_cooldown_raid", "raid_critical")
