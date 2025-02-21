@@ -167,7 +167,7 @@ func save_data() -> void:
 func populate_level_dict() -> void:
 	var initial_value: float = 1000
 
-	for i in range(1, 101):
+	for i in range(1, 151):
 		level_dict[str(i)] = round(initial_value)
 		initial_value += initial_value * 0.30
 
@@ -227,7 +227,6 @@ func handler_item(state: String, equipment_type: String, slot: String) -> void:
 
 func alter_attack() -> void:
 	var critical_chance_multiplier: float = Data.data_management["upgrades"]["critical_chance"]["multiplier"]
-	#var raid_damage_multiplier: float = Data.data_management["raids"]["raid_damage"]["multiplier"]
 	var upgrade_damage_multiplier: float = Data.data_management["upgrades"]["damage"]["multiplier"]
 	var equipment_damage_multiplier: float = (
 		equipped_items["weapon"]["bonus_attributes"]["damage"] \

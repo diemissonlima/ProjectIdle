@@ -19,6 +19,41 @@ var rng_item: Dictionary = {
 	"legendary": [0.99, 1.0] # 0,99 - 1,0
 	}
 
+var drop_item_level: Dictionary = {
+	1: {
+		"commom": 0.75, "uncommom": 1.0, "elite": 0.0,
+		"epic": 0.0, "legendary": 0.0
+	},
+	2: {
+		"commom": 0.75, "uncommom": 0.99, "elite": 1.0,
+		"epic": 0.0, "legendary": 0.0
+	},
+	3: {
+		"commom": 0.74, "uncommom": 0.98, "elite": 0.99,
+		"epic": 1.0, "legendary": 0.0
+	},
+	4: {
+		"commom": 0.73, "uncommom": 0.97, "elite": 0.98,
+		"epic": 1.0, "legendary": 0.0
+	},
+	5: {
+		"commom": 0.72, "uncommom": 0.96, "elite": 0.97,
+		"epic": 0.99, "legendary": 1.0
+	},
+	6: {
+		"commom": 0.71, "uncommom": 0.95, "elite": 0.96,
+		"epic": 0.99, "legendary": 1.0
+	},
+	7: {
+		"commom": 0.70, "uncommom": 0.94, "elite": 0.95,
+		"epic": 0.95, "legendary": 1.0
+	},
+	8: {
+		"commom": 0.65, "uncommom": 0.75, "elite": 0.90,
+		"epic": 0.95, "legendary": 1.0
+	}
+}
+
 
 func _ready() -> void:
 	load_data()
@@ -56,25 +91,6 @@ func save_data() -> void:
 	Data.data_management["statistics"]["itens_dropped"] = total_itens_dropped
 	
 	Data.save_data()
-
-
-func update_rng_item() -> void:
-	total_itens_dropped += 1
-	
-	if total_itens_dropped == 10:
-		rng_item["uncommom"][1] -= 0.01
-		rng_item["elite"][0] = 0.99
-		rng_item["elite"][1] = 1.0
-	
-	elif total_itens_dropped == 15:
-		rng_item["uncommom"][1] -= 0.02
-		rng_item["elite"][0] = 0.98
-		rng_item["elite"][1] = 1.0
-		
-	elif total_itens_dropped == 25:
-		rng_item["uncommom"][1] -= 0.03
-		rng_item["elite"][0] = 0.97
-		rng_item["elite"][1] = 1.0
 
 
 func format_number(value: float) -> String:

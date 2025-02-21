@@ -1,10 +1,13 @@
+res://scenes/box_skill_info.tscn
+res://scripts/box_skill_info.gd
+res://scripts/base_enemy.gd
+res://scripts/global_player.gd
 res://scenes/world.tscn
 res://scenes/main_menu.tscn
-res://scenes/box_skill_info.tscn
 res://scenes/reset_info.tscn
 res://scenes/stats_info.tscn
 res://scenes/raids.tscn
 res://scenes/upgrades.tscn
 res://scenes/enemy/enemy_base.tscn
-res://scripts/global_player.gd
 res://scripts/world.gd
+res://scripts/global_world.gd

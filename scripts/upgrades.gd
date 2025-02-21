@@ -111,31 +111,31 @@ func update_label() -> void:
 	box_damage_level.text = "Lv " + str(data["damage"]["level"])
 	box_damage_current.text = "- Current: +" + str(data["damage"]["multiplier"] * 100) + "%"
 	box_damage_cost.text = str(
-		round(calculate_upgrade_cost(14, 1.05, data["damage"]["level"]))
+		round(calculate_upgrade_cost(14, 1.08, data["damage"]["level"]))
 		)
 	
 	box_gold_level.text = "Lv " + str(data["gold"]["level"])
 	box_gold_current.text = "- Current: +" + str(data["gold"]["multiplier"] * 100) + "%"
 	box_gold_cost.text = str(
-		round(calculate_upgrade_cost(12, 1.05, data["gold"]["level"]))
+		round(calculate_upgrade_cost(12, 1.07, data["gold"]["level"]))
 		)
 	
 	box_critical_damage_level.text = "Lv " + str(data["critical_damage"]["level"])
 	box_critica_damage_current.text = "- Current: +" + str(data["critical_damage"]["multiplier"] * 100) + "%"
 	box_critical_damage_cost.text = str(
-		round(calculate_upgrade_cost(15, 1.05, data["critical_damage"]["level"]))
+		round(calculate_upgrade_cost(15, 1.06, data["critical_damage"]["level"]))
 		)
 	
 	box_raid_time_level.text = "Lv " + str(data["raid_time"]["level"])
 	box_raid_time_current.text = "- Current: +" + str(data["raid_time"]["multiplier"]) + "s"
 	box_raid_time_cost.text = str(
-		round(calculate_upgrade_cost(20, 1.05, data["raid_time"]["level"]))
+		round(calculate_upgrade_cost(30, 1.10, data["raid_time"]["level"]))
 		)
 	
 	box_prestige_points_level.text = "Lv " + str(data["prestige_points"]["level"])
 	box_prestige_points_current.text = "- Current: +" + str(data["prestige_points"]["multiplier"] * 100) + "%"
 	box_prestige_points_cost.text = str(
-		round(calculate_upgrade_cost(20, 1.05, data["prestige_points"]["level"]))
+		round(calculate_upgrade_cost(25, 1.08, data["prestige_points"]["level"]))
 		)
 	
 	box_skill_duration_level.text = "Lv " + str(Player.skill_duration_level)
@@ -153,7 +153,7 @@ func update_label() -> void:
 	box_critical_chance_level.text = "Lv " + str(data["critical_chance"]["level"])
 	box_critical_chance_current.text = "- Current: " + str(data["critical_chance"]["multiplier"] * 100) + "%"
 	box_critical_chance_cost.text = str(
-		round(calculate_upgrade_cost(75, 1.10, data["critical_chance"]["level"]))
+		round(calculate_upgrade_cost(75, 1.15, data["critical_chance"]["level"]))
 		)
 
 

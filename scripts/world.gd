@@ -302,8 +302,8 @@ func update_expbar() -> void:
 	var progress_bar: TextureProgressBar = $Background/ExpBar
 	var exp_label: Label = $Background/ExpBar/ExpLabel
 	
-	exp_label.text = "Lvl " + World.format_number_separator(str(Player.level)) + " - " + World.format_number_separator(str(Player.current_exp)) \
-	+ " / " + World.format_number_separator(str(Player.level_dict[str(Player.level)]))
+	exp_label.text = "Lvl " + str(Player.level) + " - " + World.format_number(Player.current_exp) \
+	+ " / " + World.format_number(Player.level_dict[str(Player.level)])
 	
 	progress_bar.value = Player.current_exp
 	progress_bar.max_value = Player.level_dict[str(Player.level)]
