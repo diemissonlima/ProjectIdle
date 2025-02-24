@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://cfh06cy1gr8xp"]
+
+[ext_resource type="PackedScene" uid="uid://cx5frq6m3q4fp" path="res://scenes/enemy/enemy_base.tscn" id="1_cwcct"]
+[ext_resource type="Texture2D" uid="uid://ogqpud53x4ee" path="res://assets/enemy/normal/100/1.png" id="2_tsjh0"]
+[ext_resource type="Texture2D" uid="uid://b7haves55kg75" path="res://assets/enemy/normal/100/2.png" id="3_wc73y"]
+[ext_resource type="Texture2D" uid="uid://csd5nvvpqp0yy" path="res://assets/enemy/normal/100/3.png" id="4_jewky"]
+[ext_resource type="Texture2D" uid="uid://bxnuiabqhn6er" path="res://assets/enemy/normal/100/4.png" id="5_r36bd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_45j0u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_tsjh0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wc73y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jewky")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_r36bd")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Enemy100" instance=ExtResource("1_cwcct")]
+id = 100
+type = "Necromancer"
+
+[node name="Animation" parent="." index="1"]
+position = Vector2(0, -40.5)
+sprite_frames = SubResource("SpriteFrames_45j0u")

@@ -74,7 +74,7 @@ func increase_skill() -> void:
 		"Attack":
 			Player.skill_points -= upgrade_cost
 			Player.attack_skill_level += 1
-			Player.increase_attack_multiplier += 0.50
+			Player.increase_attack_multiplier += 0.25
 			
 			label_skill_level.text = "Lvl " + str(Player.attack_skill_level)
 			label_skill_name.text = "Increase Attack Damage"
@@ -87,7 +87,7 @@ func increase_skill() -> void:
 		"Gold":
 			Player.skill_points -= upgrade_cost
 			Player.gold_skill_level += 1
-			Player.increase_gold_multiplier += 0.50
+			Player.increase_gold_multiplier += 0.25
 			
 			label_skill_level.text = "Lvl " + str(Player.gold_skill_level)
 			label_skill_name.text = "Increase Drop Gold"
@@ -100,7 +100,7 @@ func increase_skill() -> void:
 		"Critical Damage":
 			Player.skill_points -= upgrade_cost
 			Player.criticaldamage_skill_level += 1
-			Player.increase_criticaldamage_multiplier += 0.30
+			Player.increase_criticaldamage_multiplier += 0.25
 			
 			label_skill_level.text = "Lvl " + str(Player.criticaldamage_skill_level)
 			label_skill_name.text = "Increase Critical Damage"

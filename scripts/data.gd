@@ -66,21 +66,21 @@ var data_management: Dictionary = {
 	"raids": {
 		"raid_damage": {
 			"level": 1,
-			"hp": 50000,
+			"hp": 100000,
 			"multiplier": 0.0,
 			"time_left": 0.0
 		},
 		
 		"raid_gold": {
 			"level": 1,
-			"hp": 50000,
+			"hp": 100000,
 			"multiplier": 0.0,
 			"time_left": 0.0
 		},
 		
 		"raid_critical": {
 			"level": 1,
-			"hp": 50000,
+			"hp": 100000,
 			"multiplier": 0.0,
 			"time_left": 0.0
 		}
@@ -896,21 +896,21 @@ func reset_savegame() -> void:
 	"raids": {
 		"raid_damage": {
 			"level": 1,
-			"hp": 50000,
+			"hp": 100000,
 			"multiplier": 0.0,
 			"time_left": 0.0
 		},
 		
 		"raid_gold": {
 			"level": 1,
-			"hp": 50000,
+			"hp": 100000,
 			"multiplier": 0.0,
 			"time_left": 0.0
 		},
 		
 		"raid_critical": {
 			"level": 1,
-			"hp": 50000,
+			"hp": 100000,
 			"multiplier": 0.0,
 			"time_left": 0.0
 		}

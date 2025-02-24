@@ -45,7 +45,7 @@ func set_enemy_type() -> void:
 
 func increase_health() -> void:
 	var base_health: float = 10.0  # Vida inicial
-	var scaling_factor: float = 1.05  # Fator de crescimento exponencial
+	var scaling_factor: float = 1.10  # Fator de crescimento exponencial
 	max_health = base_health * pow(scaling_factor, World.estagio)
 	
 	match enemy_type:
@@ -68,7 +68,7 @@ func animate_health_bar(damage: int) -> void:
 
 func calculate_exp() -> int:
 	var exp_base: int = 1
-	var scaling_factor: float = 1.10
+	var scaling_factor: float = 1.05
 	var exp = exp_base * pow(scaling_factor, World.estagio)
 	
 	return round(exp)

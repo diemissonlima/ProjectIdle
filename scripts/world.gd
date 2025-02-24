@@ -149,11 +149,15 @@ func killer_enemy(enemy_type) -> void:
 	
 	if enemy_type == 0 or enemy_type == 1:
 		populate_monster_dict(enemy.id)
-		
 		get_tree().call_group(
 			"loot_box", "add_message", "lootbox_1", "+ " \
 			+ World.format_number(enemy.dropped_gold) + " gold", Color.GREEN
 			)
+		
+	if enemy_type == 1:
+		var rng_drop: float = randf()
+		if rng_drop < drop_chance:
+			enemy.drop_item()
 	
 	World.kills += 1
 	
@@ -163,10 +167,6 @@ func killer_enemy(enemy_type) -> void:
 		if World.stage_progress > 10:
 			Player.points += World.estagio
 			if World.estagio % 5 == 0:
-				var rng_drop: float = randf()
-				if rng_drop < drop_chance:
-					enemy.drop_item()
-					
 				Player.skill_points += 1
 				
 				load_background() # carrega um novo background
@@ -224,8 +224,8 @@ func reload_battle() -> void:
 
 
 func prestige_points() -> int:
-	var base_points: int = (World.estagio - reset_target) * 2.0
-	var scaling_factor: float = 1.15
+	var base_points: int = (World.estagio - reset_target) * 1.5
+	var scaling_factor: float = 1.10
 	var upgrade_multiplier: float = Data.data_management["upgrades"]["prestige_points"]["multiplier"]
 	var equipment_multiplier: float = (
 		Player.equipped_items["weapon"]["bonus_attributes"]["prestige_points"] \
@@ -371,13 +371,13 @@ func _on_increase_ataque_pressed() -> void:
 		return
 	
 	var amount_list: Array = [
-		500, 400, 300, 200, 100, 50, 10, 1
+		1000, 500, 400, 300, 200, 100, 50, 10, 1
 	]
 	
 	for amount in amount_list:
 		if Player.calculate_price(Player.x_upgrade_ataque, amount) <= Player.gold:
 			upgrade_cost = Player.calculate_price(Player.x_upgrade_ataque, amount)
-			
+
 			Player.gold -= upgrade_cost
 			
 			Player.x_upgrade_ataque += amount
@@ -385,6 +385,7 @@ func _on_increase_ataque_pressed() -> void:
 			Player.default_damage += amount
 			
 			set_label_upgrade()
+			return
 
 
 func _on_increase_time_pressed() -> void:

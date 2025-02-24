@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://drxeh0k4uddpu"]
+
+[ext_resource type="PackedScene" uid="uid://cx5frq6m3q4fp" path="res://scenes/enemy/enemy_base.tscn" id="1_3c4ai"]
+[ext_resource type="Texture2D" uid="uid://c8p81nq3j5b6l" path="res://assets/enemy/normal/61/1.png" id="2_be3gl"]
+[ext_resource type="Texture2D" uid="uid://f0scbux6td6u" path="res://assets/enemy/normal/61/2.png" id="3_dsxl0"]
+[ext_resource type="Texture2D" uid="uid://cnjlddhy2jjcs" path="res://assets/enemy/normal/61/3.png" id="4_vi3e0"]
+[ext_resource type="Texture2D" uid="uid://do73d6w5erkbx" path="res://assets/enemy/normal/61/4.png" id="5_eeit6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dewtx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_be3gl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_dsxl0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_vi3e0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_eeit6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Enemy61" instance=ExtResource("1_3c4ai")]
+id = 61
+type = "Angel"
+
+[node name="Animation" parent="." index="1"]
+position = Vector2(0, -47.5)
+sprite_frames = SubResource("SpriteFrames_dewtx")

@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://ls63dqivyd3m"]
+
+[ext_resource type="PackedScene" uid="uid://cx5frq6m3q4fp" path="res://scenes/enemy/enemy_base.tscn" id="1_duyag"]
+[ext_resource type="Texture2D" uid="uid://bgd02vmuw73ei" path="res://assets/enemy/normal/86/1.png" id="2_jivoq"]
+[ext_resource type="Texture2D" uid="uid://d23ye8jlk7ra2" path="res://assets/enemy/normal/86/2.png" id="3_0lso7"]
+[ext_resource type="Texture2D" uid="uid://k25abafsm6dj" path="res://assets/enemy/normal/86/3.png" id="4_hoe2x"]
+[ext_resource type="Texture2D" uid="uid://di0segd3i045q" path="res://assets/enemy/normal/86/4.png" id="5_enhrb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fxf6m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jivoq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0lso7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hoe2x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_enhrb")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Enemy86" instance=ExtResource("1_duyag")]
+id = 86
+type = "Troll"
+
+[node name="Animation" parent="." index="1"]
+position = Vector2(0, -41.5)
+sprite_frames = SubResource("SpriteFrames_fxf6m")

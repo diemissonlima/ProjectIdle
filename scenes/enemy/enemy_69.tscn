@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://buj1s8ijvwsci"]
+
+[ext_resource type="PackedScene" uid="uid://cx5frq6m3q4fp" path="res://scenes/enemy/enemy_base.tscn" id="1_k0djm"]
+[ext_resource type="Texture2D" uid="uid://655nxwhipino" path="res://assets/enemy/normal/69/1.png" id="2_nxi1x"]
+[ext_resource type="Texture2D" uid="uid://dgo2teh6eeoei" path="res://assets/enemy/normal/69/2.png" id="3_7mg8u"]
+[ext_resource type="Texture2D" uid="uid://bhaot4tmdjjon" path="res://assets/enemy/normal/69/3.png" id="4_nw587"]
+[ext_resource type="Texture2D" uid="uid://dp4ew3yt5s4uc" path="res://assets/enemy/normal/69/4.png" id="5_3mebf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_em6sm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_nxi1x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7mg8u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_nw587")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3mebf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Enemy69" instance=ExtResource("1_k0djm")]
+id = 69
+type = "Dark Ladie"
+
+[node name="Animation" parent="." index="1"]
+position = Vector2(0, -47.5)
+sprite_frames = SubResource("SpriteFrames_em6sm")

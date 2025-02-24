@@ -165,7 +165,7 @@ func save_data() -> void:
 
 
 func populate_level_dict() -> void:
-	var initial_value: float = 1000
+	var initial_value: float = 2500
 
 	for i in range(1, 151):
 		level_dict[str(i)] = round(initial_value)
@@ -191,18 +191,12 @@ func calculate_price(upgrade_level: int, quantity: int) -> int:
 	var total_upgrade_cost: int = 0
 	
 	for j in range(quantity):
-		attack_upgrade_level += 1
 		upgrade_cost = attack_upgrade_level * 150
 		
 		total_upgrade_cost += upgrade_cost
-	
-		#print("quantidade de upgrades: ", attack_upgrade_level)
-		#print("custo upgrade: ", upgrade_cost)
-		#print("total upgrade: ", total_upgrade_cost)
-		#print("-=-=-=-=-=-=-=-=-=-=-=-")
 		
+		attack_upgrade_level += 1
 	return total_upgrade_cost
-
 
 
 func handler_item(state: String, equipment_type: String, slot: String) -> void:
@@ -227,19 +221,18 @@ func handler_item(state: String, equipment_type: String, slot: String) -> void:
 
 func alter_attack() -> void:
 	var critical_chance_multiplier: float = Data.data_management["upgrades"]["critical_chance"]["multiplier"]
-	var upgrade_damage_multiplier: float = Data.data_management["upgrades"]["damage"]["multiplier"]
+	var upgrade_damage_multiplier: float = Data.data_management["upgrades"]["damage"]["multiplier"] * 100
 	var equipment_damage_multiplier: float = (
 		equipped_items["weapon"]["bonus_attributes"]["damage"] \
 	 	+ equipped_items["shield"]["bonus_attributes"]["damage"] \
 		+ equipped_items["ring"]["bonus_attributes"]["damage"] \
 		+ equipped_items["necklace"]["bonus_attributes"]["damage"]
-	)
+	) * 100
 	
-	var damage_multiplier: float = (
-		upgrade_damage_multiplier + equipment_damage_multiplier
-		) * 100
+	var new_damage: float = damage + ((equipment_damage_multiplier * damage) / 100)
+	var bonus_upgrade_damage: float = upgrade_damage_multiplier * new_damage / 100
 	
-	damage_total = damage + ((damage_multiplier * damage) / 100)
+	damage_total = new_damage + bonus_upgrade_damage
 	
 	if damage_skill_on:
 		var damage_skill_multiplier: float = Data.data_management["player"]["skills"]["increase_attack"]["multiplier"] * 100

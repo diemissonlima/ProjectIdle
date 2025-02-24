@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://dbkh4kruihumc"]
+
+[ext_resource type="PackedScene" uid="uid://cx5frq6m3q4fp" path="res://scenes/enemy/enemy_base.tscn" id="1_u77g2"]
+[ext_resource type="Texture2D" uid="uid://b3flkkw366kdq" path="res://assets/enemy/normal/58/1.png" id="2_v0kyh"]
+[ext_resource type="Texture2D" uid="uid://bykvajee4pmw7" path="res://assets/enemy/normal/58/2.png" id="3_mbtqb"]
+[ext_resource type="Texture2D" uid="uid://idpw3brw7p0a" path="res://assets/enemy/normal/58/3.png" id="4_kq13v"]
+[ext_resource type="Texture2D" uid="uid://cojjv15gwy6sx" path="res://assets/enemy/normal/58/4.png" id="5_lfisw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aond5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_v0kyh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mbtqb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kq13v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_lfisw")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Enemy58" instance=ExtResource("1_u77g2")]
+id = 58
+type = "Dark Beast"
+
+[node name="Animation" parent="." index="1"]
+position = Vector2(0, -47)
+sprite_frames = SubResource("SpriteFrames_aond5")

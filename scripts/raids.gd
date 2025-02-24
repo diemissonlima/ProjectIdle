@@ -74,7 +74,7 @@ func load_cooldown_raid() -> void:
 
 func update_label() -> void:
 	raid_damage_name.text = "Nyx'Thal, o Imperador Sombrio Lvl " + str(Data.data_management["raids"]["raid_damage"]["level"])
-	raid_damage_gain.text = "Damage " + World.format_number_separator(str(Player.damage))
+	raid_damage_gain.text = "Damage: " + World.format_number_separator(str(Player.damage))
 	raid_damage_hp.text = "HP: " + str(
 		World.format_number(round(Data.data_management["raids"]["raid_damage"]["hp"]))
 	)

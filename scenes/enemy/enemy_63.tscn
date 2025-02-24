@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://dx36dqtatqf1e"]
+
+[ext_resource type="PackedScene" uid="uid://cx5frq6m3q4fp" path="res://scenes/enemy/enemy_base.tscn" id="1_5mcer"]
+[ext_resource type="Texture2D" uid="uid://b5xsmtjlahcst" path="res://assets/enemy/normal/63/1.png" id="2_mfobf"]
+[ext_resource type="Texture2D" uid="uid://dvtrn4gdt42kx" path="res://assets/enemy/normal/63/2.png" id="3_vrksv"]
+[ext_resource type="Texture2D" uid="uid://b23mnafsys6wr" path="res://assets/enemy/normal/63/3.png" id="4_yvvyu"]
+[ext_resource type="Texture2D" uid="uid://bj8qr128a8nxe" path="res://assets/enemy/normal/63/4.png" id="5_vjmbn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jlyq1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mfobf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vrksv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_yvvyu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vjmbn")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Enemy63" instance=ExtResource("1_5mcer")]
+position = Vector2(-2, -1)
+id = 63
+type = "Earth Beast"
+
+[node name="Animation" parent="." index="1"]
+position = Vector2(0, -47.5)
+sprite_frames = SubResource("SpriteFrames_jlyq1")

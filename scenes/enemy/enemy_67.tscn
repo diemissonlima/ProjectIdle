@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://c1lm64wglxo0"]
+
+[ext_resource type="PackedScene" uid="uid://cx5frq6m3q4fp" path="res://scenes/enemy/enemy_base.tscn" id="1_tnx0d"]
+[ext_resource type="Texture2D" uid="uid://sq8gk6h1vm85" path="res://assets/enemy/normal/67/1.png" id="2_erfn7"]
+[ext_resource type="Texture2D" uid="uid://dv45yjconuoxd" path="res://assets/enemy/normal/67/2.png" id="3_c641x"]
+[ext_resource type="Texture2D" uid="uid://dvykxap3q5dmj" path="res://assets/enemy/normal/67/3.png" id="4_p1his"]
+[ext_resource type="Texture2D" uid="uid://37ayqbt0n2cg" path="res://assets/enemy/normal/67/4.png" id="5_q7bhq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1axrg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_erfn7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_c641x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_p1his")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_q7bhq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Enemy67" instance=ExtResource("1_tnx0d")]
+id = 67
+type = "Warrior Goddess"
+
+[node name="Animation" parent="." index="1"]
+position = Vector2(0, -47.5)
+sprite_frames = SubResource("SpriteFrames_1axrg")

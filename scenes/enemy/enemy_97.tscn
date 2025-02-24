@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://pgeeqiuvkam2"]
+
+[ext_resource type="PackedScene" uid="uid://cx5frq6m3q4fp" path="res://scenes/enemy/enemy_base.tscn" id="1_dh837"]
+[ext_resource type="Texture2D" uid="uid://d1jyubvwilqwp" path="res://assets/enemy/normal/97/1.png" id="2_ffwbl"]
+[ext_resource type="Texture2D" uid="uid://ccnrxguuvitqg" path="res://assets/enemy/normal/97/2.png" id="3_n8u8f"]
+[ext_resource type="Texture2D" uid="uid://d0selxty0wx1o" path="res://assets/enemy/normal/97/3.png" id="4_psgwy"]
+[ext_resource type="Texture2D" uid="uid://du3qkysuxy7w6" path="res://assets/enemy/normal/97/4.png" id="5_d77l6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gp8en"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ffwbl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_n8u8f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_psgwy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_d77l6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Enemy97" instance=ExtResource("1_dh837")]
+id = 97
+type = "Warrior"
+
+[node name="Animation" parent="." index="1"]
+position = Vector2(0, -44)
+sprite_frames = SubResource("SpriteFrames_gp8en")
