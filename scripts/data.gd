@@ -24,6 +24,7 @@ var data_management: Dictionary = {
 		"prestige_points": 0,
 		"x_upgrade_ataque": 1,
 		"x_upgrade_time": 1,
+		"upgrade_level_up": 0.0,
 		"skills": {
 			"increase_attack": {
 				"level": 1,
@@ -52,7 +53,7 @@ var data_management: Dictionary = {
 				"duration": 0.0,
 				"cooldown": 0.0,
 			}
-		}
+		},
 	},
 	
 	"statistics": {

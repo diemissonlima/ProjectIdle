@@ -153,11 +153,12 @@ func killer_enemy(enemy_type) -> void:
 			"loot_box", "add_message", "lootbox_1", "+ " \
 			+ World.format_number(enemy.dropped_gold) + " gold", Color.GREEN
 			)
-		
-	if enemy_type == 1:
-		var rng_drop: float = randf()
-		if rng_drop < drop_chance:
-			enemy.drop_item()
+	
+	enemy.drop_item()
+	#if enemy_type == 1:
+		#var rng_drop: float = randf()
+		#if rng_drop < drop_chance:
+			#enemy.drop_item()
 	
 	World.kills += 1
 	

@@ -9,51 +9,42 @@ var avg_estagio: int = 1
 var reset: int = 0
 var kills: int = 0
 var gold_gain: float = 0.0
+
 var total_itens_dropped: int = 0
+var item_level: int = 1
 
-var rng_item: Dictionary = {
-	"commom": [0.0, 0.75],
-	"uncommom": [0.75, 0.95], # 0,75 - 0,95
-	"elite": [0.95, 0.97], # 0,95 - 0,97
-	"epic": [0.97, 0.99], # 0,97 - 0,99
-	"legendary": [0.99, 1.0] # 0,99 - 1,0
-	}
-
-var drop_item_level: Dictionary = {
+var rarity_level_probability: Dictionary = {
 	1: {
-		"commom": 0.75, "uncommom": 1.0, "elite": 0.0,
-		"epic": 0.0, "legendary": 0.0
+		"commom": 0.75, "uncommom": 1.0, "elite": 0.0, "epic": 0.0, "legendary": 0.0
 	},
 	2: {
-		"commom": 0.75, "uncommom": 0.99, "elite": 1.0,
-		"epic": 0.0, "legendary": 0.0
+		"commom": 0.74, "uncommom": 1.0, "elite": 0.0, "epic": 0.0, "legendary": 0.0
 	},
 	3: {
-		"commom": 0.74, "uncommom": 0.98, "elite": 0.99,
-		"epic": 1.0, "legendary": 0.0
+		"commom": 0.73, "uncommom": 0.99, "elite": 1.0, "epic": 0.0, "legendary": 0.0
 	},
 	4: {
-		"commom": 0.73, "uncommom": 0.97, "elite": 0.98,
-		"epic": 1.0, "legendary": 0.0
+		"commom": 0.72, "uncommom": 0.99, "elite": 1.0, "epic": 0.0, "legendary": 0.0
 	},
 	5: {
-		"commom": 0.72, "uncommom": 0.96, "elite": 0.97,
-		"epic": 0.99, "legendary": 1.0
+		"commom": 0.71, "uncommom": 0.99, "elite": 1.0, "epic": 0.0, "legendary": 0.0
 	},
 	6: {
-		"commom": 0.71, "uncommom": 0.95, "elite": 0.96,
-		"epic": 0.99, "legendary": 1.0
+		"commom": 0.69, "uncommom": 0.97, "elite": 0.99, "epic": 1.0, "legendary": 0.0
 	},
 	7: {
-		"commom": 0.70, "uncommom": 0.94, "elite": 0.95,
-		"epic": 0.95, "legendary": 1.0
+		"commom": 0.68, "uncommom": 0.96, "elite": 0.99, "epic": 1.0, "legendary": 0.0
 	},
 	8: {
-		"commom": 0.65, "uncommom": 0.75, "elite": 0.90,
-		"epic": 0.95, "legendary": 1.0
+		"commom": 0.66, "uncommom": 0.95, "elite": 0.98, "epic": 1.0, "legendary": 0.0
+	},
+	9: {
+		"commom": 0.64, "uncommom": 0.94, "elite": 0.98, "epic": 1.0, "legendary": 0.0
+	},
+	10: {
+		"commom": 0.60, "uncommom": 0.91, "elite": 0.96, "epic": 0.99, "legendary": 1.0
 	}
 }
-
 
 func _ready() -> void:
 	load_data()

@@ -183,6 +183,16 @@ func update_exp(value: int) -> void:
 	get_tree().call_group("world", "update_expbar")
 
 
+func on_level_up() -> void:
+	print("LEVEL UP")
+	print("Dano antigo: ", damage)
+	
+	damage = damage + (damage * 25 / 100)
+	Data.data_management["player"]["upgrade_level_up"] += 0.25
+	
+	print("Dano novo: ", damage)
+
+
 func calculate_price(upgrade_level: int, quantity: int) -> int:
 	var attack_cost_base: int = 150 # custo base do upgrade
 	var attack_upgrade_level: int = upgrade_level

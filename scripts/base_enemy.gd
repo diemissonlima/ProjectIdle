@@ -45,7 +45,7 @@ func set_enemy_type() -> void:
 
 func increase_health() -> void:
 	var base_health: float = 10.0  # Vida inicial
-	var scaling_factor: float = 1.10  # Fator de crescimento exponencial
+	var scaling_factor: float = 1.125  # Fator de crescimento exponencial
 	max_health = base_health * pow(scaling_factor, World.estagio)
 	
 	match enemy_type:
@@ -75,25 +75,30 @@ func calculate_exp() -> int:
 
 
 func drop() -> void:
-	var base_gold: int = 3
+	var base_gold: int = 0
+	var scaling_factor: float = 1.15  # Fator de crescimento exponencial
 	var gold_raid_multiplier: float = Data.data_management["raids"]["raid_gold"]["multiplier"]
 	var gold_upgrade_multiplier: float = Data.data_management["upgrades"]["gold"]["multiplier"]
+	var levelup_multiplier: float = Data.data_management["player"]["upgrade_level_up"]
 	var equipment_gold_multiplier: float = (
 		Player.equipped_items["weapon"]["bonus_attributes"]["gold"] \
 		+ Player.equipped_items["shield"]["bonus_attributes"]["gold"] \
 		+ Player.equipped_items["ring"]["bonus_attributes"]["gold"] \
 		+ Player.equipped_items["necklace"]["bonus_attributes"]["gold"]
 	)
-
-	var total_gold_multiplier: float = gold_raid_multiplier + gold_upgrade_multiplier + equipment_gold_multiplier
+	
+	var total_gold_multiplier: float = (
+		gold_raid_multiplier + gold_upgrade_multiplier + equipment_gold_multiplier + levelup_multiplier
+	)
 	
 	match enemy_type:
 		0: # enemy NORMAL
-			base_gold += 5 + (World.estagio * 10)
-
+			base_gold += 5 + (World.estagio * 5)
+			
 		1: # enemy BOSS
-			base_gold += 20 + (World.estagio * 20) * 2
-		
+			base_gold += 10 + (World.estagio * 10)
+	
+	base_gold += base_gold * pow(scaling_factor, World.estagio)
 	dropped_gold = round(base_gold + (base_gold * total_gold_multiplier))
 	
 	if Player.gold_skill_on:
@@ -144,23 +149,29 @@ func drop_item() -> void:
 	item_attribute_2 = item_attribute.pick_random()
 	
 	rng = randf()
-	if rng > World.rng_item["commom"][0] and rng <= World.rng_item["commom"][1]:
+	var probability = World.rarity_level_probability[World.item_level]
+	
+	if rng <= probability["commom"]:
 		rarity = "Commom"
 		slot_list = ["slot1", "slot2", "slot3", "slot4", "slot5"]
 		attribute_range = [50, 100]
-	elif rng > World.rng_item["uncommom"][0] and rng <= World.rng_item["uncommom"][1]:
+		
+	elif rng > probability["commom"] and rng <= probability["uncommom"]:
 		rarity = "Uncommom"
 		slot_list = ["slot6", "slot7", "slot8", "slot9", "slot10"]
 		attribute_range = [150, 200]
-	elif rng > World.rng_item["elite"][0] and rng <= World.rng_item["elite"][1]:
+		
+	elif rng > probability["uncommom"] and rng <= probability["elite"]:
 		rarity = "Elite"
 		slot_list = ["slot11", "slot12"]
 		attribute_range = [250, 300]
-	elif rng > World.rng_item["epic"][0] and rng <= World.rng_item["epic"][1]:
+		
+	elif rng > probability["elite"] and rng <= probability["epic"]:
 		rarity = "Epic"
 		slot_list = ["slot13", "slot14"]
 		attribute_range = [350, 400]
-	elif rng > World.rng_item["legendary"][0] and rng <= World.rng_item["legendary"][1]:
+		
+	elif rng > probability["epic"]:
 		rarity = "Legendary"
 		slot_list = ["slot15"]
 		attribute_range = [500, 750]
