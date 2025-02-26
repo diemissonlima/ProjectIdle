@@ -1,11 +1,13 @@
-[gd_scene load_steps=82 format=3 uid="uid://dhwtso3ysibcm"]
+[gd_scene load_steps=90 format=3 uid="uid://dhwtso3ysibcm"]
 
 [ext_resource type="Texture2D" uid="uid://e4o6nongfgvb" path="res://assets/prefabs/box/Menu02.png" id="1_8hbwa"]
 [ext_resource type="Script" path="res://scripts/equipments.gd" id="1_jx06y"]
 [ext_resource type="FontFile" uid="uid://c17ascng2deth" path="res://assets/font/njo_14.ttf" id="2_4ds7v"]
 [ext_resource type="Texture2D" uid="uid://bdneqesb38sdk" path="res://assets/prefabs/box/Cell.png" id="3_kr5lw"]
 [ext_resource type="Texture2D" uid="uid://cgbdqkrvghc22" path="res://assets/items/sword_01a.png" id="4_auhao"]
+[ext_resource type="Texture2D" uid="uid://e08w8bq3x8mb" path="res://assets/prefabs/health_bar/background.png" id="4_lfpuy"]
 [ext_resource type="Texture2D" uid="uid://d3fxtybl6m4u1" path="res://assets/prefabs/health_bar/BqBar.png" id="5_objob"]
+[ext_resource type="Texture2D" uid="uid://djgwhn307h28p" path="res://assets/prefabs/health_bar/ProgressBar01_Bar.png" id="6_tgfjl"]
 [ext_resource type="Texture2D" uid="uid://ddb1c688u5tr8" path="res://assets/prefabs/health_bar/Border.png" id="6_u8utt"]
 [ext_resource type="Texture2D" uid="uid://dauwat3wnbbpw" path="res://assets/prefabs/health_bar/BarMana.png" id="7_m0yau"]
 [ext_resource type="Texture2D" uid="uid://dikggt8lnyu8d" path="res://assets/prefabs/icons/Icon_Small_Lock.png" id="8_6g757"]
@@ -80,17 +82,68 @@ font_size = 30
 shadow_size = 0
 shadow_color = Color(0.976471, 0.976471, 0.976471, 0)
 
+[sub_resource type="LabelSettings" id="LabelSettings_4emqa"]
+font = ExtResource("2_4ds7v")
+font_size = 20
+shadow_size = 0
+shadow_color = Color(0.976471, 0.976471, 0.976471, 0)
+
 [sub_resource type="LabelSettings" id="LabelSettings_fodxi"]
 font = ExtResource("2_4ds7v")
 font_size = 18
 shadow_size = 0
 shadow_color = Color(0.976471, 0.976471, 0.976471, 0)
 
-[sub_resource type="LabelSettings" id="LabelSettings_v647c"]
+[sub_resource type="LabelSettings" id="LabelSettings_cko38"]
 font = ExtResource("2_4ds7v")
-font_size = 12
-outline_size = 1
-outline_color = Color(1, 0, 0, 1)
+font_size = 14
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+shadow_color = Color(0.976471, 0.976471, 0.976471, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2ykul"]
+font = ExtResource("2_4ds7v")
+font_size = 14
+font_color = Color(0, 1, 1, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+shadow_color = Color(0.976471, 0.976471, 0.976471, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_mnf6y"]
+font = ExtResource("2_4ds7v")
+font_size = 14
+font_color = Color(0, 1, 0, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+shadow_color = Color(0.976471, 0.976471, 0.976471, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ajr2v"]
+font = ExtResource("2_4ds7v")
+font_size = 14
+font_color = Color(1, 0, 1, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+shadow_color = Color(0.976471, 0.976471, 0.976471, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_73r1q"]
+font = ExtResource("2_4ds7v")
+font_size = 14
+font_color = Color(1, 1, 0, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+shadow_color = Color(0.976471, 0.976471, 0.976471, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wwy3m"]
+font = ExtResource("2_4ds7v")
+font_size = 14
+font_color = Color(1, 0, 0, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
 shadow_size = 0
 shadow_color = Color(0.976471, 0.976471, 0.976471, 0)
 
@@ -116,7 +169,7 @@ font = ExtResource("2_4ds7v")
 font = ExtResource("2_4ds7v")
 font_size = 12
 
-[node name="Equipments" type="Control" node_paths=PackedStringArray("weapon_container", "shield_container", "ring_container", "necklace_container", "bonus_damage", "bonus_gold", "bonus_critical_damage", "bonus_prestige_points") groups=["equipments"]]
+[node name="Equipments" type="Control" node_paths=PackedStringArray("weapon_container", "shield_container", "ring_container", "necklace_container", "progress_bar", "drop_item_level_label", "current_exp_drop_level", "drop_chance_container") groups=["equipments"]]
 visible = false
 custom_minimum_size = Vector2(661, 549)
 layout_mode = 3
@@ -136,10 +189,10 @@ weapon_container = NodePath("Background/WeaponContainer")
 shield_container = NodePath("Background/ShieldContainer")
 ring_container = NodePath("Background/RingContainer")
 necklace_container = NodePath("Background/NecklaceContainer")
-bonus_damage = NodePath("Background/BonusContainer/Damage")
-bonus_gold = NodePath("Background/BonusContainer/Gold")
-bonus_critical_damage = NodePath("Background/BonusContainer/CriticalDamage")
-bonus_prestige_points = NodePath("Background/BonusContainer/Prestig Points")
+progress_bar = NodePath("Background/ProgressBar")
+drop_item_level_label = NodePath("Background/ItemLevel")
+current_exp_drop_level = NodePath("Background/ProgressBar/Label")
+drop_chance_container = NodePath("Background/DropChance")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -155,13 +208,26 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -86.0
-offset_top = 33.0
-offset_right = 102.0
-offset_bottom = 64.0
+offset_left = -112.0
+offset_top = 30.0
+offset_right = 112.0
+offset_bottom = 61.0
 grow_horizontal = 2
-text = "Equipments"
+text = "Equipamentos"
 label_settings = SubResource("LabelSettings_p6cx1")
+
+[node name="ItemLevel" type="Label" parent="Background"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -188.5
+offset_top = 52.0
+offset_right = -64.5
+offset_bottom = 73.0
+grow_horizontal = 2
+label_settings = SubResource("LabelSettings_4emqa")
 
 [node name="TitleBonus" type="Label" parent="Background"]
 visible = false
@@ -175,36 +241,72 @@ label_settings = SubResource("LabelSettings_fodxi")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BonusContainer" type="VBoxContainer" parent="Background"]
+[node name="ProgressBar" type="TextureProgressBar" parent="Background"]
 visible = false
 layout_mode = 0
-offset_left = 47.0
-offset_top = 49.0
-offset_right = 196.0
-offset_bottom = 113.0
+offset_left = 93.0
+offset_top = 79.0
+offset_right = 331.0
+offset_bottom = 99.0
+value = 50.0
+nine_patch_stretch = true
+texture_under = ExtResource("4_lfpuy")
+texture_over = ExtResource("6_u8utt")
+texture_progress = ExtResource("6_tgfjl")
 
-[node name="Damage" type="Label" parent="Background/BonusContainer"]
-layout_mode = 2
-text = "+ 500% Damage"
-label_settings = SubResource("LabelSettings_v647c")
+[node name="Label" type="Label" parent="Background/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -7.0
+offset_right = 0.5
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_cko38")
+horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Gold" type="Label" parent="Background/BonusContainer"]
+[node name="DropChance" type="VBoxContainer" parent="Background"]
+visible = false
+layout_mode = 0
+offset_left = 399.5
+offset_top = 28.5
+offset_right = 517.5
+offset_bottom = 114.5
+
+[node name="Commom" type="Label" parent="Background/DropChance"]
 layout_mode = 2
-text = "+ 500% Gold"
-label_settings = SubResource("LabelSettings_v647c")
+label_settings = SubResource("LabelSettings_2ykul")
+horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CriticalDamage" type="Label" parent="Background/BonusContainer"]
+[node name="Uncommom" type="Label" parent="Background/DropChance"]
 layout_mode = 2
-text = "+ 500% Critical Damage"
-label_settings = SubResource("LabelSettings_v647c")
+label_settings = SubResource("LabelSettings_mnf6y")
+horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Prestig Points" type="Label" parent="Background/BonusContainer"]
+[node name="Elite" type="Label" parent="Background/DropChance"]
 layout_mode = 2
-text = "+ 500% Prestige Points"
-label_settings = SubResource("LabelSettings_v647c")
+label_settings = SubResource("LabelSettings_ajr2v")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Epic" type="Label" parent="Background/DropChance"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_73r1q")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Legendary" type="Label" parent="Background/DropChance"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_wwy3m")
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="WeaponContainer" type="GridContainer" parent="Background"]
@@ -7433,10 +7535,10 @@ label_settings = SubResource("LabelSettings_c03wh")
 [node name="SwordTab" type="TextureButton" parent="Background"]
 custom_minimum_size = Vector2(64, 33)
 layout_mode = 0
-offset_left = 212.0
-offset_top = 79.0
-offset_right = 276.0
-offset_bottom = 112.0
+offset_left = 196.0
+offset_top = 76.0
+offset_right = 260.0
+offset_bottom = 109.0
 texture_normal = ExtResource("40_duy53")
 texture_pressed = ExtResource("40_duy53")
 texture_hover = ExtResource("41_7gyf3")
@@ -7462,10 +7564,10 @@ label_settings = SubResource("LabelSettings_h6a4u")
 [node name="ShieldTab" type="TextureButton" parent="Background"]
 custom_minimum_size = Vector2(64, 33)
 layout_mode = 0
-offset_left = 285.0
-offset_top = 79.0
-offset_right = 349.0
-offset_bottom = 112.0
+offset_left = 269.0
+offset_top = 76.0
+offset_right = 333.0
+offset_bottom = 109.0
 texture_normal = ExtResource("40_duy53")
 texture_pressed = ExtResource("40_duy53")
 texture_hover = ExtResource("41_7gyf3")
@@ -7491,10 +7593,10 @@ label_settings = SubResource("LabelSettings_h6a4u")
 [node name="RingTab" type="TextureButton" parent="Background"]
 custom_minimum_size = Vector2(64, 33)
 layout_mode = 0
-offset_left = 358.0
-offset_top = 79.0
-offset_right = 422.0
-offset_bottom = 112.0
+offset_left = 342.0
+offset_top = 76.0
+offset_right = 406.0
+offset_bottom = 109.0
 texture_normal = ExtResource("40_duy53")
 texture_pressed = ExtResource("40_duy53")
 texture_hover = ExtResource("41_7gyf3")
@@ -7520,10 +7622,10 @@ label_settings = SubResource("LabelSettings_h6a4u")
 [node name="NecklaceTab" type="TextureButton" parent="Background"]
 custom_minimum_size = Vector2(64, 33)
 layout_mode = 0
-offset_left = 431.0
-offset_top = 79.0
-offset_right = 495.0
-offset_bottom = 112.0
+offset_left = 415.0
+offset_top = 76.0
+offset_right = 479.0
+offset_bottom = 109.0
 texture_normal = ExtResource("40_duy53")
 texture_pressed = ExtResource("40_duy53")
 texture_hover = ExtResource("41_7gyf3")
@@ -7546,6 +7648,35 @@ grow_vertical = 2
 text = "Necklaces"
 label_settings = SubResource("LabelSettings_h6a4u")
 
+[node name="Status" type="TextureButton" parent="Background"]
+custom_minimum_size = Vector2(64, 33)
+layout_mode = 0
+offset_left = 569.5
+offset_top = 98.5
+offset_right = 633.5
+offset_bottom = 131.5
+texture_normal = ExtResource("40_duy53")
+texture_pressed = ExtResource("40_duy53")
+texture_hover = ExtResource("41_7gyf3")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Background/Status"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -19.0
+offset_top = -6.5
+offset_right = 19.0
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Status"
+label_settings = SubResource("LabelSettings_h6a4u")
+
 [node name="Close" type="TextureButton" parent="Background"]
 layout_mode = 1
 anchors_preset = 1
@@ -7564,4 +7695,6 @@ stretch_mode = 5
 [connection signal="pressed" from="Background/ShieldTab" to="." method="_on_shield_tab_pressed"]
 [connection signal="pressed" from="Background/RingTab" to="." method="_on_ring_tab_pressed"]
 [connection signal="pressed" from="Background/NecklaceTab" to="." method="_on_necklace_tab_pressed"]
+[connection signal="mouse_entered" from="Background/Status" to="." method="_on_status_mouse_entered"]
+[connection signal="mouse_exited" from="Background/Status" to="." method="_on_status_mouse_exited"]
 [connection signal="pressed" from="Background/Close" to="." method="_on_close_pressed"]

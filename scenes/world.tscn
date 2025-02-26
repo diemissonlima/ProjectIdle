@@ -1,6 +1,6 @@
 [gd_scene load_steps=151 format=3 uid="uid://dtyw4v44a8ka4"]
 
-[ext_resource type="Texture2D" uid="uid://bs4f04v00hl85" path="res://assets/backgrounds/Horizontal/1.png" id="1_m0651"]
+[ext_resource type="Texture2D" uid="uid://bih5o3d7uq2nk" path="res://assets/backgrounds/Horizontal/1.png" id="1_m0651"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_mqmc1"]
 [ext_resource type="PackedScene" uid="uid://dxw12krufnp3p" path="res://scenes/enemy/enemy_1.tscn" id="2_uip66"]
 [ext_resource type="PackedScene" uid="uid://ltj0p88n644q" path="res://scenes/enemy/enemy_2.tscn" id="3_tqqcg"]

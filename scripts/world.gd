@@ -154,11 +154,12 @@ func killer_enemy(enemy_type) -> void:
 			+ World.format_number(enemy.dropped_gold) + " gold", Color.GREEN
 			)
 	
-	enemy.drop_item()
-	#if enemy_type == 1:
-		#var rng_drop: float = randf()
-		#if rng_drop < drop_chance:
-			#enemy.drop_item()
+	if enemy_type == 1:
+		var rng_drop: float = randf()
+		if rng_drop <= drop_chance:
+			enemy.drop_item()
+			World.current_exp_item_drop += 1
+			get_tree().call_group("equipments", "show_item_level_drop")
 	
 	World.kills += 1
 	
@@ -195,7 +196,7 @@ func killer_enemy(enemy_type) -> void:
 
 
 func load_background() -> void: # carrega o background do estagio
-	background.texture = load("res://assets/backgrounds/Horizontal/" + str(randi_range(1, 32)) + ".png")
+	background.texture = load("res://assets/backgrounds/Horizontal/" + str(randi_range(1, 58)) + ".png")
 
 
 func reload_battle() -> void:

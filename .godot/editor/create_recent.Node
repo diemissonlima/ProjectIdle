@@ -1,13 +1,13 @@
+VBoxContainer
 Label
-TextureButton
+Node2D
 TextureProgressBar
+TextureButton
 CollisionShape2D
 AnimatedSprite2D
 StaticBody2D
 AnimationPlayer
 RichTextLabel
-VBoxContainer
-Node2D
 TextureRect
 Node
 ColorRect

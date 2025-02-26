@@ -5,8 +5,8 @@ res://scenes/reset_info.tscn
 res://scenes/stats_info.tscn
 res://scenes/raids.tscn
 res://scenes/upgrades.tscn
+res://scenes/equipments.tscn
 res://scenes/enemy/enemy_base.tscn
-res://scripts/base_enemy.gd
-res://scripts/global_player.gd
-res://scripts/global_world.gd
 res://scripts/world.gd
+res://scripts/equipments.gd
+res://scripts/global_world.gd

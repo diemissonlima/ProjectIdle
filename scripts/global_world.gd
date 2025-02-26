@@ -10,8 +10,8 @@ var reset: int = 0
 var kills: int = 0
 var gold_gain: float = 0.0
 
-var total_itens_dropped: int = 0
-var item_level: int = 1
+var current_exp_item_drop: int = 0
+var item_drop_level: int = 1
 
 var rarity_level_probability: Dictionary = {
 	1: {
@@ -64,7 +64,6 @@ func load_data() -> void:
 	
 	kills = Data.data_management["statistics"]["kills"]
 	gold_gain = Data.data_management["statistics"]["gold_gain"]
-	total_itens_dropped = Data.data_management["statistics"]["itens_dropped"]
 
 
 func save_data() -> void:
@@ -79,7 +78,6 @@ func save_data() -> void:
 	
 	Data.data_management["statistics"]["kills"] = kills
 	Data.data_management["statistics"]["gold_gain"] = gold_gain
-	Data.data_management["statistics"]["itens_dropped"] = total_itens_dropped
 	
 	Data.save_data()
 

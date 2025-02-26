@@ -10,6 +10,8 @@ var data_management: Dictionary = {
 		"stage_progress": 1,
 		"highest_stage": 1,
 		"reset": 0,
+		"item_drop_level": 1,
+		"current_exp_item_drop": 0,
 		"exit_time": 0 # tempo que o jogo foi fechado (em segundos)
 	},
 	
@@ -60,7 +62,6 @@ var data_management: Dictionary = {
 		"kills": 0,
 		"gold_gain": 0,
 		"points": 0,
-		"itens_dropped": 0,
 		"monster": {}
 	},
 	

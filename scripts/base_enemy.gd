@@ -76,7 +76,7 @@ func calculate_exp() -> int:
 
 func drop() -> void:
 	var base_gold: int = 0
-	var scaling_factor: float = 1.15  # Fator de crescimento exponencial
+	var scaling_factor: float = 1.05  # Fator de crescimento exponencial
 	var gold_raid_multiplier: float = Data.data_management["raids"]["raid_gold"]["multiplier"]
 	var gold_upgrade_multiplier: float = Data.data_management["upgrades"]["gold"]["multiplier"]
 	var levelup_multiplier: float = Data.data_management["player"]["upgrade_level_up"]
@@ -148,33 +148,39 @@ func drop_item() -> void:
 	item_attribute_1 = item_attribute.pick_random()
 	item_attribute_2 = item_attribute.pick_random()
 	
+	var probability = World.rarity_level_probability[World.item_drop_level]
 	rng = randf()
-	var probability = World.rarity_level_probability[World.item_level]
 	
-	if rng <= probability["commom"]:
-		rarity = "Commom"
-		slot_list = ["slot1", "slot2", "slot3", "slot4", "slot5"]
-		attribute_range = [50, 100]
+	for key in ["commom", "uncommom", "elite", "epic", "legendary"]:
+		if rng <= probability[key]:
+			rarity = key.capitalize()
+			break
+	
+	match rarity:
+		"Commom":
+			slot_list = ["slot1", "slot2", "slot3", "slot4", "slot5"]
+			attribute_range = [50, 100]
+			color_message = Color.SKY_BLUE
 		
-	elif rng > probability["commom"] and rng <= probability["uncommom"]:
-		rarity = "Uncommom"
-		slot_list = ["slot6", "slot7", "slot8", "slot9", "slot10"]
-		attribute_range = [150, 200]
+		"Uncommom":
+			slot_list = ["slot6", "slot7", "slot8", "slot9", "slot10"]
+			attribute_range = [150, 200]
+			color_message = Color.GREEN
 		
-	elif rng > probability["uncommom"] and rng <= probability["elite"]:
-		rarity = "Elite"
-		slot_list = ["slot11", "slot12"]
-		attribute_range = [250, 300]
+		"Elite":
+			slot_list = ["slot11", "slot12"]
+			attribute_range = [250, 300]
+			color_message = Color.FUCHSIA
 		
-	elif rng > probability["elite"] and rng <= probability["epic"]:
-		rarity = "Epic"
-		slot_list = ["slot13", "slot14"]
-		attribute_range = [350, 400]
+		"Epic":
+			slot_list = ["slot13", "slot14"]
+			attribute_range = [350, 400]
+			color_message = Color.GOLD
 		
-	elif rng > probability["epic"]:
-		rarity = "Legendary"
-		slot_list = ["slot15"]
-		attribute_range = [500, 750]
+		"Legendary":
+			slot_list = ["slot15"]
+			attribute_range = [500, 750]
+			color_message = Color.RED
 	
 	while item_attribute_2 == item_attribute_1:
 		item_attribute_2 = item_attribute.pick_random()
@@ -197,17 +203,6 @@ func drop_item() -> void:
 			item_attribute_2: attribute_value_2
 		}
 	}
-	
-	if rarity == "Commom":
-		color_message = Color.SKY_BLUE
-	elif rarity == "Uncommom":
-		color_message = Color.GREEN
-	elif rarity == "Elite":
-		color_message = Color.FUCHSIA
-	elif rarity == "Epic":
-		color_message = Color.GOLD
-	elif rarity == "Legendary":
-		color_message = Color.RED
 	
 	get_tree().call_group(
 		"loot_box", "add_message", "lootbox_2", drop_message, color_message

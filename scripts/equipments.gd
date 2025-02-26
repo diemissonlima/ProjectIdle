@@ -7,11 +7,15 @@ extends Control
 @export var ring_container: GridContainer
 @export var necklace_container: GridContainer
 
-@export_category("Bonus Info")
-@export var bonus_damage: Label
-@export var bonus_gold: Label
-@export var bonus_critical_damage: Label
-@export var bonus_prestige_points: Label
+@export var progress_bar: TextureProgressBar
+@export var drop_item_level_label: Label
+@export var current_exp_drop_level: Label
+@export var drop_chance_container: VBoxContainer
+
+var drop_item_level_dict: Dictionary = {
+	"1": 25, "2": 50, "3": 75, "4": 100, "5": 125,
+	"6": 150, "7": 175, "8": 200, "9": 225, "10": 250
+}
 
 var item_level_dict: Dictionary = {
 	"1": 2, "2": 3, "3": 4, "4": 5, "5": 6,
@@ -31,7 +35,8 @@ func _ready() -> void:
 	load_equipment("shield")
 	load_equipment("ring")
 	load_equipment("necklace")
-	show_bonus_item()
+	
+	show_drop_chance()
 
 
 func connect_button_signal() -> void:
@@ -217,8 +222,60 @@ func upgrade_level_item(slot_data: Dictionary, type: String, rarity: String) -> 
 	
 	slot_data["atributtes"][keys[0]] += upgrade
 	slot_data["atributtes"][keys[1]] += upgrade
+
+
+func show_item_level_drop() -> void:
+	if World.current_exp_item_drop >= drop_item_level_dict[str(World.item_drop_level)]:
+		World.item_drop_level += 1
+		World.current_exp_item_drop = 0
+		show_drop_chance()
 	
-	show_bonus_item()
+	drop_item_level_label.text = "Item Level: " + str(World.item_drop_level)
+	current_exp_drop_level.text = str(World.current_exp_item_drop) + " / " \
+	+ str(drop_item_level_dict[str(World.item_drop_level)])
+	
+	progress_bar.max_value = drop_item_level_dict[str(World.item_drop_level)]
+	progress_bar.value = World.current_exp_item_drop
+
+
+func show_drop_chance() -> void:
+	var probability: Dictionary = World.rarity_level_probability[World.item_drop_level]
+	
+	for child in drop_chance_container.get_children():
+		match child.name.to_lower():
+			"commom":
+				child.text = "commom: " + str(
+					probability["commom"] * 100
+				) + "%"
+				
+			"uncommom":
+				child.text = "unommom: " + str(
+					(probability["uncommom"] * 100) - (probability["commom"] * 100)
+				) + "%"
+			
+			"elite":
+				if probability["elite"] == 0.0:
+					child.text = "elite: " + str(0) + "%"
+				else:
+					child.text = "elite: " + str(
+						(probability["elite"] * 100) - (probability["uncommom"] * 100)
+					) + "%"
+				
+			"epic":
+				if probability["epic"] == 0.0:
+					child.text = "epic: " + str(0) + "%"
+				else:
+					child.text = "epic: " + str(
+						(probability["epic"] * 100) - (probability["elite"] * 100)
+					) + "%"
+				
+			"legendary":
+				if probability["legendary"] == 0.0:
+					child.text = "legendary: " + str(0) + "%"
+				else:
+					child.text = "legendary: " + str(
+						(probability["legendary"] * 100) - (probability["epic"] * 100)
+					) + "%"
 
 
 func _on_equip_item_pressed() -> void:
@@ -234,26 +291,6 @@ func _on_equip_item_pressed() -> void:
 	else:
 		Player.handler_item("unequip", equipment_type, Player.equipped_items[equipment_type]["slot"])
 		Player.handler_item("equip", equipment_type, selected_button.name)
-		
-	show_bonus_item()
-
-
-func show_bonus_item() -> void:
-	var damage: float = 0.0
-	var gold: float = 0.0
-	var critical_damage: float = 0.0
-	var prestige_points: float = 0.0
-	
-	for key in Player.equipped_items:
-		damage += Player.equipped_items[key]["bonus_attributes"]["damage"]
-		gold += Player.equipped_items[key]["bonus_attributes"]["gold"]
-		critical_damage += Player.equipped_items[key]["bonus_attributes"]["critical_damage"]
-		prestige_points += Player.equipped_items[key]["bonus_attributes"]["prestige_points"]
-	
-	bonus_damage.text = "+ " + str(damage * 100) + "% Damage"
-	bonus_gold.text = "+ " + str(gold * 100) + "% Gold"
-	bonus_critical_damage.text = "+ " + str(critical_damage * 100) + "% Critical Damage"
-	bonus_prestige_points.text = "+ " + str(prestige_points * 100) + "% Prestige Points"
 
 
 func _on_close_pressed() -> void:
@@ -303,3 +340,27 @@ func _on_necklace_tab_pressed() -> void:
 	
 	if $Background/ItemInfo.visible == true:
 		$Background/ItemInfo.visible = false
+
+
+func _on_status_mouse_entered() -> void:
+	$Background/Title.hide()
+	$Background/SwordTab.hide()
+	$Background/ShieldTab.hide()
+	$Background/RingTab.hide()
+	$Background/NecklaceTab.hide()
+	
+	$Background/ItemLevel.show()
+	$Background/ProgressBar.show()
+	$Background/DropChance.show()
+
+
+func _on_status_mouse_exited() -> void:
+	$Background/Title.show()
+	$Background/SwordTab.show()
+	$Background/ShieldTab.show()
+	$Background/RingTab.show()
+	$Background/NecklaceTab.show()
+	
+	$Background/ItemLevel.hide()
+	$Background/ProgressBar.hide()
+	$Background/DropChance.hide()
