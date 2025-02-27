@@ -121,12 +121,12 @@ var data_management: Dictionary = {
 		
 		"skill_duration": {
 			"level": 0,
-			"multiplier": 45
+			"multiplier": 60
 		},
 		
 		"skill_cooldown": {
 			"level": 0,
-			"multiplier": 180
+			"multiplier": 300
 		}
 	},
 	

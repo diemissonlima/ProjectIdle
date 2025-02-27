@@ -185,7 +185,10 @@ func update_exp(value: int) -> void:
 
 
 func on_level_up() -> void:
-	damage = damage + (damage * 25 / 100)
+	var bonus_damage: float = (damage * 25) / 100
+	damage += bonus_damage
+	default_damage += bonus_damage
+	
 	Data.data_management["player"]["upgrade_level_up"] += 0.25
 
 
@@ -235,8 +238,8 @@ func alter_attack() -> void:
 		+ equipped_items["necklace"]["bonus_attributes"]["damage"]
 	) * 100
 	
-	var new_damage: float = damage + ((equipment_damage_multiplier * damage) / 100)
-	var bonus_upgrade_damage: float = upgrade_damage_multiplier * new_damage / 100
+	var new_damage: float = damage + (damage * upgrade_damage_multiplier / 100)
+	var bonus_upgrade_damage: float = new_damage * equipment_damage_multiplier / 100
 	
 	damage_total = new_damage + bonus_upgrade_damage
 	

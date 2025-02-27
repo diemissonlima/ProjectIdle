@@ -42,7 +42,7 @@ func _ready() -> void:
 	set_label_upgrade() # seta as labels que informa o custo do upgrade
 	spawn_enemy() # spawna o inimigo
 	timer_player_attack.start(Player.attack_speed)
-	#timer_save_game.start()
+	timer_save_game.start()
 	
 	if World.stage_progress == 10:
 		timer_batalha.start(World.battle_time)
@@ -107,7 +107,7 @@ func update_timer_display() ->  void: # função pra atualizar label de batalha
 func take_enemy_damage(_damage: float) -> void: # causa dano ao inimigo
 	enemy.health -= round(_damage) # diminui a vida em funcao do dano do player
 	#enemy.animate_health_bar(round(_damage))
-	if enemy.health <= 0: # se a vida chegar a zero, chama a função de matar o inimigo
+	if enemy.health < 1: # se a vida chegar a zero, chama a função de matar o inimigo
 		enemy.queue_free() # deleta o inimigo da cena
 		killer_enemy(enemy.enemy_type)
 

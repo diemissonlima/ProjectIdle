@@ -7,6 +7,3 @@ res://scenes/raids.tscn
 res://scenes/upgrades.tscn
 res://scenes/equipments.tscn
 res://scenes/enemy/enemy_base.tscn
-res://scripts/world.gd
-res://scripts/equipments.gd
-res://scripts/global_world.gd

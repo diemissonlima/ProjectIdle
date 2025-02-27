@@ -61,6 +61,8 @@ func load_data() -> void:
 	stage_progress = data["stage_progress"]
 	avg_estagio = data["highest_stage"]
 	reset = data["reset"]
+	current_exp_item_drop = data["current_exp_item_drop"]
+	item_drop_level = data["item_drop_level"]
 	
 	kills = Data.data_management["statistics"]["kills"]
 	gold_gain = Data.data_management["statistics"]["gold_gain"]
@@ -75,6 +77,8 @@ func save_data() -> void:
 	data["stage_progress"] = stage_progress
 	data["highest_stage"] = avg_estagio
 	data["reset"] = reset
+	data["current_exp_item_drop"] = current_exp_item_drop
+	data["item_drop_level"] = item_drop_level
 	
 	Data.data_management["statistics"]["kills"] = kills
 	Data.data_management["statistics"]["gold_gain"] = gold_gain

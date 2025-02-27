@@ -87,12 +87,10 @@
 [ext_resource type="Texture2D" uid="uid://c5onxi1s6n3ci" path="res://assets/prefabs/icons/interrogation-point.png" id="61_v3wpb"]
 [ext_resource type="PackedScene" uid="uid://drxeh0k4uddpu" path="res://scenes/enemy/enemy_61.tscn" id="62_t182j"]
 [ext_resource type="PackedScene" uid="uid://cve83xxmhcpb8" path="res://scenes/enemy/enemy_62.tscn" id="63_uojx0"]
-[ext_resource type="Texture2D" uid="uid://bxdpv2k70yv4v" path="res://assets/prefabs/health_bar/ProgressBar01_Background.png" id="64_6uaqy"]
 [ext_resource type="Texture2D" uid="uid://cykex46ttcc8g" path="res://assets/prefabs/icons/Icon_Small_Diamond.png" id="64_jpit2"]
 [ext_resource type="PackedScene" uid="uid://dx36dqtatqf1e" path="res://scenes/enemy/enemy_63.tscn" id="64_pmeph"]
 [ext_resource type="PackedScene" uid="uid://b6f3p7f5o0yin" path="res://scenes/enemy/enemy_64.tscn" id="65_8mv0m"]
 [ext_resource type="Texture2D" uid="uid://cycc5sf6td3w5" path="res://assets/skills/08.png" id="65_asbbg"]
-[ext_resource type="Texture2D" uid="uid://c87vpjjynbswi" path="res://assets/prefabs/health_bar/ProgressBar01_Border.png" id="65_up28s"]
 [ext_resource type="Texture2D" uid="uid://7fknnavhqyfo" path="res://assets/prefabs/box/MessageBox01.png" id="65_waswf"]
 [ext_resource type="PackedScene" uid="uid://bx37b4yuxd66x" path="res://scenes/enemy/enemy_65.tscn" id="66_ch2m0"]
 [ext_resource type="Texture2D" uid="uid://djgwhn307h28p" path="res://assets/prefabs/health_bar/ProgressBar01_Bar.png" id="66_v01rl"]
@@ -136,6 +134,8 @@
 [ext_resource type="PackedScene" uid="uid://b2a6p4bfkgxk4" path="res://scenes/enemy/enemy_98.tscn" id="99_femga"]
 [ext_resource type="PackedScene" uid="uid://ddn5m1kttv4o1" path="res://scenes/enemy/enemy_99.tscn" id="100_th0vn"]
 [ext_resource type="PackedScene" uid="uid://cfh06cy1gr8xp" path="res://scenes/enemy/enemy_100.tscn" id="101_rgj3y"]
+[ext_resource type="Texture2D" uid="uid://e08w8bq3x8mb" path="res://assets/prefabs/health_bar/background.png" id="115_yhhe0"]
+[ext_resource type="Texture2D" uid="uid://ddb1c688u5tr8" path="res://assets/prefabs/health_bar/Border.png" id="116_084xs"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_cavrc"]
 font = ExtResource("23_fp0v3")
@@ -310,16 +310,16 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -348.0
-offset_top = -36.0
-offset_right = 349.0
-offset_bottom = -3.0
+offset_left = -337.0
+offset_top = -34.0
+offset_right = 337.0
+offset_bottom = -7.0
 grow_horizontal = 2
 grow_vertical = 0
 value = 75.0
 nine_patch_stretch = true
-texture_under = ExtResource("64_6uaqy")
-texture_over = ExtResource("65_up28s")
+texture_under = ExtResource("115_yhhe0")
+texture_over = ExtResource("116_084xs")
 texture_progress = ExtResource("66_v01rl")
 
 [node name="ExpLabel" type="Label" parent="Background/ExpBar"]
@@ -329,13 +329,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -46.0
-offset_top = -11.5
-offset_right = 46.0
-offset_bottom = 11.5
+offset_left = -0.5
+offset_top = -9.5
+offset_right = 0.5
+offset_bottom = 9.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "150 / 1500"
 label_settings = SubResource("LabelSettings_4p342")
 horizontal_alignment = 1
 vertical_alignment = 1

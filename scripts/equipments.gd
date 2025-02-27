@@ -13,8 +13,8 @@ extends Control
 @export var drop_chance_container: VBoxContainer
 
 var drop_item_level_dict: Dictionary = {
-	"1": 25, "2": 50, "3": 75, "4": 100, "5": 125,
-	"6": 150, "7": 175, "8": 200, "9": 225, "10": 250
+	"1": 15, "2": 30, "3": 45, "4": 60, "5": 75,
+	"6": 90, "7": 105, "8": 120, "9": 135, "10": 150
 }
 
 var item_level_dict: Dictionary = {
@@ -36,6 +36,7 @@ func _ready() -> void:
 	load_equipment("ring")
 	load_equipment("necklace")
 	
+	show_item_level_drop()
 	show_drop_chance()
 
 
@@ -188,7 +189,6 @@ func add_item(item_data: Dictionary) -> void:
 	
 	if data_equipment[equipment_type][slot]["is_locked"]:
 		data_equipment[equipment_type][slot]["is_locked"] = false
-		data_equipment[equipment_type][slot]["progress"] = 1
 		data_equipment[equipment_type][slot]["atributtes"] = item_data["atributtes"]
 	else:
 		data_equipment[equipment_type][slot]["progress"] += 1
@@ -244,36 +244,36 @@ func show_drop_chance() -> void:
 	for child in drop_chance_container.get_children():
 		match child.name.to_lower():
 			"commom":
-				child.text = "commom: " + str(
+				child.text = "Comum: " + str(
 					probability["commom"] * 100
 				) + "%"
 				
 			"uncommom":
-				child.text = "unommom: " + str(
+				child.text = "Incomum: " + str(
 					(probability["uncommom"] * 100) - (probability["commom"] * 100)
 				) + "%"
 			
 			"elite":
 				if probability["elite"] == 0.0:
-					child.text = "elite: " + str(0) + "%"
+					child.text = "Elite: " + str(0) + "%"
 				else:
-					child.text = "elite: " + str(
+					child.text = "Elite: " + str(
 						(probability["elite"] * 100) - (probability["uncommom"] * 100)
 					) + "%"
 				
 			"epic":
 				if probability["epic"] == 0.0:
-					child.text = "epic: " + str(0) + "%"
+					child.text = "Épico: " + str(0) + "%"
 				else:
-					child.text = "epic: " + str(
+					child.text = "Épico: " + str(
 						(probability["epic"] * 100) - (probability["elite"] * 100)
 					) + "%"
 				
 			"legendary":
 				if probability["legendary"] == 0.0:
-					child.text = "legendary: " + str(0) + "%"
+					child.text = "Lendário: " + str(0) + "%"
 				else:
-					child.text = "legendary: " + str(
+					child.text = "Lendário: " + str(
 						(probability["legendary"] * 100) - (probability["epic"] * 100)
 					) + "%"
 
