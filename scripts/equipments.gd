@@ -13,8 +13,8 @@ extends Control
 @export var drop_chance_container: VBoxContainer
 
 var drop_item_level_dict: Dictionary = {
-	"1": 15, "2": 30, "3": 45, "4": 60, "5": 75,
-	"6": 90, "7": 105, "8": 120, "9": 135, "10": 150
+	"1": 10, "2": 15, "3": 20, "4": 25, "5": 30,
+	"6": 35, "7": 40, "8": 45, "9": 50, "10": 60
 }
 
 var item_level_dict: Dictionary = {
@@ -209,13 +209,13 @@ func upgrade_level_item(slot_data: Dictionary, type: String, rarity: String) -> 
 		"Commom":
 			upgrade = 0.50
 		"Uncommom":
-			upgrade = 1.00
+			upgrade = 1.0
 		"elite":
-			upgrade = 1.50
-		"epic":
 			upgrade = 2.0
+		"epic":
+			upgrade = 4.0
 		"legendary":
-			upgrade = 3.0
+			upgrade = 8.0
 	
 	for key in slot_data["atributtes"].keys():
 		keys.append(key)

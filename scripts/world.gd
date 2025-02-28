@@ -42,7 +42,7 @@ func _ready() -> void:
 	set_label_upgrade() # seta as labels que informa o custo do upgrade
 	spawn_enemy() # spawna o inimigo
 	timer_player_attack.start(Player.attack_speed)
-	timer_save_game.start()
+	#timer_save_game.start()
 	
 	if World.stage_progress == 10:
 		timer_batalha.start(World.battle_time)
@@ -50,6 +50,7 @@ func _ready() -> void:
 		label_substage.hide()
 	
 	set_stage_label()
+	update_expbar()
 
 
 func _process(delta: float) -> void:
@@ -373,9 +374,9 @@ func _on_increase_ataque_pressed() -> void:
 		return
 	
 	var amount_list: Array = [
-		1000, 500, 400, 300, 200, 100, 50, 10, 1
+		2000, 1500, 1000, 500, 400, 300, 200, 100, 50, 10, 1
 	]
-	
+	 
 	for amount in amount_list:
 		if Player.calculate_price(Player.x_upgrade_ataque, amount) <= Player.gold:
 			upgrade_cost = Player.calculate_price(Player.x_upgrade_ataque, amount)

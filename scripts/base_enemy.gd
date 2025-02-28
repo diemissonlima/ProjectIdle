@@ -44,8 +44,8 @@ func set_enemy_type() -> void:
 
 
 func increase_health() -> void:
-	var base_health: float = 10.0  # Vida inicial
-	var scaling_factor: float = 1.125  # Fator de crescimento exponencial
+	var base_health: float = 5.0  # Vida inicial
+	var scaling_factor: float = 1.15  # Fator de crescimento exponencial
 	max_health = base_health * pow(scaling_factor, World.estagio)
 	
 	match enemy_type:
@@ -68,7 +68,7 @@ func animate_health_bar(damage: int) -> void:
 
 func calculate_exp() -> int:
 	var exp_base: int = 1
-	var scaling_factor: float = 1.05
+	var scaling_factor: float = 1.025
 	var exp = exp_base * pow(scaling_factor, World.estagio)
 	
 	return round(exp)
@@ -76,7 +76,7 @@ func calculate_exp() -> int:
 
 func drop() -> void:
 	var base_gold: int = 0
-	var scaling_factor: float = 1.05  # Fator de crescimento exponencial
+	var scaling_factor: float = 1.075  # Fator de crescimento exponencial
 	var gold_raid_multiplier: float = Data.data_management["raids"]["raid_gold"]["multiplier"]
 	var gold_upgrade_multiplier: float = Data.data_management["upgrades"]["gold"]["multiplier"]
 	var levelup_multiplier: float = Data.data_management["player"]["upgrade_level_up"]
@@ -164,22 +164,22 @@ func drop_item() -> void:
 		
 		"Uncommom":
 			slot_list = ["slot6", "slot7", "slot8", "slot9", "slot10"]
-			attribute_range = [150, 200]
+			attribute_range = [200, 300]
 			color_message = Color.GREEN
 		
 		"Elite":
 			slot_list = ["slot11", "slot12"]
-			attribute_range = [250, 300]
+			attribute_range = [400, 500]
 			color_message = Color.FUCHSIA
 		
 		"Epic":
 			slot_list = ["slot13", "slot14"]
-			attribute_range = [350, 400]
+			attribute_range = [400, 500]
 			color_message = Color.GOLD
 		
 		"Legendary":
 			slot_list = ["slot15"]
-			attribute_range = [500, 750]
+			attribute_range = [750, 1000]
 			color_message = Color.RED
 	
 	while item_attribute_2 == item_attribute_1:

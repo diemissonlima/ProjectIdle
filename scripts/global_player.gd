@@ -167,9 +167,9 @@ func save_data() -> void:
 func populate_level_dict() -> void:
 	var initial_value: float = 2500
 
-	for i in range(1, 151):
+	for i in range(1, 101):
 		level_dict[str(i)] = round(initial_value)
-		initial_value += initial_value * 0.30
+		initial_value += initial_value * 0.50
 
 
 func update_exp(value: int) -> void:
@@ -185,9 +185,8 @@ func update_exp(value: int) -> void:
 
 
 func on_level_up() -> void:
-	var bonus_damage: float = (damage * 25) / 100
-	damage += bonus_damage
-	default_damage += bonus_damage
+	damage *= 2
+	default_damage += damage
 	
 	Data.data_management["player"]["upgrade_level_up"] += 0.25
 

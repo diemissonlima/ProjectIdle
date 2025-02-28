@@ -33,6 +33,10 @@ script = ExtResource("2_piem6")
 [node name="Sprite" parent="." index="0"]
 position = Vector2(0, -46.5)
 
+[node name="TextureProgressBar" parent="." index="2"]
+offset_top = 6.0
+offset_bottom = 39.0
+
 [node name="Animation" type="AnimatedSprite2D" parent="." index="3"]
 position = Vector2(0, -34.5)
 scale = Vector2(1.5, 1.5)
