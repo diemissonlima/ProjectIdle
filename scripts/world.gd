@@ -228,7 +228,7 @@ func reload_battle() -> void:
 
 func prestige_points() -> int:
 	var base_points: int = (World.estagio - reset_target) * 1.5
-	var scaling_factor: float = 1.10
+	var scaling_factor: float = 1.20
 	var upgrade_multiplier: float = Data.data_management["upgrades"]["prestige_points"]["multiplier"]
 	var equipment_multiplier: float = (
 		Player.equipped_items["weapon"]["bonus_attributes"]["prestige_points"] \
@@ -374,9 +374,10 @@ func _on_increase_ataque_pressed() -> void:
 		return
 	
 	var amount_list: Array = [
-		2000, 1500, 1000, 500, 400, 300, 200, 100, 50, 10, 1
+		50000, 40000, 30000, 25000, 20000, 17500, 15000, 12500, 10000, 7500,
+		5000, 4000, 3000, 2000, 1500, 1000, 500, 400, 300, 200, 100, 50, 10, 1
 	]
-	 
+	
 	for amount in amount_list:
 		if Player.calculate_price(Player.x_upgrade_ataque, amount) <= Player.gold:
 			upgrade_cost = Player.calculate_price(Player.x_upgrade_ataque, amount)

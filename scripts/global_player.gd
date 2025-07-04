@@ -3,7 +3,7 @@ extends Node
 # atributos
 var level: int = 1
 var current_exp: float = 0.0
-var damage: float = 5.0
+var damage: float = 2.0
 var damage_total: float
 var default_damage: float
 var bonus_damage: float
@@ -169,7 +169,7 @@ func populate_level_dict() -> void:
 
 	for i in range(1, 101):
 		level_dict[str(i)] = round(initial_value)
-		initial_value += initial_value * 0.50
+		initial_value += initial_value * 0.75
 
 
 func update_exp(value: int) -> void:
@@ -185,7 +185,7 @@ func update_exp(value: int) -> void:
 
 
 func on_level_up() -> void:
-	damage *= 2
+	damage *= 1.5
 	default_damage += damage
 	
 	Data.data_management["player"]["upgrade_level_up"] += 0.25

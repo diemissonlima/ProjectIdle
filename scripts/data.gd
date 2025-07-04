@@ -16,8 +16,8 @@ var data_management: Dictionary = {
 	},
 	
 	"player": {
-		"ataque": 5.0,
-		"default_damage": 5.0,
+		"ataque": 2.0,
+		"default_damage": 2.0,
 		"attack_speed": 0.5,
 		"level": 1,
 		"current_exp": 0,
@@ -68,21 +68,21 @@ var data_management: Dictionary = {
 	"raids": {
 		"raid_damage": {
 			"level": 1,
-			"hp": 50000,
+			"hp": 250000,
 			"multiplier": 0.0,
 			"time_left": 0.0
 		},
 		
 		"raid_gold": {
 			"level": 1,
-			"hp": 50000,
+			"hp": 150000,
 			"multiplier": 0.0,
 			"time_left": 0.0
 		},
 		
 		"raid_critical": {
 			"level": 1,
-			"hp": 50000,
+			"hp": 200000,
 			"multiplier": 0.0,
 			"time_left": 0.0
 		}
@@ -846,8 +846,8 @@ func reset_savegame() -> void:
 	},
 	
 	"player": {
-		"ataque": 10.0,
-		"default_damage": 10.0,
+		"ataque": 2,
+		"default_damage": 2,
 		"attack_speed": 0.5,
 		"level": 1,
 		"current_exp": 0,
