@@ -185,7 +185,7 @@ func update_exp(value: int) -> void:
 
 
 func on_level_up() -> void:
-	damage *= 1.5
+	damage *= 2.0
 	default_damage += damage
 	
 	Data.data_management["player"]["upgrade_level_up"] += 0.25

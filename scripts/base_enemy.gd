@@ -174,12 +174,12 @@ func drop_item() -> void:
 		
 		"Epic":
 			slot_list = ["slot13", "slot14"]
-			attribute_range = [400, 500]
+			attribute_range = [600, 800]
 			color_message = Color.GOLD
 		
 		"Legendary":
 			slot_list = ["slot15"]
-			attribute_range = [750, 1000]
+			attribute_range = [800, 1000]
 			color_message = Color.RED
 	
 	while item_attribute_2 == item_attribute_1:
