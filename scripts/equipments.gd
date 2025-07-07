@@ -6,6 +6,8 @@ extends Control
 @export var shield_container: GridContainer
 @export var ring_container: GridContainer
 @export var necklace_container: GridContainer
+@export var armor_container: GridContainer
+@export var helm_container: GridContainer
 
 @export var progress_bar: TextureProgressBar
 @export var drop_item_level_label: Label
@@ -18,10 +20,10 @@ var drop_item_level_dict: Dictionary = {
 }
 
 var item_level_dict: Dictionary = {
-	"1": 2, "2": 3, "3": 4, "4": 5, "5": 6,
-	"6": 7, "7": 8, "8": 9, "9": 10, "10": 11,
-	"11": 12, "12": 13, "13": 14, "14": 15, "15": 16,
-	"16": 17, "17": 18, "18": 19, "19": 20, "20": 21
+	"1": 1, "2": 2, "3": 3, "4": 4, "5": 5,
+	"6": 6, "7": 7, "8": 8, "9": 9, "10": 10,
+	"11": 11, "12": 12, "13": 13, "14": 14, "15": 15,
+	"16": 16, "17": 17, "18": 18, "19": 19, "20": 20
 }
 var data_equipment: Dictionary = Data.data_management["equipments"]
 var selected_item
@@ -35,6 +37,8 @@ func _ready() -> void:
 	load_equipment("shield")
 	load_equipment("ring")
 	load_equipment("necklace")
+	load_equipment("armor")
+	load_equipment("helm")
 	
 	show_item_level_drop()
 	show_drop_chance()
@@ -52,15 +56,22 @@ func connect_button_signal() -> void:
 	
 	for button in necklace_container.get_children():
 		button.pressed.connect(on_button_pressed.bind(button))
+	
+	for button in armor_container.get_children():
+		button.pressed.connect(on_button_pressed.bind(button))
+		
+	for button in helm_container.get_children():
+		button.pressed.connect(on_button_pressed.bind(button))
 
 
 func on_button_pressed(button: TextureButton) -> void:
-	show_item_info(button.get_parent().name, button.name) # tentar passando o button ao inves de o nome
+	var sprite_path: String = button.get_node("BG/Sprite").texture.resource_path
+	show_item_info(button.get_parent().name, button.name, sprite_path) # tentar passando o button ao inves de o nome
 	selected_button = button
 	$Background/ItemInfo.visible = true
 
 
-func show_item_info(container: String, button_name: String) -> void:
+func show_item_info(container: String, button_name: String, sprite_path: String) -> void:
 	var item_texture: TextureRect = $Background/ItemInfo/BGColor/BGItemInfo/Sprite
 	var item_name: RichTextLabel = $Background/ItemInfo/BGInfo/ItemName
 	var atributte_1: Label = $Background/ItemInfo/BGInfo/Atributte1
@@ -77,13 +88,15 @@ func show_item_info(container: String, button_name: String) -> void:
 			container = "ring"
 		"NecklaceContainer":
 			container = "necklace"
+		"ArmorContainer":
+			container = "armor"
+		"HelmContainer":
+			container = "helm"
 	
 	equipment_type = container
 	selected_item = data_equipment[container][button_name.to_lower()]
 	
-	item_texture.texture = load(
-		data_equipment[container][button_name.to_lower()]["path"]
-		)
+	item_texture.texture = load(sprite_path)
 	
 	var keys: Array = []
 	for key in data_equipment[container][button_name.to_lower()]["atributtes"].keys():
@@ -145,7 +158,9 @@ func load_equipment(type: String) -> void:
 		"weapon": weapon_container,
 		"shield": shield_container,
 		"ring": ring_container,
-		"necklace": necklace_container
+		"necklace": necklace_container,
+		"armor": armor_container,
+		"helm": helm_container
 	}
 	
 	for slot in target_container[type].get_children():
@@ -178,6 +193,10 @@ func load_equipment(type: String) -> void:
 					Player.handler_item("equip", "ring", slot.name)
 				"necklace":
 					Player.handler_item("equip", "necklace", slot.name)
+				"armor":
+					Player.handler_item("equip", "armor", slot.name)
+				"helm":
+					Player.handler_item("equip", "helm", slot.name)
 					
 		else:
 			slot.get_node("BG/Equipped").visible = false
@@ -300,6 +319,8 @@ func _on_close_pressed() -> void:
 	shield_container.visible = false
 	ring_container.visible = false
 	necklace_container.visible = false
+	armor_container.visible = false
+	helm_container.visible = false
 
 
 func _on_sword_tab_pressed() -> void:
@@ -307,6 +328,8 @@ func _on_sword_tab_pressed() -> void:
 	shield_container.visible = false
 	ring_container.visible = false
 	necklace_container.visible = false
+	armor_container.visible = false
+	helm_container.visible = false
 	
 	if $Background/ItemInfo.visible == true:
 		$Background/ItemInfo.visible = false
@@ -317,6 +340,8 @@ func _on_shield_tab_pressed() -> void:
 	shield_container.visible = true
 	ring_container.visible = false
 	necklace_container.visible = false
+	armor_container.visible = false
+	helm_container.visible = false
 	
 	if $Background/ItemInfo.visible == true:
 		$Background/ItemInfo.visible = false
@@ -327,6 +352,8 @@ func _on_ring_tab_pressed() -> void:
 	shield_container.visible = false
 	ring_container.visible = true
 	necklace_container.visible = false
+	armor_container.visible = false
+	helm_container.visible = false
 	
 	if $Background/ItemInfo.visible == true:
 		$Background/ItemInfo.visible = false
@@ -337,6 +364,32 @@ func _on_necklace_tab_pressed() -> void:
 	shield_container.visible = false
 	ring_container.visible = false
 	necklace_container.visible = true
+	armor_container.visible = false
+	helm_container.visible = false
+	
+	if $Background/ItemInfo.visible == true:
+		$Background/ItemInfo.visible = false
+
+
+func _on_armor_tab_pressed() -> void:
+	weapon_container.visible = false
+	shield_container.visible = false
+	ring_container.visible = false
+	necklace_container.visible = false
+	armor_container.visible = true
+	helm_container.visible = false
+	
+	if $Background/ItemInfo.visible == true:
+		$Background/ItemInfo.visible = false
+
+
+func _on_helm_tab_pressed() -> void:
+	weapon_container.visible = false
+	shield_container.visible = false
+	ring_container.visible = false
+	necklace_container.visible = false
+	armor_container.visible = false
+	helm_container.visible = true
 	
 	if $Background/ItemInfo.visible == true:
 		$Background/ItemInfo.visible = false
@@ -344,10 +397,6 @@ func _on_necklace_tab_pressed() -> void:
 
 func _on_status_mouse_entered() -> void:
 	$Background/Title.hide()
-	$Background/SwordTab.hide()
-	$Background/ShieldTab.hide()
-	$Background/RingTab.hide()
-	$Background/NecklaceTab.hide()
 	
 	$Background/ItemLevel.show()
 	$Background/ProgressBar.show()
@@ -356,10 +405,6 @@ func _on_status_mouse_entered() -> void:
 
 func _on_status_mouse_exited() -> void:
 	$Background/Title.show()
-	$Background/SwordTab.show()
-	$Background/ShieldTab.show()
-	$Background/RingTab.show()
-	$Background/NecklaceTab.show()
 	
 	$Background/ItemLevel.hide()
 	$Background/ProgressBar.hide()

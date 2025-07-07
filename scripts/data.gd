@@ -68,21 +68,21 @@ var data_management: Dictionary = {
 	"raids": {
 		"raid_damage": {
 			"level": 1,
-			"hp": 250000,
+			"hp": 1000000,
 			"multiplier": 0.0,
 			"time_left": 0.0
 		},
 		
 		"raid_gold": {
 			"level": 1,
-			"hp": 150000,
+			"hp": 500000,
 			"multiplier": 0.0,
 			"time_left": 0.0
 		},
 		
 		"raid_critical": {
 			"level": 1,
-			"hp": 200000,
+			"hp": 750000,
 			"multiplier": 0.0,
 			"time_left": 0.0
 		}
@@ -135,7 +135,6 @@ var data_management: Dictionary = {
 			"slot1": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/sword_01a.png",
 				"level": 1,
 				"atributtes": {
 					"damage": 0.35,
@@ -146,7 +145,6 @@ var data_management: Dictionary = {
 			"slot2": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/sword_01b.png",
 				"level": 1,
 				"atributtes": {
 					"damage": 0.36,
@@ -157,7 +155,6 @@ var data_management: Dictionary = {
 			"slot3": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/sword_01c.png",
 				"level": 1,
 				"atributtes": {
 					"damage": 0.37,
@@ -168,7 +165,6 @@ var data_management: Dictionary = {
 			"slot4": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/sword_01d.png",
 				"level": 1,
 				"atributtes": {
 					"damage": 0.38,
@@ -179,7 +175,6 @@ var data_management: Dictionary = {
 			"slot5": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/sword_01e.png",
 				"level": 1,
 				"atributtes": {
 					"damage": 0.40,
@@ -190,7 +185,6 @@ var data_management: Dictionary = {
 			"slot6": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/sword_02a.png",
 				"level": 1,
 				"atributtes": {
 					"damage": 0.50,
@@ -201,7 +195,6 @@ var data_management: Dictionary = {
 			"slot7": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/sword_02b.png",
 				"level": 1,
 				"atributtes": {
 					"damage": 0.51,
@@ -212,7 +205,6 @@ var data_management: Dictionary = {
 			"slot8": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/sword_02c.png",
 				"level": 1,
 				"atributtes": {
 					"damage": 0.52,
@@ -223,7 +215,6 @@ var data_management: Dictionary = {
 			"slot9": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/sword_02d.png",
 				"level": 1,
 				"atributtes": {
 					"damage": 0.53,
@@ -234,7 +225,6 @@ var data_management: Dictionary = {
 			"slot10": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/sword_02e.png",
 				"level": 1,
 				"atributtes": {
 					"damage": 0.55,
@@ -245,7 +235,6 @@ var data_management: Dictionary = {
 			"slot11": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/sword_03a.png",
 				"level": 1,
 				"atributtes": {
 					"damage": 0.65,
@@ -256,7 +245,6 @@ var data_management: Dictionary = {
 			"slot12": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/sword_03b.png",
 				"level": 1,
 				"atributtes": {
 					"damage": 0.75,
@@ -267,7 +255,6 @@ var data_management: Dictionary = {
 			"slot13": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/sword_03c.png",
 				"level": 1,
 				"atributtes": {
 					"damage": 0.85,
@@ -278,7 +265,6 @@ var data_management: Dictionary = {
 			"slot14": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/sword_03d.png",
 				"level": 1,
 				"atributtes": {
 					"damage": 1.0,
@@ -289,7 +275,6 @@ var data_management: Dictionary = {
 			"slot15": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/sword_03e.png",
 				"level": 1,
 				"atributtes": {
 					"damage": 2.0,
@@ -303,7 +288,6 @@ var data_management: Dictionary = {
 			"slot1": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/shield_01a.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.35,
@@ -314,7 +298,6 @@ var data_management: Dictionary = {
 			"slot2": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/shield_01b.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.36,
@@ -325,7 +308,6 @@ var data_management: Dictionary = {
 			"slot3": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/shield_01c.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.37,
@@ -336,7 +318,6 @@ var data_management: Dictionary = {
 			"slot4": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/shield_01d.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.38,
@@ -347,7 +328,6 @@ var data_management: Dictionary = {
 			"slot5": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/shield_01e.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.40,
@@ -358,7 +338,6 @@ var data_management: Dictionary = {
 			"slot6": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/shield_02a.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.50,
@@ -369,7 +348,6 @@ var data_management: Dictionary = {
 			"slot7": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/shield_02b.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.51,
@@ -380,7 +358,6 @@ var data_management: Dictionary = {
 			"slot8": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/shield_02c.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.52,
@@ -391,7 +368,6 @@ var data_management: Dictionary = {
 			"slot9": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/shield_02d.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.53,
@@ -402,7 +378,6 @@ var data_management: Dictionary = {
 			"slot10": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/shield_02e.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.55,
@@ -413,7 +388,6 @@ var data_management: Dictionary = {
 			"slot11": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/shield_03a.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.65,
@@ -424,7 +398,6 @@ var data_management: Dictionary = {
 			"slot12": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/shield_03b.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.75,
@@ -435,7 +408,6 @@ var data_management: Dictionary = {
 			"slot13": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/shield_03c.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.85,
@@ -446,7 +418,6 @@ var data_management: Dictionary = {
 			"slot14": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/shield_03d.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 1.0,
@@ -457,7 +428,6 @@ var data_management: Dictionary = {
 			"slot15": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/shield_03e.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 2.0,
@@ -471,7 +441,6 @@ var data_management: Dictionary = {
 			"slot1": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/ring_01a.png",
 				"level": 1,
 				"atributtes": {
 					"critical_damage": 0.35,
@@ -482,7 +451,6 @@ var data_management: Dictionary = {
 			"slot2": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/ring_01b.png",
 				"level": 1,
 				"atributtes": {
 					"critical_damage": 0.36,
@@ -493,7 +461,6 @@ var data_management: Dictionary = {
 			"slot3": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/ring_01c.png",
 				"level": 1,
 				"atributtes": {
 					"critical_damage": 0.37,
@@ -504,7 +471,6 @@ var data_management: Dictionary = {
 			"slot4": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/ring_01d.png",
 				"level": 1,
 				"atributtes": {
 					"critical_damage": 0.38,
@@ -515,7 +481,6 @@ var data_management: Dictionary = {
 			"slot5": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/ring_01e.png",
 				"level": 1,
 				"atributtes": {
 					"critical_damage": 0.40,
@@ -526,7 +491,6 @@ var data_management: Dictionary = {
 			"slot6": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/ring_02a.png",
 				"level": 1,
 				"atributtes": {
 					"critical_damage": 0.50,
@@ -537,7 +501,6 @@ var data_management: Dictionary = {
 			"slot7": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/ring_02b.png",
 				"level": 1,
 				"atributtes": {
 					"critical_damage": 0.51,
@@ -548,7 +511,6 @@ var data_management: Dictionary = {
 			"slot8": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/ring_02c.png",
 				"level": 1,
 				"atributtes": {
 					"critical_damage": 0.52,
@@ -559,7 +521,6 @@ var data_management: Dictionary = {
 			"slot9": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/ring_02d.png",
 				"level": 1,
 				"atributtes": {
 					"critical_damage": 0.53,
@@ -570,7 +531,6 @@ var data_management: Dictionary = {
 			"slot10": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/ring_02e.png",
 				"level": 1,
 				"atributtes": {
 					"critical_damage": 0.55,
@@ -581,7 +541,6 @@ var data_management: Dictionary = {
 			"slot11": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/ring_03a.png",
 				"level": 1,
 				"atributtes": {
 					"critical_damage": 0.65,
@@ -592,7 +551,6 @@ var data_management: Dictionary = {
 			"slot12": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/ring_03b.png",
 				"level": 1,
 				"atributtes": {
 					"critical_damage": 0.75,
@@ -603,7 +561,6 @@ var data_management: Dictionary = {
 			"slot13": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/ring_03c.png",
 				"level": 1,
 				"atributtes": {
 					"critical_damage": 0.85,
@@ -614,7 +571,6 @@ var data_management: Dictionary = {
 			"slot14": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/ring_03d.png",
 				"level": 1,
 				"atributtes": {
 					"critical_damage": 1.0,
@@ -625,7 +581,6 @@ var data_management: Dictionary = {
 			"slot15": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/ring_03e.png",
 				"level": 1,
 				"atributtes": {
 					"critical_damage": 2.0,
@@ -639,7 +594,6 @@ var data_management: Dictionary = {
 			"slot1": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/necklace_01a.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.35,
@@ -650,7 +604,6 @@ var data_management: Dictionary = {
 			"slot2": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/necklace_01b.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.36,
@@ -661,7 +614,6 @@ var data_management: Dictionary = {
 			"slot3": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/necklace_01c.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.37,
@@ -672,7 +624,6 @@ var data_management: Dictionary = {
 			"slot4": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/necklace_01d.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.38,
@@ -683,7 +634,6 @@ var data_management: Dictionary = {
 			"slot5": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/necklace_01e.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.40,
@@ -694,7 +644,6 @@ var data_management: Dictionary = {
 			"slot6": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/necklace_02a.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.50,
@@ -705,7 +654,6 @@ var data_management: Dictionary = {
 			"slot7": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/necklace_02b.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.51,
@@ -716,7 +664,6 @@ var data_management: Dictionary = {
 			"slot8": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/necklace_02c.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.52,
@@ -727,7 +674,6 @@ var data_management: Dictionary = {
 			"slot9": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/necklace_02d.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.53,
@@ -738,7 +684,6 @@ var data_management: Dictionary = {
 			"slot10": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/necklace_02e.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.55,
@@ -749,7 +694,6 @@ var data_management: Dictionary = {
 			"slot11": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/necklace_03a.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.65,
@@ -760,7 +704,6 @@ var data_management: Dictionary = {
 			"slot12": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/necklace_03b.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.75,
@@ -771,7 +714,6 @@ var data_management: Dictionary = {
 			"slot13": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/necklace_03c.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.85,
@@ -782,7 +724,6 @@ var data_management: Dictionary = {
 			"slot14": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/necklace_03d.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 1.0,
@@ -793,7 +734,312 @@ var data_management: Dictionary = {
 			"slot15": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/necklace_03e.png",
+				"level": 1,
+				"atributtes": {
+					"gold": 2.0,
+					"damage": 2.0
+				},
+				"progress": 0
+			}
+		},
+		
+		"armor": {
+			"slot1": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.35,
+					"damage": 0.35
+				},
+				"progress": 0
+			},
+			"slot2": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.36,
+					"damage": 0.36
+				},
+				"progress": 0
+			},
+			"slot3": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.37,
+					"damage": 0.37
+				},
+				"progress": 0
+			},
+			"slot4": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.38,
+					"damage": 0.38
+				},
+				"progress": 0
+			},
+			"slot5": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.40,
+					"damage": 0.40
+				},
+				"progress": 0
+			},
+			"slot6": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.50,
+					"damage": 0.50
+				},
+				"progress": 0
+			},
+			"slot7": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.51,
+					"damage": 0.51
+				},
+				"progress": 0
+			},
+			"slot8": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.52,
+					"damage": 0.52
+				},
+				"progress": 0
+			},
+			"slot9": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.53,
+					"damage": 0.53
+				},
+				"progress": 0
+			},
+			"slot10": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.55,
+					"damage": 0.55
+				},
+				"progress": 0
+			},
+			"slot11": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.65,
+					"damage": 0.65
+				},
+				"progress": 0
+			},
+			"slot12": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.75,
+					"damage": 0.75
+				},
+				"progress": 0
+			},
+			"slot13": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.85,
+					"damage": 0.85
+				},
+				"progress": 0
+			},
+			"slot14": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 1.0,
+					"damage": 1.0
+				},
+				"progress": 0
+			},
+			"slot15": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 2.0,
+					"damage": 2.0
+				},
+				"progress": 0
+			}
+		},
+		
+		"helm": {
+			"slot1": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.35,
+					"damage": 0.35
+				},
+				"progress": 0
+			},
+			"slot2": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.36,
+					"damage": 0.36
+				},
+				"progress": 0
+			},
+			"slot3": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.37,
+					"damage": 0.37
+				},
+				"progress": 0
+			},
+			"slot4": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.38,
+					"damage": 0.38
+				},
+				"progress": 0
+			},
+			"slot5": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.40,
+					"damage": 0.40
+				},
+				"progress": 0
+			},
+			"slot6": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.50,
+					"damage": 0.50
+				},
+				"progress": 0
+			},
+			"slot7": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.51,
+					"damage": 0.51
+				},
+				"progress": 0
+			},
+			"slot8": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.52,
+					"damage": 0.52
+				},
+				"progress": 0
+			},
+			"slot9": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.53,
+					"damage": 0.53
+				},
+				"progress": 0
+			},
+			"slot10": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.55,
+					"damage": 0.55
+				},
+				"progress": 0
+			},
+			"slot11": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.65,
+					"damage": 0.65
+				},
+				"progress": 0
+			},
+			"slot12": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.75,
+					"damage": 0.75
+				},
+				"progress": 0
+			},
+			"slot13": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.85,
+					"damage": 0.85
+				},
+				"progress": 0
+			},
+			"slot14": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 1.0,
+					"damage": 1.0
+				},
+				"progress": 0
+			},
+			"slot15": {
+				"is_locked": true,
+				"is_equipped": false,
 				"level": 1,
 				"atributtes": {
 					"gold": 2.0,
@@ -965,7 +1211,6 @@ func reset_savegame() -> void:
 			"slot1": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/sword_01a.png",
 				"level": 1,
 				"atributtes": {
 					"damage": 0.35,
@@ -976,7 +1221,6 @@ func reset_savegame() -> void:
 			"slot2": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/sword_01b.png",
 				"level": 1,
 				"atributtes": {
 					"damage": 0.36,
@@ -987,7 +1231,6 @@ func reset_savegame() -> void:
 			"slot3": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/sword_01c.png",
 				"level": 1,
 				"atributtes": {
 					"damage": 0.37,
@@ -998,7 +1241,6 @@ func reset_savegame() -> void:
 			"slot4": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/sword_01d.png",
 				"level": 1,
 				"atributtes": {
 					"damage": 0.38,
@@ -1009,7 +1251,6 @@ func reset_savegame() -> void:
 			"slot5": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/sword_01e.png",
 				"level": 1,
 				"atributtes": {
 					"damage": 0.40,
@@ -1020,7 +1261,6 @@ func reset_savegame() -> void:
 			"slot6": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/sword_02a.png",
 				"level": 1,
 				"atributtes": {
 					"damage": 0.50,
@@ -1031,7 +1271,6 @@ func reset_savegame() -> void:
 			"slot7": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/sword_02b.png",
 				"level": 1,
 				"atributtes": {
 					"damage": 0.51,
@@ -1042,7 +1281,6 @@ func reset_savegame() -> void:
 			"slot8": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/sword_02c.png",
 				"level": 1,
 				"atributtes": {
 					"damage": 0.52,
@@ -1053,7 +1291,6 @@ func reset_savegame() -> void:
 			"slot9": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/sword_02d.png",
 				"level": 1,
 				"atributtes": {
 					"damage": 0.53,
@@ -1064,7 +1301,6 @@ func reset_savegame() -> void:
 			"slot10": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/sword_02e.png",
 				"level": 1,
 				"atributtes": {
 					"damage": 0.55,
@@ -1075,7 +1311,6 @@ func reset_savegame() -> void:
 			"slot11": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/sword_03a.png",
 				"level": 1,
 				"atributtes": {
 					"damage": 0.65,
@@ -1086,7 +1321,6 @@ func reset_savegame() -> void:
 			"slot12": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/sword_03b.png",
 				"level": 1,
 				"atributtes": {
 					"damage": 0.75,
@@ -1097,7 +1331,6 @@ func reset_savegame() -> void:
 			"slot13": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/sword_03c.png",
 				"level": 1,
 				"atributtes": {
 					"damage": 0.85,
@@ -1108,7 +1341,6 @@ func reset_savegame() -> void:
 			"slot14": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/sword_03d.png",
 				"level": 1,
 				"atributtes": {
 					"damage": 1.0,
@@ -1119,7 +1351,6 @@ func reset_savegame() -> void:
 			"slot15": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/sword_03e.png",
 				"level": 1,
 				"atributtes": {
 					"damage": 2.0,
@@ -1133,7 +1364,6 @@ func reset_savegame() -> void:
 			"slot1": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/shield_01a.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.35,
@@ -1144,7 +1374,6 @@ func reset_savegame() -> void:
 			"slot2": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/shield_01b.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.36,
@@ -1155,7 +1384,6 @@ func reset_savegame() -> void:
 			"slot3": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/shield_01c.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.37,
@@ -1166,7 +1394,6 @@ func reset_savegame() -> void:
 			"slot4": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/shield_01d.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.38,
@@ -1177,7 +1404,6 @@ func reset_savegame() -> void:
 			"slot5": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/shield_01e.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.40,
@@ -1188,7 +1414,6 @@ func reset_savegame() -> void:
 			"slot6": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/shield_02a.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.50,
@@ -1199,7 +1424,6 @@ func reset_savegame() -> void:
 			"slot7": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/shield_02b.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.51,
@@ -1210,7 +1434,6 @@ func reset_savegame() -> void:
 			"slot8": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/shield_02c.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.52,
@@ -1221,7 +1444,6 @@ func reset_savegame() -> void:
 			"slot9": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/shield_02d.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.53,
@@ -1232,7 +1454,6 @@ func reset_savegame() -> void:
 			"slot10": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/shield_02e.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.55,
@@ -1243,7 +1464,6 @@ func reset_savegame() -> void:
 			"slot11": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/shield_03a.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.65,
@@ -1254,7 +1474,6 @@ func reset_savegame() -> void:
 			"slot12": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/shield_03b.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.75,
@@ -1265,7 +1484,6 @@ func reset_savegame() -> void:
 			"slot13": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/shield_03c.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.85,
@@ -1276,7 +1494,6 @@ func reset_savegame() -> void:
 			"slot14": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/shield_03d.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 1.0,
@@ -1287,7 +1504,6 @@ func reset_savegame() -> void:
 			"slot15": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/shield_03e.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 2.0,
@@ -1301,7 +1517,6 @@ func reset_savegame() -> void:
 			"slot1": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/ring_01a.png",
 				"level": 1,
 				"atributtes": {
 					"critical_damage": 0.35,
@@ -1312,7 +1527,6 @@ func reset_savegame() -> void:
 			"slot2": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/ring_01b.png",
 				"level": 1,
 				"atributtes": {
 					"critical_damage": 0.36,
@@ -1323,7 +1537,6 @@ func reset_savegame() -> void:
 			"slot3": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/ring_01c.png",
 				"level": 1,
 				"atributtes": {
 					"critical_damage": 0.37,
@@ -1334,7 +1547,6 @@ func reset_savegame() -> void:
 			"slot4": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/ring_01d.png",
 				"level": 1,
 				"atributtes": {
 					"critical_damage": 0.38,
@@ -1345,7 +1557,6 @@ func reset_savegame() -> void:
 			"slot5": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/ring_01e.png",
 				"level": 1,
 				"atributtes": {
 					"critical_damage": 0.40,
@@ -1356,7 +1567,6 @@ func reset_savegame() -> void:
 			"slot6": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/ring_02a.png",
 				"level": 1,
 				"atributtes": {
 					"critical_damage": 0.50,
@@ -1367,7 +1577,6 @@ func reset_savegame() -> void:
 			"slot7": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/ring_02b.png",
 				"level": 1,
 				"atributtes": {
 					"critical_damage": 0.51,
@@ -1378,7 +1587,6 @@ func reset_savegame() -> void:
 			"slot8": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/ring_02c.png",
 				"level": 1,
 				"atributtes": {
 					"critical_damage": 0.52,
@@ -1389,7 +1597,6 @@ func reset_savegame() -> void:
 			"slot9": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/ring_02d.png",
 				"level": 1,
 				"atributtes": {
 					"critical_damage": 0.53,
@@ -1400,7 +1607,6 @@ func reset_savegame() -> void:
 			"slot10": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/ring_02e.png",
 				"level": 1,
 				"atributtes": {
 					"critical_damage": 0.55,
@@ -1411,7 +1617,6 @@ func reset_savegame() -> void:
 			"slot11": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/ring_03a.png",
 				"level": 1,
 				"atributtes": {
 					"critical_damage": 0.65,
@@ -1422,7 +1627,6 @@ func reset_savegame() -> void:
 			"slot12": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/ring_03b.png",
 				"level": 1,
 				"atributtes": {
 					"critical_damage": 0.75,
@@ -1433,7 +1637,6 @@ func reset_savegame() -> void:
 			"slot13": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/ring_03c.png",
 				"level": 1,
 				"atributtes": {
 					"critical_damage": 0.85,
@@ -1444,7 +1647,6 @@ func reset_savegame() -> void:
 			"slot14": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/ring_03d.png",
 				"level": 1,
 				"atributtes": {
 					"critical_damage": 1.0,
@@ -1455,7 +1657,6 @@ func reset_savegame() -> void:
 			"slot15": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/ring_03e.png",
 				"level": 1,
 				"atributtes": {
 					"critical_damage": 2.0,
@@ -1469,7 +1670,6 @@ func reset_savegame() -> void:
 			"slot1": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/necklace_01a.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.35,
@@ -1480,7 +1680,6 @@ func reset_savegame() -> void:
 			"slot2": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/necklace_01b.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.36,
@@ -1491,7 +1690,6 @@ func reset_savegame() -> void:
 			"slot3": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/necklace_01c.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.37,
@@ -1502,7 +1700,6 @@ func reset_savegame() -> void:
 			"slot4": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/necklace_01d.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.38,
@@ -1513,7 +1710,6 @@ func reset_savegame() -> void:
 			"slot5": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/necklace_01e.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.40,
@@ -1524,7 +1720,6 @@ func reset_savegame() -> void:
 			"slot6": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/necklace_02a.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.50,
@@ -1535,7 +1730,6 @@ func reset_savegame() -> void:
 			"slot7": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/necklace_02b.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.51,
@@ -1546,7 +1740,6 @@ func reset_savegame() -> void:
 			"slot8": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/necklace_02c.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.52,
@@ -1557,7 +1750,6 @@ func reset_savegame() -> void:
 			"slot9": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/necklace_02d.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.53,
@@ -1568,7 +1760,6 @@ func reset_savegame() -> void:
 			"slot10": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/necklace_02e.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.55,
@@ -1579,7 +1770,6 @@ func reset_savegame() -> void:
 			"slot11": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/necklace_03a.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.65,
@@ -1590,7 +1780,6 @@ func reset_savegame() -> void:
 			"slot12": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/necklace_03b.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.75,
@@ -1601,7 +1790,6 @@ func reset_savegame() -> void:
 			"slot13": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/necklace_03c.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 0.85,
@@ -1612,7 +1800,6 @@ func reset_savegame() -> void:
 			"slot14": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/necklace_03d.png",
 				"level": 1,
 				"atributtes": {
 					"gold": 1.0,
@@ -1623,7 +1810,312 @@ func reset_savegame() -> void:
 			"slot15": {
 				"is_locked": true,
 				"is_equipped": false,
-				"path": "res://assets/items/necklace_03e.png",
+				"level": 1,
+				"atributtes": {
+					"gold": 2.0,
+					"damage": 2.0
+				},
+				"progress": 0
+			}
+		},
+		
+		"armor": {
+			"slot1": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.35,
+					"damage": 0.35
+				},
+				"progress": 0
+			},
+			"slot2": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.36,
+					"damage": 0.36
+				},
+				"progress": 0
+			},
+			"slot3": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.37,
+					"damage": 0.37
+				},
+				"progress": 0
+			},
+			"slot4": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.38,
+					"damage": 0.38
+				},
+				"progress": 0
+			},
+			"slot5": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.40,
+					"damage": 0.40
+				},
+				"progress": 0
+			},
+			"slot6": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.50,
+					"damage": 0.50
+				},
+				"progress": 0
+			},
+			"slot7": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.51,
+					"damage": 0.51
+				},
+				"progress": 0
+			},
+			"slot8": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.52,
+					"damage": 0.52
+				},
+				"progress": 0
+			},
+			"slot9": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.53,
+					"damage": 0.53
+				},
+				"progress": 0
+			},
+			"slot10": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.55,
+					"damage": 0.55
+				},
+				"progress": 0
+			},
+			"slot11": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.65,
+					"damage": 0.65
+				},
+				"progress": 0
+			},
+			"slot12": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.75,
+					"damage": 0.75
+				},
+				"progress": 0
+			},
+			"slot13": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.85,
+					"damage": 0.85
+				},
+				"progress": 0
+			},
+			"slot14": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 1.0,
+					"damage": 1.0
+				},
+				"progress": 0
+			},
+			"slot15": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 2.0,
+					"damage": 2.0
+				},
+				"progress": 0
+			}
+		},
+		
+		"helm": {
+			"slot1": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.35,
+					"damage": 0.35
+				},
+				"progress": 0
+			},
+			"slot2": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.36,
+					"damage": 0.36
+				},
+				"progress": 0
+			},
+			"slot3": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.37,
+					"damage": 0.37
+				},
+				"progress": 0
+			},
+			"slot4": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.38,
+					"damage": 0.38
+				},
+				"progress": 0
+			},
+			"slot5": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.40,
+					"damage": 0.40
+				},
+				"progress": 0
+			},
+			"slot6": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.50,
+					"damage": 0.50
+				},
+				"progress": 0
+			},
+			"slot7": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.51,
+					"damage": 0.51
+				},
+				"progress": 0
+			},
+			"slot8": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.52,
+					"damage": 0.52
+				},
+				"progress": 0
+			},
+			"slot9": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.53,
+					"damage": 0.53
+				},
+				"progress": 0
+			},
+			"slot10": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.55,
+					"damage": 0.55
+				},
+				"progress": 0
+			},
+			"slot11": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.65,
+					"damage": 0.65
+				},
+				"progress": 0
+			},
+			"slot12": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.75,
+					"damage": 0.75
+				},
+				"progress": 0
+			},
+			"slot13": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.85,
+					"damage": 0.85
+				},
+				"progress": 0
+			},
+			"slot14": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 1.0,
+					"damage": 1.0
+				},
+				"progress": 0
+			},
+			"slot15": {
+				"is_locked": true,
+				"is_equipped": false,
 				"level": 1,
 				"atributtes": {
 					"gold": 2.0,

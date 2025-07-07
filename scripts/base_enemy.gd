@@ -68,7 +68,7 @@ func animate_health_bar(damage: int) -> void:
 
 func calculate_exp() -> int:
 	var exp_base: int = 1
-	var scaling_factor: float = 1.02
+	var scaling_factor: float = 1.01
 	var exp = exp_base * pow(scaling_factor, World.estagio)
 	
 	return round(exp)
@@ -76,15 +76,14 @@ func calculate_exp() -> int:
 
 func drop() -> void:
 	var base_gold: int = 0
-	var scaling_factor: float = 1.025  # Fator de crescimento exponencial
+	var scaling_factor: float = 1.01  # Fator de crescimento exponencial
 	var gold_raid_multiplier: float = Data.data_management["raids"]["raid_gold"]["multiplier"]
 	var gold_upgrade_multiplier: float = Data.data_management["upgrades"]["gold"]["multiplier"]
 	var levelup_multiplier: float = Data.data_management["player"]["upgrade_level_up"]
 	var equipment_gold_multiplier: float = (
-		Player.equipped_items["weapon"]["bonus_attributes"]["gold"] \
 		+ Player.equipped_items["shield"]["bonus_attributes"]["gold"] \
-		+ Player.equipped_items["ring"]["bonus_attributes"]["gold"] \
-		+ Player.equipped_items["necklace"]["bonus_attributes"]["gold"]
+		+ Player.equipped_items["necklace"]["bonus_attributes"]["gold"] \
+		+ Player.equipped_items["helm"]["bonus_attributes"]["gold"]
 	)
 	
 	var total_gold_multiplier: float = (
@@ -121,7 +120,7 @@ func drop_item() -> void:
 		"damage", "critical_damage", "prestige_points", "gold"
 	]
 	var type_list: Array = [
-		"weapon", "shield", "ring", "necklace"
+		"weapon", "shield", "ring", "necklace", "armor", "helm"
 	]
 	var attribute_range: Array = []
 	
@@ -144,6 +143,12 @@ func drop_item() -> void:
 		
 		"necklace":
 			item_attribute = ["damage", "gold"]
+		
+		"armor":
+			item_attribute = ["damage", "prestige_points"]
+		
+		"helm":
+			item_attribute = ["critical_damage", "gold"]
 	
 	item_attribute_1 = item_attribute.pick_random()
 	item_attribute_2 = item_attribute.pick_random()

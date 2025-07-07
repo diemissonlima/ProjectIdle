@@ -231,10 +231,9 @@ func prestige_points() -> int:
 	var scaling_factor: float = 1.20
 	var upgrade_multiplier: float = Data.data_management["upgrades"]["prestige_points"]["multiplier"]
 	var equipment_multiplier: float = (
-		Player.equipped_items["weapon"]["bonus_attributes"]["prestige_points"] \
 		+ Player.equipped_items["shield"]["bonus_attributes"]["prestige_points"] \
 		+ Player.equipped_items["ring"]["bonus_attributes"]["prestige_points"] \
-		+ Player.equipped_items["necklace"]["bonus_attributes"]["prestige_points"]
+		+ Player.equipped_items["armor"]["bonus_attributes"]["prestige_points"]
 	)
 	
 	var total_multiplier: float = (upgrade_multiplier + equipment_multiplier) * 100
