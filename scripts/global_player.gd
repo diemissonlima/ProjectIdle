@@ -24,42 +24,63 @@ var equipped_items: Dictionary = {
 		"slot": "",
 		"bonus_attributes": {
 			"damage": 0.0,
-			"critical_damage": 0.0,
+			"critical_damage": 0.0
 		}
 	},
 	"shield": {
 		"slot": "",
 		"bonus_attributes": {
 			"gold": 0.0,
-			"prestige_points": 0.0
+			"damage": 0.0
 		}
 	},
 	"ring": {
 		"slot": "",
 		"bonus_attributes": {
-			"critical_damage": 0.0,
-			"prestige_points": 0.0
+			"prestige_points": 0.0,
+			"critical_damage": 0.0
 		}
 	},
 	"necklace": {
 		"slot": "",
 		"bonus_attributes": {
-			"damage": 0.0,
-			"gold": 0.0,
+			"prestige_points": 0.0,
+			"gold": 0.0
 		}
 	},
 	"armor": {
 		"slot": "",
 		"bonus_attributes": {
 			"damage": 0.0,
-			"prestige_points": 0.0
+			"gold": 0.0
 		}
 	},
 	"helm": {
 		"slot": "",
 		"bonus_attributes": {
 			"critical_damage": 0.0,
-			"gold": 0.0
+			"prestige_points": 0.0
+		}
+	},
+	"glove": {
+		"slot": "",
+		"bonus_attributes": {
+			"gold": 0.0,
+			"critical_damage": 0.0
+		}
+	},
+	"boot": {
+		"slot": "",
+		"bonus_attributes": {
+			"damage": 0.0,
+			"prestige_points": 0.0
+		}
+	},
+	"belt": {
+		"slot": "",
+		"bonus_attributes": {
+			"gold": 0.0,
+			"critical_damage": 0.0
 		}
 	}
 }
@@ -238,8 +259,9 @@ func alter_attack() -> void:
 	var upgrade_damage_multiplier: float = Data.data_management["upgrades"]["damage"]["multiplier"] * 100
 	var equipment_damage_multiplier: float = (
 		equipped_items["weapon"]["bonus_attributes"]["damage"] \
-		+ equipped_items["necklace"]["bonus_attributes"]["damage"] \
-		+ equipped_items["armor"]["bonus_attributes"]["damage"]
+		+ equipped_items["shield"]["bonus_attributes"]["damage"] \
+		+ equipped_items["armor"]["bonus_attributes"]["damage"] \
+		+ equipped_items["boot"]["bonus_attributes"]["damage"]
 	) * 100
 	
 	var new_damage: float = damage + (damage * upgrade_damage_multiplier / 100)
@@ -258,7 +280,9 @@ func alter_attack() -> void:
 		var equipment_critical_damage_multiplier: float = (
 			equipped_items["weapon"]["bonus_attributes"]["critical_damage"] \
 			+ equipped_items["ring"]["bonus_attributes"]["critical_damage"] \
-			+ equipped_items["helm"]["bonus_attributes"]["critical_damage"]
+			+ equipped_items["helm"]["bonus_attributes"]["critical_damage"] \
+			+ equipped_items["glove"]["bonus_attributes"]["critical_damage"] \
+			+ equipped_items["belt"]["bonus_attributes"]["critical_damage"]
 		)
 		
 		var critical_damage_multiplier: float = (

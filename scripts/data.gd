@@ -1047,6 +1047,465 @@ var data_management: Dictionary = {
 				},
 				"progress": 0
 			}
+		},
+		
+		"glove": {
+			"slot1": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.35,
+					"damage": 0.35
+				},
+				"progress": 0
+			},
+			"slot2": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.36,
+					"damage": 0.36
+				},
+				"progress": 0
+			},
+			"slot3": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.37,
+					"damage": 0.37
+				},
+				"progress": 0
+			},
+			"slot4": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.38,
+					"damage": 0.38
+				},
+				"progress": 0
+			},
+			"slot5": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.40,
+					"damage": 0.40
+				},
+				"progress": 0
+			},
+			"slot6": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.50,
+					"damage": 0.50
+				},
+				"progress": 0
+			},
+			"slot7": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.51,
+					"damage": 0.51
+				},
+				"progress": 0
+			},
+			"slot8": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.52,
+					"damage": 0.52
+				},
+				"progress": 0
+			},
+			"slot9": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.53,
+					"damage": 0.53
+				},
+				"progress": 0
+			},
+			"slot10": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.55,
+					"damage": 0.55
+				},
+				"progress": 0
+			},
+			"slot11": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.65,
+					"damage": 0.65
+				},
+				"progress": 0
+			},
+			"slot12": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.75,
+					"damage": 0.75
+				},
+				"progress": 0
+			},
+			"slot13": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.85,
+					"damage": 0.85
+				},
+				"progress": 0
+			},
+			"slot14": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 1.0,
+					"damage": 1.0
+				},
+				"progress": 0
+			},
+			"slot15": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 2.0,
+					"damage": 2.0
+				},
+				"progress": 0
+			}
+		},
+		
+		"boot": {
+			"slot1": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.35,
+					"damage": 0.35
+				},
+				"progress": 0
+			},
+			"slot2": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.36,
+					"damage": 0.36
+				},
+				"progress": 0
+			},
+			"slot3": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.37,
+					"damage": 0.37
+				},
+				"progress": 0
+			},
+			"slot4": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.38,
+					"damage": 0.38
+				},
+				"progress": 0
+			},
+			"slot5": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.40,
+					"damage": 0.40
+				},
+				"progress": 0
+			},
+			"slot6": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.50,
+					"damage": 0.50
+				},
+				"progress": 0
+			},
+			"slot7": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.51,
+					"damage": 0.51
+				},
+				"progress": 0
+			},
+			"slot8": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.52,
+					"damage": 0.52
+				},
+				"progress": 0
+			},
+			"slot9": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.53,
+					"damage": 0.53
+				},
+				"progress": 0
+			},
+			"slot10": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.55,
+					"damage": 0.55
+				},
+				"progress": 0
+			},
+			"slot11": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.65,
+					"damage": 0.65
+				},
+				"progress": 0
+			},
+			"slot12": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.75,
+					"damage": 0.75
+				},
+				"progress": 0
+			},
+			"slot13": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.85,
+					"damage": 0.85
+				},
+				"progress": 0
+			},
+			"slot14": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 1.0,
+					"damage": 1.0
+				},
+				"progress": 0
+			},
+			"slot15": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 2.0,
+					"damage": 2.0
+				},
+				"progress": 0
+			}
+		},
+		
+		"belt": {
+			"slot1": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.35,
+					"damage": 0.35
+				},
+				"progress": 0
+			},
+			"slot2": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.36,
+					"damage": 0.36
+				},
+				"progress": 0
+			},
+			"slot3": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.37,
+					"damage": 0.37
+				},
+				"progress": 0
+			},
+			"slot4": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.38,
+					"damage": 0.38
+				},
+				"progress": 0
+			},
+			"slot5": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.40,
+					"damage": 0.40
+				},
+				"progress": 0
+			},
+			"slot6": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.50,
+					"damage": 0.50
+				},
+				"progress": 0
+			},
+			"slot7": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.51,
+					"damage": 0.51
+				},
+				"progress": 0
+			},
+			"slot8": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.52,
+					"damage": 0.52
+				},
+				"progress": 0
+			},
+			"slot9": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.53,
+					"damage": 0.53
+				},
+				"progress": 0
+			},
+			"slot10": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.55,
+					"damage": 0.55
+				},
+				"progress": 0
+			},
+			"slot11": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.65,
+					"damage": 0.65
+				},
+				"progress": 0
+			},
+			"slot12": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.75,
+					"damage": 0.75
+				},
+				"progress": 0
+			},
+			"slot13": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 0.85,
+					"damage": 0.85
+				},
+				"progress": 0
+			},
+			"slot14": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 1.0,
+					"damage": 1.0
+				},
+				"progress": 0
+			},
+			"slot15": {
+				"is_locked": true,
+				"is_equipped": false,
+				"level": 1,
+				"atributtes": {
+					"gold": 2.0,
+					"damage": 2.0
+				},
+				"progress": 0
+			}
 		}
 	}
 }

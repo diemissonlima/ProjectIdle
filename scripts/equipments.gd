@@ -8,6 +8,9 @@ extends Control
 @export var necklace_container: GridContainer
 @export var armor_container: GridContainer
 @export var helm_container: GridContainer
+@export var glove_container: GridContainer
+@export var boot_container: GridContainer
+@export var belt_container: GridContainer
 
 @export var progress_bar: TextureProgressBar
 @export var drop_item_level_label: Label
@@ -39,6 +42,9 @@ func _ready() -> void:
 	load_equipment("necklace")
 	load_equipment("armor")
 	load_equipment("helm")
+	load_equipment("glove")
+	load_equipment("boot")
+	load_equipment("belt")
 	
 	show_item_level_drop()
 	show_drop_chance()
@@ -61,6 +67,15 @@ func connect_button_signal() -> void:
 		button.pressed.connect(on_button_pressed.bind(button))
 		
 	for button in helm_container.get_children():
+		button.pressed.connect(on_button_pressed.bind(button))
+	
+	for button in glove_container.get_children():
+		button.pressed.connect(on_button_pressed.bind(button))
+	
+	for button in boot_container.get_children():
+		button.pressed.connect(on_button_pressed.bind(button))
+	
+	for button in belt_container.get_children():
 		button.pressed.connect(on_button_pressed.bind(button))
 
 
@@ -92,6 +107,12 @@ func show_item_info(container: String, button_name: String, sprite_path: String)
 			container = "armor"
 		"HelmContainer":
 			container = "helm"
+		"GloveContainer":
+			container = "glove"
+		"BootContainer":
+			container = "boot"
+		"BeltContainer":
+			container = "belt"
 	
 	equipment_type = container
 	selected_item = data_equipment[container][button_name.to_lower()]
@@ -160,7 +181,10 @@ func load_equipment(type: String) -> void:
 		"ring": ring_container,
 		"necklace": necklace_container,
 		"armor": armor_container,
-		"helm": helm_container
+		"helm": helm_container,
+		"glove": glove_container,
+		"boot": boot_container,
+		"belt": belt_container
 	}
 	
 	for slot in target_container[type].get_children():
@@ -197,6 +221,12 @@ func load_equipment(type: String) -> void:
 					Player.handler_item("equip", "armor", slot.name)
 				"helm":
 					Player.handler_item("equip", "helm", slot.name)
+				"glove":
+					Player.handler_item("equip", "glove", slot.name)
+				"boot":
+					Player.handler_item("equip", "boot", slot.name)
+				"belt":
+					Player.handler_item("equip", "belt", slot.name)
 					
 		else:
 			slot.get_node("BG/Equipped").visible = false
@@ -321,6 +351,9 @@ func _on_close_pressed() -> void:
 	necklace_container.visible = false
 	armor_container.visible = false
 	helm_container.visible = false
+	glove_container.visible = false
+	boot_container.visible = false
+	belt_container.visible = false
 
 
 func _on_sword_tab_pressed() -> void:
@@ -330,6 +363,9 @@ func _on_sword_tab_pressed() -> void:
 	necklace_container.visible = false
 	armor_container.visible = false
 	helm_container.visible = false
+	glove_container.visible = false
+	boot_container.visible = false
+	belt_container.visible = false
 	
 	if $Background/ItemInfo.visible == true:
 		$Background/ItemInfo.visible = false
@@ -342,6 +378,9 @@ func _on_shield_tab_pressed() -> void:
 	necklace_container.visible = false
 	armor_container.visible = false
 	helm_container.visible = false
+	glove_container.visible = false
+	boot_container.visible = false
+	belt_container.visible = false
 	
 	if $Background/ItemInfo.visible == true:
 		$Background/ItemInfo.visible = false
@@ -354,6 +393,9 @@ func _on_ring_tab_pressed() -> void:
 	necklace_container.visible = false
 	armor_container.visible = false
 	helm_container.visible = false
+	glove_container.visible = false
+	boot_container.visible = false
+	belt_container.visible = false
 	
 	if $Background/ItemInfo.visible == true:
 		$Background/ItemInfo.visible = false
@@ -366,6 +408,9 @@ func _on_necklace_tab_pressed() -> void:
 	necklace_container.visible = true
 	armor_container.visible = false
 	helm_container.visible = false
+	glove_container.visible = false
+	boot_container.visible = false
+	belt_container.visible = false
 	
 	if $Background/ItemInfo.visible == true:
 		$Background/ItemInfo.visible = false
@@ -378,6 +423,9 @@ func _on_armor_tab_pressed() -> void:
 	necklace_container.visible = false
 	armor_container.visible = true
 	helm_container.visible = false
+	glove_container.visible = false
+	boot_container.visible = false
+	belt_container.visible = false
 	
 	if $Background/ItemInfo.visible == true:
 		$Background/ItemInfo.visible = false
@@ -390,6 +438,54 @@ func _on_helm_tab_pressed() -> void:
 	necklace_container.visible = false
 	armor_container.visible = false
 	helm_container.visible = true
+	glove_container.visible = false
+	boot_container.visible = false
+	belt_container.visible = false
+	
+	if $Background/ItemInfo.visible == true:
+		$Background/ItemInfo.visible = false
+
+
+func _on_glove_tab_pressed() -> void:
+	weapon_container.visible = false
+	shield_container.visible = false
+	ring_container.visible = false
+	necklace_container.visible = false
+	armor_container.visible = false
+	helm_container.visible = false
+	glove_container.visible = true
+	boot_container.visible = false
+	belt_container.visible = false
+	
+	if $Background/ItemInfo.visible == true:
+		$Background/ItemInfo.visible = false
+
+
+func _on_boot_tab_pressed() -> void:
+	weapon_container.visible = false
+	shield_container.visible = false
+	ring_container.visible = false
+	necklace_container.visible = false
+	armor_container.visible = false
+	helm_container.visible = false
+	glove_container.visible = false
+	boot_container.visible = true
+	belt_container.visible = false
+	
+	if $Background/ItemInfo.visible == true:
+		$Background/ItemInfo.visible = false
+
+
+func _on_belt_tab_pressed() -> void:
+	weapon_container.visible = false
+	shield_container.visible = false
+	ring_container.visible = false
+	necklace_container.visible = false
+	armor_container.visible = false
+	helm_container.visible = false
+	glove_container.visible = false
+	boot_container.visible = false
+	belt_container.visible = true
 	
 	if $Background/ItemInfo.visible == true:
 		$Background/ItemInfo.visible = false

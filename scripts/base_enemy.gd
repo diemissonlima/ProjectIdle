@@ -68,7 +68,7 @@ func animate_health_bar(damage: int) -> void:
 
 func calculate_exp() -> int:
 	var exp_base: int = 1
-	var scaling_factor: float = 1.01
+	var scaling_factor: float = 1.02
 	var exp = exp_base * pow(scaling_factor, World.estagio)
 	
 	return round(exp)
@@ -83,7 +83,9 @@ func drop() -> void:
 	var equipment_gold_multiplier: float = (
 		+ Player.equipped_items["shield"]["bonus_attributes"]["gold"] \
 		+ Player.equipped_items["necklace"]["bonus_attributes"]["gold"] \
-		+ Player.equipped_items["helm"]["bonus_attributes"]["gold"]
+		+ Player.equipped_items["armor"]["bonus_attributes"]["gold"] \
+		+ Player.equipped_items["glove"]["bonus_attributes"]["gold"] \
+		+ Player.equipped_items["belt"]["bonus_attributes"]["gold"]
 	)
 	
 	var total_gold_multiplier: float = (
@@ -120,7 +122,8 @@ func drop_item() -> void:
 		"damage", "critical_damage", "prestige_points", "gold"
 	]
 	var type_list: Array = [
-		"weapon", "shield", "ring", "necklace", "armor", "helm"
+		"weapon", "shield", "ring", "necklace", 
+		"armor", "helm", "glove", "boot", "belt"
 	]
 	var attribute_range: Array = []
 	
@@ -136,19 +139,28 @@ func drop_item() -> void:
 			item_attribute = ["damage", "critical_damage"]
 		
 		"shield":
-			item_attribute = ["prestige_points", "gold"]
+			item_attribute = ["damage", "gold"]
 		
 		"ring":
 			item_attribute = ["critical_damage", "prestige_points"]
 		
 		"necklace":
-			item_attribute = ["damage", "gold"]
+			item_attribute = ["prestige_points", "gold"]
 		
 		"armor":
-			item_attribute = ["damage", "prestige_points"]
+			item_attribute = ["damage", "gold"]
 		
 		"helm":
-			item_attribute = ["critical_damage", "gold"]
+			item_attribute = ["critical_damage", "prestige_points"]
+			
+		"glove":
+			item_attribute = ["gold", "critical_damage"]
+			
+		"boot":
+			item_attribute = ["damage", "prestige_points"]
+			
+		"belt":
+			item_attribute = ["gold", "critical_damage"]
 	
 	item_attribute_1 = item_attribute.pick_random()
 	item_attribute_2 = item_attribute.pick_random()
