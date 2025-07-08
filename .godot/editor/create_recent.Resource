@@ -1,4 +1,0 @@
-FontFile
-FontVariation
-SystemFont
-Resource
