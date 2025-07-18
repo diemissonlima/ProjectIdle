@@ -1,0 +1,26 @@
+# Arquivos e pastas geradas automaticamente pela Godot
+.import/
+.godot/
+build/
+export_presets.cfg
+
+# Dados salvos em tempo de execução
+save/
+
+# Builds/exportações
+*.pck
+*.exe
+*.apk
+*.zip
+
+# Backups temporários da Godot
+*.godot.tmp
+
+# Arquivos de sistema (Windows / macOS / Linux)
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs ou temporários do sistema
+*.log
+*.tmp

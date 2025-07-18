@@ -66,17 +66,17 @@ func animate_health_bar(damage: int) -> void:
 			).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 
 
-func calculate_exp() -> int:
+func calculate_exp() -> float:
 	var exp_base: int = 1
-	var scaling_factor: float = 1.02
+	var scaling_factor: float = 1.025
 	var exp = exp_base * pow(scaling_factor, World.estagio)
 	
-	return round(exp)
+	return exp
 
 
 func drop() -> void:
 	var base_gold: int = 0
-	var scaling_factor: float = 1.01  # Fator de crescimento exponencial
+	var scaling_factor: float = 1.025  # Fator de crescimento exponencial
 	var gold_raid_multiplier: float = Data.data_management["raids"]["raid_gold"]["multiplier"]
 	var gold_upgrade_multiplier: float = Data.data_management["upgrades"]["gold"]["multiplier"]
 	var levelup_multiplier: float = Data.data_management["player"]["upgrade_level_up"]

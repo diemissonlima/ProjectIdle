@@ -192,14 +192,13 @@ func save_data() -> void:
 
 
 func populate_level_dict() -> void:
-	var initial_value: float = 2500
+	var initial_value: float = 10000
 
 	for i in range(1, 101):
-		level_dict[str(i)] = round(initial_value)
-		initial_value += initial_value * 0.75
+		level_dict[str(i)] = float(initial_value)
+		initial_value += initial_value * 0.40
 
-
-func update_exp(value: int) -> void:
+func update_exp(value: float) -> void:
 	current_exp += value
 	
 	if current_exp >= level_dict[str(level)]:
